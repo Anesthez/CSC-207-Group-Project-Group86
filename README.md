@@ -22,4 +22,4 @@ Zac wants to draw a picture and post it online.
 
 ## Contributors:
 
-$write your github tag here$
+$\textit{write your github tag here}$
