@@ -1,4 +1,5 @@
-public class postManager {
+public class PostManager {
+
     public void addPost(int userId, int postId, String content){
         Post post = new Post(userId, postId, content);
     }
@@ -35,4 +36,6 @@ public class postManager {
      * 5. search method: search engine? search by post id? should id be private?
      *
      */
+}
+
 }
