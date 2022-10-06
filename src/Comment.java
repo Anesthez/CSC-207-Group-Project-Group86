@@ -1,24 +1,22 @@
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Comment{
-    private int userid;
+    private int userId;
     private Timestamp timestamp;
     private int id;
     private String content;
     private int views;
 
-    public Comment(int userid, int id, String content) {
-        this.userid = userid;
+    public Comment(int userId, int id, String content) {
+        this.userId = userId;
         this.timestamp = new Timestamp(System.currentTimeMillis());  // initialize the timestamp with system time
         this.id = id;
         this.content = content;
         this.views = 0;  // initialize comment with 0 views
     }
 
-    public int getUserid() {
-        return userid;
+    public int getUserId() {
+        return userId;
     }
 
     public Timestamp getTimestamp() {

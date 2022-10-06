@@ -1,6 +1,6 @@
 public class CommentManager{
-    public void addComment(int userid, int id, String content) {
-        Comment comment = new Comment(userid, id, content);
+    public void addComment(int userId, int id, String content) {
+        Comment comment = new Comment(userId, id, content);
         /**
          * csv reader will read the csv and create comments hashmap
          * add the comment to hashmap and csv
