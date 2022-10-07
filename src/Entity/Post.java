@@ -1,3 +1,5 @@
+package Entity;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -5,13 +7,13 @@ public class Post {
 
 
     private String postTitle;
-    private int userId;
-    private Timestamp timestamp;
-    private int postId;
+    private final int userId;
+    private final Timestamp timestamp;
+    private final int postId;
     private String content;
     private int views;
-    private int numLikes;
-    private ArrayList<User> userLiked;
+    private int num_likes;
+    private ArrayList<User> user_liked;
 
 
     public Post(String postTitle, int userId, int postId, String content) {

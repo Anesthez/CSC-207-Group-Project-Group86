@@ -1,3 +1,7 @@
+package Entity;
+
+import inputboundary.Searchable;
+
 import java.sql.Timestamp;
 
 public class User implements Searchable {

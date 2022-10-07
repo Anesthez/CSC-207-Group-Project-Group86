@@ -1,3 +1,5 @@
+package Entity;
+
 import java.sql.Timestamp;
 
 public class Comment{

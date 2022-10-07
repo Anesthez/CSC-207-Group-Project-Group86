@@ -1,3 +1,5 @@
+package inputboundary;
+
 public interface Searchable {
 
     public void searchByID();

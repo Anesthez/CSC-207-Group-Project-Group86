@@ -1,3 +1,7 @@
+package repositories;
+
+import Entity.User;
+
 public class UserManager {
     public void addUser(int userId, String userName, String userPassword) {
         User u = new User(userId, userName, userPassword);

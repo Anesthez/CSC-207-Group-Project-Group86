@@ -1,3 +1,8 @@
+package repositories;
+
+import Entity.Comment;
+import Entity.Post;
+
 public class PostManager {
 
     public void addPost(int userId, int postId, String content){

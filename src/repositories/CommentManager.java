@@ -1,3 +1,7 @@
+package repositories;
+
+import Entity.Comment;
+
 public class CommentManager{
     public void addComment(int userId, int id, String content) {
         Comment comment = new Comment(userId, id, content);
@@ -18,7 +22,7 @@ public class CommentManager{
         /**
          * csv reader will read the csv and create comments hashmap
          * use the hashmap to get comment from id
-         * return Comment object
+         * return Entity.Comment object
          */
         return null;
     }

@@ -1,3 +1,5 @@
+package inputboundary;
+
 import java.util.Timer;
 
 public interface Timable {

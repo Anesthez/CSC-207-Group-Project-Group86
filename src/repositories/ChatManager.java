@@ -1,19 +1,25 @@
+package repositories;
+
+import Entity.Chat;
+import Entity.Comment;
+import Entity.User;
+
 public class ChatManager {
     User sender = new User();
     User receiver = new User();
-    Comments content = new Comments();
+    Comment content = new Comment();
 
     String timestamp;
-    Chat chat = new Chat(User sender, User receiver, Comments content, String timestamp);
+    Chat chat = new Chat(User sender, User receiver, Comment content, String timestamp);
 
     public void addChat(String content, String time)
     {
-        Comments con = new Comments(content);
+        Comment con = new Comment(content);
         chat.getContents().add(con);
         chat.getTimes().add(time);
     }
 
-    public void deleteChat(Comments del, String deltime)
+    public void deleteChat(Comment del, String deltime)
     {
         chat.getContents().remove(del);
         chat.getTimes().remove(deltime);

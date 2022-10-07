@@ -1,3 +1,5 @@
+package inputboundary;
+
 public abstract class Manager {
 
     public String ID;

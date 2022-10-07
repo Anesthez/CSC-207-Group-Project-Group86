@@ -1,3 +1,5 @@
+package inputboundary;
+
 public interface Postable {
 
     public void addPost();
