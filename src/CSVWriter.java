@@ -1,33 +1,32 @@
 /*
- * This class is for reading scv files.
+ * This class is for writing scv files.
  *
  * Author: Yijun(Kevin) Zhao
  *
  */
 
-
-public class CSVReader {
-    public void postsReader() {
+public class CSVWriter {
+    public void postsWriter() {
         //TODO to be implemented
     }
 
-    public void postsLikedReader() {
+    public void postsLikedWriter() {
         //TODO to be implemented
     }
 
-    public void usersReader() {
+    public void usersWriter() {
         //TODO to be implemented
     }
 
-    public void friendsReader() {
+    public void friendsWriter() {
         //TODO to be implemented
     }
 
-    public void chatsReader() {
+    public void chatsWriter() {
         //TODO to be implemented
     }
 
-    public void commentsReader() {
+    public void commentsWriter() {
         //TODO to be implemented
     }
 }
