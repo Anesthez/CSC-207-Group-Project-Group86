@@ -5,8 +5,8 @@ import Entity.Post;
 
 public class PostManager {
 
-    public void addPost(int userId, int postId, String content){
-        Post post = new Post(userId, postId, content);
+    public void addPost(String postTitle, int userId, int postId, String content){
+        Post post = new Post(postTitle, userId, postId, content);
     }
 
     public Post getPostFromId(int postId){

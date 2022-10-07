@@ -12,8 +12,8 @@ public class Post {
     private final int postId;
     private String content;
     private int views;
-    private int num_likes;
-    private ArrayList<User> user_liked;
+    private int numLikes;
+    private ArrayList<User> userLiked;
 
 
     public Post(String postTitle, int userId, int postId, String content) {
@@ -23,8 +23,8 @@ public class Post {
         this.postId = postId;
         this.content = content;
         this.views = 0;
-        this.num_likes = 0;
-        this.user_liked = new ArrayList<User>();
+        this.numLikes = 0;
+        this.userLiked = new ArrayList<User>();
     }
 
 
@@ -64,13 +64,13 @@ public class Post {
         this.views ++;
     }
 
-    public String likes(User: user){
+    public String likes(User user){
         for (User u: userLiked){
             int pos = 0; // position of the arrayList
             /**
              * change the fucntion name when user class is done
              */
-            if (u.getUserId() == user.getUserId){
+            if (u.getUserId() == user.getUserId()){
                 numLikes--;
                 userLiked.remove(pos);
                 return null;
