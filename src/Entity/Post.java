@@ -67,9 +67,6 @@ public class Post {
     public String likes(User user){
         for (User u: userLiked){
             int pos = 0; // position of the arrayList
-            /**
-             * change the fucntion name when user class is done
-             */
             if (u.getUserId() == user.getUserId()){
                 numLikes--;
                 userLiked.remove(pos);

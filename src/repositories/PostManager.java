@@ -13,6 +13,7 @@ public class PostManager {
         /**
          * pull from the csv file
          */
+        return null;
     }
 
     public void addComment(Comment comment){
@@ -28,9 +29,8 @@ public class PostManager {
     }
 
     public Post searchPost(){
-
+        return null;
     }
-
 
     /**
      * questions:
@@ -41,6 +41,4 @@ public class PostManager {
      * 5. search method: search engine? search by post id? should id be private?
      *
      */
-}
-
 }
