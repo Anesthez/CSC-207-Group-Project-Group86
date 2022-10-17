@@ -2,7 +2,7 @@ package repositories;
 
 import Entity.Post;
 import Entity.Topic;
-import javafx.geometry.Pos;
+//import javafx.geometry.Pos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -123,13 +123,13 @@ public class TopicManager {
         return posts;
     }
 
-    public List<Topic> getTopTopics(Topic topic)
-    {
-        /*
-        Return ten Topics with the highest popularity.
-         */
-
-    }
+//    public List<Topic> getTopTopics(Topic topic)
+//    {
+//        /*
+//        Return ten Topics with the highest popularity.
+//         */
+//
+//    }
 
 
 

@@ -17,8 +17,8 @@ public class UserManager {
     public UserManager(Map<Integer, User> users){
         this.users = users;
     }
-    public void addUser(int userId, String userName, String userPassword) {
-        User user = new User(users.size(),"normal", userPassword, userName, LocalDate.now().toString());
+    public void addUser(String userName, String userPassword) {
+        User user = new User(users.size() + 1,"normal", userPassword, userName, LocalDate.now().toString());
         users.put(user.getId(), user);
     }
 

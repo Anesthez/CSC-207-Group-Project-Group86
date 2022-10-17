@@ -124,7 +124,7 @@ public class csvInterface {
             String time = String.valueOf(col[headers.get("time")]);
 
 
-            User user = new User(id, userType, password, name, time);
+            User user = new User(id, userType, name, password, time);
             users.put(id, user);
         }
 
