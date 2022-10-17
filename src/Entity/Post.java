@@ -22,6 +22,11 @@ public class Post implements Postable, Searchable,Timeable{
     private int numLikes;
     private final ArrayList<Integer> userLiked;
 
+    private final Integer popularity = views + numLikes * 10;
+
+    public Integer getPopularity() {
+        return popularity;
+    }
 
     public Post(String postTitle, int userId, int id, String content, String timestamp,
                 int views, int numLikes, ArrayList<Integer> userLiked, ArrayList<Integer> list_comment_id) {
