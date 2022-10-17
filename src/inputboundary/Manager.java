@@ -1,10 +1,14 @@
 package inputboundary;
 
-public abstract class Manager {
+import java.util.ArrayList;
 
-    public String ID;
-    public String username;
-    private String password;
+/**
+ * Author: Chen Jiang
+ * Modified by: Yufei Chen
+ */
+public abstract class Manager<T> {
+
+    ArrayList<T> items_to_manage;
 
     public void add()
     {

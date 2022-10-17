@@ -1,11 +1,10 @@
 package inputboundary;
 
+/**
+ * Author: Chen Jiang
+ * Modified by: Yufei Chen
+ */
 public interface Postable {
-
-    public void addPost();
-    public void deletePost();
-    public void changePost();
-    public void searchPost();
-
-
+    String content = new String();
+    public String getContent();
 }

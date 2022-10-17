@@ -1,10 +1,22 @@
 package repositories;
 
+import Entity.Chat;
 import Entity.Comment;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Map;
+
+/**
+ * Author: Lemeng Dai
+ * Modified by:Yufei Chen
+ */
 public class CommentManager{
-    public void addComment(int userId, int id, String content) {
-        Comment comment = new Comment(userId, id, content);
+    private Map<Integer, Comment> comments;
+    public void addComment(int userId, String content) {
+        Comment comment = new Comment(userId, comments.keySet().size() + 1, content,
+                LocalDate.now().toString());
+        comments.put(comment.getId(), comment);
         /**
          * csv reader will read the csv and create comments hashmap
          * add the comment to hashmap and csv
@@ -12,6 +24,7 @@ public class CommentManager{
     }
 
     public void deleteComment(int id) {
+        comments.remove(id);
         /**
          * csv reader will read the csv and create comments hashmap
          * remove the comment from hashmap and csv
@@ -24,6 +37,6 @@ public class CommentManager{
          * use the hashmap to get comment from id
          * return Entity.Comment object
          */
-        return null;
+        return comments.get(id);
     }
 }

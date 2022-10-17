@@ -1,30 +1,39 @@
 package Entity;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
+import inputboundary.Postable;
+import inputboundary.Searchable;
+import inputboundary.Timeable;
 
-public class Post {
+import java.util.ArrayList;
+/**
+ * Author: eric-qli
+ * Modified by: Yufei Chen
+ */
+public class Post implements Postable, Searchable,Timeable{
 
 
     private String postTitle;
     private final int userId;
-    private final Timestamp timestamp;
-    private final int postId;
-    private String content;
+    private final String timestamp;
+    private final int id;
+    private final String content;
+    private final ArrayList<Integer> list_comment_id;
     private int views;
     private int numLikes;
-    private ArrayList<User> userLiked;
+    private final ArrayList<Integer> userLiked;
 
 
-    public Post(String postTitle, int userId, int postId, String content) {
+    public Post(String postTitle, int userId, int id, String content, String timestamp,
+                int views, int numLikes, ArrayList<Integer> userLiked, ArrayList<Integer> list_comment_id) {
         this.postTitle = postTitle;
         this.userId = userId;
-        this.timestamp = new Timestamp(System.currentTimeMillis());
-        this.postId = postId;
+        this.timestamp = timestamp;
+        this.id = id;
         this.content = content;
-        this.views = 0;
-        this.numLikes = 0;
-        this.userLiked = new ArrayList<User>();
+        this.views = views;
+        this.numLikes = numLikes;
+        this.userLiked = userLiked;
+        this.list_comment_id = list_comment_id;
     }
 
 
@@ -40,21 +49,25 @@ public class Post {
         return userId;
     }
 
-    public Timestamp getTimestamp() {
-        return this.timestamp;
-    }
-
-    public int getPostId() {
-        return this.postId;
+    public int getId() {
+        return id;
     }
 
     public String getContent() {
         return this.content;
     }
 
-    public void setContent(String text) {
-        this.content = text;
+    public int getNumLikes(){
+        return numLikes;
     }
+
+    public ArrayList<Integer> getListComment(){return list_comment_id;}
+
+    public void addListComment(int commentId){
+        list_comment_id.add(commentId);
+    }
+
+    public void removeListComment(int commentId){list_comment_id.remove(commentId);}
 
     public int getViews() {
         return this.views;
@@ -64,24 +77,51 @@ public class Post {
         this.views ++;
     }
 
-    public String likes(User user){
-        for (User u: userLiked){
-            int pos = 0; // position of the arrayList
-            if (u.getUserId() == user.getUserId()){
-                numLikes--;
-                userLiked.remove(pos);
-                return null;
-            }
-            pos++;
+    public ArrayList<Integer> getUserLiked(){
+        return this.userLiked;
+    }
+
+    public void addUserLike(int userId){
+        userLiked.add(userId);
+        numLikes += 1;
+    }
+
+    public boolean removeUserLike(int UserId){
+        try {
+            userLiked.remove(userId);
+            numLikes -= 1;
+            return true;
+        }catch(IndexOutOfBoundsException O){
+            return false;
         }
 
-        numLikes++;
-        userLiked.add(user);
-        return null;
-        /**
-         * first check if the user already liked the post
-         * case 1 liked: remove the like and remove the user from liked list
-         * case 2 havent liked: add a like and add the user to the liked list
-         */
+
+
+    }
+
+//    public String likes(User user){
+//        for (User u: userLiked){
+//            int pos = 0; // position of the arrayList
+//            if (u.getUserId() == user.getUserId()){
+//                numLikes--;
+//                userLiked.remove(pos);
+//                return null;
+//            }
+//            pos++;
+//        }
+//
+//        numLikes++;
+//        userLiked.add(user);
+//        return null;
+//        /**
+//         * first check if the user already liked the post
+//         * case 1 liked: remove the like and remove the user from liked list
+//         * case 2 havent liked: add a like and add the user to the liked list
+//         */
+//    }
+
+    @Override
+    public String getTime() {
+        return timestamp;
     }
 }

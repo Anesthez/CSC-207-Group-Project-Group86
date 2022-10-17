@@ -1,9 +1,10 @@
 package inputboundary;
-
+/**
+ * Author: Chen Jiang
+ * Modified by: Yufei Chen
+ */
 public interface Searchable {
-
-    public void searchByID();
-    public void searchByUsername();
-    public void searchByTime();
+    final int id = 0;
+    public int getId();
 
 }

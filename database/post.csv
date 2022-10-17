@@ -1,1 +1,2 @@
-userid,postid,time,content,num-liked
+id,userid,time,content,num-liked,views,user_Liked,list_comment_id,post_title
+1,1,2022/10/17,post_test,1,1,[1],[1, 2],posttest

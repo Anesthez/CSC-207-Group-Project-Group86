@@ -3,26 +3,41 @@ package repositories;
 import Entity.Chat;
 import Entity.Comment;
 import Entity.User;
+import Interface.csvInterface;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Map;
+
+/**
+ * Author: Dominic Gu
+ * Modified by: yufei Chen
+ */
 
 public class ChatManager {
-    User sender = new User();
-    User receiver = new User();
-    Comment content = new Comment();
 
-    String timestamp;
-    Chat chat = new Chat(User sender, User receiver, Comment content, String timestamp);
+    private Map<Integer, Chat> chats;
 
-    public void addChat(String content, String time)
-    {
-        Comment con = new Comment(content);
-        chat.getContents().add(con);
-        chat.getTimes().add(time);
+    public ChatManager(Map<Integer, Chat> chats) throws IOException {
+        this.chats = chats;
     }
 
-    public void deleteChat(Comment del, String deltime)
+    public void addChat(int user_id1, int user_id2, String content)
     {
-        chat.getContents().remove(del);
-        chat.getTimes().remove(deltime);
+        Chat chat = new Chat(chats.keySet().size() + 1, user_id1, user_id2,
+                content, LocalDate.now().toString());
+        chats.put(chat.getId(), chat);
+    }
+
+    public void deleteChat(int id)
+    {
+        chats.remove(id);
+    }
+
+    public Chat getChatById(int id)
+    {
+        return chats.get(id);
     }
 
 

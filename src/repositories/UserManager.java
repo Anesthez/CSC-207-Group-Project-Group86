@@ -2,22 +2,36 @@ package repositories;
 
 import Entity.User;
 
+import java.time.LocalDate;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+
+/**
+ * Author:Kevin Wu
+ * Modified by: Yufei Chen
+ */
 public class UserManager {
+    private final Map<Integer, User> users;
+
+    public UserManager(Map<Integer, User> users){
+        this.users = users;
+    }
     public void addUser(int userId, String userName, String userPassword) {
-        User u = new User(userId, userName, userPassword);
-        //TODO add user into csv file
+        User user = new User(users.size(),"normal", userPassword, userName, LocalDate.now().toString());
+        users.put(user.getId(), user);
     }
 
     public void deleteUser(int userId) {
-        //TODO csv operation
+        users.remove(userId);
     }
 
-    public void changePassword(int userId) {
-        //TODO csv operations
+    public void changePassword(int userId, String password) {
+        users.get(userId).setUserPassword(password);
     }
 
-    public void changeUsername(int userId) {
-        //TODO csv operations
+    public void changeUsername(int userId, String name) {
+        users.get(userId).setUserName(name);
     }
 
     /**
@@ -27,6 +41,13 @@ public class UserManager {
      * return result
      */
     public Boolean verifyUser(String userName, String userPassword) {
-        return false;
+        boolean verified = false;
+        for (User user:
+             users.values()) {
+            verified = verified || (Objects.equals(user.getUserName(), userName) &&
+                    Objects.equals(user.getUserPassword(), userPassword));
+        }
+
+        return verified;
     }
 }

@@ -1,28 +1,41 @@
 package Entity;
 
 import inputboundary.Searchable;
+import inputboundary.Timeable;
 
 import java.sql.Timestamp;
+/**
+ * Author: Kevin WU
+ * Modified by: Yufei Chen
+ */
+public class User implements Searchable, Timeable {
+    private int id;
 
-public class User implements Searchable {
-    private int userId;
+    private String userType;
     private String userName;
     private String userPassword;
-    private Timestamp timestamp;
+    private final String timestamp;
 
-    public User(int userId, String userName, String userPassword) {
-        this.userId = userId;
+    public User(int id, String userType, String userName, String userPassword, String timestamp) {
+        this.id = id;
         this.userName = userName;
         this.userPassword = userPassword;
-        this.timestamp = new Timestamp(System.currentTimeMillis());
+        this.userType = userType;
+        this.timestamp = timestamp;
     }
 
-    public int getUserId() {
-        return this.userId;
+    public int getId() {
+        return this.id;
+    }
+
+    public String getUserType(){return userType;}
+
+    public void setUserType(String type){
+        userType = type;
     }
 
     public void setUserId(int id) {
-        this.userId = id;
+        this.id = id;
     }
 
     public String getUserName() {
@@ -41,24 +54,8 @@ public class User implements Searchable {
         this.userPassword = userPassword;
     }
 
-    public Timestamp getTimestamp() {
+    public String getTime() {
         return timestamp;
     }
 
-    @Override
-    public void searchByID() {
-        //TODO to be implemented
-    }
-
-    @Override
-    public void searchByUsername() {
-        //TODO to be implemented
-
-    }
-
-    @Override
-    public void searchByTime() {
-        //TODO to be implemented
-
-    }
 }

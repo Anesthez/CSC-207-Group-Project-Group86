@@ -1,17 +1,23 @@
 package Entity;
 
-import java.sql.Timestamp;
+import inputboundary.Postable;
+import inputboundary.Searchable;
+import inputboundary.Timeable;
 
-public class Comment{
-    private int userId;
-    private Timestamp timestamp;
-    private int id;
-    private String content;
+/**
+ * Author: LemengDai
+ * Modified by: Yufei Chen
+ */
+public class Comment implements Postable, Searchable, Timeable {
+    private final int userId;
+    private final String timestamp;
+    private final int id;
+    private final String content;
     private int views;
 
-    public Comment(int userId, int id, String content) {
+    public Comment(int userId, int id, String content, String timestamp) {
         this.userId = userId;
-        this.timestamp = new Timestamp(System.currentTimeMillis());  // initialize the timestamp with system time
+        this.timestamp = timestamp;  // initialize the timestamp with system time
         this.id = id;
         this.content = content;
         this.views = 0;  // initialize comment with 0 views
@@ -21,8 +27,8 @@ public class Comment{
         return userId;
     }
 
-    public Timestamp getTimestamp() {
-        return this.timestamp;
+    public String getTime() {
+        return timestamp;
     }
 
     public int getId() {
@@ -30,10 +36,12 @@ public class Comment{
     }
 
     public String getContent() {
-        return this.content;
+        return content;
     }
 
     public int getViews() {
-        return this.views;
+        return views;
     }
+
+    public void setViews(int views){ this.views = views;}
 }
