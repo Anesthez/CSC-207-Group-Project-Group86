@@ -234,15 +234,15 @@ public class csvInterface {
             writer.newLine();
 
             for (Post post : posts.values()) {
-                String line = "%s,%s,%s,%s,%s,%s,%s,%s,%s".formatted(
-                        String.valueOf(post.getId()),
-                        String.valueOf(post.getUserId()),
-                        post.getTime(),
-                        post.getContent(),
-                        String.valueOf(post.getNumLikes()),
-                        String.valueOf(post.getViews()),
-                        post.getUserLiked().toString(),
-                        post.getListComment().toString(),
+                String line = (
+                        String.valueOf(post.getId())+","+
+                        String.valueOf(post.getUserId())+","+
+                        post.getTime()+","+
+                        post.getContent()+","+
+                        String.valueOf(post.getNumLikes())+","+
+                        String.valueOf(post.getViews())+","+
+                        post.getUserLiked().toString()+","+
+                        post.getListComment().toString()+","+
                         post.getPostTitle());
                 writer.write(line);
                 writer.newLine();
@@ -266,9 +266,9 @@ public class csvInterface {
             writer.newLine();
 
             for (Integer postId: posts_liked.keySet()) {
-                String line = "%s,%s".formatted(
-                        String.valueOf(postId),
-                        posts_liked.get(postId).
+                String line = (
+                        String.valueOf(postId)+","+
+                        posts_liked.get(postId)+","+
                                 toString());
                 writer.write(line);
                 writer.newLine();
@@ -296,11 +296,11 @@ public class csvInterface {
             writer.newLine();
 
             for (User user : users.values()) {
-                String line = "%s,%s,%s,%s,%s".formatted(
-                        String.valueOf(user.getId()),
-                        user.getUserType(),
-                        user.getUserPassword(),
-                        user.getUserName(),
+                String line = (
+                        String.valueOf(user.getId())+","+
+                        user.getUserType()+","+
+                        user.getUserPassword()+","+
+                        user.getUserName()+","+
                         user.getTime());
                 writer.write(line);
                 writer.newLine();
@@ -324,8 +324,8 @@ public class csvInterface {
             writer.newLine();
 
             for (Integer userId: friends.keySet()) {
-                String line = "%s,%s".formatted(
-                        String.valueOf(userId),
+                String line = (
+                        String.valueOf(userId)+","+
                         friends.get(userId).toString());
                 writer.write(line);
                 writer.newLine();
@@ -352,11 +352,11 @@ public class csvInterface {
             writer.newLine();
 
             for (Chat chat : chats.values()) {
-                String line = "%s,%s,%s,%s,%s".formatted(
-                        String.valueOf(chat.getId()),
-                        String.valueOf(chat.getSender_id()),
-                        String.valueOf(chat.getReceiver_id()),
-                        chat.getTime(),
+                String line = (
+                        String.valueOf(chat.getId())+","+
+                        String.valueOf(chat.getSender_id())+","+
+                        String.valueOf(chat.getReceiver_id())+","+
+                        chat.getTime()+","+
                         chat.getContent());
                 writer.write(line);
                 writer.newLine();
@@ -382,10 +382,10 @@ public class csvInterface {
             writer.newLine();
 
             for (Comment comment : comments.values()) {
-                String line = "%s,%s,%s,%s".formatted(
-                        String.valueOf(comment.getId()),
-                        comment.getUserId(),
-                        comment.getTime(),
+                String line = (
+                        String.valueOf(comment.getId())+","+
+                        comment.getUserId()+","+
+                        comment.getTime()+","+
                         comment.getContent());
                 writer.write(line);
                 writer.newLine();
