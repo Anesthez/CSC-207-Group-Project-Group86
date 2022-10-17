@@ -1,7 +1,6 @@
 package Entity;
 
 import java.util.HashMap;
-import java.math.*;
 
 public class Topic {
 
@@ -12,7 +11,7 @@ public class Topic {
     /*
     A HashMap that maps the popularity of each Post to Post.
      */
-    private HashMap<Post, Integer> topicPopularity = new HashMap<Post, Integer>();
+    private HashMap<Post, Integer> postPopularity = new HashMap<Post, Integer>();
 
     /*
     Calculate the total popularity of posts inside this topic.
@@ -28,13 +27,13 @@ public class Topic {
     }
 
     public Topic(HashMap<Post, Integer> topicPopularity) {
-        this.topicPopularity = topicPopularity;
+        this.postPopularity = topicPopularity;
     }
 
     private Integer getSumofTopicPopularity()
     {
         Integer total = 0;
-        for (Integer i : topicPopularity.values())
+        for (Integer i : postPopularity.values())
         {
             total += i;
         }
@@ -66,16 +65,16 @@ public class Topic {
         this.attendUser = attendUser;
     }
 
-    public HashMap<Post, Integer> getTopicPopularity() {
-        return topicPopularity;
+    public HashMap<Post, Integer> getPostPopularity() {
+        return postPopularity;
     }
 
-    public void setTopicPopularity(HashMap<Post, Integer> topicPopularity) {
-        this.topicPopularity = topicPopularity;
+    public void setPostPopularity(HashMap<Post, Integer> postPopularity) {
+        this.postPopularity = postPopularity;
     }
 
     public void addPostPopularity(Post post)
     {
-        topicPopularity.put(post, post.getPopularity());
+        postPopularity.put(post, post.getPopularity());
     }
 }
