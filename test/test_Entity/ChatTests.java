@@ -5,7 +5,7 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 
-/**
+/*
  * Author: Tianyu Li
  */
 public class ChatTests {

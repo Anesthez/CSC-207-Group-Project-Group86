@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 /*
  * Author: Tianyu Li
  */
-public class PostTests {
+public class TopicTests {
     @Before
     public void setUp() {
     }
@@ -16,4 +16,5 @@ public class PostTests {
     @After
     public void tearDown() {
     }
+
 }
