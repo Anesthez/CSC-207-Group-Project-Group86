@@ -17,9 +17,10 @@ public class UserManager {
     public UserManager(Map<Integer, User> users){
         this.users = users;
     }
-    public void addUser(String userName, String userPassword) {
+    public int addUser(String userName, String userPassword) {
         User user = new User(users.size() + 1,"normal", userPassword, userName, LocalDate.now().toString());
         users.put(user.getId(), user);
+        return user.getId();
     }
 
     public void deleteUser(int userId) {
@@ -40,14 +41,19 @@ public class UserManager {
      * see whether the password is match or not
      * return result
      */
-    public Boolean verifyUser(String userName, String userPassword) {
+    public int verifyUser(String userName, String userPassword) {
         boolean verified = false;
         for (User user:
              users.values()) {
-            verified = verified || (Objects.equals(user.getUserName(), userName) &&
+            verified = (Objects.equals(user.getUserName(), userName) &&
                     Objects.equals(user.getUserPassword(), userPassword));
+
+            if (verified){
+                return user.getId();
+            }
         }
 
-        return verified;
+        return -1;
     }
+
 }

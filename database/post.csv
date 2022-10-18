@@ -1,2 +1,4 @@
-id,userid,time,content,num-liked,views,user_Liked,list_comment_id,post_title
-1,1,2022/10/17,post_test,1,1,[1],[1, 2],posttest
+id,userid,time,content,num-liked,num-viewed,user-liked,list_comment_id,post_title
+1,1,2022/10/17,post_test,1,1,1,1 2 3,posttest
+2,2,2022-10-17,iam testing post,0,0,,,posttest
+3,2,2022-10-17,iamtesting post,0,0,,,posttest 

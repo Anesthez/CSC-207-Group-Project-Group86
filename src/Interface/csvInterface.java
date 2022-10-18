@@ -48,18 +48,21 @@ public class csvInterface {
             String list_comment_id = String.valueOf(col[headers.get("list_comment_id")]);
             String list_user_id = String.valueOf(col[headers.get("user-liked")]);
             String post_title = String.valueOf(col[headers.get("post_title")]);
-            String[] userIds = list_user_id.substring(1, list_comment_id.length() - 1).split(", ");
-            String[] commentIds = list_comment_id.substring(1, list_comment_id.length() - 1).split(", ");
+            String[] userIds = list_user_id.split(" ");
+            String[] commentIds = list_comment_id.split(" ");
             ArrayList<Integer> iList_comment_id = new ArrayList<>();
             ArrayList<Integer> iList_user_id = new ArrayList<>();
-
-            for (String commentId:
-                 commentIds) {
-                iList_comment_id.add(Integer.parseInt(commentId));
+            if (!list_user_id.equals("")) {
+                for (String commentId :
+                        commentIds) {
+                    iList_comment_id.add(Integer.parseInt(commentId));
+                }
             }
-            for (String userId:
-                    userIds) {
-                iList_user_id.add(Integer.parseInt(userId));
+            if (!list_comment_id.equals("")) {
+                for (String userId :
+                        userIds) {
+                    iList_user_id.add(Integer.parseInt(userId));
+                }
             }
             Post post = new Post(post_title,
                     userid,
@@ -91,11 +94,13 @@ public class csvInterface {
             String[] col = row.split(",");
             int userid = Integer.parseInt(col[headers.get("userid")]);
             String list_post_id = String.valueOf(col[headers.get("list-postId")]);
-            String[] postIds = list_post_id.substring(1, list_post_id.length() - 1).split(", ");
+            String[] postIds = list_post_id.split(" ");
             ArrayList<Integer> iList_post_id = new ArrayList<>();
-            for (String postId:
-                    postIds) {
-                iList_post_id.add(Integer.parseInt(postId));
+            if(!list_post_id.equals("")) {
+                for (String postId :
+                        postIds) {
+                    iList_post_id.add(Integer.parseInt(postId));
+                }
             }
             postsLiked.put(userid, iList_post_id);
         }
@@ -146,11 +151,13 @@ public class csvInterface {
             String[] col = row.split(",");
             int userid = Integer.parseInt(col[headers.get("userid")]);
             String list_friend_id = String.valueOf(col[headers.get("list-postId")]);
-            String[] friendIds = list_friend_id.substring(1, list_friend_id.length() - 1).split(", ");
+            String[] friendIds = list_friend_id.split(" ");
             ArrayList<Integer> iList_friend_id = new ArrayList<>();
-            for (String friendId:
-                    friendIds) {
-                iList_friend_id.add(Integer.parseInt(friendId));
+            if (!list_friend_id.equals("")) {
+                for (String friendId :
+                        friendIds) {
+                    iList_friend_id.add(Integer.parseInt(friendId));
+                }
             }
             friends.put(userid, iList_friend_id);
         }
@@ -232,8 +239,22 @@ public class csvInterface {
             writer = new BufferedWriter(new FileWriter(postsPath));
             writer.write(String.join(",", headers.keySet()));
             writer.newLine();
-
             for (Post post : posts.values()) {
+                StringBuilder userLiked = new StringBuilder();
+                StringBuilder listComment = new StringBuilder();
+                if(post.getUserLiked().size() > 0){
+                    userLiked = new StringBuilder(String.valueOf(post.getUserLiked().get(0)));
+                    for (int i = 1; i < post.getUserLiked().size(); i++) {
+                        userLiked.append(" ").append(String.valueOf(post.getUserLiked().get(i)));
+                    }
+                }
+                if(post.getListComment().size() > 0) {
+                    listComment = new StringBuilder(String.valueOf(post.getListComment().get(0)));
+                    for (int i = 1; i < post.getListComment().size(); i++) {
+                        listComment.append(" ").append(String.valueOf(post.getListComment().get(i)));
+                    }
+                }
+
                 String line = (
                         String.valueOf(post.getId())+","+
                         String.valueOf(post.getUserId())+","+
@@ -241,8 +262,8 @@ public class csvInterface {
                         post.getContent()+","+
                         String.valueOf(post.getNumLikes())+","+
                         String.valueOf(post.getViews())+","+
-                        post.getUserLiked().toString()+","+
-                        post.getListComment().toString()+","+
+                        userLiked+","+
+                        listComment+","+
                         post.getPostTitle());
                 writer.write(line);
                 writer.newLine();
@@ -266,10 +287,16 @@ public class csvInterface {
             writer.newLine();
 
             for (Integer postId: posts_liked.keySet()) {
+                StringBuilder listId = new StringBuilder();
+                if (posts_liked.get(postId).size() >0) {
+                    listId = new StringBuilder(String.valueOf(posts_liked.get(postId).get(0)));
+                    for (int i = 1; i < posts_liked.get(postId).size(); i++) {
+                        listId.append(" ").append(String.valueOf(posts_liked.get(postId).get(i)));
+                    }
+                }
                 String line = (
                         String.valueOf(postId)+","+
-                        posts_liked.get(postId)+","+
-                                toString());
+                        listId);
                 writer.write(line);
                 writer.newLine();
             }
@@ -324,9 +351,16 @@ public class csvInterface {
             writer.newLine();
 
             for (Integer userId: friends.keySet()) {
+                String listId = "";
+                if (friends.get(userId).size() > 0) {
+                    listId = String.valueOf(friends.get(userId).get(0));
+                    for (int i = 1; i < friends.get(userId).size(); i++) {
+                        listId = listId + " " + String.valueOf(friends.get(userId).get(i));
+                    }
+                }
                 String line = (
                         String.valueOf(userId)+","+
-                        friends.get(userId).toString());
+                        listId);
                 writer.write(line);
                 writer.newLine();
             }
