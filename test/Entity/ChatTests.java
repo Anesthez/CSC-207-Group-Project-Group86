@@ -1,8 +1,6 @@
 package Entity;
 
-import Entity.Chat;
 import org.junit.*;
-
 import static org.junit.Assert.*;
 
 /*
@@ -12,6 +10,7 @@ public class ChatTests {
     int[] intExpected = {1, 123, 456};
     static Chat  actual;
     String[] strExpected = {"Hello!", "2022"};
+
     @BeforeClass
     public static void setUp() {
         actual = new Chat(1, 123, 456, "Hello!", "2022");
@@ -20,8 +19,6 @@ public class ChatTests {
     @After
     public void tearDown() {
     }
-
-
 
     @Test(timeout = 500)
     public void TestGetID(){

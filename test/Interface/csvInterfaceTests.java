@@ -1,12 +1,9 @@
-package Entity;
+package Interface;
 
 import org.junit.*;
-import static org.junit.Assert.*;
 
-/*
- * Author: Tianyu Li
- */
-public class TopicTests {
+public class csvInterfaceTests {
+
     @BeforeClass
     public static void setUp() {
     }
@@ -14,4 +11,5 @@ public class TopicTests {
     @After
     public void tearDown() {
     }
+
 }
