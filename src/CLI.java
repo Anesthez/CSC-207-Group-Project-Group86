@@ -1,13 +1,10 @@
-import Entity.Post;
-import Entity.User;
-import Interface.csvInterface;
-import repositories.PostManager;
-import repositories.UserManager;
+import Entity.*;
+import Interface.*;
+import repositories.*;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+
 
 public class CLI {
     private String username;
@@ -23,7 +20,6 @@ public class CLI {
         boolean exit = false;
         while (flag) {
             String userInput = input.nextLine();
-            exit = false;
             if (userInput.length() < 5) {
                 System.out.println("unknown command");
             } else if (userInput.substring(0, 6).equals("/login")) {
