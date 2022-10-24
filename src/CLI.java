@@ -30,6 +30,8 @@ public class CLI {
                     if (userid != -1) {
                         username = inputLines[1];
                         flag = false;
+                    } else {
+                        System.out.println("user not found");
                     }
                 }
             } else if (userInput.substring(0, 9).equals("/register")) {
@@ -62,9 +64,12 @@ public class CLI {
         csvInterface csvInteract = new csvInterface();
         boolean flag = true;
         while (flag) {
-            System.out.print(username);
+            System.out.print(username + " ");
             String userInput = input.nextLine();
-            if (userInput.length() < 5) {
+            if (userInput.length() == 0){
+                System.out.print("");
+            }
+            else if (userInput.length() < 5) {
                 System.out.println("unknown command");
             } else if (userInput.substring(0, 5).equals("/post")) {
                 String[] inputLines = userInput.substring(6).split("-");
