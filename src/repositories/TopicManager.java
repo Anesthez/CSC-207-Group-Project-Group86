@@ -123,13 +123,41 @@ public class TopicManager {
         return posts;
     }
 
-//    public List<Topic> getTopTopics(Topic topic)
-//    {
-//        /*
-//        Return ten Topics with the highest popularity.
-//         */
-//
-//    }
+    public ArrayList<Topic> getTopTopics(ArrayList<Topic> topic)
+    {
+        ArrayList<Topic> toptopics = new ArrayList<>();
+        ArrayList<Topic> topicClone = topic;
+        Integer maxPop = 0;
+
+        while (toptopics.size() < 10)
+        {
+            maxPop = getMaxTopic(topicClone);
+            for (Topic t: topicClone)
+            {
+                if (t.getTotalPopularity() == maxPop)
+                {
+                    toptopics.add(t);
+                    topicClone.remove(t);
+                }
+            }
+        }
+
+        return toptopics;
+    }
+
+    private Integer getMaxTopic (ArrayList<Topic> topic)
+    {
+        Integer maxPop = 0;
+        for (Topic t: topic)
+        {
+            if (t.getTotalPopularity() > maxPop)
+            {
+                maxPop = t.getTotalPopularity();
+            }
+        }
+
+        return maxPop;
+    }
 
 
 

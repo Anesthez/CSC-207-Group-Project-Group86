@@ -18,6 +18,10 @@ public class Topic {
      */
     private final Integer totalPopularity = getSumofTopicPopularity();
 
+    public Integer getTotalPopularity() {
+        return totalPopularity;
+    }
+
     public Topic()
     {
         /*
