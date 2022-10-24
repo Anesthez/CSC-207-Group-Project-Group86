@@ -29,6 +29,8 @@ public class CLI {
                         if (userid != -1) {
                             username = userInputs[1];
                             flag = false;
+                        } else {
+                            System.out.println("user not found, please register first!");
                         }
                     }
                     break;
@@ -64,26 +66,30 @@ public class CLI {
         csvInterface csvInteract = new csvInterface();
         boolean flag = true;
         while (flag) {
-            System.out.print(username);
+            System.out.print(username + "");
             String userInput = input.nextLine();
             String[] userInputs = userInput.split("-");
-            switch (userInputs[0]) {
-                case "/post ":
-                    postInterface(userInputs);
-                    break;
-                case "/friends":
-                    friendsInterface(userInputs);
-                    break;
-                case "/exit":
-                    flag = false;
-                    break;
-                case "/comment":
+            if (!userInput.equals("")) {
+                switch (userInputs[0]) {
+                    case "/post ":
+                        postInterface(userInputs);
+                        break;
+                    case "/friends":
+                        friendsInterface(userInputs);
+                        break;
+                    case "/exit":
+                        flag = false;
+                        break;
+                    case "/comment":
 
-                    commentInterface(userInputs);
-                    break;
-                default:
-                    System.out.println("unknown command");
-                    break;
+                        commentInterface(userInputs);
+                        break;
+                    default:
+                        System.out.println("unknown command");
+                        break;
+                }
+            } else {
+                System.out.print("");
             }
         }
     }
