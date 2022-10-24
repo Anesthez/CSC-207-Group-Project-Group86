@@ -21,34 +21,36 @@ public class CLI {
         boolean exit = false;
         while (flag) {
             String userInput = input.nextLine();
-            if (userInput.length() < 5) {
-                System.out.println("unknown command");
-            } else if (userInput.substring(0, 6).equals("/login")) {
-                String[] inputLines = userInput.substring(7).split("-");
-                if (inputLines.length == 3) {
-                    userid = userManager.verifyUser(inputLines[1], inputLines[2]);
-                    if (userid != -1) {
-                        username = inputLines[1];
-                        flag = false;
+            String[] userInputs = userInput.split("-");
+            switch (userInputs[0]) {
+                case "/login ":
+                    if (userInputs.length == 3) {
+                        userid = userManager.verifyUser(userInputs[1], userInputs[2]);
+                        if (userid != -1) {
+                            username = userInputs[1];
+                            flag = false;
+                        }
                     }
-                }
-            } else if (userInput.substring(0, 9).equals("/register")) {
-                String[] inputLines = userInput.substring(10).split("-");
-                if (inputLines.length == 3) {
-                    userid = userManager.addUser(inputLines[1], inputLines[2]);
-                    if (userid != -1) {
-                        csvInteract.usersWriter(users, "database/user.csv");
-                        username = inputLines[1];
-                        flag = false;
+                    break;
+                case "/register ":
+                    if (userInputs.length == 3) {
+                        userid = userManager.addUser(userInputs[1], userInputs[2]);
+                        if (userid != -1) {
+                            csvInteract.usersWriter(users, "database/user.csv");
+                            username = userInputs[1];
+                            flag = false;
+                        }
                     }
-                }
-            } else if (userInput.substring(0, 5).equals("/exit")) {
+                    break;
+                case "/exit ":
 
-                flag = false;
-                exit = true;
+                    flag = false;
+                    exit = true;
 
-            } else {
-                System.out.println("unknown command");
+                    break;
+                default:
+                    System.out.println("unknown command");
+                    break;
             }
 
         }
@@ -64,21 +66,24 @@ public class CLI {
         while (flag) {
             System.out.print(username);
             String userInput = input.nextLine();
-            if (userInput.length() < 5) {
-                System.out.println("unknown command");
-            } else if (userInput.substring(0, 5).equals("/post")) {
-                String[] inputLines = userInput.substring(6).split("-");
-                postInterface(inputLines);
-            } else if (userInput.substring(0, 8).equals("/friends")) {
-                String[] inputLines = userInput.substring(9).split("-");
-                friendsInterface(inputLines);
-            } else if (userInput.substring(0, 5).equals("/exit")) {
-                flag = false;
-            } else if (userInput.substring(0, 8).equals("/comment")) {
-                String[] inputLines = userInput.substring(9).split("-");
-                commentInterface(inputLines);
-            } else {
-                System.out.println("unknown command");
+            String[] userInputs = userInput.split("-");
+            switch (userInputs[0]) {
+                case "/post ":
+                    postInterface(userInputs);
+                    break;
+                case "/friends":
+                    friendsInterface(userInputs);
+                    break;
+                case "/exit":
+                    flag = false;
+                    break;
+                case "/comment":
+
+                    commentInterface(userInputs);
+                    break;
+                default:
+                    System.out.println("unknown command");
+                    break;
             }
         }
     }
