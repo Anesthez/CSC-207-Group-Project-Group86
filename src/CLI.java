@@ -66,7 +66,7 @@ public class CLI {
         csvInterface csvInteract = new csvInterface();
         boolean flag = true;
         while (flag) {
-            System.out.print(username + " ");
+            System.out.print("local user: " + username + " ");
             String userInput = input.nextLine();
             String[] userInputs = userInput.split("-");
             if (!userInput.equals("")) {
