@@ -69,8 +69,12 @@ public class PostManager {
     }
 
     public String showPost(int post_id){
-        posts.get(post_id).addViews();
-        return posts.get(post_id).getContent();
+        getPostFromId(post_id).addViews();
+        Post post = getPostFromId(post_id);
+        return ("time:" + post.getTime() +"\n"+
+                "content:" + post.getContent() + "\n" +
+                "id:" + post.getId() + "\n" +
+                "sender:" + post.getUserId());
     }
 
     public boolean changeTitle(int user_id, String title, int post_id){

@@ -66,7 +66,7 @@ public class CLI {
         csvInterface csvInteract = new csvInterface();
         boolean flag = true;
         while (flag) {
-            System.out.print("local user: " + username + " ");
+            System.out.print(username + " ");
             String userInput = input.nextLine();
             String[] userInputs = userInput.split("-");
             if (!userInput.equals("")) {
@@ -103,7 +103,7 @@ public class CLI {
             postManager.addPost(inputLines[1], userid, inputLines[2]);
             csvInteract.postsWriter("database/post.csv", posts);
         } else if (inputLines[1].equals("show")) {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 1; i < 4; i++) {
                 System.out.println(postManager.showPost(i));
             }
             //TODO complete show post after discussion
