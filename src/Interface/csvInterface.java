@@ -150,7 +150,7 @@ public class csvInterface {
         while ((row = reader.readLine()) != null) {
             String[] col = row.split(",");
             int userid = Integer.parseInt(col[headers.get("userid")]);
-            String list_friend_id = String.valueOf(col[headers.get("list-postId")]);
+            String list_friend_id = String.valueOf(col[headers.get("list-friendIds")]);
             String[] friendIds = list_friend_id.split(" ");
             ArrayList<Integer> iList_friend_id = new ArrayList<>();
             if (!list_friend_id.equals("")) {
