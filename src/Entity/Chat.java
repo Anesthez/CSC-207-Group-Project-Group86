@@ -4,13 +4,15 @@ import inputboundary.Postable;
 import inputboundary.Searchable;
 import inputboundary.Timeable;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Author: DominicGU
  * Modified by: Yufei Chen
  */
-public class Chat implements Timeable, Postable, Searchable {
+public class Chat implements Timeable, Postable, Searchable, Comparable<Chat> {
     private final int id;
 
     private final int user1_id;
@@ -20,8 +22,6 @@ public class Chat implements Timeable, Postable, Searchable {
     private final String content;
     private final String timestamp;
 
-    private ArrayList<String> times = new ArrayList<>();
-    //private Map<Comments, String> contentAndTime = new Map<Comments, String>();
 
     public Chat(int id, int user1_id, int user2_id, String content, String timestamp) {
         this.id = id;
@@ -31,15 +31,11 @@ public class Chat implements Timeable, Postable, Searchable {
         this.timestamp = timestamp;
     }
 
-    public ArrayList<String> getTimes() {
-        return times;
+    public String getTimes() {
+        return timestamp;
     }
 
     public int getId(){return id;}
-
-    public void setTimes(ArrayList<String> times) {
-        this.times = times;
-    }
 
     public int getSender_id() {
         return user1_id;
@@ -55,6 +51,25 @@ public class Chat implements Timeable, Postable, Searchable {
 
     public String getTime() {
         return timestamp;
+    }
+
+    @Override
+    public int compareTo(Chat other) {
+        LocalDateTime time1 = LocalDateTime.parse(timestamp.substring(0, 4) + "-" + timestamp.substring(5, 7) +
+                "-" + timestamp.substring(8, 10) + "T" + timestamp.substring(11));
+        LocalDateTime time2 = LocalDateTime.parse(other.getTime().substring(0, 4) + "-" + other.getTime().substring(5, 7) +
+                "-" + other.getTime().substring(8, 10) + "T" + other.getTime().substring(11));
+        if (time1.isBefore(time2)) {
+            return -1;
+        } else if (time1.isAfter(time2)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    public void printChat(){
+        System.out.println(timestamp + " (" + user1_id + " sent to " + user2_id + "):" + content);
     }
 
 }
