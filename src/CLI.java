@@ -66,6 +66,7 @@ public class CLI {
         ChatManager chatManager = new ChatManager(chats);
 
         // use "/chat-add-receiver's id-content" to send a message
+        // TODO consider using switch to simplify the code -- Tianyu Li
         if(inputLines[1].equals("add")){
             int receiver_id = Integer.parseInt(inputLines[2]);
             if (users.containsKey(receiver_id)) {
@@ -144,11 +145,14 @@ public class CLI {
                 case "/friends":
                     friendsInterface(userInputs);
                     break;
+                case "/friend":
+                    System.out.println("command not found, directing you to /friends");
+                    friendsInterface(userInputs);
+                    break;
                 case "/exit":
                     flag = false;
                     break;
                 case "/comment":
-
                     commentInterface(userInputs);
                     break;
                 default:
@@ -181,24 +185,57 @@ public class CLI {
         Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
         Map<Integer, ArrayList<Integer>> friends =
                 csvInteract.friendsReader("database/friends.csv");
-        if (inputLines[1].equals("add")) {
-            int friendid = Integer.parseInt(inputLines[2]);
-            if (users.containsKey(friendid)) {
-                friends.get(userid).add(friendid);
-                csvInteract.friendsWriter("database/friends.csv", friends);
-            } else {
-                System.out.println("user does not exist");
+        switch (inputLines[1]) {
+            case "add": {
+                int friendid = Integer.parseInt(inputLines[2]);
+                if (users.containsKey(friendid)) {
+                    friends.get(userid).add(friendid);
+                    csvInteract.friendsWriter("database/friends.csv", friends);
+                } else {
+                    System.out.println("user does not exist");
+                }
+                break;
             }
-        } else if (inputLines[1].equals("remove")) {
-            int friendid = Integer.parseInt(inputLines[2]);
-            if (users.containsKey(friendid)) {
-                friends.get(userid).remove(friendid);
-                csvInteract.friendsWriter("database/friends.csv", friends);
-            } else {
-                System.out.println("user does not exist");
+            case "remove": {
+                int friendid = Integer.parseInt(inputLines[2]);
+                if (users.containsKey(friendid)) {
+                    friends.get(userid).remove(friendid);
+                    csvInteract.friendsWriter("database/friends.csv", friends);
+                } else {
+                    System.out.println("user does not exist");
+                }
+                break;
             }
-        } else {
-            System.out.println("unknown command");
+            case "adds": {
+                String[] rawFriendids = inputLines[2].split(" ");
+                for (int i = 0; i < rawFriendids.length; i++) {
+                    int friendid = Integer.parseInt(inputLines[2]);
+                    if (users.containsKey(friendid)) {
+                        friends.get(userid).add(friendid);
+                    } else {
+                        System.out.println("user: " + friendid + "does not exist");
+                    }
+                }
+                csvInteract.friendsWriter("database/friends.csv", friends);
+                break;
+            }
+            case "removes": {
+                String[] rawFriendids = inputLines[2].split(" ");
+                for (int i = 0; i < rawFriendids.length; i++) {
+                    int friendid = Integer.parseInt(inputLines[2]);
+                    if (users.containsKey(friendid)) {
+                        friends.get(userid).remove(friendid);
+                    } else {
+                        System.out.println("user: " + friendid + "does not exist");
+                    }
+                }
+                csvInteract.friendsWriter("database/friends.csv", friends);
+                break;
+            }
+            // TODO: consider adding "block" function and the column "block_list" in friends.csv
+            default:
+                System.out.println("unknown command");
+                break;
         }
     }
 
