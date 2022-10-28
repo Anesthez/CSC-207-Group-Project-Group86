@@ -8,6 +8,8 @@ The program allows users to post blogs and leave likes and comment under othersâ
 
 ## Entity.User Scenarios:
 
+*Outdated, for more info, please reference proj blueprint.*
+
 Zac wants to share his stories about the class with others in the form of a post.
 
 Zac wants to add his friend to the same lecture online.
