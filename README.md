@@ -1,6 +1,6 @@
 # 207-Group-Project: [UofT Meta](https://uoftmeta.ca)
 
-[Phase 2 Repo]{https://github.com/KevinTQJ/CSC-207-Project-Phase-2}
+[Phase 2 Repo](https://github.com/KevinTQJ/CSC-207-Project-Phase-2)
 
 ## Discription:
 
