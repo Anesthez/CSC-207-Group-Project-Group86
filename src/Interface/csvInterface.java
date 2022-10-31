@@ -11,6 +11,7 @@ import Entity.Chat;
 import Entity.Comment;
 import Entity.Post;
 import Entity.User;
+import Entity.factories.ChatFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -214,8 +215,8 @@ public class csvInterface {
             String content = String.valueOf(col[headers.get("content")]);
             String time = String.valueOf(col[headers.get("time")]);
 
-
-            Chat chat = new Chat(id, user_id1, user_id2, content, time);
+            ChatFactory chatFactory = new ChatFactory();
+            Chat chat = chatFactory.create(id, user_id1, user_id2, content, time);
             chats.put(id, chat);
         }
         reader.close();
