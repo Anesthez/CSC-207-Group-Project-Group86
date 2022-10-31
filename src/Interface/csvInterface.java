@@ -491,7 +491,7 @@ public class csvInterface {
                     Set<Integer> keys = topic.getPosts().keySet();
                     for (Integer k : keys)
                     {
-                        postLists = postLists + " " + String.valueOf(k + ". " + topic.getPosts().get(k).getContent());
+                        postLists = postLists + " " + String.valueOf(k + "." + topic.getPosts().get(k).getContent());
                     }
                 }
 
@@ -500,7 +500,7 @@ public class csvInterface {
                     Set<Integer> keys = topic.getUsers().keySet();
                     for (Integer k : keys)
                     {
-                        userLists = userLists + " " + String.valueOf(k + ". " + topic.getUsers().get(k).getUserName());
+                        userLists = userLists + " " + String.valueOf(k + "." + topic.getUsers().get(k).getUserName());
                     }
                 }
 

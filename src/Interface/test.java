@@ -24,7 +24,7 @@ public class test {
             Map<Integer, Topic> topics = new LinkedHashMap<>();
             topics.put(1, topic);
             c.topicWriter(topics, "database/topic.csv");
-//            Map<Integer, Topic>
+            c.topicsReader("database/topic.csv");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
