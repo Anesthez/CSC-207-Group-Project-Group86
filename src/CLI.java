@@ -217,7 +217,7 @@ public class CLI {
                     if (users.containsKey(friendid)) {
                         friends.get(userid).add(friendid);
                     } else {
-                        System.out.println("user: " + friendid + "does not exist");
+                        System.out.println("user: " + friendid + " does not exist");
                     }
                 }
                 csvInteract.friendsWriter("database/friends.csv", friends);
@@ -230,7 +230,7 @@ public class CLI {
                     if (users.containsKey(friendid)) {
                         friends.get(userid).remove(friendid);
                     } else {
-                        System.out.println("user: " + friendid + "does not exist");
+                        System.out.println("user: " + friendid + " does not exist");
                     }
                 }
                 csvInteract.friendsWriter("database/friends.csv", friends);
