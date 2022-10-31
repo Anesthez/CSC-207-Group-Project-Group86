@@ -260,6 +260,7 @@ public class CLI {
                 } else {
                     System.out.println("user does not exist");
                 }
+                break;
             case "unblock":
                 int unblockedid = Integer.parseInt(inputLines[2]);
                 if (users.containsKey(unblockedid)) {
@@ -268,6 +269,7 @@ public class CLI {
                 } else {
                     System.out.println("user does not exist");
                 }
+                break;
             default:
                 System.out.println("unknown command");
                 break;
