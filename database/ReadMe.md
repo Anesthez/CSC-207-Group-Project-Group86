@@ -28,7 +28,7 @@ Change "list of postid" to "list-postid" so that it is shorter.
 
 ### friends.csv
 
-> userid,list-userid  
+> userid,list-friendIds
 
 Change from *n* variables/col titled userid for *n* is the number of friends, to a list of friends' user ids.
 
