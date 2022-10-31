@@ -215,7 +215,7 @@ public class csvInterface {
             String time = String.valueOf(col[headers.get("time")]);
 
 
-            Chat chat = new Chat(id, user_id1, user_id2, time, content);
+            Chat chat = new Chat(id, user_id1, user_id2, content, time);
             chats.put(id, chat);
         }
         reader.close();
