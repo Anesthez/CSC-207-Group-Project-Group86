@@ -244,6 +244,7 @@ public class csvInterface {
         return comments;
     }
 
+    // Author: Chen jiang
     public Map<Integer, Topic> topicsReader(String topicPath) throws IOException {
         Map<Integer, Topic> topics = new HashMap<>();
         File csvFile = new File(topicPath);
@@ -455,6 +456,7 @@ public class csvInterface {
         }
     }
 
+    //Author: Chen Jiang
     public void topicWriter(Map<Integer, Topic> topics, String topicPath)
     {
         Map<String, Integer> headers = new LinkedHashMap<>();
