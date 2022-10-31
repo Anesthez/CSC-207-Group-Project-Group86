@@ -257,12 +257,16 @@ public class CLI {
                 if (users.containsKey(blockedid)) {
                     blocks.get(userid).add(blockedid);
                     csvInteract.blocksWriter("database/blocks.csv", blocks);
+                } else {
+                    System.out.println("user does not exist");
                 }
             case "unblock":
                 int unblockedid = Integer.parseInt(inputLines[2]);
                 if (users.containsKey(unblockedid)) {
                     blocks.get(userid).remove(unblockedid);
                     csvInteract.blocksWriter("database/blocks.csv", blocks);
+                } else {
+                    System.out.println("user does not exist");
                 }
             default:
                 System.out.println("unknown command");
