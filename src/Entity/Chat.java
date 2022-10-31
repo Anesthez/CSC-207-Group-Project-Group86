@@ -12,7 +12,7 @@ import java.util.Locale;
 
 /**
  * Author: DominicGU
- * Modified by: Yufei Chen
+ * Modified by: Yufei Chen, LemengDai
  */
 public class Chat extends Context implements Comparable<Chat>{
     private final int user1_id;

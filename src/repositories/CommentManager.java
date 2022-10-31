@@ -13,6 +13,11 @@ import java.util.Map;
  */
 public class CommentManager{
     private Map<Integer, Comment> comments;
+
+    public CommentManager(Map<Integer, Comment> comments) {
+        this.comments = comments;
+    }
+
     public void addComment(int userId, String content) {
         Comment comment = new Comment(userId, comments.keySet().size() + 1, content,
                 LocalDate.now().toString());

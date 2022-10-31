@@ -283,7 +283,7 @@ public class CLI {
         if (inputLines[1].equals("add")) {
             int postid = Integer.parseInt(inputLines[2]);
             if (posts.containsKey(postid)) {
-                CommentManager commentManager = new CommentManager();
+                CommentManager commentManager = new CommentManager(comments);
                 commentManager.addComment(userid, inputLines[3]); //TODO: no postid in args?
                 csvInteract.commentsWriter(comments, "database/comments.csv");
             } else {
@@ -292,7 +292,7 @@ public class CLI {
         } else if (inputLines[1].equals("delete")) {
             int commentid = Integer.parseInt(inputLines[2]);
             if (comments.containsKey(commentid)) {
-                CommentManager commentManager = new CommentManager();
+                CommentManager commentManager = new CommentManager(comments);
                 commentManager.deleteComment(commentid);
                 csvInteract.commentsWriter(comments, "database/comments.csv");
             } else {

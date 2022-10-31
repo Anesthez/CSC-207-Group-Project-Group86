@@ -1,5 +1,8 @@
 package inputboundary;
 
+/**
+ * Author: LemengDai
+ */
 public abstract class Context implements Timeable, Searchable, Postable{
     protected final int id;
     protected final String content;

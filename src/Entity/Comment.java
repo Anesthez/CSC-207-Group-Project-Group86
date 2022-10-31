@@ -7,7 +7,7 @@ import inputboundary.Context;
 
 /**
  * Author: LemengDai
- * Modified by: Yufei Chen
+ * Modified by: Yufei Chen, LemengDai
  */
 public class Comment extends Context {
     private final int userId;
