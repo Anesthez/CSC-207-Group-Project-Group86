@@ -5,6 +5,7 @@
 Placeholders for empty cells:
 
 > placeholder int: -1
+
 > placeholder String: "none"
 
 ### user.csv
