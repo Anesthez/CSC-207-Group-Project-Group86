@@ -20,6 +20,8 @@ public class Post implements Postable, Searchable,Timeable{
     private final ArrayList<Integer> list_comment_id;
     private int views;
     private int numLikes;
+
+    //private String TopicName;
     private final ArrayList<Integer> userLiked;
 
     private final Integer popularity = views + numLikes * 10;
