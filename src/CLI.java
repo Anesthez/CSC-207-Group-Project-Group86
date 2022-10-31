@@ -14,7 +14,6 @@ public class CLI {
 
     public void loginInterface() throws IOException {
         Scanner input = new Scanner(System.in);
-
         Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
         UserManager userManager = new UserManager(users);
         boolean flag = true;
@@ -29,6 +28,8 @@ public class CLI {
                         if (userid != -1) {
                             username = userInputs[1];
                             flag = false;
+                        } else {
+                            System.out.println("user not found, please register");
                         }
                     }
                     break;
@@ -135,7 +136,7 @@ public class CLI {
         csvInterface csvInteract = new csvInterface();
         boolean flag = true;
         while (flag) {
-            System.out.print(username);
+            System.out.print(username + " ");
             String userInput = input.nextLine();
             String[] userInputs = userInput.split("-");
             switch (userInputs[0]) {
@@ -155,6 +156,8 @@ public class CLI {
                 case "/comment":
                     commentInterface(userInputs);
                     break;
+                case "":
+                    System.out.print("");
                 default:
                     System.out.println("unknown command");
                     break;
