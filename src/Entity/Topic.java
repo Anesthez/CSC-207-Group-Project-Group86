@@ -1,12 +1,18 @@
 package Entity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Topic {
 
     private String name;
     private String ID;
     private User attendUser;
+
+    private Map<Integer, User> users;
+
+    private Map<Integer, Post> posts;
 
     /*
     A HashMap that maps the popularity of each Post to Post.
@@ -34,6 +40,14 @@ public class Topic {
         this.postPopularity = topicPopularity;
     }
 
+    public Topic(String name, String ID, Map<Integer, User> users, Map<Integer, Post> posts)
+    {
+        this.name = name;
+        this.ID = ID;
+        this.users = users;
+        this.posts = posts;
+    }
+
     private Integer getSumofTopicPopularity()
     {
         Integer total = 0;
@@ -43,6 +57,22 @@ public class Topic {
         }
 
         return total;
+    }
+
+    public Map<Integer, User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Map<Integer, User> users) {
+        this.users = users;
+    }
+
+    public Map<Integer, Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Map<Integer, Post> posts) {
+        this.posts = posts;
     }
 
     public String getName() {

@@ -7,17 +7,11 @@ package Interface;/*
  */
 
 
-import Entity.Chat;
-import Entity.Comment;
-import Entity.Post;
-import Entity.User;
+import Entity.*;
 import Entity.factories.ChatFactory;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class csvInterface {
 
@@ -250,6 +244,34 @@ public class csvInterface {
         return comments;
     }
 
+    public Map<Integer, Topic> topicsReader(String topicPath) throws IOException {
+        Map<Integer, Topic> topics = new HashMap<>();
+        File csvFile = new File(topicPath);
+        Map<String, Integer> headers = new LinkedHashMap<>();
+        headers.put("id", 0);
+        headers.put("name",1);
+        headers.put("posts", 2);
+        headers.put("users", 3);
+        BufferedReader reader = new BufferedReader(new FileReader(csvFile));
+        reader.readLine();
+        String row;
+        while((row = reader.readLine()) != null)
+        {
+            String[] col = row.split(",");
+            String id = String.valueOf(col[headers.get("id")]);
+            String name = String.valueOf(col[headers.get("name")]);
+            String posts = String.valueOf(col[headers.get("posts")]);
+            String[] posts_list = posts.split(" ");
+            System.out.println(posts);
+            String users = String.valueOf(col[headers.get("users")]);
+            String[] users_list = users.split(" ");
+            //Topic topic = new Topic(id, name, posts, users);
+        }
+
+        return topics;
+    }
+
+
     public void postsWriter(String postsPath, Map<Integer, Post> posts) {
         Map<String, Integer> headers = new LinkedHashMap<>();
 
@@ -422,6 +444,58 @@ public class csvInterface {
                 String line = (
                         String.valueOf(userId)+","+
                                 listId);
+                writer.write(line);
+                writer.newLine();
+            }
+
+            writer.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void topicWriter(Map<Integer, Topic> topics, String topicPath)
+    {
+        Map<String, Integer> headers = new LinkedHashMap<>();
+        headers.put("id", 0);
+        headers.put("name",1);
+        headers.put("posts",2);
+        headers.put("users",3);
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter(topicPath));
+            writer.write(String.join(",", headers.keySet()));
+            writer.newLine();
+            String postLists = "";
+            String userLists = "";
+            for (Topic topic : topics.values()) {
+
+
+                if (topic.getPosts().size()>0)
+                {
+                    Set<Integer> keys = topic.getPosts().keySet();
+                    for (Integer k : keys)
+                    {
+                        postLists = postLists + " " + String.valueOf(k + ". " + topic.getPosts().get(k).getContent());
+                    }
+                }
+
+                if (topic.getUsers().size() >0)
+                {
+                    Set<Integer> keys = topic.getUsers().keySet();
+                    for (Integer k : keys)
+                    {
+                        userLists = userLists + " " + String.valueOf(k + ". " + topic.getUsers().get(k).getUserName());
+                    }
+                }
+
+
+                String line = (
+                        String.valueOf(topic.getID())+","+
+                                topic.getName()+","+
+                                postLists+","+
+                                userLists);
                 writer.write(line);
                 writer.newLine();
             }

@@ -7,14 +7,18 @@ import Entity.Topic;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TopicManager {
 
-    public void addPostsToTopic()
+    public void addPostsToTopic(Topic topic, Post post)
     {
         /*
         Add Posts associated to the Topic in this Topic.
          */
+        Map<Integer, Post> update = topic.getPosts();
+        update.put(update.size(), post);
+        topic.setPosts(update);
 
     }
 
