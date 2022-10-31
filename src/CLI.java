@@ -156,6 +156,9 @@ public class CLI {
                 case "/comment":
                     commentInterface(userInputs);
                     break;
+                case "/chat":
+                    chatInterface(userInputs);
+                    break;
                 case "":
                     System.out.print("");
                     break;
