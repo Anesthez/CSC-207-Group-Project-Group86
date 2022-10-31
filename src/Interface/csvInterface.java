@@ -165,6 +165,34 @@ public class csvInterface {
         return friends;
     }
 
+    public Map<Integer, ArrayList<Integer>> blocksReader(String blocksPath) throws IOException {
+        Map<Integer, ArrayList<Integer>> blocks = new HashMap<>();
+        File csvFile = new File(blocksPath);
+        Map<String, Integer> headers = new LinkedHashMap<>();
+        headers.put("userid", 0);
+        headers.put("list-blockedIds", 1);
+        BufferedReader reader = new BufferedReader(new FileReader(csvFile));
+        reader.readLine(); // skip header
+
+        String row;
+        while ((row = reader.readLine()) != null) {
+            String[] col = row.split(",");
+            int userid = Integer.parseInt(col[headers.get("userid")]);
+            String list_blocked_id = String.valueOf(col[headers.get("list-blockedIds")]);
+            String[] blockedIds = list_blocked_id.split(" ");
+            ArrayList<Integer> iList_blocked_id = new ArrayList<>();
+            if (!list_blocked_id.equals("")) {
+                for (String blockedId :
+                        blockedIds) {
+                    iList_blocked_id.add(Integer.parseInt(blockedId));
+                }
+            }
+            blocks.put(userid, iList_blocked_id);
+        }
+        reader.close();
+        return blocks;
+    }
+
     public Map<Integer, Chat> chatsReader(String chatPath) throws IOException {
         Map<Integer, Chat> chats = new HashMap<>();
         File csvFile = new File(chatPath);
@@ -361,6 +389,38 @@ public class csvInterface {
                 String line = (
                         String.valueOf(userId)+","+
                         listId);
+                writer.write(line);
+                writer.newLine();
+            }
+
+            writer.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void blocksWriter(String blocksPath, Map<Integer, ArrayList<Integer>> blocks) {
+        Map<String, Integer> headers = new LinkedHashMap<>();
+        headers.put("userid", 0);
+        headers.put("list-blockedIds", 1);
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter(blocksPath));
+            writer.write(String.join(",", headers.keySet()));
+            writer.newLine();
+
+            for (Integer userId: blocks.keySet()) {
+                String listId = "";
+                if (blocks.get(userId).size() > 0) {
+                    listId = String.valueOf(blocks.get(userId).get(0));
+                    for (int i = 1; i < blocks.get(userId).size(); i++) {
+                        listId = listId + " " + String.valueOf(blocks.get(userId).get(i));
+                    }
+                }
+                String line = (
+                        String.valueOf(userId)+","+
+                                listId);
                 writer.write(line);
                 writer.newLine();
             }
