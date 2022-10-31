@@ -268,6 +268,13 @@ public class csvInterface {
             String name = String.valueOf(col[headers.get("name")]);
             String posts = String.valueOf(col[headers.get("posts")]);
             String[] posts_list = posts.split(" ");
+            Map<Integer, Post> postsMap = postsReader("database/post.csv");
+            Set<Integer> postsMapKeys = postsMap.keySet();
+            for (Integer p : postsMapKeys)
+            {
+                //if (postsMap.get(p).getTopics() == )
+            }
+
             System.out.println(posts);
             String users = String.valueOf(col[headers.get("users")]);
             String[] users_list = users.split(" ");
@@ -484,7 +491,7 @@ public class csvInterface {
                     Set<Integer> keys = topic.getPosts().keySet();
                     for (Integer k : keys)
                     {
-                        postLists = postLists + " " + String.valueOf(k + ". " + topic.getPosts().get(k).getContent());
+                        postLists = postLists + " " + String.valueOf(k + "." + topic.getPosts().get(k).getContent());
                     }
                 }
 
@@ -493,7 +500,7 @@ public class csvInterface {
                     Set<Integer> keys = topic.getUsers().keySet();
                     for (Integer k : keys)
                     {
-                        userLists = userLists + " " + String.valueOf(k + ". " + topic.getUsers().get(k).getUserName());
+                        userLists = userLists + " " + String.valueOf(k + "." + topic.getUsers().get(k).getUserName());
                     }
                 }
 

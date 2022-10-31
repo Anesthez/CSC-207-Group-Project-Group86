@@ -1,6 +1,7 @@
 package inputboundary;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Author: Chen Jiang
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  */
 public abstract class Manager<T> {
 
-    ArrayList<T> items_to_manage;
+    Map<Integer, T> list;
 
     public void add()
     {
