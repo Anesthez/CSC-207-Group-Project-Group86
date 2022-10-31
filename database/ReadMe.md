@@ -1,5 +1,13 @@
 ## Some Documentation Relates to Changes
 
+### Place Holder Guide
+
+Placeholders for empty cells:
+
+> placeholder int: -1
+
+> placeholder String: "none"
+
 ### user.csv
 
 > userid, user-type, password, name  
@@ -20,7 +28,7 @@ Change "list of postid" to "list-postid" so that it is shorter.
 
 ### friends.csv
 
-> userid,list-userid  
+> userid,list-friendIds
 
 Change from *n* variables/col titled userid for *n* is the number of friends, to a list of friends' user ids.
 
