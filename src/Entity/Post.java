@@ -1,5 +1,6 @@
 package Entity;
 
+import inputboundary.Context;
 import inputboundary.Postable;
 import inputboundary.Searchable;
 import inputboundary.Timeable;
@@ -9,14 +10,11 @@ import java.util.ArrayList;
  * Author: eric-qli
  * Modified by: Yufei Chen
  */
-public class Post implements Postable, Searchable,Timeable{
+public class Post extends Context{
 
 
     private String postTitle;
     private final int userId;
-    private final String timestamp;
-    private final int id;
-    private final String content;
     private final ArrayList<Integer> list_comment_id;
     private int views;
     private int numLikes;
@@ -32,11 +30,9 @@ public class Post implements Postable, Searchable,Timeable{
 
     public Post(String postTitle, int userId, int id, String content, String timestamp,
                 int views, int numLikes, ArrayList<Integer> userLiked, ArrayList<Integer> list_comment_id) {
+        super(id, content, timestamp);
         this.postTitle = postTitle;
         this.userId = userId;
-        this.timestamp = timestamp;
-        this.id = id;
-        this.content = content;
         this.views = views;
         this.numLikes = numLikes;
         this.userLiked = userLiked;
@@ -54,14 +50,6 @@ public class Post implements Postable, Searchable,Timeable{
 
     public int getUserId() {
         return userId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getContent() {
-        return this.content;
     }
 
     public int getNumLikes(){
@@ -127,12 +115,7 @@ public class Post implements Postable, Searchable,Timeable{
 //        /**
 //         * first check if the user already liked the post
 //         * case 1 liked: remove the like and remove the user from liked list
-//         * case 2 havent liked: add a like and add the user to the liked list
+//         * case 2 haven't liked: add a like and add the user to the liked list
 //         */
 //    }
-
-    @Override
-    public String getTime() {
-        return timestamp;
-    }
 }
