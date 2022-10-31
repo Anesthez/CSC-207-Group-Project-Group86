@@ -200,7 +200,7 @@ public class CLI {
         switch (inputLines[1]) {
             case "add": {
                 int friendid = Integer.parseInt(inputLines[2]);
-                if (blocks.get(userid).contains(friendid)){
+                if (blocks.get(userid).contains(friendid) && !friends.get(userid).contains(friendid)){
                     System.out.println("please unblock this user first");
                 } else if (users.containsKey(friendid)) {
                     friends.get(userid).add(friendid);
@@ -227,7 +227,7 @@ public class CLI {
                     int friendid = Integer.parseInt(rawFriendid);
                     if (blocks.get(userid).contains(friendid)){
                         existsBlocked = true;
-                    } else if (users.containsKey(friendid)) {
+                    } else if (users.containsKey(friendid) && !friends.get(userid).contains(friendid)) {
                         friends.get(userid).add(friendid);
                     } else {
                         System.out.println("user: " + friendid + " does not exist");
@@ -254,7 +254,7 @@ public class CLI {
             }
             case "block":
                 int blockedid = Integer.parseInt(inputLines[2]);
-                if (users.containsKey(blockedid)) {
+                if (users.containsKey(blockedid) && !blocks.get(userid).contains(blockedid)) {
                     blocks.get(userid).add(blockedid);
                     csvInteract.blocksWriter("database/blocks.csv", blocks);
                 } else {
