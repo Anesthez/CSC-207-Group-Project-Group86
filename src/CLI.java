@@ -195,10 +195,14 @@ public class CLI {
         Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
         Map<Integer, ArrayList<Integer>> friends =
                 csvInteract.friendsReader("database/friends.csv");
+        Map<Integer, ArrayList<Integer>> blocks =
+                csvInteract.blocksReader("database/blocks.csv");
         switch (inputLines[1]) {
             case "add": {
                 int friendid = Integer.parseInt(inputLines[2]);
-                if (users.containsKey(friendid)) {
+                if (blocks.get(userid).contains(friendid)){
+                    System.out.println("please unblock this user first");
+                } else if (users.containsKey(friendid)) {
                     friends.get(userid).add(friendid);
                     csvInteract.friendsWriter("database/friends.csv", friends);
                 } else {
@@ -207,9 +211,9 @@ public class CLI {
                 break;
             }
             case "remove": {
-                int friendid = Integer.parseInt(inputLines[2]);
-                if (users.containsKey(friendid)) {
-                    friends.get(userid).remove(friendid);
+                int unfriendid = Integer.parseInt(inputLines[2]);
+                if (users.containsKey(unfriendid)) {
+                    friends.get(userid).remove(unfriendid);
                     csvInteract.friendsWriter("database/friends.csv", friends);
                 } else {
                     System.out.println("user does not exist");
@@ -217,32 +221,49 @@ public class CLI {
                 break;
             }
             case "adds": {
+                boolean existsBlocked = false;
                 String[] rawFriendids = inputLines[2].split(" ");
                 for (String rawFriendid : rawFriendids) {
                     int friendid = Integer.parseInt(rawFriendid);
-                    if (users.containsKey(friendid)) {
+                    if (blocks.get(userid).contains(friendid)){
+                        existsBlocked = true;
+                    } else if (users.containsKey(friendid)) {
                         friends.get(userid).add(friendid);
                     } else {
                         System.out.println("user: " + friendid + " does not exist");
                     }
                 }
                 csvInteract.friendsWriter("database/friends.csv", friends);
+                if (existsBlocked){
+                    System.out.println("skipped existed blocked user");
+                }
                 break;
             }
             case "removes": {
                 String[] rawFriendids = inputLines[2].split(" ");
                 for (String rawFriendid : rawFriendids) {
-                    int friendid = Integer.parseInt(rawFriendid);
-                    if (users.containsKey(friendid)) {
-                        friends.get(userid).remove(friendid);
+                    int unfriendid = Integer.parseInt(rawFriendid);
+                    if (users.containsKey(unfriendid)) {
+                        friends.get(userid).remove(unfriendid);
                     } else {
-                        System.out.println("user: " + friendid + " does not exist");
+                        System.out.println("user: " + unfriendid + " does not exist");
                     }
                 }
                 csvInteract.friendsWriter("database/friends.csv", friends);
                 break;
             }
-            // TODO: consider adding "block" function and the column "block_list" in friends.csv
+            case "block":
+                int blockedid = Integer.parseInt(inputLines[2]);
+                if (users.containsKey(blockedid)) {
+                    blocks.get(userid).add(blockedid);
+                    csvInteract.blocksWriter("database/blocks.csv", blocks);
+                }
+            case "unblock":
+                int unblockedid = Integer.parseInt(inputLines[2]);
+                if (users.containsKey(unblockedid)) {
+                    blocks.get(userid).remove(unblockedid);
+                    csvInteract.blocksWriter("database/blocks.csv", blocks);
+                }
             default:
                 System.out.println("unknown command");
                 break;
