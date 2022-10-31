@@ -4,6 +4,8 @@ import inputboundary.Postable;
 import inputboundary.Searchable;
 import inputboundary.Timeable;
 
+import inputboundary.Context;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -12,30 +14,17 @@ import java.util.Locale;
  * Author: DominicGU
  * Modified by: Yufei Chen
  */
-public class Chat implements Timeable, Postable, Searchable, Comparable<Chat> {
-    private final int id;
-
+public class Chat extends Context implements Comparable<Chat>{
     private final int user1_id;
 
     private final int user2_id;
 
-    private final String content;
-    private final String timestamp;
-
 
     public Chat(int id, int user1_id, int user2_id, String content, String timestamp) {
-        this.id = id;
+        super(id, content, timestamp);
         this.user1_id = user1_id;
         this.user2_id = user2_id;
-        this.content = content;
-        this.timestamp = timestamp;
     }
-
-    public String getTimes() {
-        return timestamp;
-    }
-
-    public int getId(){return id;}
 
     public int getSender_id() {
         return user1_id;
@@ -43,14 +32,6 @@ public class Chat implements Timeable, Postable, Searchable, Comparable<Chat> {
 
     public int getReceiver_id() {
         return user2_id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getTime() {
-        return timestamp;
     }
 
     @Override
