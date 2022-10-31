@@ -1,5 +1,12 @@
 ## Some Documentation Relates to Changes
 
+### Place Holder Guide
+
+Placeholders for empty cells:
+
+> placeholder int: -1
+> placeholder String: "none"
+
 ### user.csv
 
 > userid, user-type, password, name  
