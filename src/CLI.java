@@ -60,6 +60,7 @@ public class CLI {
         }
     }
 
+    //Author: Jiahao Gu
     public void chatInterface(String[] inputLines) throws IOException {
         csvInterface csvInteract = new csvInterface();
         Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
@@ -67,67 +68,69 @@ public class CLI {
         ChatManager chatManager = new ChatManager(chats);
 
         // use "/chat-add-receiver's id-content" to send a message
-        // TODO consider using switch to simplify the code -- Tianyu Li
-        if(inputLines[1].equals("add")){
-            int receiver_id = Integer.parseInt(inputLines[2]);
-            if (users.containsKey(receiver_id)) {
-                chatManager.addChat(userid, receiver_id, inputLines[3]);
-                csvInteract.chatsWriter(chats, "database/chat.csv");
-                System.out.println("message sent");
-            } else {
-                System.out.println("user does not exist");
+        switch (inputLines[1]) {
+            case "add": {
+                int receiver_id = Integer.parseInt(inputLines[2]);
+                if (users.containsKey(receiver_id)) {
+                    chatManager.addChat(userid, receiver_id, inputLines[3]);
+                    csvInteract.chatsWriter(chats, "database/chat.csv");
+                    System.out.println("message sent");
+                } else {
+                    System.out.println("user does not exist");
+                }
             }
-        }
 
-        // use "/chat-delete-chatid" to delete a message
-        else if (inputLines[1].equals("delete")){
-            int chatid = Integer.parseInt(inputLines[2]);
-            if (chats.containsKey(chatid)) {
-                chatManager.deleteChat(chatid);
-                csvInteract.chatsWriter(chats, "database/chat.csv");
-                System.out.println("message deleted");
-            }
-            else{
-                System.out.println("chat does not exist");
-            }
-        }
 
-        // use "/chat-showid-receiver's id-sent time(yyyy.MM.dd hh:mm:ss)" to find the id of a message
-        else if (inputLines[1].equals("showid")){
-            int chatid = chatManager.getIdByUserAndTime(userid, Integer.parseInt(inputLines[2]), inputLines[3]);
-            if (chatid != 0){
-                System.out.println("chat id is " + chatid);
+            // use "/chat-delete-chatid" to delete a message
+            case "delete": {
+                int chatid = Integer.parseInt(inputLines[2]);
+                if (chats.containsKey(chatid)) {
+                    chatManager.deleteChat(chatid);
+                    csvInteract.chatsWriter(chats, "database/chat.csv");
+                    System.out.println("message deleted");
+                } else {
+                    System.out.println("chat does not exist");
+                }
+                break;
             }
-            else{
-                System.out.println("chat does not exist");
-            }
-        }
 
-        // use "/chat-show-receiver's id" to show all messages sent between two people
-        else if(inputLines[1].equals("show")){
-            int receiver_id = Integer.parseInt(inputLines[2]);
-            if (users.containsKey(receiver_id)) {
-                List<Chat> chatlist = new ArrayList<>();
-                for (int id: chats.keySet()){
-                    if (chats.get(id).getSender_id() == userid && chats.get(id).getReceiver_id() == receiver_id ||
-                            chats.get(id).getSender_id() == receiver_id && chats.get(id).getReceiver_id() == userid){
-                        chatlist.add(chats.get(id));
+
+            // use "/chat-showid-receiver's id-sent time(yyyy.MM.dd hh:mm:ss)" to find the id of a message
+            case "showid": {
+                int chatid = chatManager.getIdByUserAndTime(userid, Integer.parseInt(inputLines[2]), inputLines[3]);
+                if (chatid != 0) {
+                    System.out.println("chat id is " + chatid);
+                } else {
+                    System.out.println("chat does not exist");
+                }
+                break;
+            }
+
+
+            // use "/chat-show-receiver's id" to show all messages sent between two people
+            case "show": {
+                int receiver_id = Integer.parseInt(inputLines[2]);
+                if (users.containsKey(receiver_id)) {
+                    List<Chat> chatlist = new ArrayList<>();
+                    for (int id : chats.keySet()) {
+                        if (chats.get(id).getSender_id() == userid && chats.get(id).getReceiver_id() == receiver_id ||
+                                chats.get(id).getSender_id() == receiver_id && chats.get(id).getReceiver_id() == userid) {
+                            chatlist.add(chats.get(id));
+                        }
                     }
+                    if (chatlist.isEmpty()) {
+                        System.out.println("No message found");
+                    }
+                    chatlist.sort(null);
+                    for (Chat c : chatlist) {
+                        c.printChat();
+                    }
+                } else {
+                    System.out.println("user does not exist");
                 }
-                if (chatlist.isEmpty()){
-                    System.out.println("No message found");
-                }
-                chatlist.sort(null);
-                for (Chat c: chatlist){
-                    c.printChat();
-                }
+                break;
             }
-            else {
-                System.out.println("user does not exist");
-            }
-        }
-        else {
-            System.out.println("unknown command");
+            default: System.out.println("unknown command");
         }
     }
 
@@ -155,6 +158,9 @@ public class CLI {
                     break;
                 case "/comment":
                     commentInterface(userInputs);
+                    break;
+                case "/chat":
+                    chatInterface(userInputs);
                     break;
                 case "":
                     System.out.print("");
@@ -189,10 +195,14 @@ public class CLI {
         Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
         Map<Integer, ArrayList<Integer>> friends =
                 csvInteract.friendsReader("database/friends.csv");
+        Map<Integer, ArrayList<Integer>> blocks =
+                csvInteract.blocksReader("database/blocks.csv");
         switch (inputLines[1]) {
             case "add": {
                 int friendid = Integer.parseInt(inputLines[2]);
-                if (users.containsKey(friendid)) {
+                if (blocks.get(userid).contains(friendid)){
+                    System.out.println("please unblock this user first");
+                } else if (users.containsKey(friendid)) {
                     friends.get(userid).add(friendid);
                     csvInteract.friendsWriter("database/friends.csv", friends);
                 } else {
@@ -201,9 +211,9 @@ public class CLI {
                 break;
             }
             case "remove": {
-                int friendid = Integer.parseInt(inputLines[2]);
-                if (users.containsKey(friendid)) {
-                    friends.get(userid).remove(friendid);
+                int unfriendid = Integer.parseInt(inputLines[2]);
+                if (users.containsKey(unfriendid)) {
+                    friends.get(userid).remove(unfriendid);
                     csvInteract.friendsWriter("database/friends.csv", friends);
                 } else {
                     System.out.println("user does not exist");
@@ -211,32 +221,53 @@ public class CLI {
                 break;
             }
             case "adds": {
+                boolean existsBlocked = false;
                 String[] rawFriendids = inputLines[2].split(" ");
                 for (String rawFriendid : rawFriendids) {
                     int friendid = Integer.parseInt(rawFriendid);
-                    if (users.containsKey(friendid)) {
+                    if (blocks.get(userid).contains(friendid)){
+                        existsBlocked = true;
+                    } else if (users.containsKey(friendid)) {
                         friends.get(userid).add(friendid);
                     } else {
                         System.out.println("user: " + friendid + " does not exist");
                     }
                 }
                 csvInteract.friendsWriter("database/friends.csv", friends);
+                if (existsBlocked){
+                    System.out.println("skipped existed blocked user");
+                }
                 break;
             }
             case "removes": {
                 String[] rawFriendids = inputLines[2].split(" ");
                 for (String rawFriendid : rawFriendids) {
-                    int friendid = Integer.parseInt(rawFriendid);
-                    if (users.containsKey(friendid)) {
-                        friends.get(userid).remove(friendid);
+                    int unfriendid = Integer.parseInt(rawFriendid);
+                    if (users.containsKey(unfriendid)) {
+                        friends.get(userid).remove(unfriendid);
                     } else {
-                        System.out.println("user: " + friendid + " does not exist");
+                        System.out.println("user: " + unfriendid + " does not exist");
                     }
                 }
                 csvInteract.friendsWriter("database/friends.csv", friends);
                 break;
             }
-            // TODO: consider adding "block" function and the column "block_list" in friends.csv
+            case "block":
+                int blockedid = Integer.parseInt(inputLines[2]);
+                if (users.containsKey(blockedid)) {
+                    blocks.get(userid).add(blockedid);
+                    csvInteract.blocksWriter("database/blocks.csv", blocks);
+                } else {
+                    System.out.println("user does not exist");
+                }
+            case "unblock":
+                int unblockedid = Integer.parseInt(inputLines[2]);
+                if (users.containsKey(unblockedid)) {
+                    blocks.get(userid).remove(unblockedid);
+                    csvInteract.blocksWriter("database/blocks.csv", blocks);
+                } else {
+                    System.out.println("user does not exist");
+                }
             default:
                 System.out.println("unknown command");
                 break;

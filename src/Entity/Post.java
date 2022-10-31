@@ -93,6 +93,10 @@ public class Post implements Postable, Searchable,Timeable{
         numLikes += 1;
     }
 
+    public String getTimes() {
+        return timestamp;
+    }
+
     public boolean removeUserLike(int UserId){
         try {
             userLiked.remove(userId);

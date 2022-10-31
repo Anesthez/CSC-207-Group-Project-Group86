@@ -9,6 +9,9 @@ package Interface;/*
 
 import Entity.*;
 import Entity.factories.ChatFactory;
+import Entity.factories.CommentFactory;
+import Entity.factories.PostFactory;
+import Entity.factories.UserFactory;
 
 import java.io.*;
 import java.util.*;
@@ -59,7 +62,9 @@ public class csvInterface {
                     iList_user_id.add(Integer.parseInt(userId));
                 }
             }
-            Post post = new Post(post_title,
+
+            PostFactory postFactory = new PostFactory();
+            Post post = postFactory.create(post_title,
                     userid,
                     id,
                     content,
@@ -123,8 +128,8 @@ public class csvInterface {
             String name = String.valueOf(col[headers.get("name")]);
             String time = String.valueOf(col[headers.get("time")]);
 
-
-            User user = new User(id, userType, name, password, time);
+            UserFactory userFactory = new UserFactory();
+            User user = userFactory.create(id, userType, name, password, time);
             users.put(id, user);
         }
 
@@ -236,8 +241,8 @@ public class csvInterface {
             String content = String.valueOf(col[headers.get("content")]);
             String time = String.valueOf(col[headers.get("time")]);
 
-
-            Comment comment = new Comment(user_id, id, time, content);
+            CommentFactory commentFactory = new CommentFactory();
+            Comment comment = commentFactory.create(user_id, id, time, content);
             comments.put(id, comment);
         }
         reader.close();
