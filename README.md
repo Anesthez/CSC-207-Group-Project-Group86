@@ -1,10 +1,14 @@
 # 207-Group-Project: [UofT Meta](https://uoftmeta.ca)
 
+[Phase 2 Repo](https://github.com/KevinTQJ/CSC-207-Project-Phase-2)
+
 ## Discription:
 
 The program allows users to post blogs and leave likes and comment under others’ posts. The users are also able to add friends and chat with each other. The user can also draw pictures for their post.
 
 ## Entity.User Scenarios:
+
+*Outdated, for more info, please reference proj blueprint.*
 
 Zac wants to share his stories about the class with others in the form of a post.
 

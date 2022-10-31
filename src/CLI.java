@@ -208,8 +208,8 @@ public class CLI {
             }
             case "adds": {
                 String[] rawFriendids = inputLines[2].split(" ");
-                for (int i = 0; i < rawFriendids.length; i++) {
-                    int friendid = Integer.parseInt(inputLines[2]);
+                for (String rawFriendid : rawFriendids) {
+                    int friendid = Integer.parseInt(rawFriendid);
                     if (users.containsKey(friendid)) {
                         friends.get(userid).add(friendid);
                     } else {
@@ -221,8 +221,8 @@ public class CLI {
             }
             case "removes": {
                 String[] rawFriendids = inputLines[2].split(" ");
-                for (int i = 0; i < rawFriendids.length; i++) {
-                    int friendid = Integer.parseInt(inputLines[2]);
+                for (String rawFriendid : rawFriendids) {
+                    int friendid = Integer.parseInt(rawFriendid);
                     if (users.containsKey(friendid)) {
                         friends.get(userid).remove(friendid);
                     } else {
