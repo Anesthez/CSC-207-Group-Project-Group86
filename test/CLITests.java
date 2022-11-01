@@ -1,6 +1,6 @@
 
+import Commands.CLI;
 import org.junit.*;
-import static org.junit.Assert.*;
 
 public class CLITests {
     static CLI actual;
