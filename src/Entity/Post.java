@@ -7,8 +7,21 @@ import inputboundary.Timeable;
 
 import java.util.ArrayList;
 /**
- * Author: eric-qli
- * Modified by: Yufei Chen, LemengDai
+ * <p>The post object is a post that will be sent to by the user. The object is a subclass for context which will
+ * extends the properties for the {@link inputboundary.Context Context}
+ * </p>
+ *
+ * <p>To initialize a post object, we need post title, userid, the id of the post, content, the time for the post,
+ * number of views, number of likes, list of views for the object, list of likes for the object</p>
+ *
+ * <p>The post object contains list of comments, list of the userIds of who liked the post, the number of views for a
+ * certain post and a popularity that uses our model to calculate the popularity for the post. Each list will have add
+ * and remove methods for the post object. The post also inherits all the methods and parameters from abstract class
+ * object</p>
+ *
+ * @implNote the user id for the class is not to be altered, thus set as final.
+ * @Author: eric-qli
+ * @Modifiedby: Yufei Chen, LemengDai
  */
 public class Post extends Context{
 
