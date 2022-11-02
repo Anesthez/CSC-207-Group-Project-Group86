@@ -4,8 +4,14 @@ import Layer1.Entity.inputboundary.Searchable;
 import Layer1.Entity.inputboundary.Timeable;
 
 /**
- * Author: Kevin WU
- * Modified by: Yufei Chen
+ * <p>The user object is the profile for each user. The object implements the interfaces of Searchable and Timeable</p>
+ *
+ * <p>To initialize a user object, we need the id for the user, type of user,
+ * username, password, and the time of user creation</p>
+ *
+ * @implNote the time of user creation for the class is not to be altered, thus set as final.
+ * @Author: Kevin WU
+ * @Modifiedby: Yufei Chen
  */
 public class User implements Searchable, Timeable {
     private int id;
