@@ -11,6 +11,11 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
+/**
+ * This class is used to test
+ *
+ * @Author: Yijun(Kevin) Zhao
+ */
 
 public class csvInterfaceTests_friends {
     csvInterface csv = new csvInterface();
