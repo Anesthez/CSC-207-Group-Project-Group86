@@ -5,12 +5,11 @@ import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.Components.PlaceTextField;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PostScreen extends JFrame implements ActionListener {
-    public PostScreen() {
+public class uploadPostScreen extends JFrame implements ActionListener {
+    public uploadPostScreen() {
         this.add(new PlaceLabel().create(50, 0, 50, 50, "Title"));
 
         this.add(new PlaceLabel().create(50, 100, 50, 50, "Content"));
@@ -29,14 +28,13 @@ public class PostScreen extends JFrame implements ActionListener {
                 String[] postInfo = new String[2];
                 postInfo[0] = titleText.getText();
                 postInfo[1] = contentText.getText();
-
+                //TODO: call controller -> use case(similar to command) to upload the post
             }
         });
         this.add(postButton);
 
         this.setSize(800, 800);
         this.setLayout(null);
-
     }
 
     @Override
