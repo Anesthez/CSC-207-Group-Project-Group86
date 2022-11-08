@@ -533,7 +533,7 @@ public class csvInterface {
         try {
             writer = new BufferedWriter(new FileWriter(chatPath));
             writer.write(String.join(",", headers.keySet()));
-            writer.newLine();
+
 
             for (Chat chat : chats.values()) {
                 String line = (
@@ -542,8 +542,9 @@ public class csvInterface {
                         String.valueOf(chat.getReceiver_id())+","+
                         chat.getTime()+","+
                         chat.getContent());
-                writer.write(line);
                 writer.newLine();
+                writer.write(line);
+
             }
 
             writer.close();
