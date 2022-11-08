@@ -4,11 +4,12 @@ import Layer1.Entity.Post;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Author: eric-qli
- * modified by: Yufei Chen
+ * modified by: Yufei Chen, Tianyu Li
  */
 public class PostUseCases {
     private final Map<Integer, Post> posts;
@@ -83,6 +84,27 @@ public class PostUseCases {
         }else{
             return false;
         }
+    }
+
+    // dummy method
+    public List<Post> getHottestPosts(int post_num) {
+        // get post_num amount of the hottest post ranked by popularity.
+        List<Post> hotPosts = new ArrayList<>();
+        int remaining = post_num;
+        for (Map.Entry<Integer, Post> postEntry : this.posts.entrySet()) {
+            if (remaining > 0) {
+                hotPosts.add(postEntry.getValue());
+                remaining = remaining - 1;
+            } else {
+                return hotPosts;
+            }
+        }
+        return hotPosts;
+    }
+
+    public List<Post> getHottestPosts() {
+        // Method overload for getHottestPost with default post_num = 3
+        return getHottestPosts(3);
     }
 
     /**
