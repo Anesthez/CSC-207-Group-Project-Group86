@@ -12,12 +12,11 @@ public class LoginScreen extends JPanel implements ActionListener {
 
 
         JPanel username = new JPanel();
-        username.setBounds(100, 300, 200, 50);
+        username.setBounds(400, 300, 200, 50);
         username.add(new PlaceLabel().create(0, 0, 50, 50, "username"));
-//      username.add(new PlaceTextField().createTextField());
 
         JPanel password = new JPanel();
-        password.setBounds(100, 300, 200, 50);
+        password.setBounds(400, 300, 200, 50);
         password.add(new PlaceLabel().create(0, 0, 50, 50, "username"));
 
         JButton logIn = new JButton("Log in");
@@ -35,6 +34,7 @@ public class LoginScreen extends JPanel implements ActionListener {
             }
         });
 
+
         this.setSize(800, 800);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -42,6 +42,7 @@ public class LoginScreen extends JPanel implements ActionListener {
         this.add(username);
         this.add(password);
         this.add(buttons);
+
     }
 
     @Override
