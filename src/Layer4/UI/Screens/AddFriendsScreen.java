@@ -6,7 +6,12 @@ import Layer4.UI.Components.PlaceTextField;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public abstract class AddFriendsScreen extends JFrame implements ActionListener {
+/**
+ * Author: Eric Li
+ */
+
+public abstract
+class AddFriendsScreen extends JFrame implements ActionListener {
     public AddFriendsScreen(){
         JPanel main = new JPanel();
         main.setSize(800, 800);
