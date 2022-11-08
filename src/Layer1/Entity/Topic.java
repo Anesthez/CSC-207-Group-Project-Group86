@@ -47,6 +47,13 @@ public class Topic {
         this.posts = posts;
     }
 
+    public Topic(String name, String ID, Map<Integer, Post> posts)
+    {
+        this.name = name;
+        this.ID = ID;
+        this.posts = posts;
+    }
+
     private Integer getSumofTopicPopularity()
     {
         Integer total = 0;
