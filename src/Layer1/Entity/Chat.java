@@ -47,4 +47,9 @@ public class Chat extends Context implements Comparable<Chat>{
         System.out.println(timestamp + " (" + user1_id + " sent to " + user2_id + "):" + content);
     }
 
+    @Override
+    public String toString(){
+        return timestamp + " (" + user1_id + " sent to " + user2_id + "):" + content;
+    }
+
 }

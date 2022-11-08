@@ -38,6 +38,7 @@ public class ChatCommand {
                 } else {
                     System.out.println("user does not exist");
                 }
+                break;
             }
 
 
