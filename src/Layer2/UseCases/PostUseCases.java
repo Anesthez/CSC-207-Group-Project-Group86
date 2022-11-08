@@ -1,6 +1,7 @@
 package Layer2.UseCases;
 
 import Layer1.Entity.Post;
+import Layer1.Entity.Topic;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Map;
 
 /**
  * Author: eric-qli
- * modified by: Yufei Chen, Tianyu Li
+ * modified by: Yufei Chen, Tianyu Li, Chen Jiang
  */
 public class PostUseCases {
     private final Map<Integer, Post> posts;
