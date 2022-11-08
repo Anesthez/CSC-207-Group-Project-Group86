@@ -38,6 +38,7 @@ class AddFriendsScreen extends JFrame implements ActionListener {
         this.setContentPane(main);
 
         this.pack();
+
     }
 }
 
