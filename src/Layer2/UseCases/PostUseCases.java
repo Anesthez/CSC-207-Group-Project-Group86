@@ -20,7 +20,7 @@ public class PostUseCases {
         this.posts = posts;
         this.posts_liked = posts_liked;
     }
-    public void addPost(String postTitle, int userId, String content){
+    public void addPost(String postTitle, int userId, String content, String topic){
         Post post = new Post(postTitle,
                 userId,
                 posts.keySet().size() + 1,
@@ -29,7 +29,7 @@ public class PostUseCases {
                 0,
                 0,
                 new ArrayList<>(),
-                new ArrayList<>());
+                new ArrayList<>(),topic);
 
         posts.put(post.getId(), post);
     }
