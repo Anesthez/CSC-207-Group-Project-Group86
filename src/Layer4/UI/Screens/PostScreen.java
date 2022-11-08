@@ -16,21 +16,9 @@ public class PostScreen extends JFrame implements ActionListener {
         this.add(new PlaceLabel().create(50, 100, 50, 50, "Content"));
 
         JTextField titleText= new PlaceTextField().createTextField(50, 50, 700, 50);
-        titleText.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Title: " + titleText.getText());
-            }
-        });
         this.add(titleText);
 
         JTextField contentText = new PlaceTextField().createTextField(50, 150, 700, 500);
-        contentText.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Content: " + contentText.getText());
-            }
-        });
         this.add(contentText);
 
         JButton postButton = new PlaceButton().create("Post", null,
@@ -38,11 +26,13 @@ public class PostScreen extends JFrame implements ActionListener {
         postButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Post button clicked");
+                String[] postInfo = new String[2];
+                postInfo[0] = titleText.getText();
+                postInfo[1] = contentText.getText();
+
             }
         });
         this.add(postButton);
-
 
         this.setSize(800, 800);
         this.setLayout(null);
