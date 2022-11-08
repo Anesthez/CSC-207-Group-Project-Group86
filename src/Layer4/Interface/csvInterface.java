@@ -274,12 +274,11 @@ public class csvInterface {
             Map<Integer, Post> postList = new HashMap<>();
             for (Integer p : postsMapKeys)
             {
-                if (postsMap.get(p).getTopic() == name)
+                if (postsMap.get(p).getTopic().equals(name))
                 {
                     postList.put(postsMap.get(p).getId(), postsMap.get(p));
                 }
             }
-
             //System.out.println(posts);
             String users = String.valueOf(col[headers.get("users")]);
             String[] users_list = users.split(" ");
