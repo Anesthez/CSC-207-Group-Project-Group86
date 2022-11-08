@@ -1,10 +1,8 @@
 package Entity;
 
+import Layer1.Entity.Post;
 import org.junit.*;
 import static org.junit.Assert.*;
-import inputboundary.Postable;
-import inputboundary.Searchable;
-import inputboundary.Timeable;
 
 import java.util.ArrayList;
 

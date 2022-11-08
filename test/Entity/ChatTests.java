@@ -1,5 +1,6 @@
 package Entity;
 
+import Layer1.Entity.Chat;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -8,7 +9,7 @@ import static org.junit.Assert.*;
  */
 public class ChatTests {
     int[] intExpected = {1, 123, 456};
-    static Chat  actual;
+    static Chat actual;
     String[] strExpected = {"Hello!", "2022"};
 
     @BeforeClass

@@ -1,5 +1,5 @@
 
-import Commands.CLI;
+import Layer3.Commands.CLI;
 import org.junit.*;
 
 public class CLITests {

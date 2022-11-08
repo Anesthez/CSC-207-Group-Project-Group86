@@ -1,5 +1,6 @@
 package Entity;
 
+import Layer1.Entity.Comment;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -8,7 +9,7 @@ import static org.junit.Assert.*;
  */
 public class CommentTests {
     int[] intExpected = {5, 15, 0, 100};
-    static Comment  actual;
+    static Comment actual;
     String[] strExpected = {"Nice Picture!", "2022.05.15"};
 
     @BeforeClass
@@ -43,18 +44,6 @@ public class CommentTests {
                 strExpected[1], actual.getTime());
     }
 
-    @Test(timeout = 500)
-    public void TestGetViews() {
-        actual = new Comment(5, 15, "Nice Picture!", "2022.05.15");
-        assertEquals("There is error in Comment.getViews!", intExpected[2], actual.getViews());
-
-    }
-
-    @Test(timeout = 500)
-    public void TestSetViews() {
-        actual.setViews(100);
-        assertEquals("There is error in Comment.setViews!", intExpected[3], actual.getViews());
-    }
 }
 
 
