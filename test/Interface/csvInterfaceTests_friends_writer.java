@@ -1,5 +1,6 @@
 package Interface;
 
+import Layer4.Interface.csvInterface;
 import org.junit.*;
 
 import java.io.*;
@@ -12,12 +13,12 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 /**
- * This class is used to test
+ * This class is used to test friendsWriter method in csvInterface class
  *
  * @Author: Yijun(Kevin) Zhao
  */
 
-public class csvInterfaceTests_friends {
+public class csvInterfaceTests_friends_writer {
     csvInterface csv = new csvInterface();
     String friendsPath = "test/Interface/test_friends.csv";
 

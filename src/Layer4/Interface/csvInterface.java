@@ -1,12 +1,4 @@
-package Layer4.Interface;/*
- * This class is for reading scv files.
- *
- * Author: Yijun(Kevin) Zhao
- * Modified by: yufei Chen, Chen Jiang
- *
- */
-
-
+package Layer4.Interface;
 
 import Layer1.Entity.*;
 import Layer1.Entity.factories.ChatFactory;
@@ -17,9 +9,24 @@ import Layer1.Entity.factories.UserFactory;
 import java.io.*;
 import java.util.*;
 
+/**
+ * <p>The csvInterface class is a class that will be used to read and write csv files.</p>
+ * <p>The class will be used to read and write csv files for the user, post, comment, and chat objects.</p>
+ *
+ * @Author: Yijun(Kevin) Zhao
+ * @Modifiedby: Yufei Chen, Chen Jiang
+ */
+
 public class csvInterface {
 
     public Map<Integer, Post> postsReader(String postPath) throws IOException {
+        /**
+         * This method is for reading posts.csv file.
+         *
+         * @param postPath the path of the posts.csv file
+         * @return a map of posts
+         * @throws IOException
+         */
         File csvFile = new File(postPath);
         Map<String, Integer> headers = new HashMap<>();
         Map<Integer, Post> posts = new HashMap<>();
@@ -85,6 +92,13 @@ public class csvInterface {
     }
 
     public Map<Integer, ArrayList<Integer>> postsLikedReader(String post_likedPath) throws IOException{
+        /**
+         * This method is for reading posts_liked.csv file.
+         *
+         * @param post_likedPath the path of the posts_liked.csv file
+         * @return a map of liked posts
+         * @throws IOException
+         */
         Map<Integer, ArrayList<Integer>> postsLiked = new HashMap<>();
         File csvFile = new File(post_likedPath);
         Map<String, Integer> headers = new HashMap<>();
@@ -113,6 +127,13 @@ public class csvInterface {
     }
 
     public Map<Integer, User> usersReader(String userPath) throws IOException {
+        /**
+         * This method is for reading users.csv file.
+         *
+         * @param userPath the path of the users.csv file
+         * @return a map of users
+         * @throws IOException
+         */
         File csvFile = new File(userPath);
         Map<String, Integer> headers = new HashMap<>();
         Map<Integer, User> users = new HashMap<>();
@@ -142,6 +163,13 @@ public class csvInterface {
     }
 
     public Map<Integer, ArrayList<Integer>> friendsReader(String friendsPath) throws IOException {
+        /**
+         * This method is for reading friends.csv file.
+         *
+         * @param friendsPath the path of the friends.csv file
+         * @return a map of friends
+         * @throws IOException
+         */
         Map<Integer, ArrayList<Integer>> friends = new HashMap<>();
         File csvFile = new File(friendsPath);
         Map<String, Integer> headers = new HashMap<>();
@@ -170,6 +198,13 @@ public class csvInterface {
     }
 
     public Map<Integer, ArrayList<Integer>> blocksReader(String blocksPath) throws IOException {
+        /**
+         * This method is for reading blocks.csv file.
+         *
+         * @param blocksPath the path of the blocks.csv file
+         * @return a map of blocks
+         * @throws IOException
+         */
         Map<Integer, ArrayList<Integer>> blocks = new HashMap<>();
         File csvFile = new File(blocksPath);
         Map<String, Integer> headers = new HashMap<>();
@@ -198,6 +233,13 @@ public class csvInterface {
     }
 
     public Map<Integer, Chat> chatsReader(String chatPath) throws IOException {
+        /**
+         * This method is for reading chats.csv file.
+         *
+         * @param chatPath the path of the chats.csv file
+         * @return a map of chats
+         * @throws IOException
+         */
         Map<Integer, Chat> chats = new HashMap<>();
         File csvFile = new File(chatPath);
         Map<String, Integer> headers = new HashMap<>();
@@ -227,6 +269,13 @@ public class csvInterface {
     }
 
     public Map<Integer, Comment> commentsReader(String commentPath) throws IOException {
+        /**
+         * This method is for reading comments.csv file.
+         *
+         * @param commentPath the path of the comments.csv file
+         * @return a map of comments
+         * @throws IOException
+         */
         Map<Integer, Comment> comments = new HashMap<>();
         File csvFile = new File(commentPath);
         Map<String, Integer> headers = new HashMap<>();
@@ -255,6 +304,13 @@ public class csvInterface {
 
     // Author: Chen jiang
     public Map<Integer, Topic> topicsReader(String topicPath) throws IOException {
+        /**
+         * This method is for reading topics.csv file.
+         *
+         * @param topicPath the path of the topics.csv file
+         * @return a map of topics
+         * @throws IOException
+         */
         Map<Integer, Topic> topics = new HashMap<>();
         File csvFile = new File(topicPath);
         Map<String, Integer> headers = new HashMap<>();
@@ -294,6 +350,12 @@ public class csvInterface {
 
 
     public void postsWriter(String postsPath, Map<Integer, Post> posts) {
+        /**
+         * This method is for writing posts.csv file.
+         *
+         * @param postsPath the path of the posts.csv file
+         * @param posts a map of posts
+         */
         Map<String, Integer> headers = new HashMap<>();
 
         headers.put("id", 0);
@@ -305,6 +367,7 @@ public class csvInterface {
         headers.put("user-liked", 6);
         headers.put("list_comment_id", 7);
         headers.put("post_title", 8);
+        headers.put("topic", 9);
 
         BufferedWriter writer;
         try {
@@ -349,6 +412,12 @@ public class csvInterface {
     }
 
     public void postsLikedWriter(String posts_likedPath, Map<Integer, ArrayList<Integer>> posts_liked) {
+        /**
+         * This method is for writing posts_liked.csv file.
+         *
+         * @param posts_likedPath the path of the posts_liked.csv file
+         * @param posts_liked a map of posts_liked
+         */
         Map<String, Integer> headers = new HashMap<>();
         headers.put("userid", 0);
         headers.put("list-postId", 1);
@@ -381,6 +450,12 @@ public class csvInterface {
     }
 
     public void usersWriter(Map<Integer, User> users, String userPath) {
+        /**
+         * This method is for writing users.csv file.
+         *
+         * @param userPath the path of the users.csv file
+         * @param users a map of users
+         */
         Map<String, Integer> headers = new HashMap<>();
         headers.put("id", 0);
         headers.put("user-type", 1);
@@ -413,6 +488,12 @@ public class csvInterface {
     }
 
     public void friendsWriter(String friendsPath, Map<Integer, ArrayList<Integer>> friends) {
+        /**
+         * This method is for writing friends.csv file.
+         *
+         * @param friendsPath the path of the friends.csv file
+         * @param friends a map of friends
+         */
         Map<String, Integer> headers = new HashMap<>();
         headers.put("userid", 0);
         headers.put("list-friendIds", 1);
@@ -445,6 +526,12 @@ public class csvInterface {
     }
 
     public void blocksWriter(String blocksPath, Map<Integer, ArrayList<Integer>> blocks) {
+        /**
+         * This method is for writing blocks.csv file.
+         *
+         * @param blocksPath the path of the blocks.csv file
+         * @param blocks a map of blocks
+         */
         Map<String, Integer> headers = new HashMap<>();
         headers.put("userid", 0);
         headers.put("list-blockedIds", 1);
@@ -477,8 +564,13 @@ public class csvInterface {
     }
 
     //Author: Chen Jiang
-    public void topicWriter(Map<Integer, Topic> topics, String topicPath)
-    {
+    public void topicWriter(Map<Integer, Topic> topics, String topicPath) {
+        /**
+         * This method is for writing topics.csv file.
+         *
+         * @param topicPath the path of the topics.csv file
+         * @param topics a map of topics
+         */
         Map<String, Integer> headers = new HashMap<>();
         headers.put("id", 0);
         headers.put("name",1);
@@ -530,6 +622,12 @@ public class csvInterface {
     }
 
     public void chatsWriter(Map<Integer, Chat> chats, String chatPath) {
+        /**
+         * This method is for writing chats.csv file.
+         *
+         * @param chatPath the path of the chats.csv file
+         * @param chats a map of chats
+         */
         Map<String, Integer> headers = new HashMap<>();
         headers.put("id", 0);
         headers.put("user_id1", 1);
@@ -562,6 +660,12 @@ public class csvInterface {
     }
 
     public void commentsWriter(Map<Integer, Comment> comments, String commentPath) {
+        /**
+         * This method is for writing comments.csv file.
+         *
+         * @param commentPath the path of the comments.csv file
+         * @param comments a map of comments
+         */
         Map<String, Integer> headers = new HashMap<>();
         headers.put("id", 0);
         headers.put("user_id", 1);
