@@ -94,6 +94,9 @@ public class CLI {
                 case "/help":
                     new HelpCommand(userInputs, userid).exact();
                     break;
+                case "/topic":
+                    new TopicCommand(userInputs, userid).exact();
+                    break;
                 case "":
                     System.out.print("");
                     break;
