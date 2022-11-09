@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <p>The ChatUseCases contains a command in the form of a array of string and the id of the user that send
+ * <p>The ChatCommand contains a command in the form of a array of string and the id of the user that send
  * this command. To initialize it, we need the id of the user, and the command array.</p>
  *
  * <p>In the exact method, there are four command, add command send a {@link Chat Chat} to the receiver, delete command remove
