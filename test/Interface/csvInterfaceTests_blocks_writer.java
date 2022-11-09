@@ -1,5 +1,6 @@
 package Interface;
 
+import Layer4.Interface.csvInterface;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -13,12 +14,12 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 /**
- * This class is used to test
+ * This class is used to test blocksWriter method in csvInterface class
  *
  * @Author: Yijun(Kevin) Zhao
  */
 
-public class csvInterfaceTests_blocks {
+public class csvInterfaceTests_blocks_writer {
     csvInterface csv = new csvInterface();
     String blocksPath = "test/Interface/test_blocks.csv";
 

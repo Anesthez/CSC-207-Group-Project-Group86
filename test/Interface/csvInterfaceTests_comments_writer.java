@@ -1,6 +1,8 @@
 package Interface;
 
-import Layer1.Entity.Comment;
+
+import Layer4.Interface.csvInterface;
+
 import org.junit.Test;
 import Layer4.Interface.csvInterface;
 
@@ -8,14 +10,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * This class is used to test
+ * This class is used to test commentsWriter method in csvInterface class
  *
  * @Author: Yijun(Kevin) Zhao
  */

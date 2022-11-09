@@ -1,6 +1,7 @@
 package Interface;
 
-import Entity.Chat;
+import Layer1.Entity.Chat;
+import Layer4.Interface.csvInterface;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -13,7 +14,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 /**
- * This class is used to test
+ * This class is used to test chatsWriter method in csvInterface class
  *
  * @Author: Yijun(Kevin) Zhao
  */
