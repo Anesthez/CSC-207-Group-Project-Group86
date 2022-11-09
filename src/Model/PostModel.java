@@ -12,12 +12,15 @@ public class PostModel implements Model{
     private int views;
     private int numLikes;
 
+    private String Topic;
+
     //private String TopicName;
     private final ArrayList<Integer> userLiked;
 
 
     public PostModel(String postTitle, int userId, int id, String content, String timestamp,
-                     int views, int numLikes, ArrayList<Integer> userLiked, ArrayList<Integer> list_comment_id) {
+                     int views, int numLikes, ArrayList<Integer> userLiked, ArrayList<Integer> list_comment_id,
+                     String Topic) {
         this.postTitle = postTitle;
         this.userId = userId;
         this.id = id;
@@ -27,6 +30,7 @@ public class PostModel implements Model{
         this.numLikes = numLikes;
         this.userLiked = userLiked;
         this.list_comment_id = list_comment_id;
+        this.Topic = Topic;
     }
     @Override
     public ArrayList<Object> get() {
@@ -40,6 +44,7 @@ public class PostModel implements Model{
         contents.add(numLikes);
         contents.add(userLiked);
         contents.add(list_comment_id);
+        contents.add(Topic);
         return contents;
     }
 }

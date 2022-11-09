@@ -11,16 +11,23 @@ public class TopicModel implements Model {
     private String name;
     private String ID;
 
-    private Map<Integer, User> users;
+    private Map<Integer, UserModel> users;
 
-    private Map<Integer, Post> posts;
+    private Map<Integer, PostModel> posts;
 
 
-    public TopicModel (String name, String ID, Map<Integer, User> users, Map<Integer, Post> posts)
+    public TopicModel (String name, String ID, Map<Integer, UserModel> users, Map<Integer, PostModel> posts)
     {
         this.name = name;
         this.ID = ID;
         this.users = users;
+        this.posts = posts;
+    }
+
+    public TopicModel(String name, String ID, Map<Integer, PostModel> posts)
+    {
+        this.name = name;
+        this.ID = ID;
         this.posts = posts;
     }
 

@@ -38,10 +38,29 @@ public class Post extends Context{
 
     private final Integer popularity = views + numLikes * 10;
 
+    /**<p>This method returns the popularity for the post object</p>
+     *
+     * @param
+     * @return Integer
+     */
     public Integer getPopularity() {
         return popularity;
     }
 
+    /**<p>This is the constructor for the class Post, it calls the constructor of its super class
+     * {@link Context Context}</p>
+     *
+     * @param postTitle
+     * @param userId
+     * @param id
+     * @param content
+     * @param timestamp
+     * @param views
+     * @param numLikes
+     * @param userLiked
+     * @param list_comment_id
+     * @param topic
+     */
     public Post(String postTitle, int userId, int id, String content, String timestamp,
                 int views, int numLikes, ArrayList<Integer> userLiked, ArrayList<Integer> list_comment_id, String topic) {
         super(id, content, timestamp);
@@ -54,36 +73,77 @@ public class Post extends Context{
         this.topic = topic;
     }
 
+    /**<p>This method will return the topic for the post object</p>
+     *
+     * @return String
+     */
 
     public String getTopic() {
         return topic;
     }
 
+    /**<p>This method will change the topic of the object post to the input parameter</p>
+     *
+     * @param topic
+     */
     public void setTopic(String topic) {
         this.topic = topic;
     }
 
+    /**<p>This method will return the title for the post</p>
+     *
+     * @return String
+     */
     public String getPostTitle(){
         return this.postTitle;
     }
+
+    /**<p>This method will set the posttitle for the object to the input parameter</p>
+     *
+     * @param postTitle
+     */
 
     public void setPostTitle(String postTitle){
         this.postTitle = postTitle;
     }
 
+    /**<p>This method will return the Userid who sent the post for the post object</p>
+     *
+     * @return int
+     */
+
     public int getUserId() {
         return userId;
     }
+
+    /**<p>This method will return the number of user that likes the post</p>
+     *
+     * @return int
+     */
 
     public int getNumLikes(){
         return numLikes;
     }
 
+    /**<p>This method will return the list of comment id that is under the post object</p>
+     *
+     * @return ArrayList<Integer>
+     */
+
     public ArrayList<Integer> getListComment(){return list_comment_id;}
 
+    /** <p>This method will add a comment id to the list of comment id that the class contains</p>
+     *
+     * @param commentId
+     */
     public void addListComment(int commentId){
         list_comment_id.add(commentId);
     }
+
+    /**<p>this method will remove the comment id from the list, which represents the deletion of the comment</p>
+     *
+     * @param commentId
+     */
 
     public void removeListComment(int commentId){list_comment_id.remove(commentId);}
 
