@@ -18,18 +18,29 @@ import java.util.Map;
  * a message sent to the receiver, showid command shows the id of a sent message, show command show all message between
  * two user.</p>
  *
- * @Author: DominicGU
+ * @Author: Jiahao Gu
  * @Modifiedby: Yufei Chen
  */
 
 public class ChatCommand {
     String[] inputLines;
     int userid;
+    /**
+     * <p>Constructor for the ChatCommand. It takes in the id of the user and the command array.</p>
+     *
+     * @param userid the id of the user
+     * @param inputLines the command array
+     */
     public ChatCommand(String[] inputLines, int userid){
         this.inputLines = inputLines;
         this.userid = userid;
     }
 
+    /**
+     * <p>Execute the command.</p>
+     *
+     * @return the result of the command
+     */
     public void exact() throws IOException {
         csvInterface csvInteract = new csvInterface();
         Map<Integer, User> users = csvInteract.usersReader("database/user.csv");

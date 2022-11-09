@@ -18,6 +18,16 @@ public class ChatModel implements Model {
 
     public String content;
     public String timestamp;
+    /**
+     * <p>Constructor for the ChatModel. It takes in the id of the chat, the id of the user that sent it,
+     * the id of the user that received it, the content of the chat and the time that the chat is sent.</p>
+     *
+     * @param id the id of the chat
+     * @param user1_id the id of the user that sent the chat
+     * @param user2_id the id of the user that received the chat
+     * @param content the content of the chat
+     * @param timestamp the time that the chat is sent
+     */
     public ChatModel(int id, int user1_id, int user2_id, String content, String timestamp) {
         this.id = id;
         this.content = content;
@@ -25,7 +35,11 @@ public class ChatModel implements Model {
         this.user1_id = user1_id;
         this.user2_id = user2_id;
     }
-
+    /**
+     * <p>Getter for the id of the user that received the chat.</p>
+     *
+     * @return the id of the user that received the chat
+     */
     public ArrayList<Object> get(){
         ArrayList<Object> contents = new ArrayList<>();
         contents.add(id);

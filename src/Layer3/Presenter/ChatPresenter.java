@@ -12,10 +12,15 @@ import java.util.Map;
 /**
  * <p>The ChatPresenter has one method presentMessages that show the latest 10 {@link Chat Chat} between two user
  * with id inputted.</p>
- * @Author: DominicGU
+ * @Author: Jiahao Gu
  */
 
 public class ChatPresenter {
+    /**
+     * <p>Constructor for the ChatPresenter. It takes in the {@link csvInterface csvInterface}.</p>
+     *
+     * @param csvInterface the csvInterface
+     */
     public Object[] presentMessages(int userid, int receiverId) throws IOException {
         csvInterface csvInteract = new csvInterface();
         Map<Integer, Chat> chats = csvInteract.chatsReader("database/chat.csv");

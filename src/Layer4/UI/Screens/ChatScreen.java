@@ -15,6 +15,12 @@ import java.io.IOException;
  */
 
 public class ChatScreen extends JFrame implements ActionListener {
+    /**
+     * <p>Constructor for the ChatScreen. It takes in the {@link ChatController ChatController} and the {@link ChatPresenter ChatPresenter}.</p>
+     *
+     * @param chatController the ChatController
+     * @param chatPresenter the ChatPresenter
+     */
 
     public ChatScreen(int userid, int receiverId) throws IOException {
         ChatPresenter cp = new ChatPresenter();
