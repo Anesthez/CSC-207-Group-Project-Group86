@@ -38,8 +38,6 @@ public class ChatCommand {
 
     /**
      * <p>Execute the command.</p>
-     *
-     * @return the result of the command
      */
     public void exact() throws IOException {
         csvInterface csvInteract = new csvInterface();
