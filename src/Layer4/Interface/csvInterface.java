@@ -243,7 +243,7 @@ public class csvInterface {
             String time = String.valueOf(col[headers.get("time")]);
 
             CommentFactory commentFactory = new CommentFactory();
-            Comment comment = commentFactory.create(user_id, id, time, content);
+            Comment comment = commentFactory.create(user_id, id, content, time);
             comments.put(id, comment);
         }
         reader.close();
