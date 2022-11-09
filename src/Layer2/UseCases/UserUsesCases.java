@@ -7,38 +7,70 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Author:Kevin Wu
- * Modified by: Yufei Chen
+ * <p>The UserUseCases contains a hash map mapping the id of the user with the corresponding {@link User User} object.
+ * to initialize it, we need the hash map.</p>
+ *
+ * @Author: Kevin Wu
+ * @Modifiedby: Yufei Chen
  */
 public class UserUsesCases {
+
     private final Map<Integer, User> users;
 
+    /**
+     * <p>Constructor for the UserUseCases object</p>
+     *
+     * @param users the hash map mapping the id of the user with the corresponding {@link User User} object
+     */
     public UserUsesCases(Map<Integer, User> users){
         this.users = users;
     }
+
+    /**
+     * <p>Add a new {@link User User} object</p>
+     *
+     * @return user id, -1 if the user already exists
+     */
     public int addUser(String userName, String userPassword) {
         User user = new User(users.size() + 1,"normal", userPassword, userName, LocalDate.now().toString());
         users.put(user.getId(), user);
         return user.getId();
     }
 
+    /**
+     * <p>Delete a user from the hashmap</p>
+     *
+     * @param id the id of the user
+     */
     public void deleteUser(int userId) {
         users.remove(userId);
     }
 
+    /**
+     * <p>Change the password for the user</p>
+     *
+     * @param userId the id of the user
+     * @param password the password of the user
+     */
     public void changePassword(int userId, String password) {
         users.get(userId).setUserPassword(password);
     }
 
+    /**
+     * <p>Change the username for the user</p>
+     *
+     * @param userId the id of the user
+     * @param name the username of the user
+     */
     public void changeUsername(int userId, String name) {
         users.get(userId).setUserName(name);
     }
 
     /**
-     * TODO
-     * get userId with userName
-     * see whether the password is match or not
-     * return result
+     * <p>Verify whether if the user's password is correct</p>
+     *
+     * @param userName the username of the user
+     * @param userPassword the password of the user
      */
     public int verifyUser(String userName, String userPassword) {
         boolean verified = false;

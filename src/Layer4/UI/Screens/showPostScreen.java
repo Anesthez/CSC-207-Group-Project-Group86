@@ -8,6 +8,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * <p>This class is the UI for showing post.
+ * It takes a postId and present the {@link Post Post} object's attributes.</p>
+ *
+ * @author Kevin Wu
+ */
 public class showPostScreen extends JFrame implements ActionListener {
     public showPostScreen(Post post) {
         //TODO: change coordinates and size

@@ -8,6 +8,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * <p>This class is the UI for uploading post.
+ * It takes user's input and pass it into PostController</p>
+ *
+ * @author Kevin Wu
+ */
 public class uploadPostScreen extends JFrame implements ActionListener {
     public uploadPostScreen() {
         this.add(new PlaceLabel().create(50, 0, 50, 50, "Title"));
