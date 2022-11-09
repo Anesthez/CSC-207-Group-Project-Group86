@@ -21,11 +21,10 @@ public class CommentCommand {
 
     public void exact() throws IOException {
         csvInterface csvInteract = new csvInterface();
-        Map<Integer, Post> posts = csvInteract.postsReader("database/post.csv");
         Map<Integer, Comment> comments = csvInteract.commentsReader("database/comments.csv");
         if (inputLines[1].equals("add")) {
-            int postid = Integer.parseInt(inputLines[2]);
-            if (posts.containsKey(postid)) {
+            int commentid = Integer.parseInt(inputLines[2]);
+            if (comments.containsKey(commentid)) {
                 CommentUseCases commentUseCases = new CommentUseCases(comments);
                 commentUseCases.addComment(userid, inputLines[3]); //TODO: no postid in args?
                 csvInteract.commentsWriter(comments, "database/comments.csv");

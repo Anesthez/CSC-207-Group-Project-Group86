@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Controller {
+public class LogInController {
     ArrayList<Object> userInput;
-    public Controller(ArrayList<Object> userInput){
+    public LogInController(ArrayList<Object> userInput){
         this.userInput = userInput;
     }
 
