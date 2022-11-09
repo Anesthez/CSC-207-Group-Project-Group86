@@ -2,24 +2,42 @@ package Layer2.UseCases;
 
 import Layer1.Entity.Post;
 import Layer1.Entity.Topic;
+import Layer1.Entity.inputboundary.Context;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Author: eric-qli
- * modified by: Yufei Chen, Tianyu Li, Chen Jiang
+/**<p>This is the post use cases class such that each method will manage one use case of our project, The class will
+ * require the maps of the posts and the posts_liked files to initialize and manages the list of posts that it contains
+ * {@link Post Post}</p>
+ *
+ * @Author: eric-qli
+ * @Modified by: Yufei Chen, Tianyu Li, Chen Jiang
  */
 public class PostUseCases {
     private final Map<Integer, Post> posts;
     private final Map<Integer, ArrayList<Integer>> posts_liked;
 
+    /**<p>This is the constructor for the PostUseCases class, it needs the posts and the posts_liked list </p>
+     *
+     * @param posts
+     * @param posts_liked
+     */
     public PostUseCases(Map<Integer, Post> posts, Map<Integer, ArrayList<Integer>> posts_liked){
         this.posts = posts;
         this.posts_liked = posts_liked;
     }
+
+    /**<p>This method is the add post use case, the method receives userId, content, topic of the post and then
+     * construct a post object for it.</p>
+     *
+     * @param postTitle
+     * @param userId
+     * @param content
+     * @param topic
+     */
     public void addPost(String postTitle, int userId, String content, String topic){
         Post post = new Post(postTitle,
                 userId,
@@ -34,6 +52,12 @@ public class PostUseCases {
         posts.put(post.getId(), post);
     }
 
+    /** <p>This represents the get post use case, the method receives the id the user want to check and returns the
+     * corresponding post</p>
+     *
+     * @param postId
+     * @return Post
+     */
     public Post getPostFromId(int postId){
         /**
          * pull from the csv file
@@ -41,13 +65,22 @@ public class PostUseCases {
         return posts.get(postId);
     }
 
+    /**<p>This is the add comment use case, the method will ad the id of the comment to the list comments with in the
+     * post object</p>
+     *
+     * @param postId
+     * @param comment_id
+     */
     public void addComment_id(int postId, int comment_id){
-        /**
-         * idk from where but this is easy and will come back to it
-         */
+
         posts.get(postId).addListComment(comment_id);
     }
 
+    /**<p>The method will delete the comment id from the post object that is represented by the postId</p>
+     *
+     * @param postId
+     * @param comment_id
+     */
     public void deleteComment(int postId, int comment_id){
         /**
          * same as addComment
@@ -58,6 +91,12 @@ public class PostUseCases {
     public Post searchPost(){
         return null;
     }
+
+    /**<p>This is the like post method, which will leaves a like </p>
+     *
+     * @param userid
+     * @param post_id
+     */
 
     public void like_posts(int userid, int post_id){
         posts.get(post_id).addUserLike(userid);
