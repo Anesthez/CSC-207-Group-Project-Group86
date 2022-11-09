@@ -1,6 +1,7 @@
 package Layer2.UseCases;
 
 import Layer1.Entity.Chat;
+import Layer1.Entity.inputboundary.Context;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -8,8 +9,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 /**
- * Author: Dominic Gu
- * Modified by: yufei Chen
+ * <p>The ChatUseCases contains a hash map mapping the id of the chat with the corresponding {@link Chat Chat} object.
+ * to initialize it, we need the hash map.</p>
+ *
+ * <p>There are four use cases. addChat create a new chat object and add it and the id into the hash map.
+ * deleteChat remove a chat object from the hash map.
+ * getChatById returns a chat that has the inputted id.
+ * getIdByUserAndTime returns the id of the chat with inputted sender's id, receiver's id and time sent</p>
+ *
+ * @Author: DominicGU
+ * @Modifiedby: Yufei Chen
  */
 
 public class ChatUseCases {

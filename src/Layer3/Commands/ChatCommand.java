@@ -10,9 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/*
-Author: Jiahao Gu
+/**
+ * <p>The ChatUseCases contains a command in the form of a array of string and the id of the user that send
+ * this command. To initialize it, we need the id of the user, and the command array.</p>
+ *
+ * <p>In the exact method, there are four command, add command send a {@link Chat Chat} to the receiver, delete command remove
+ * a message sent to the receiver, showid command shows the id of a sent message, show command show all message between
+ * two user.</p>
+ *
+ * @Author: DominicGU
+ * @Modifiedby: Yufei Chen
  */
+
 public class ChatCommand {
     String[] inputLines;
     int userid;

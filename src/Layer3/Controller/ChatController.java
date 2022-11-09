@@ -8,6 +8,11 @@ import Layer4.Interface.csvInterface;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * <p>The ChatController has one method addChat that add the inputted {@link Chat Chat} to the csv file.</p>
+ * @Author: DominicGu
+ */
+
 public class ChatController {
     public void addChat(int userid, int receiver_id, String text) throws IOException {
         csvInterface csvInteract = new csvInterface();

@@ -5,9 +5,20 @@ import Layer1.Entity.inputboundary.Context;
 import java.time.LocalDateTime;
 
 /**
- * Author: DominicGU
- * Modified by: Yufei Chen, LemengDai
+ * <p>The chat object is a chat message that is sent by one user, and received by another user. The object is a
+ * subclass for context which will extends the properties for the {@link Context Context}</p>
+ *
+ * <p>The chat object contains id of the chat, the id of the user that sent it and received it,
+ * the content of the chat and the time that the chat is sent. To initialize it, we need all the elements.</p>
+ *
+ * <p>The chat object contains mothods to get receiver's id and sender's id, a print method to output the chat,
+ * a toString method to convert the chat into a String containing all the information, which is more friendly to
+ * the reader, and a compareTo method to allow comparison between chats based on the time the chat is sent.</p>
+ *
+ * @Author: DominicGU
+ * @Modifiedby: Yufei Chen, LemengDai
  */
+
 public class Chat extends Context implements Comparable<Chat>{
     private final int user1_id;
 
@@ -44,7 +55,7 @@ public class Chat extends Context implements Comparable<Chat>{
     }
 
     public void printChat(){
-        System.out.println(timestamp + " (" + user1_id + " sent to " + user2_id + "):" + content);
+        System.out.println(this.toString());
     }
 
     @Override

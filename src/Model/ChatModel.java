@@ -1,12 +1,16 @@
 package Model;
 
+import Layer1.Entity.Chat;
+
 import java.util.ArrayList;
 
+/**
+ * <p>The ChatModel is a model for {@link Chat Chat}. @</p>
+ * @Author: LemengDai
+ * Modified by: Yufei Chen
+ */
+
 public class ChatModel implements Model {
-    /**
-     * Author: LemengDai
-     * Modified by: Yufei Chen, LemengDai
-     */
     private final int id;
     private final int user1_id;
 
