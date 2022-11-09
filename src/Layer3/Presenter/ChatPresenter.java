@@ -9,8 +9,19 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * <p>The ChatPresenter has one method presentMessages that show the latest 10 {@link Chat Chat} between two user
+ * with id inputted.</p>
+ * @Author: Jiahao Gu
+ */
+
 public class ChatPresenter {
-    public Object[] present_messages(int userid, int receiverId) throws IOException {
+    /**
+     * <p>Constructor for the ChatPresenter. It takes in the {@link csvInterface csvInterface}.</p>
+     *
+     * @param csvInterface the csvInterface
+     */
+    public Object[] presentMessages(int userid, int receiverId) throws IOException {
         csvInterface csvInteract = new csvInterface();
         Map<Integer, Chat> chats = csvInteract.chatsReader("database/chat.csv");
 
