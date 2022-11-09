@@ -8,8 +8,9 @@ import Layer2.UseCases.CommentUseCases;
 import java.io.IOException;
 import java.util.Map;
 
-/*
-Author: WooooT
+/**
+ * <p>CommentCommand contains user input and user id</p>
+ * @Author: WooooT
  */
 public class CommentCommand {
     String[] inputLines;
@@ -19,6 +20,10 @@ public class CommentCommand {
         this.userid = userid;
     }
 
+    /**
+     * <p>parses user input and can be used to add or delete {@link Comment Comment}</p>
+     * @throws IOException
+     */
     public void exact() throws IOException {
         csvInterface csvInteract = new csvInterface();
         Map<Integer, Comment> comments = csvInteract.commentsReader("database/comments.csv");
