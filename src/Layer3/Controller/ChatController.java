@@ -15,14 +15,10 @@ import java.util.Map;
 
 public class ChatController {
     /**
-     * <p>Constructor for the ChatController. It takes in the {@link ChatUseCases ChatUseCases} and the {@link csvInterface csvInterface}.</p>
-     *
-     * @param chatUseCases the ChatUseCases
-     * @param csvInterface the csvInterface
+     * <p>Add the inputted chat to the csv file</p>
      */
     public void addChat(int userid, int receiver_id, String text) throws IOException {
         csvInterface csvInteract = new csvInterface();
-        Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
         Map<Integer, Chat> chats = csvInteract.chatsReader("database/chat.csv");
         ChatUseCases chatManager = new ChatUseCases(chats);
         chatManager.addChat(userid, receiver_id, text);

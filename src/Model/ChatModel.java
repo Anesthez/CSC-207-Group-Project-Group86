@@ -36,9 +36,9 @@ public class ChatModel implements Model {
         this.user2_id = user2_id;
     }
     /**
-     * <p>Getter for the id of the user that received the chat.</p>
+     * <p>Getter for the chat.</p>
      *
-     * @return the id of the user that received the chat
+     * @return the chat information in a ArrayList
      */
     public ArrayList<Object> get(){
         ArrayList<Object> contents = new ArrayList<>();

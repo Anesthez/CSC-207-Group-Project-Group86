@@ -41,25 +41,25 @@ public class Chat extends Context implements Comparable<Chat>{
     }
 
     /**
-     * <p>Getter for the id of the user that received the chat.</p>
+     * <p>Getter for the id of the user that sender the chat.</p>
      *
-     * @return the id of the user that received the chat
+     * @return the id of the user that send the chat
      */
     public int getSender_id() {
         return user1_id;
     }
 
     /**
-     * <p>Getter for the id of the user that sent the chat.</p>
+     * <p>Getter for the id of the user that receive the chat.</p>
      *
-     * @return the id of the user that sent the chat
+     * @return the id of the user that receive the chat
      */
     public int getReceiver_id() {
         return user2_id;
     }
 
     /**
-     * <p>Print the chat in a friendly format.</p>
+     * <p>Compare two chats based on the time sent</p>
      */
     @Override
     public int compareTo(Chat other) {
@@ -77,9 +77,7 @@ public class Chat extends Context implements Comparable<Chat>{
     }
 
     /**
-     * <p>Convert the chat into a String containing all the information.</p>
-     *
-     * @return the String containing all the information
+     * <p>Print the chat in a friendly format.</p>
      */
     public void printChat(){
         System.out.println(this.toString());

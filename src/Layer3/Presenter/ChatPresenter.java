@@ -17,9 +17,7 @@ import java.util.Map;
 
 public class ChatPresenter {
     /**
-     * <p>Constructor for the ChatPresenter. It takes in the {@link csvInterface csvInterface}.</p>
-     *
-     * @param csvInterface the csvInterface
+     * Show the latest 10 chat between two user with id inputted.
      */
     public Object[] presentMessages(int userid, int receiverId) throws IOException {
         csvInterface csvInteract = new csvInterface();
