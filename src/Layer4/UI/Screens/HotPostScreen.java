@@ -1,3 +1,4 @@
+
 package Layer4.UI.Screens;
 import javax.swing.*;
 
@@ -80,3 +81,4 @@ public class HotPostScreen extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
     }
 }
+
