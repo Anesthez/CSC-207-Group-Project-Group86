@@ -15,10 +15,9 @@ public class PostCommand {
     String[] inputLines;
     int userid;
     String topic;
-    public PostCommand(String[] inputLines, int useri, String topic){
+    public PostCommand(String[] inputLines, int useri){
         this.inputLines = inputLines;
         this.userid = userid;
-        this.topic = topic;
     }
 
     public void exact() throws IOException {
@@ -28,6 +27,7 @@ public class PostCommand {
                 csvInteract.postsLikedReader("database/post_liked.csv");
         PostUseCases postUseCases = new PostUseCases(posts, postLiked);
         if (inputLines.length == 3) {
+            //TODO: check this with DaiLemeng
             postUseCases.addPost(inputLines[1], userid, inputLines[2], topic);
             csvInteract.postsWriter("database/post.csv", posts);
         } else if (inputLines[1].equals("show")) {

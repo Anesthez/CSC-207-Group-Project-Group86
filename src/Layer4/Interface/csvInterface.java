@@ -2,7 +2,7 @@ package Layer4.Interface;/*
  * This class is for reading scv files.
  *
  * Author: Yijun(Kevin) Zhao
- * Modified by: yufei Chen
+ * Modified by: yufei Chen, Chen Jiang
  *
  */
 
@@ -32,6 +32,7 @@ public class csvInterface {
         headers.put("user-liked", 6);
         headers.put("list_comment_id", 7);
         headers.put("post_title", 8);
+        headers.put("topic", 9);
         BufferedReader reader = new BufferedReader(new FileReader(csvFile));
         reader.readLine(); // skip header
 
@@ -47,6 +48,7 @@ public class csvInterface {
             String list_comment_id = String.valueOf(col[headers.get("list_comment_id")]);
             String list_user_id = String.valueOf(col[headers.get("user-liked")]);
             String post_title = String.valueOf(col[headers.get("post_title")]);
+            String topic = String.valueOf(col[headers.get("topic")]);
             String[] userIds = list_user_id.split(" ");
             String[] commentIds = list_comment_id.split(" ");
             ArrayList<Integer> iList_comment_id = new ArrayList<>();
@@ -73,7 +75,8 @@ public class csvInterface {
                     num_liked,
                     num_viewed,
                     iList_user_id,
-                    iList_comment_id);
+                    iList_comment_id,
+                    topic);
             posts.put(id, post);
         }
 
