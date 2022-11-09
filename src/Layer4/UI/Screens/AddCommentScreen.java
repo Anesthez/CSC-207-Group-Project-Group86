@@ -10,8 +10,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
+/**
+ * <p>
+ *     AddCommentScreen is a screen where the user can add their {@link Layer1.Entity.Comment Comment}
+ *     AddCommentScreen extends {@link JFrame JFrame} and implements {@link ActionListener ActionListener}
+ * </p>
+ * @Author: LemengDai
+ */
 public class AddCommentScreen extends JFrame implements ActionListener {
 
+    /**
+     * <p>
+     *     initialize AddCommentScreen with user id.
+     * </p>
+     * @param userid
+     */
     public AddCommentScreen(int userid){
 
         JLabel commentContentLabel = new PlaceLabel().create(50,100, 200,30, "Comment Content");
@@ -20,6 +33,7 @@ public class AddCommentScreen extends JFrame implements ActionListener {
         JButton addComment = new PlaceButton().create("Add Comment",null,100, 700, 150, 50);
         JButton cancel = new PlaceButton().create("Cancel",null,300, 700, 150, 50);
 
+        //When the user clicks Add Comment button, a Comment object with user input as content and user id is created
         addComment.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -46,8 +60,7 @@ public class AddCommentScreen extends JFrame implements ActionListener {
     }
 
     /**
-     * Invoked when an action occurs.
-     *
+     *<p>When the user clicks Cancel, AddActionScreen is closed</p>
      * @param e the event to be processed
      */
     @Override

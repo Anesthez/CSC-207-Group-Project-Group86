@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 /*
-Author: lemeng Dai
+Author: Lemeng Dai
 Modified by: Chen Jiang
  */
 public class PostCommand {
