@@ -8,11 +8,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * <p>The ChatScreen is the UI of chat. It shows 10 latest messages between two users and it allow user to send a
+ * message to the othe user.@</p>
+ * @Author: Jiahao Gu
+ */
+
 public class ChatScreen extends JFrame implements ActionListener {
 
     public ChatScreen(int userid, int receiverId) throws IOException {
         ChatPresenter cp = new ChatPresenter();
-        Object[] chatlist = cp.present_messages(userid, receiverId);
+        Object[] chatlist = cp.presentMessages(userid, receiverId);
 
         JFrame chatScreen = new JFrame();
 
