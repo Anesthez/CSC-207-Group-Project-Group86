@@ -7,19 +7,35 @@ import Layer2.UseCases.PostUseCases;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
-/*
-Author: Lemeng Dai
-Modified by: Chen Jiang
+
+/**
+ * <p>This class contains the command for operations for a post using CLI</p>
+ *
+ * @Author: lemeng Dai
+ * @Modified by: Chen Jiang
+
  */
 public class PostCommand {
     String[] inputLines;
     int userid;
     String topic;
-    public PostCommand(String[] inputLines, int useri){
+
+    /**
+     * <p>Constructor for the PostCommand object</p>
+     *
+     * @param inputLines the input lines from the CLI
+     * @param userid the id of the user
+     */
+    public PostCommand(String[] inputLines, int userid){
         this.inputLines = inputLines;
         this.userid = userid;
     }
 
+    /**
+     * <p>Execute the command for operations for a post using CLI</p>
+     *
+     * @throws IOException if the file is not found
+     */
     public void exact() throws IOException {
         csvInterface csvInteract = new csvInterface();
         Map<Integer, Post> posts = csvInteract.postsReader("database/post.csv");

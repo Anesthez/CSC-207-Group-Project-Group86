@@ -2,6 +2,11 @@ package Model;
 
 import java.util.ArrayList;
 
+/**
+ * <p>The model for {@link User User}</p>
+ *
+ * @Author: Yufei Chen
+ */
 public class UserModel {
     private final int id;
 
@@ -10,6 +15,15 @@ public class UserModel {
     private final String userPassword;
     private final String timestamp;
 
+    /**
+     * <p>Constructor for the user model</p>
+     *
+     * @param id the id of the user
+     * @param userType the type of the user
+     * @param userName the username of the user
+     * @param userPassword the password of the user
+     * @param timestamp the time of user creation
+     */
     public UserModel(int id, String userType, String userName, String userPassword, String timestamp) {
         this.id = id;
         this.userName = userName;
@@ -18,6 +32,11 @@ public class UserModel {
         this.timestamp = timestamp;
     }
 
+    /**
+     * <p>Getter for all the User objects</p>
+     *
+     * @return an ArrayList of all the User objects
+     */
     public ArrayList<Object> get() {
         ArrayList<Object> contents = new ArrayList<>();
         contents.add(id);
