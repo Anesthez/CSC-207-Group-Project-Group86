@@ -28,6 +28,8 @@ public class TopicScreen extends JPanel implements ActionListener {
         frame.setSize(500, 500);
         frame.setLayout(null);
         frame.setVisible(true);
+
+
     }
 
 

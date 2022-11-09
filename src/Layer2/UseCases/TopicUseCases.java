@@ -7,9 +7,28 @@ import Layer1.Entity.Topic;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * <p>
+ *     The TopicUserCases class is a class that is used to control Topic and implement some functions with regards to
+ *     Topics.
+ * </p>
+ * <p>
+ *     The TopicUserCases contains several methods: addPostsToTopic, getTopPosts, getTopTopics, and a private method
+ *     get MaxTopics.
+ * </p>
+ * @implNote the getMapTopics method is not to be used by the user, thus set as private.
+ * @Author: Chen Jiang
+ * @Modifiedby: Chen Jiang
+ */
 public class TopicUseCases {
 
+    /**
+     * <p>
+     *     The addPostsToTopic method is a method that is used to add posts to a topic.
+     * </p>
+     * @param topic
+     * @param post
+     */
     public void addPostsToTopic(Topic topic, Post post)
     {
         /*
@@ -21,7 +40,13 @@ public class TopicUseCases {
 
     }
 
-
+    /**
+     * <p>
+     *     The getTopPosts method is a method that is used to get the top posts in a topic.
+     * </p>
+     * @param topic
+     * @return
+     */
     public ArrayList<Post> getTopPosts(Topic topic)
     {
         /*
@@ -126,6 +151,13 @@ public class TopicUseCases {
         return posts;
     }
 
+    /**
+     * <p>
+     *     The getTopTopics method is a method that is used to get the top topics.
+     * </p>
+     * @param topic
+     * @return
+     */
     public ArrayList<Topic> getTopTopics(ArrayList<Topic> topic)
     {
         ArrayList<Topic> toptopics = new ArrayList<>();
@@ -148,6 +180,13 @@ public class TopicUseCases {
         return toptopics;
     }
 
+    /**
+     * <p>
+     *     The getMaxTopic method is a method that is used to get the maximum topic.
+     * </p>
+     * @param topic
+     * @return
+     */
     private Integer getMaxTopic (ArrayList<Topic> topic)
     {
         Integer maxPop = 0;

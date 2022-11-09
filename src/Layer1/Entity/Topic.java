@@ -3,6 +3,24 @@ package Layer1.Entity;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * <p>
+ *     The Topic object is an object that contains a lot of post with the same topic. The topic is a classification of
+ *     posts.
+ * </p>
+ * <p>
+ *     To initialize a topic object, we have three different ways to initialize it. The first way is to input nothing
+ *     when creating a topic object. The second way is to input String name, String ID, Map Posts. The third way is to
+ *     input String name, String ID, Map Posts and Map Users.
+ * </p>
+ * <p>
+ *     The Topic object contains a String name, a String ID, an attendUser, a map users, a map posts, a map
+ *     postPopularity, an Integer totalPopularity.
+ * </p>
+ * @implNote the totalPopularity for this object is not meant to be change, thus set as final
+ * @Author: Chen Jiang
+ * @Modifiedby: Chen Jiang
+ */
 public class Topic {
 
     private String name;
