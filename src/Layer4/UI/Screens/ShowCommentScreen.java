@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.Map;
 
 public class ShowCommentScreen extends JFrame implements ActionListener{
-    public ShowCommentScreen(int userid) throws IOException {
+    public ShowCommentScreen(int userid) {
         JLabel title = new PlaceLabel().create(50,100, 200,30, "Comments Section");
 
         JButton addComment = new PlaceButton().create("Add Comment",null,100, 700, 150, 50);
@@ -42,7 +42,7 @@ public class ShowCommentScreen extends JFrame implements ActionListener{
 
         this.add(new PlaceLabel().create(400, 50, 100, 25, "UofTMeta"));
         this.add(title);
-        this.add(inner(), BorderLayout.CENTER);
+        this.add(inner());
         this.add(addComment);
         this.add(cancel);
 
@@ -59,20 +59,28 @@ public class ShowCommentScreen extends JFrame implements ActionListener{
         this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }
 
-    public JScrollPane inner() throws IOException {
+    public JScrollPane inner() {
         JPanel commentSection = new JPanel();
+        commentSection.setLayout(new BoxLayout(commentSection, BoxLayout.Y_AXIS));
 
         csvInterface csvInteract = new csvInterface();
-        Map<Integer, Comment> comments = csvInteract.commentsReader("database/comments.csv");
-        Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
-
-        for (Comment c:comments.values()) {
-            JLabel username = new JLabel(users.get(c.getUserId()).getUserName());
-            JLabel comment = new JLabel(c.getContent());
-            commentSection.add(username);
-            commentSection.add(comment);
+        try {
+            Map<Integer, Comment> comments = csvInteract.commentsReader("database/comments.csv");
+            Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
+            for (Comment c:comments.values()) {
+                JLabel username = new JLabel(users.get(c.getUserId()).getUserName());
+                System.out.println(username);
+                JLabel comment = new JLabel(c.getContent());
+                commentSection.add(username);
+                commentSection.add(comment);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
-        return new JScrollPane(commentSection);
+        JScrollPane scrollPane = new JScrollPane(commentSection);
+        scrollPane.setBounds(50, 150, 700, 400);
+
+        return scrollPane;
     }
 }
