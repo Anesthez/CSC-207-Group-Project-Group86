@@ -6,8 +6,11 @@ import java.time.LocalDate;
 import java.util.Map;
 
 /**
- * Author: Lemeng Dai
- * Modified by:Yufei Chen
+ * <p>
+ *     CommentUseCases has methods that could be used to interact with {@link Comment Comment} object.
+ * </p>
+ * @Author: LemengDai
+ * @Modifiedby: Yufei Chen
  */
 public class CommentUseCases {
     private Map<Integer, Comment> comments;
@@ -16,30 +19,34 @@ public class CommentUseCases {
         this.comments = comments;
     }
 
+    /**
+     * <p>add the comment with userId and content to comments hashmap. Comment id is automatically generated with the
+     * value comments size + 1
+     * </p>
+     * @param userId
+     * @param content
+     */
     public void addComment(int userId, String content) {
         Comment comment = new Comment(userId, comments.keySet().size() + 1, content,
                 LocalDate.now().toString());
         comments.put(comment.getId(), comment);
-        /**
-         * csv reader will read the csv and create comments hashmap
-         * add the comment to hashmap and csv
-         */
     }
 
+    /**
+     * <p>remove {@link Comment Comment} object with id from hashmap</p>
+     * @param id
+     */
     public void deleteComment(int id) {
         comments.remove(id);
-        /**
-         * csv reader will read the csv and create comments hashmap
-         * remove the comment from hashmap and csv
-         */
     }
 
+    /**
+     * <p>get {@link Comment Comment} object with id</p>
+     * <p>return null if there is no Comment object with id</p>
+     * @param id
+     * @return {@link Comment Comment} object with id
+     */
     public Comment getCommentFromId(int id) {
-        /**
-         * csv reader will read the csv and create comments hashmap
-         * use the hashmap to get comment from id
-         * return Entity.Comment object
-         */
         return comments.get(id);
     }
 }
