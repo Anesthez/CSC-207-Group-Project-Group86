@@ -76,7 +76,7 @@ public class CLI {
             String[] userInputs = userInput.split("-");
             switch (userInputs[0]) {
                 case "/post ":
-                    new PostCommand(userInputs, userid).exact();
+                    new PostCommand(userInputs, userid, "default").exact();
                     break;
                 case "/friends":
                 case "/friend":
