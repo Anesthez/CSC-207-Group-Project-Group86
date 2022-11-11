@@ -1,6 +1,7 @@
 package Layer1.Entity.factories;
 
 import Layer1.Entity.Post;
+import Model.Request.PostRequestModel;
 
 import java.util.ArrayList;
 
@@ -12,24 +13,21 @@ import java.util.ArrayList;
 public class PostFactory {
     /**The method that will create a post object from the post model.
      *
-     * @param postTitle
-     * @param userId
-     * @param id
-     * @param content
-     * @param timestamp
-     * @param views
-     * @param numLikes
-     * @param list_user_id
-     * @param list_comment_id
-     * @param topic
+     * @param postModel
      * @return post object with postTitle, userId, id, content, timestamp, views, numLikes, list_user_id, list_comment_id, topic
      */
-    public Post create(String postTitle, int userId, int id, String content, String timestamp,
-                       int views, int numLikes,ArrayList<Integer>list_user_id,
-                       ArrayList<Integer> list_comment_id, String topic){
-
-        return new Post(postTitle, userId, id, content, timestamp, views, numLikes, list_user_id, list_comment_id,
-                topic);
+    public Post create(PostRequestModel postModel){
+        ArrayList<Object> postContents = postModel.get();
+        return new Post((String)postContents.get(0),
+                (int)postContents.get(1),
+                (int)postContents.get(2),
+                (String)postContents.get(3),
+                (String)postContents.get(4),
+                (int)postContents.get(5),
+                (int)postContents.get(6),
+                (ArrayList<Integer>)postContents.get(7),
+                (ArrayList<Integer>)postContents.get(8),
+                (String)postContents.get(9));
 
     }
 }

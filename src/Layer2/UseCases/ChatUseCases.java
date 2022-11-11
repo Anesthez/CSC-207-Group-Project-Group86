@@ -1,11 +1,13 @@
 package Layer2.UseCases;
 
 import Layer1.Entity.Chat;
-import Layer1.Entity.inputboundary.Context;
+import Layer1.Entity.factories.ChatFactory;
+import Model.Request.ChatRequestModel;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -23,22 +25,27 @@ import java.util.Map;
 
 public class ChatUseCases {
 
-    private final Map<Integer, Chat> chats;
+    private final Map<Integer, Chat> chats = new HashMap<>();
 
     /**
      * <p>Constructor for the ChatUseCases. It takes in the hash map.</p>
      *
      * @param chats the hash map
      */
-    public ChatUseCases(Map<Integer, Chat> chats) throws IOException {
-        this.chats = chats;
+    public ChatUseCases(Map<Integer, ChatRequestModel> chats) throws IOException {
+        ChatFactory chatFactory = new ChatFactory();
+        for (ChatRequestModel chatRequestModel : chats.values()) {
+             Chat chat = chatFactory.create(chatRequestModel);
+             this.chats.put(chat.getId(), chat);
+
+        }
     }
 
     /**
      * <p>add a new chat object and add it and the id into the hash map.</p>
      *
-     * @param user1_id the id of the user that sent the chat
-     * @param user2_id the id of the user that received the chat
+     * @param user_id1 the id of the user that sent the chat
+     * @param user_id2 the id of the user that received the chat
      * @param content the content of the chat
      */
     public void addChat(int user_id1, int user_id2, String content)
@@ -52,7 +59,7 @@ public class ChatUseCases {
     /**
      * <p>remove a chat object from the hash map.</p>
      *
-     * @param chat_id the id of the chat
+     * @param id the id of the chat
      */
     public void deleteChat(int id)
     {
@@ -62,7 +69,7 @@ public class ChatUseCases {
     /**
      * <p>returns a chat that has the inputted id.</p>
      *
-     * @param chat_id the id of the chat
+     * @param id the id of the chat
      * @return the chat with the inputted id
      */
     public Chat getChatById(int id)
@@ -73,8 +80,8 @@ public class ChatUseCases {
     /**
      * <p>returns the id of the chat with inputted sender's id, receiver's id and time sent</p>
      *
-     * @param user1_id the id of the user that sent the chat
-     * @param user2_id the id of the user that received the chat
+     * @param sender the id of the user that sent the chat
+     * @param receiver the id of the user that received the chat
      * @param timestamp the time that the chat is sent
      * @return the id of the chat
      */

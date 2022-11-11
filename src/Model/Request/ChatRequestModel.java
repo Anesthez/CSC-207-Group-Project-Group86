@@ -1,4 +1,6 @@
-package Model;
+package Model.Request;
+
+import Model.Model;
 
 import Layer1.Entity.Chat;
 
@@ -10,7 +12,7 @@ import java.util.ArrayList;
  * Modified by: Yufei Chen
  */
 
-public class ChatModel implements Model {
+public class ChatRequestModel implements Model {
     private final int id;
     private final int user1_id;
 
@@ -28,7 +30,7 @@ public class ChatModel implements Model {
      * @param content the content of the chat
      * @param timestamp the time that the chat is sent
      */
-    public ChatModel(int id, int user1_id, int user2_id, String content, String timestamp) {
+    public ChatRequestModel(int id, int user1_id, int user2_id, String content, String timestamp) {
         this.id = id;
         this.content = content;
         this.timestamp = timestamp;

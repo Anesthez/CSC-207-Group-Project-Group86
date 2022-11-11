@@ -1,4 +1,10 @@
 package Layer1.Entity;
+import Layer1.Entity.inputboundary.Modelizable;
+import Model.Response.PostResponseModel;
+import Model.Response.TopicResponseModel;
+import Model.Response.UserResponseModel;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 /**
@@ -20,7 +26,7 @@ import java.util.Map;
  * @Modifiedby: Chen Jiang
  */
 
-public class Topic {
+public class Topic implements Modelizable {
 
     private String name;
     private String ID;
@@ -58,17 +64,7 @@ public class Topic {
 
     }
 
-    /**
-     * <p>
-     *     This method is used to create a Topic object.
-     * </p>
-     * <p>
-     *     This method takes in String name, String ID, Map posts and push those parameters onto the Topic Object.
-     * </p>
-     * @param name the name of the topic
-     * @param ID the ID of the topic
-     * @param posts the posts of the topic
-     */
+
     public Topic(HashMap<Post, Integer> topicPopularity) {
         this.postPopularity = topicPopularity;
     }
@@ -250,10 +246,29 @@ public class Topic {
      * <p>
      *     This method is used to add the postPopularity of the topic.
      * </p>
-     * @return the postPopularity of the topic
+     *
      */
     public void addPostPopularity(Post post)
     {
         postPopularity.put(post, post.getPopularity());
+    }
+
+    /**
+     * return the response model for the topic object
+     *
+     */
+    @Override
+    public TopicResponseModel responseModel() {
+        HashMap<Integer, UserResponseModel> userModels = new HashMap<>();
+        HashMap<Integer, PostResponseModel> postModels = new HashMap<>();
+        for (User user : users.values()) {
+            userModels.put(user.getId(), user.responseModel());
+        }
+        for (Post post : posts.values()) {
+            postModels.put(post.getId(), post.responseModel());
+
+        }
+        return new TopicResponseModel(name, ID, userModels, postModels);
+
     }
 }

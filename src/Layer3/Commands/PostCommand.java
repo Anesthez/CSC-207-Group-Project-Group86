@@ -1,44 +1,29 @@
 package Layer3.Commands;
 
-import Layer1.Entity.Post;
+
 import Layer4.Interface.csvInterface;
 import Layer2.UseCases.PostUseCases;
+import Model.Request.PostRequestModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
-
-/**
- * <p>This class contains the command for operations for a post using CLI</p>
- *
- * @Author: lemeng Dai
- * @Modified by: Chen Jiang
-
+/*
+Author: lemeng Dai
+Modified by: Chen Jiang
  */
 public class PostCommand {
     String[] inputLines;
     int userid;
     String topic;
-
-    /**
-     * <p>Constructor for the PostCommand object</p>
-     *
-     * @param inputLines the input lines from the CLI
-     * @param userid the id of the user
-     */
-    public PostCommand(String[] inputLines, int userid){
+    public PostCommand(String[] inputLines, int useri){
         this.inputLines = inputLines;
         this.userid = userid;
     }
 
-    /**
-     * <p>Execute the command for operations for a post using CLI</p>
-     *
-     * @throws IOException if the file is not found
-     */
     public void exact() throws IOException {
         csvInterface csvInteract = new csvInterface();
-        Map<Integer, Post> posts = csvInteract.postsReader("database/post.csv");
+        Map<Integer, PostRequestModel> posts = csvInteract.postsReader("database/post.csv");
         Map<Integer, ArrayList<Integer>> postLiked =
                 csvInteract.postsLikedReader("database/post_liked.csv");
         PostUseCases postUseCases = new PostUseCases(posts, postLiked);

@@ -1,22 +1,22 @@
-package Model;
+package Model.Request;
 
-import Layer1.Entity.Post;
-import Layer1.Entity.User;
+import Model.Model;
+import Model.Request.UserRequestModel;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
-public class TopicModel implements Model {
+public class TopicRequestModel implements Model {
     private String name;
     private String ID;
 
-    private Map<Integer, UserModel> users;
+    private Map<Integer, UserRequestModel> users;
 
-    private Map<Integer, PostModel> posts;
+    private Map<Integer, PostRequestModel> posts;
 
 
-    public TopicModel (String name, String ID, Map<Integer, UserModel> users, Map<Integer, PostModel> posts)
+    public TopicRequestModel(String name, String ID, Map<Integer, UserRequestModel> users,
+                             Map<Integer, PostRequestModel> posts)
     {
         this.name = name;
         this.ID = ID;
@@ -24,7 +24,7 @@ public class TopicModel implements Model {
         this.posts = posts;
     }
 
-    public TopicModel(String name, String ID, Map<Integer, PostModel> posts)
+    public TopicRequestModel(String name, String ID, Map<Integer, PostRequestModel> posts)
     {
         this.name = name;
         this.ID = ID;

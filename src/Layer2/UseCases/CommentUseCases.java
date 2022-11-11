@@ -1,8 +1,11 @@
 package Layer2.UseCases;
 
 import Layer1.Entity.Comment;
+import Layer1.Entity.factories.CommentFactory;
+import Model.Request.CommentRequestModel;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -13,18 +16,22 @@ import java.util.Map;
  * @Modifiedby: Yufei Chen
  */
 public class CommentUseCases {
-    private Map<Integer, Comment> comments;
+    private final Map<Integer, Comment> comments = new HashMap<>();
 
-    public CommentUseCases(Map<Integer, Comment> comments) {
-        this.comments = comments;
+    public CommentUseCases(Map<Integer, CommentRequestModel> comments) {
+        CommentFactory commentFactory = new CommentFactory();
+        for (CommentRequestModel commentModel : comments.values()) {
+            Comment comment = commentFactory.create(commentModel);
+            this.comments.put(comment.getId(), comment);
+        }
     }
 
     /**
      * <p>add the comment with userId and content to comments hashmap. Comment id is automatically generated with the
      * value comments size + 1
      * </p>
-     * @param userId
-     * @param content
+     * @param userId the id of the user
+     * @param content the content of the comment
      */
     public void addComment(int userId, String content) {
         Comment comment = new Comment(userId, comments.keySet().size() + 1, content,
@@ -34,7 +41,7 @@ public class CommentUseCases {
 
     /**
      * <p>remove {@link Comment Comment} object with id from hashmap</p>
-     * @param id
+     * @param id the comment id
      */
     public void deleteComment(int id) {
         comments.remove(id);
@@ -43,7 +50,7 @@ public class CommentUseCases {
     /**
      * <p>get {@link Comment Comment} object with id</p>
      * <p>return null if there is no Comment object with id</p>
-     * @param id
+     * @param id the comment id
      * @return {@link Comment Comment} object with id
      */
     public Comment getCommentFromId(int id) {

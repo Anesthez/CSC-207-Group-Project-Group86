@@ -1,9 +1,8 @@
 package Layer3.Commands;
 
-import Layer1.Entity.Comment;
-import Layer1.Entity.Post;
 import Layer4.Interface.csvInterface;
 import Layer2.UseCases.CommentUseCases;
+import Model.Request.CommentRequestModel;
 
 import java.io.IOException;
 import java.util.Map;
@@ -21,12 +20,12 @@ public class CommentCommand {
     }
 
     /**
-     * <p>parses user input and can be used to add or delete {@link Comment Comment}</p>
+     * <p>parses user input and can be used to add or delete {@link Layer1.Entity.Comment Comment}</p>
      * @throws IOException
      */
     public void exact() throws IOException {
         csvInterface csvInteract = new csvInterface();
-        Map<Integer, Comment> comments = csvInteract.commentsReader("database/comments.csv");
+        Map<Integer, CommentRequestModel> comments = csvInteract.commentsReader("database/comments.csv");
         if (inputLines[1].equals("add")) {
             int commentid = Integer.parseInt(inputLines[2]);
             if (comments.containsKey(commentid)) {

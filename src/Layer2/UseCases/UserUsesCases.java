@@ -1,8 +1,11 @@
 package Layer2.UseCases;
 
 import Layer1.Entity.User;
+import Layer1.Entity.factories.UserFactory;
+import Model.Request.UserRequestModel;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -15,15 +18,19 @@ import java.util.Objects;
  */
 public class UserUsesCases {
 
-    private final Map<Integer, User> users;
+    private final Map<Integer, User> users = new HashMap<>();
 
     /**
      * <p>Constructor for the UserUseCases object</p>
      *
-     * @param users the hash map mapping the id of the user with the corresponding {@link User User} object
+     * @param users the hash map the id of the user with the corresponding {@link User User} object
      */
-    public UserUsesCases(Map<Integer, User> users){
-        this.users = users;
+    public UserUsesCases(Map<Integer, UserRequestModel> users){
+        UserFactory userFactory = new UserFactory();
+        for (UserRequestModel userRequestModel : users.values()) {
+            User user = userFactory.create(userRequestModel);
+            this.users.put(user.getId(), user);
+        }
     }
 
     /**

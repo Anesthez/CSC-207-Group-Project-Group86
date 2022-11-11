@@ -1,7 +1,9 @@
 package Layer1.Entity;
 
+import Layer1.Entity.inputboundary.Modelizable;
 import Layer1.Entity.inputboundary.Searchable;
 import Layer1.Entity.inputboundary.Timeable;
+import Model.Response.UserResponseModel;
 
 /**
  * <p>The user object is the profile for each user. The object implements the interfaces of Searchable and Timeable</p>
@@ -13,7 +15,7 @@ import Layer1.Entity.inputboundary.Timeable;
  * @Author: Kevin WU
  * @Modifiedby: Yufei Chen
  */
-public class User implements Searchable, Timeable {
+public class User implements Searchable, Timeable, Modelizable {
     private int id;
 
     private String userType;
@@ -117,4 +119,13 @@ public class User implements Searchable, Timeable {
         return timestamp;
     }
 
+    /**
+     * return the response model for the user
+     *
+     */
+    @Override
+    public UserResponseModel responseModel() {
+        return new UserResponseModel(this.getId(), this.getUserType(), this.getUserName(),
+                this.getUserPassword(), this.getTime());
+    }
 }

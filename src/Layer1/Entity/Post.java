@@ -1,6 +1,8 @@
 package Layer1.Entity;
 
 import Layer1.Entity.inputboundary.Context;
+import Model.Request.PostRequestModel;
+import Model.Response.PostResponseModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -181,16 +183,15 @@ public class Post extends Context{
     public Map<Integer, Topic> addTopic(Map<Integer, Topic> topicMap)
     {
         int count = 0;
-        Map<Integer, Topic> newTopicList = topicMap;
         for (Integer i : topicMap.keySet())
         {
-            if (this.topic.equals(topicMap.get(i)))
+            if (this.topic.equals(topicMap.get(i).getName()))
             {
                 count = 1;
                 Map<Integer, Post> newPostList = topicMap.get(i).getPosts();
                 Integer newid = newPostList.size() + 1;
                 newPostList.put(newid, this);
-                newTopicList.get(i).setPosts(newPostList);
+                topicMap.get(i).setPosts(newPostList);
             }
         }
         if (count == 0)
@@ -199,8 +200,14 @@ public class Post extends Context{
             Map<Integer, Post> newPostMap = new HashMap<>();
             newPostMap.put(1, this);
             Topic topic1 = new Topic(this.topic, newid+"", newPostMap);
-            newTopicList.put(newid, topic1);
+            topicMap.put(newid, topic1);
         }
-        return newTopicList;
+        return topicMap;
+    }
+
+    @Override
+    public PostResponseModel responseModel() {
+        return new PostResponseModel(postTitle, userId, id, content, timestamp, views,
+                numLikes, userLiked, list_comment_id, topic);
     }
 }

@@ -6,6 +6,7 @@ import Layer1.Entity.User;
 import Layer2.UseCases.UserUsesCases;
 import Layer4.Interface.csvInterface;
 import Layer2.UseCases.*;
+import Model.Request.UserRequestModel;
 
 import java.io.*;
 import java.util.*;
@@ -19,7 +20,7 @@ public class CLI {
 
     public void login() throws IOException {
         Scanner input = new Scanner(System.in);
-        Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
+        Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
         UserUsesCases userManager = new UserUsesCases(users);
         boolean flag = true;
         boolean exit = false;
@@ -76,7 +77,7 @@ public class CLI {
             String[] userInputs = userInput.split("-");
             switch (userInputs[0]) {
                 case "/post ":
-                    new PostCommand(userInputs, userid, "default").exact();
+                    new PostCommand(userInputs, userid).exact();
                     break;
                 case "/friends":
                 case "/friend":
