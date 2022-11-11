@@ -1,22 +1,20 @@
 package Layer3.Commands;
 
-import Layer1.Entity.Chat;
-import Layer1.Entity.User;
 import Layer4.Interface.csvInterface;
 import Layer2.UseCases.ChatUseCases;
+import Model.Request.ChatRequestModel;
+import Model.Request.UserRequestModel;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
  * <p>The ChatCommand contains a command in the form of a array of string and the id of the user that send
  * this command. To initialize it, we need the id of the user, and the command array.</p>
  *
- * <p>In the exact method, there are four command, add command send a {@link Chat Chat} to the receiver, delete command remove
- * a message sent to the receiver, showid command shows the id of a sent message, show command show all message between
- * two user.</p>
+ * <p>In the exact method, there are four command, add command send a {@link Layer1.Entity.Chat Chat} to the receiver,
+ * delete command remove a message sent to the receiver, showid command shows the id of a sent message, show command
+ * show all message between two user.</p>
  *
  * @Author: Jiahao Gu
  * @Modifiedby: Yufei Chen
@@ -41,8 +39,8 @@ public class ChatCommand {
      */
     public void exact() throws IOException {
         csvInterface csvInteract = new csvInterface();
-        Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
-        Map<Integer, Chat> chats = csvInteract.chatsReader("database/chat.csv");
+        Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
+        Map<Integer, ChatRequestModel> chats = csvInteract.chatsReader("database/chat.csv");
         ChatUseCases chatManager = new ChatUseCases(chats);
 
         // use "/chat-add-receiver's id-content" to send a message
@@ -86,29 +84,29 @@ public class ChatCommand {
             }
 
 
-            // use "/chat-show-receiver's id" to show all messages sent between two people
-            case "show": {
-                int receiver_id = Integer.parseInt(inputLines[2]);
-                if (users.containsKey(receiver_id)) {
-                    List<Chat> chatlist = new ArrayList<>();
-                    for (int id : chats.keySet()) {
-                        if (chats.get(id).getSender_id() == userid && chats.get(id).getReceiver_id() == receiver_id ||
-                                chats.get(id).getSender_id() == receiver_id && chats.get(id).getReceiver_id() == userid) {
-                            chatlist.add(chats.get(id));
-                        }
-                    }
-                    if (chatlist.isEmpty()) {
-                        System.out.println("No message found");
-                    }
-                    chatlist.sort(null);
-                    for (Chat c : chatlist) {
-                        c.printChat();
-                    }
-                } else {
-                    System.out.println("user does not exist");
-                }
-                break;
-            }
+            // the class below violates the rule that the all commands in Layer 3 use the usecases, thus are commented
+//            case "show": {
+//                int receiver_id = Integer.parseInt(inputLines[2]);
+//                if (users.containsKey(receiver_id)) {
+//                    List<Chat> chatlist = new ArrayList<>();
+//                    for (int id : chats.keySet()) {
+//                        if (chats.get(id).getSender_id() == userid && chats.get(id).getReceiver_id() == receiver_id ||
+//                                chats.get(id).getSender_id() == receiver_id && chats.get(id).getReceiver_id() == userid) {
+//                            chatlist.add(chats.get(id));
+//                        }
+//                    }
+//                    if (chatlist.isEmpty()) {
+//                        System.out.println("No message found");
+//                    }
+//                    chatlist.sort(null);
+//                    for (Chat c : chatlist) {
+//                        c.printChat();
+//                    }
+//                } else {
+//                    System.out.println("user does not exist");
+//                }
+//                break;
+//            }
             default: System.out.println("unknown command");
         }
     }

@@ -1,8 +1,10 @@
-package Model;
+package Model.Request;
+
+import Model.Model;
 
 import java.util.ArrayList;
 
-public class PostModel implements Model{
+public class PostRequestModel implements Model {
     private final int id;
     private final String content;
     private final String timestamp;
@@ -18,9 +20,9 @@ public class PostModel implements Model{
     private final ArrayList<Integer> userLiked;
 
 
-    public PostModel(String postTitle, int userId, int id, String content, String timestamp,
-                     int views, int numLikes, ArrayList<Integer> userLiked, ArrayList<Integer> list_comment_id,
-                     String Topic) {
+    public PostRequestModel(String postTitle, int userId, int id, String content, String timestamp,
+                            int views, int numLikes, ArrayList<Integer> userLiked, ArrayList<Integer> list_comment_id,
+                            String Topic) {
         this.postTitle = postTitle;
         this.userId = userId;
         this.id = id;

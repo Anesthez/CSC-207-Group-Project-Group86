@@ -1,10 +1,10 @@
 package Layer3.Controller;
 
-import Layer1.Entity.Comment;
-import Layer1.Entity.Post;
+
 import Layer2.UseCases.CommentUseCases;
 import Layer2.UseCases.PostUseCases;
 import Layer4.Interface.csvInterface;
+import Model.Request.PostRequestModel;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class PostController {
      */
     public void addPost(String title, String content, int userid, String topic) throws Exception {
         csvInterface csvInterface = new csvInterface();
-        Map<Integer, Post> posts = csvInterface.postsReader("database/posts.csv");
+        Map<Integer, PostRequestModel> posts = csvInterface.postsReader("database/posts.csv");
         Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/posts_liked.csv");
         PostUseCases postManager = new PostUseCases(posts, postsLiked);
         postManager.addPost(title, userid, content, topic);
@@ -41,7 +41,7 @@ public class PostController {
      */
     public String showPost(int postid) throws Exception {
         csvInterface csvInterface = new csvInterface();
-        Map<Integer, Post> posts = csvInterface.postsReader("database/posts.csv");
+        Map<Integer, PostRequestModel> posts = csvInterface.postsReader("database/posts.csv");
         Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/posts_liked.csv");
         PostUseCases postManager = new PostUseCases(posts, postsLiked);
         String post = postManager.showPost(postid);

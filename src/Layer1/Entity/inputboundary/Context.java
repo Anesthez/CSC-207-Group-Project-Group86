@@ -6,7 +6,7 @@ package Layer1.Entity.inputboundary;
  * {@link Postable Postable}</p>}
  * @Author: LemengDai
  */
-public abstract class Context implements Timeable, Searchable, Postable{
+public abstract class Context implements Timeable, Searchable, Postable, Modelizable{
     protected final int id;
     protected final String content;
     protected final String timestamp;

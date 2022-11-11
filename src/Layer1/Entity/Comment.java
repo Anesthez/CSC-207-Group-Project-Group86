@@ -1,6 +1,7 @@
 package Layer1.Entity;
 
 import Layer1.Entity.inputboundary.Context;
+import Model.Request.CommentRequestModel;
 
 /**
  * <p>The comment object is a comment that will be sent by the user. The object is a subclass for context which will
@@ -33,4 +34,8 @@ public class Comment extends Context {
         return userId;
     }
 
+    @Override
+    public CommentRequestModel responseModel() {
+        return new CommentRequestModel(this.getId(), this.getUserId(), this.getContent(), this.getTime());
+    }
 }

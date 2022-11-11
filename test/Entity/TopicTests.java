@@ -1,5 +1,8 @@
 package Entity;
 
+import Layer1.Entity.Post;
+import Layer1.Entity.Topic;
+import Layer1.Entity.User;
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
@@ -16,7 +19,7 @@ public class TopicTests {
     public static void setUp() {
         User user_1 = new User(1, "VIP", "eric", "123qweASD", "2020-01-01 00:00:00");
         Post post_1 = new Post("title", 1, 1, "content", "2020-01-01 00:00:00",
-                0, 0, new ArrayList<Integer>(), new ArrayList<Integer>());
+                0, 0, new ArrayList<Integer>(), new ArrayList<Integer>(), "default");
         Map<Integer, User> users = new HashMap<>();
         users.put(1, user_1);
         Map<Integer, Post> posts = new HashMap<>();
@@ -55,7 +58,7 @@ public class TopicTests {
     @Test(timeout = 500)
     public void testSetPosts(){
         Post post_2 = new Post("title", 2, 1, "content", "2020-01-01 00:00:00",
-                0, 0, new ArrayList<Integer>(), new ArrayList<Integer>());
+                0, 0, new ArrayList<Integer>(), new ArrayList<Integer>(), "default");
         Map<Integer, Post> posts = new HashMap<>();
         posts.put(2, post_2);
         actual.setPosts(posts);

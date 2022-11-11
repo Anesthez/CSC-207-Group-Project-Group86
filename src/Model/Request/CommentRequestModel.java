@@ -1,8 +1,10 @@
-package Model;
+package Model.Request;
+
+import Model.Model;
 
 import java.util.ArrayList;
 
-public class CommentModel implements Model{
+public class CommentRequestModel implements Model {
     private final int id;
 
     private final int userId;
@@ -11,7 +13,7 @@ public class CommentModel implements Model{
     private String content;
     private String timestamp;
 
-    public CommentModel(int userId, int id, String content, String timestamp, int views) {
+    public CommentRequestModel(int userId, int id, String content, String timestamp) {
         this.userId = userId;
         this.id = id;
         this.content = content;

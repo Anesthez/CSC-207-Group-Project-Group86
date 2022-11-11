@@ -1,6 +1,7 @@
 package Layer1.Entity;
 
 import Layer1.Entity.inputboundary.Context;
+import Model.Response.ChatResponseModel;
 
 import java.time.LocalDateTime;
 
@@ -93,4 +94,8 @@ public class Chat extends Context implements Comparable<Chat>{
         return timestamp + " (" + user1_id + " sent to " + user2_id + "):" + content;
     }
 
+    @Override
+    public ChatResponseModel responseModel() {
+        return new ChatResponseModel(id, user1_id, user2_id, content, timestamp);
+    }
 }

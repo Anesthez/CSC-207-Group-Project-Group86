@@ -1,6 +1,5 @@
 package Layer4.UI.Screens;
 
-import Layer4.UI.Components.PlaceLabel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

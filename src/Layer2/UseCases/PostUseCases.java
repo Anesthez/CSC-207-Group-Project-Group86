@@ -2,10 +2,13 @@ package Layer2.UseCases;
 
 import Layer1.Entity.Post;
 import Layer1.Entity.Topic;
+import Layer1.Entity.factories.PostFactory;
 import Layer1.Entity.inputboundary.Context;
+import Model.Request.PostRequestModel;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,26 +20,30 @@ import java.util.Map;
  * @Modified by: Yufei Chen, Tianyu Li, Chen Jiang
  */
 public class PostUseCases {
-    private final Map<Integer, Post> posts;
+    private final Map<Integer, Post> posts = new HashMap<>();
     private final Map<Integer, ArrayList<Integer>> posts_liked;
 
     /**<p>This is the constructor for the PostUseCases class, it needs the posts and the posts_liked list </p>
      *
-     * @param posts
-     * @param posts_liked
+     * @param posts the map of posts
+     * @param posts_liked  the map of posts_liked
      */
-    public PostUseCases(Map<Integer, Post> posts, Map<Integer, ArrayList<Integer>> posts_liked){
-        this.posts = posts;
+    public PostUseCases(Map<Integer, PostRequestModel> posts, Map<Integer, ArrayList<Integer>> posts_liked){
+        PostFactory postFactory = new PostFactory();
+        for (PostRequestModel requestModel : posts.values()) {
+            Post post = postFactory.create(requestModel);
+            this.posts.put(post.getId(), post);
+        }
         this.posts_liked = posts_liked;
     }
 
     /**<p>This method is the add post use case, the method receives userId, content, topic of the post and then
      * construct a post object for it.</p>
      *
-     * @param postTitle
-     * @param userId
-     * @param content
-     * @param topic
+     * @param postTitle the title of the post
+     * @param userId the id of the user
+     * @param content the content of the post
+     * @param topic the topic of the post
      */
     public void addPost(String postTitle, int userId, String content, String topic){
         Post post = new Post(postTitle,
@@ -55,7 +62,7 @@ public class PostUseCases {
     /** <p>This represents the get post use case, the method receives the id the user want to check and returns the
      * corresponding post</p>
      *
-     * @param postId
+     * @param postId the id of the post
      * @return Post
      */
     public Post getPostFromId(int postId){
@@ -68,9 +75,10 @@ public class PostUseCases {
     /**<p>This is the add comment use case, the method will ad the id of the comment to the list comments with in the
      * post object</p>
      *
-     * @param postId
-     * @param comment_id
+     * @param postId the id of the post
+     * @param comment_id  the id of the comment
      */
+
     public void addComment_id(int postId, int comment_id){
 
         posts.get(postId).addListComment(comment_id);
@@ -78,8 +86,8 @@ public class PostUseCases {
 
     /**<p>The method will delete the comment id from the post object that is represented by the postId</p>
      *
-     * @param postId
-     * @param comment_id
+     * @param postId the id of the post
+     * @param comment_id the id of the comment
      */
     public void deleteComment(int postId, int comment_id){
         /**
@@ -94,8 +102,8 @@ public class PostUseCases {
 
     /**<p>This is the like post method, which will leaves a like </p>
      *
-     * @param userid
-     * @param post_id
+     * @param userid the id of the user
+     * @param post_id the id of the post
      */
 
     public void like_posts(int userid, int post_id){
@@ -115,6 +123,18 @@ public class PostUseCases {
                 "content:" + post.getContent() + "\n" +
                 "id:" + post.getId() + "\n" +
                 "sender:" + post.getUserId());
+    }
+
+    public ArrayList<Object> getDetails(int post_id){
+        ArrayList<Object> details = new ArrayList<>();
+        Post post = getPostFromId(post_id);
+        details.add(post.getPostTitle());
+        details.add(post.getId());
+        details.add(post.getTime());
+        details.add(post.getNumLikes());
+        details.add(post.getContent());
+
+        return details;
     }
 
     public boolean changeTitle(int user_id, String title, int post_id){

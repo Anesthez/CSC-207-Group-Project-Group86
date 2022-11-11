@@ -1,7 +1,7 @@
 package Layer3.Commands;
 
-import Layer1.Entity.User;
 import Layer4.Interface.csvInterface;
+import Model.Request.UserRequestModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class FriendsCommand{
 
     public void exact() throws IOException {
         csvInterface csvInteract = new csvInterface();
-        Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
+        Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
         Map<Integer, ArrayList<Integer>> friends =
                 csvInteract.friendsReader("database/friends.csv");
         Map<Integer, ArrayList<Integer>> blocks =

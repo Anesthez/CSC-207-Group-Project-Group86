@@ -1,6 +1,9 @@
 package Layer1.Entity.factories;
 
 import Layer1.Entity.User;
+import Model.Request.UserRequestModel;
+
+import java.util.ArrayList;
 
 public class UserFactory {
     /**
@@ -12,14 +15,15 @@ public class UserFactory {
      *     parameters onto the User Object.
      * </p>
      *
-     * @param username the username of the user
-     * @param password the password of the user
-     * @param email the email of the user
-     * @param phone the phone of the user
-     * @param ID the ID of the user
+     * @param userModel the model for the user
      * @return the user object
      */
-    public User create(int id,String userType, String userName, String userPassword, String timestamp){
-        return new User(id,userType , userName, userPassword, timestamp);
+    public User create(UserRequestModel userModel){
+        ArrayList<Object> userContents = userModel.get();
+        return new User((int)userContents.get(0),
+                (String)userContents.get(1),
+                (String)userContents.get(2),
+                (String)userContents.get(3),
+                (String)userContents.get(4));
     }
 }

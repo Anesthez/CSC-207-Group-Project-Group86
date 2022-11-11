@@ -2,6 +2,11 @@ package Layer1.Entity.factories;
 
 import Layer1.Entity.Post;
 import Layer1.Entity.Topic;
+import Model.Request.PostRequestModel;
+import Model.Request.TopicRequestModel;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -28,14 +33,25 @@ public class TopicFactory {
      *     This method takes in String name, String ID, Map post and push those parameters onto the Topic Object.
      * </p>
      *
-     * @param name the name of the topic
-     * @param ID the ID of the topic
-     * @param posts the posts of the topic
+     * @param topicModel the model for the topic
      * @return the topic object
      */
 
-    public Topic create(String name, String ID, Map<Integer, Post> posts)
+    public Topic create(TopicRequestModel topicModel)
     {
-        return new Topic(name, ID, posts);
+        ArrayList<Object> topicContents = topicModel.get();
+        HashMap<Integer, PostRequestModel> posts = (HashMap<Integer, PostRequestModel>)topicContents.get(4);
+        HashMap<Integer, Post> postMap = new HashMap<>();
+        for (PostRequestModel post : posts.values()) {
+            PostFactory postFactory = new PostFactory();
+            Post post1 = postFactory.create(post);
+            postMap.put(post1.getId(), post1);
+        }
+
+        return new Topic((String)topicContents.get(0),
+                (String)topicContents.get(1),
+                postMap);
+
+
     }
 }

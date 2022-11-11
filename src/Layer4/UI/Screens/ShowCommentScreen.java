@@ -1,10 +1,9 @@
 package Layer4.UI.Screens;
 
-import Layer1.Entity.Comment;
-import Layer1.Entity.User;
 import Layer4.Interface.csvInterface;
 import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
+import Model.Request.CommentRequestModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -77,27 +76,29 @@ public class ShowCommentScreen extends JFrame implements ActionListener{
      * @return {@link JScrollPane scrollPane} that contains username and comment content of the user
      */
     public JScrollPane inner() {
-        JPanel commentSection = new JPanel();
-        commentSection.setLayout(new BoxLayout(commentSection, BoxLayout.Y_AXIS));
-
-        csvInterface csvInteract = new csvInterface();
-        try {
-            Map<Integer, Comment> comments = csvInteract.commentsReader("database/comments.csv");
-            Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
-            for (Comment c:comments.values()) {
-                JLabel username = new JLabel(users.get(c.getUserId()).getUserName());
-                System.out.println(username);
-                JLabel comment = new JLabel(c.getContent());
-                commentSection.add(username);
-                commentSection.add(comment);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-
-        JScrollPane scrollPane = new JScrollPane(commentSection);
-        scrollPane.setBounds(50, 150, 700, 400);
-
-        return scrollPane;
+//        JPanel commentSection = new JPanel();
+//        commentSection.setLayout(new BoxLayout(commentSection, BoxLayout.Y_AXIS));
+//
+//        csvInterface csvInteract = new csvInterface();
+//        try {
+//            Map<Integer, CommentRequestModel> comments = csvInteract.commentsReader("database/comments.csv");
+//            Map<Integer, User> users = csvInteract.usersReader("database/user.csv");
+//            for (Comment c:comments.values()) {
+//                JLabel username = new JLabel(users.get(c.getUserId()).getUserName());
+//                System.out.println(username);
+//                JLabel comment = new JLabel(c.getContent());
+//                commentSection.add(username);
+//                commentSection.add(comment);
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+//        }
+//
+//        JScrollPane scrollPane = new JScrollPane(commentSection);
+//        scrollPane.setBounds(50, 150, 700, 400);
+//
+//        return scrollPane;
+//    }
+        return null;
     }
 }

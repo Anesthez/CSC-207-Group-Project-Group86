@@ -2,6 +2,7 @@ package Layer3.Presenter;
 import Layer1.Entity.Post;
 import Layer2.UseCases.PostUseCases;
 import Layer4.Interface.csvInterface;
+import Model.Request.PostRequestModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Map;
 
 public class PostPresenter {
 
-    Map<Integer, Post> posts;
+    Map<Integer, PostRequestModel> posts;
     Map<Integer, ArrayList<Integer>> postLiked;
     PostUseCases postManager;
 
@@ -20,7 +21,7 @@ public class PostPresenter {
         postManager = new PostUseCases(posts, postLiked);
     }
 
-    public PostUseCases getManager() {
-        return postManager;
+    public ArrayList<Object> showPost(int postId) {
+        return postManager.getDetails(postId);
     }
 }
