@@ -29,8 +29,8 @@ public class PostCommand {
         PostUseCases postUseCases = new PostUseCases(posts, postLiked);
         if (inputLines.length == 3) {
             //TODO: check this with DaiLemeng
-            postUseCases.addPost(inputLines[1], userid, inputLines[2], topic);
-            csvInteract.postsWriter("database/post.csv", posts);
+//            postUseCases.addPost(inputLines[1], userid, inputLines[2], topic);
+//            csvInteract.postsWriter("database/post.csv", posts);
         } else if (inputLines[1].equals("show")) {
             for (int i = 0; i < 5; i++) {
                 System.out.println(postUseCases.showPost(i));

@@ -1,6 +1,7 @@
 package Layer4.Interface;
 
 import Model.Request.*;
+import Model.Response.*;
 
 import java.io.*;
 import java.util.*;
@@ -352,7 +353,7 @@ public class csvInterface {
 
 
 
-    public void postsWriter(String postsPath, Map<Integer, PostRequestModel> posts) {
+    public void postsWriter(String postsPath, Map<Integer, PostResponseModel> posts) {
         /**
          * This method is for writing posts.csv file.
          *
@@ -378,7 +379,7 @@ public class csvInterface {
             writer = new BufferedWriter(new FileWriter(postsPath));
             writer.write(String.join(",", headers.keySet()));
             writer.newLine();
-            for (PostRequestModel post : posts.values()) {
+            for (PostResponseModel post : posts.values()) {
                 StringBuilder userLiked = new StringBuilder();
                 StringBuilder listComment = new StringBuilder();
                 ArrayList<Integer> userlikes = (ArrayList<Integer>)post.get().get(7);
@@ -457,7 +458,7 @@ public class csvInterface {
     }
 
 
-    public void usersWriter(Map<Integer, UserRequestModel> users, String userPath) {
+    public void usersWriter(Map<Integer, UserResponseModel> users, String userPath) {
         /**
          * This method is for writing users.csv file.
          *
@@ -478,7 +479,7 @@ public class csvInterface {
             writer.write(String.join(",", headers.keySet()));
             writer.newLine();
 
-            for (UserRequestModel user : users.values()) {
+            for (UserResponseModel user : users.values()) {
                 String line = (
                         user.get().get(0)+","+
                         user.get().get(1)+","+
@@ -575,7 +576,7 @@ public class csvInterface {
 
     //Author: Chen Jiang
 
-    public void topicWriter(Map<Integer, TopicRequestModel> topics, String topicPath){
+    public void topicWriter(Map<Integer, TopicResponseModel> topics, String topicPath){
         /**
          * This method is for writing topics.csv file.
          *
@@ -595,7 +596,7 @@ public class csvInterface {
             writer.newLine();
             String postLists = "";
             String userLists = "";
-            for (TopicRequestModel topic : topics.values()) {
+            for (TopicResponseModel topic : topics.values()) {
 
                 HashMap<Integer, PostRequestModel> posts = (HashMap<Integer, PostRequestModel>) topic.get().get(3);
                 if (posts.size()>0)
@@ -635,7 +636,7 @@ public class csvInterface {
     }
 
 
-    public void chatsWriter(Map<Integer, ChatRequestModel> chats, String chatPath) {
+    public void chatsWriter(Map<Integer, ChatResponseModel> chats, String chatPath) {
 
         /**
          * This method is for writing chats.csv file.
@@ -656,7 +657,7 @@ public class csvInterface {
             writer.write(String.join(",", headers.keySet()));
 
 
-            for (ChatRequestModel chat : chats.values()) {
+            for (ChatResponseModel chat : chats.values()) {
                 String line = (
                         chat.get().get(0)+","+
                         chat.get().get(1)+","+
@@ -677,7 +678,7 @@ public class csvInterface {
     }
 
 
-    public void commentsWriter(Map<Integer, CommentRequestModel> comments, String commentPath) {
+    public void commentsWriter(Map<Integer, CommentResponseModel> comments, String commentPath) {
         /**
          * This method is for writing comments.csv file.
          *
@@ -695,7 +696,7 @@ public class csvInterface {
             writer.write(String.join(",", headers.keySet()));
             writer.newLine();
 
-            for (CommentRequestModel comment : comments.values()) {
+            for (CommentResponseModel comment : comments.values()) {
                 String line = (
                         comment.get().get(0)+","+
                         comment.get().get(1)+","+

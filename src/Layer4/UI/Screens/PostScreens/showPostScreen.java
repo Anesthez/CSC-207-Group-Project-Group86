@@ -1,4 +1,4 @@
-package Layer4.UI.Screens;
+package Layer4.UI.Screens.PostScreens;
 
 import Layer3.Controller.PostController;
 import Layer3.Presenter.PostPresenter;

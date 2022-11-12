@@ -1,4 +1,4 @@
-package Layer4.UI.Screens;
+package Layer4.UI.Screens.FriendsScreens.ChatScreens;
 
 import Layer3.Presenter.ChatPresenter;
 import Layer3.Controller.ChatController;

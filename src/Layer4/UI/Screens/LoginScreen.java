@@ -4,49 +4,91 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
 
+import Layer3.Controller.LogInController;
 import Layer4.UI.Components.*;
 
-public class LoginScreen extends JPanel implements ActionListener {
+public class LoginScreen extends JFrame{
     public LoginScreen(){
-
-
+        PlaceTextField placeTextField = new PlaceTextField();
+        this.setLayout(null);
         JPanel username = new JPanel();
-        username.setBounds(400, 300, 200, 50);
-        username.add(new PlaceLabel().create(0, 0, 50, 50, "username"));
+        username.setLayout(null);
+        username.setBounds(0, 350, 800, 50);
+        username.add(new PlaceLabel().create(100, 0, 100, 50, "Username："));
+        JTextField usernameText = placeTextField.createTextField(200, 10, 400, 30);
+        username.add(usernameText);
+
 
         JPanel password = new JPanel();
-        password.setBounds(400, 300, 200, 50);
-        password.add(new PlaceLabel().create(0, 0, 50, 50, "username"));
+        password.setLayout(null);
+        password.setBounds(0, 400, 800, 50);
+        password.add(new PlaceLabel().create(100, 0, 100, 50, "Password："));
+        JTextField passwordText = placeTextField.createTextField(200, 10, 400, 30);
+        password.add(passwordText);
 
         JButton logIn = new JButton("Log in");
         JButton cancel = new JButton("Cancel");
 
         JPanel buttons = new JPanel();
+        buttons.setBounds(0, 700, 800, 50);
         buttons.add(logIn);
         buttons.add(cancel);
 
-        logIn.addActionListener(this);
+        logIn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<Object> userInputs = new ArrayList<>();
+                String name = usernameText.getText();
+                String password = passwordText.getText();
+                userInputs.add(name);
+                userInputs.add(password);
+                usernameText.setText("");
+                passwordText.setText("");
+                LogInController logInController = new LogInController(userInputs);
+                try {
+                    int userId = logInController.login();
+                    if (userId == -1){
+                        new LoginScreen();
+                    }else{
+                        MainScreen mainScreen = new MainScreen(userId, name);
+                        mainScreen.setVisible(true);
+                        dispose();
+
+                    }
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+
+        });
         cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                ArrayList<Object> userInputs = new ArrayList<>();
+                userInputs.add("default");
+                userInputs.add("default");
+                LogInController logInController = new LogInController(userInputs);
+                try {
+                    if (logInController.login() == -1){
+                        new LoginScreen();
+                    }
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
 
         this.setSize(800, 800);
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(new PlaceLabel().create(400, 50, 100, 25, "UofTMeta"));
         this.add(username);
         this.add(password);
         this.add(buttons);
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
 }
