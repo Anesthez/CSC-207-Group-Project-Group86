@@ -32,10 +32,11 @@ public class CommentController {
      * @throws IOException
      */
     public void create() throws IOException {
-        csvInterface csvInteract = new csvInterface();
-        Map<Integer, CommentRequestModel> comments = csvInteract.commentsReader("database/comments.csv");
-        CommentUseCases commentUseCases = new CommentUseCases(comments);
-        commentUseCases.addComment(userid, inputLines); //TODO: no postid in args?
-        csvInteract.commentsWriter(comments, "database/comments.csv");
+//        csvInterface csvInteract = new csvInterface();
+//        Map<Integer, CommentRequestModel> comments = csvInteract.commentsReader("database/comments.csv");
+//        CommentUseCases commentUseCases = new CommentUseCases(comments);
+//        commentUseCases.addComment(userid, inputLines); //TODO: no postid in args?
+//
+//        csvInteract.commentsWriter(comments, "database/comments.csv");
     }
 }

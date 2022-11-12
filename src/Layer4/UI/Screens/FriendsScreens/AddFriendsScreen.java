@@ -1,4 +1,4 @@
-package Layer4.UI.Screens;
+package Layer4.UI.Screens.FriendsScreens;
 
 import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.Components.PlaceTextField;

@@ -1,5 +1,5 @@
 
-package Layer4.UI.Screens;
+package Layer4.UI.Screens.PostScreens;
 import javax.swing.*;
 
 import Layer4.UI.Components.*;
