@@ -43,9 +43,9 @@ public class CLI {
                     if (userInputs.length == 3) {
                         userid = userManager.addUser(userInputs[1], userInputs[2]);
                         if (userid != -1) {
-                            csvInteract.usersWriter(users, "database/user.csv");
-                            username = userInputs[1];
-                            flag = false;
+//                            csvInteract.usersWriter(users, "database/user.csv");
+//                            username = userInputs[1];
+//                            flag = false;
                         }
                     }
                     break;

@@ -1,4 +1,4 @@
-package Layer4.UI.Screens;
+package Layer4.UI.Screens.PostScreens;
 
 import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;

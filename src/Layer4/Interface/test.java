@@ -23,8 +23,8 @@ public class test {
             TopicRequestModel topic = new TopicRequestModel("Test", "1", users, posts);
             Map<Integer, TopicRequestModel> topics = new LinkedHashMap<>();
             topics.put(1, topic);
-            c.topicWriter(topics, "database/topic.csv");
-            c.topicsReader("database/topic.csv");
+//            c.topicWriter(topics, "database/topic.csv");
+//            c.topicsReader("database/topic.csv");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

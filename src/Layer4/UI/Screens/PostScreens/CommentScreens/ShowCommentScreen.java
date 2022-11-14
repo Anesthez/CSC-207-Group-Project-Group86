@@ -1,17 +1,13 @@
-package Layer4.UI.Screens;
+package Layer4.UI.Screens.PostScreens.CommentScreens;
 
-import Layer4.Interface.csvInterface;
 import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
-import Model.Request.CommentRequestModel;
+import Layer4.UI.Screens.PostScreens.CommentScreens.AddCommentScreen;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
-import java.util.Map;
 
 public class ShowCommentScreen extends JFrame implements ActionListener{
     public ShowCommentScreen(int userid) {
