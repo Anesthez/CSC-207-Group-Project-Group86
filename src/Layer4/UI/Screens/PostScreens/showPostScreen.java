@@ -30,7 +30,7 @@ public class showPostScreen extends JFrame implements ActionListener {
         this.add(new PlaceLabel().create(615, 50, 200, 50, labels.get(3).toString()));
         this.add(new PlaceLabel().create(100, 125, 600, 600, labels.get(4).toString()));
         JButton showCommentsButton = new PlaceButton().create("Show Comments", null,
-                    600, 675, 125, 50);
+                    600, 675, 130, 25);
         showCommentsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,7 +43,7 @@ public class showPostScreen extends JFrame implements ActionListener {
 
 
         JButton backButton = new PlaceButton().create("Back", null,
-                    100, 675, 100, 50);
+                    100, 675, 100, 25);
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
