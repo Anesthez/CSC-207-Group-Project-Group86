@@ -17,7 +17,7 @@ public class CommentUsesCasesTest extends TestCase {
 
     public void testAddComment() {
         CommentUseCases manager = new CommentUseCases(new HashMap<>());
-        manager.addComment(5, "Nice Picture!");
+        manager.addComment(5, "Nice Picture!", 1);
         Comment comment = manager.getCommentFromId(1);
         String actual = "Nice Picture!";
         String expected = comment.getContent();
@@ -26,8 +26,8 @@ public class CommentUsesCasesTest extends TestCase {
 
     public void testDeleteComment() {
         CommentUseCases manager = new CommentUseCases(new HashMap<>());
-        manager.addComment(5, "Nice Picture!");
-        manager.addComment(0, "Hello World!");
+        manager.addComment(5, "Nice Picture!",1);
+        manager.addComment(0, "Hello World!", 2);
         manager.deleteComment(1);
         Comment actual = manager.getCommentFromId(1);
         assertEquals("There is error in CommentManager.deleteComment!", actual, null);
@@ -35,8 +35,8 @@ public class CommentUsesCasesTest extends TestCase {
 
     public void testGetCommentFromId() {
         CommentUseCases manager = new CommentUseCases(new HashMap<>());
-        manager.addComment(5, "Nice Picture!");
-        manager.addComment(0, "Hello World!");
+        manager.addComment(5, "Nice Picture!",1);
+        manager.addComment(0, "Hello World!",2);
         Comment comment = manager.getCommentFromId(2);
         String actual = comment.getContent();
         String expected = "Hello World!";

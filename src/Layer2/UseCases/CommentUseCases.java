@@ -34,9 +34,9 @@ public class CommentUseCases {
      * @param userId the id of the user
      * @param content the content of the comment
      */
-    public void addComment(int userId, String content) {
+    public void addComment(int userId, String content, int postId) {
         Comment comment = new Comment(userId, comments.keySet().size() + 1, content,
-                LocalDate.now().toString());
+                LocalDate.now().toString(), postId);
         comments.put(comment.getId(), comment);
     }
 

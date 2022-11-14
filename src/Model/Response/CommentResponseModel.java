@@ -12,11 +12,14 @@ public class CommentResponseModel implements Model {
     private String content;
     private String timestamp;
 
-    public CommentResponseModel(int userId, int id, String content, String timestamp) {
+    private final int postId;
+
+    public CommentResponseModel(int userId, int id, String content, String timestamp, int postId) {
         this.userId = userId;
         this.id = id;
         this.content = content;
         this.timestamp = timestamp;
+        this.postId = postId;
     }
 
     public ArrayList<Object> get(){
@@ -25,6 +28,7 @@ public class CommentResponseModel implements Model {
         contents.add(id);
         contents.add(content);
         contents.add(timestamp);
+        contents.add(postId);
         return contents;
     }
 }

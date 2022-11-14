@@ -17,6 +17,7 @@ public class CommentFactory {
         return new Comment((int)CommentContents.get(0),
                 (int) CommentContents.get(1),
                 (String) CommentContents.get(2),
-                (String) CommentContents.get(3));
+                (String) CommentContents.get(3),
+                (int) CommentContents.get(4));
     }
 }

@@ -1,19 +1,16 @@
 package Layer4.UI.Screens.PostScreens.CommentScreens;
 
-import Layer1.Entity.Comment;
-import Layer1.Entity.User;
 import Layer4.Interface.csvInterface;
 import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
-import Layer4.UI.Screens.PostScreens.CommentScreens.AddCommentScreen;
 import Model.Request.CommentRequestModel;
 import Model.Request.UserRequestModel;
-import Model.Response.CommentResponseModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -31,7 +28,7 @@ public class ShowCommentScreen extends JFrame implements ActionListener{
      * </p>
      * @param userid
      */
-    public ShowCommentScreen(int userid) {
+    public ShowCommentScreen(int userid, int postId, String username) {
         JLabel title = new PlaceLabel().create(50,100, 200,30, "Comments Section");
 
         JButton addComment = new PlaceButton().create("Add Comment",null,100, 700, 150, 50);
@@ -42,7 +39,7 @@ public class ShowCommentScreen extends JFrame implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent evt) {
                 try {
-                    AddCommentScreen addCommentScreen = new AddCommentScreen(userid);
+                    AddCommentScreen addCommentScreen = new AddCommentScreen(userid, postId, username);
                     addCommentScreen.setVisible(true);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
@@ -59,7 +56,7 @@ public class ShowCommentScreen extends JFrame implements ActionListener{
 
         this.add(new PlaceLabel().create(400, 50, 100, 25, "UofTMeta"));
         this.add(title);
-        this.add(inner());
+        this.add(inner(postId));
         this.add(addComment);
         this.add(cancel);
 
@@ -76,7 +73,7 @@ public class ShowCommentScreen extends JFrame implements ActionListener{
         this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }
 
-    public JScrollPane inner() {
+    public JScrollPane inner(int postId) {
         JPanel commentSection = new JPanel();
         commentSection.setLayout(new BoxLayout(commentSection, BoxLayout.Y_AXIS));
 
@@ -85,11 +82,14 @@ public class ShowCommentScreen extends JFrame implements ActionListener{
             Map<Integer, CommentRequestModel> comments = csvInteract.commentsReader("database/comments.csv");
             Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
             for (CommentRequestModel c:comments.values()) {
-                JLabel username = new JLabel((String) users.get((Integer) c.get().get(0)).get().get(2));
-                System.out.println(username);
-                JLabel comment = new JLabel((String) c.get().get(2));
-                commentSection.add(username);
-                commentSection.add(comment);
+                ArrayList<Object> param = c.get();
+                if ((Integer)param.get(4) == postId) {
+                    JLabel username = new JLabel((String) users.get((Integer) param.get(0)).get().get(2));
+                    System.out.println(username);
+                    JLabel comment = new JLabel((String) param.get(2));
+                    commentSection.add(username);
+                    commentSection.add(comment);
+                }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
