@@ -18,6 +18,13 @@ public class PostUseCases {
         this.posts = posts;
         this.posts_liked = posts_liked;
     }
+
+    /**
+     * @param postTitle the post title to be set
+     * @param userId the user id
+     * @param content the content of the post
+     * add a new post
+     */
     public void addPost(String postTitle, int userId, String content){
         Post post = new Post(postTitle,
                 userId,
@@ -32,6 +39,11 @@ public class PostUseCases {
         posts.put(post.getId(), post);
     }
 
+    /**
+     * @param postId the post id
+     *
+     * @return the post id
+     */
     public Post getPostFromId(int postId){
         /**
          * pull from the csv file
@@ -39,6 +51,11 @@ public class PostUseCases {
         return posts.get(postId);
     }
 
+    /**
+     * @param postId the post id
+     * @param comment_id the comment id
+     * add the new comment to the post
+     */
     public void addComment_id(int postId, int comment_id){
         /**
          * idk from where but this is easy and will come back to it
@@ -46,6 +63,11 @@ public class PostUseCases {
         posts.get(postId).addListComment(comment_id);
     }
 
+    /**
+     * @param postId the post id
+     * @param comment_id the comment id
+     * edit the comment from the post
+     */
     public void deleteComment(int postId, int comment_id){
         /**
          * same as addComment
@@ -57,16 +79,32 @@ public class PostUseCases {
         return null;
     }
 
-    public void like_posts(int userid, int post_id){
-        posts.get(post_id).addUserLike(userid);
-        posts_liked.get(userid).add(post_id);
+    /**
+     * @param post_id the post id
+     * @param user_id the user id
+     * like the post
+     * add user to the list of users who liked the post
+     */
+    public void like_posts(int user_id, int post_id){
+        posts.get(post_id).addUserLike(user_id);
+        posts_liked.get(user_id).add(post_id);
     }
 
+    /**
+     * @param post_id the post id
+     * @param user_id the user id
+     * unlike the post
+     * remove user from the list of users who liked the post
+     */
     public void unlike_posts(int post_id, int user_id){
         posts.get(post_id).removeUserLike(user_id);
         posts_liked.get(user_id).remove(post_id);
     }
 
+    /**
+     * @param post_id the post id
+     * @return the information of the post
+     */
     public String showPost(int post_id){
         getPostFromId(post_id).addViews();
         Post post = getPostFromId(post_id);
@@ -76,6 +114,12 @@ public class PostUseCases {
                 "sender:" + post.getUserId());
     }
 
+    /**
+     * @param post_id the post id
+     * @param user_id the user id
+     * @param title the title of the post
+     * @return if title is successfully changed
+     */
     public boolean changeTitle(int user_id, String title, int post_id){
         if (posts.get(post_id).getUserId() == user_id) {
             posts.get(post_id).setPostTitle(title);
@@ -84,14 +128,4 @@ public class PostUseCases {
             return false;
         }
     }
-
-    /**
-     * questions:
-     * 1. how to storage comment
-     * 2. delete by comment or commentid
-     * 3. delete from the file or hide from the post
-     * 4. if this blog is text based then there should be a title for each post
-     * 5. search method: search engine? search by post id? should id be private?
-     *
-     */
 }

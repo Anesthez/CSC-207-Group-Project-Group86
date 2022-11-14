@@ -49,52 +49,94 @@ public class Post extends Context{
         this.list_comment_id = list_comment_id;
     }
 
-
+    /**
+     * @return the post title
+     */
     public String getPostTitle(){
         return this.postTitle;
     }
 
+    /**
+     * @param postTitle the post title to be set
+     */
     public void setPostTitle(String postTitle){
         this.postTitle = postTitle;
     }
 
+    /**
+     * @return the user id
+     */
     public int getUserId() {
         return userId;
     }
 
+    /**
+     * @return the list of comments
+     */
     public int getNumLikes(){
         return numLikes;
     }
 
+    /**
+     * @return the list of comments
+     */
     public ArrayList<Integer> getListComment(){return list_comment_id;}
 
+    /**
+     * @param numLikes the number of likes to be set
+     */
     public void addListComment(int commentId){
         list_comment_id.add(commentId);
     }
 
+    /**
+     * @param numLikes the number of likes to be set
+     */
     public void removeListComment(int commentId){list_comment_id.remove(commentId);}
 
+    /**
+     * @return the list of comments
+     */
     public int getViews() {
         return this.views;
     }
 
+    /**
+     * number of views add 1
+     */
     public void addViews(){
         this.views ++;
     }
 
+    /**
+     * @return the list of users liked this post
+     */
     public ArrayList<Integer> getUserLiked(){
         return this.userLiked;
     }
 
+    /**
+     * @param userId the user id to be added to the list of users liked this post
+     * number of likes add 1
+     * user id added to the list of users liked this post
+     */
     public void addUserLike(int userId){
         userLiked.add(userId);
         numLikes += 1;
     }
 
+    /*
+     * @return the timestamp of the post
+     */
     public String getTimes() {
         return timestamp;
     }
 
+    /**
+     * @param userId the user id to be removed from the list of users liked this post
+     * number of likes minus 1
+     * user id removed from the list of users liked this post
+     */
     public boolean removeUserLike(int UserId){
         try {
             userLiked.remove(userId);
