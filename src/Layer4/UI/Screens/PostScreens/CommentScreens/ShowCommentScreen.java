@@ -9,13 +9,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
+/**
+ * <p>
+ *     ShowCommentScreen is a screen where the user can view {@link Layer1.Entity.Comment Comments} of a
+ *     {@link Layer1.Entity.Post Post}
+ *     ShowCommentScreen extends {@link JFrame JFrame} and implements {@link ActionListener ActionListener}
+ * </p>
+ * @Author: LemengDai
+ */
 public class ShowCommentScreen extends JFrame implements ActionListener{
+    /**
+     * <p>
+     *     initialize ShowCommentScreen with user id.
+     * </p>
+     * @param userid
+     */
     public ShowCommentScreen(int userid) {
         JLabel title = new PlaceLabel().create(50,100, 200,30, "Comments Section");
 
         JButton addComment = new PlaceButton().create("Add Comment",null,100, 700, 150, 50);
         JButton cancel = new PlaceButton().create("Cancel",null,300, 700, 150, 50);
 
+        //When the user clicks Add Comment button, AddCommentScreen is shown
         addComment.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
