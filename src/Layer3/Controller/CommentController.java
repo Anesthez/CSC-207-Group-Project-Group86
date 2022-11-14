@@ -3,6 +3,7 @@ package Layer3.Controller;
 import Layer2.UseCases.CommentUseCases;
 import Layer4.Interface.csvInterface;
 import Model.Request.CommentRequestModel;
+import Model.Response.CommentResponseModel;
 
 import java.io.IOException;
 import java.util.Map;
@@ -32,11 +33,10 @@ public class CommentController {
      * @throws IOException
      */
     public void create() throws IOException {
-//        csvInterface csvInteract = new csvInterface();
-//        Map<Integer, CommentRequestModel> comments = csvInteract.commentsReader("database/comments.csv");
-//        CommentUseCases commentUseCases = new CommentUseCases(comments);
-//        commentUseCases.addComment(userid, inputLines); //TODO: no postid in args?
-//
-//        csvInteract.commentsWriter(comments, "database/comments.csv");
+        csvInterface csvInteract = new csvInterface();
+        Map<Integer, CommentRequestModel> comments = csvInteract.commentsReader("database/comments.csv");
+        CommentUseCases commentUseCases = new CommentUseCases(comments);
+        commentUseCases.addComment(userid, inputLines); //TODO: no postid in args?
+        csvInteract.commentsWriter(commentUseCases.getComments(), "database/comments.csv");
     }
 }
