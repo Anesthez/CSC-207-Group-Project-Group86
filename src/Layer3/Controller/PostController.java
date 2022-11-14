@@ -5,14 +5,16 @@ import Layer2.UseCases.CommentUseCases;
 import Layer2.UseCases.PostUseCases;
 import Layer4.Interface.csvInterface;
 import Model.Request.PostRequestModel;
+import Model.Response.PostResponseModel;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
- * <p>This class contains the methods for showPostScreen and uploadPostScreen</p>
+ * <p>This class contains the methods for showPostScreen, uploadPostScreen, and HotPostScreen</p>
  *
- * @author Kevin Wu
+ * @author Kevin Wu, Tianyu Li
  */
 public class PostController {
     /**
@@ -41,10 +43,17 @@ public class PostController {
      */
     public String showPost(int postid) throws Exception {
         csvInterface csvInterface = new csvInterface();
-        Map<Integer, PostRequestModel> posts = csvInterface.postsReader("database/posts.csv");
-        Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/posts_liked.csv");
+        Map<Integer, PostRequestModel> posts = csvInterface.postsReader("database/post.csv");
+        Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/post_liked.csv");
         PostUseCases postManager = new PostUseCases(posts, postsLiked);
-        String post = postManager.showPost(postid);
-        return post;
+        return postManager.showPost(postid);
+    }
+
+    public List<PostResponseModel> getThreeHottestPosts() throws Exception {
+        csvInterface csvInterface = new csvInterface();
+        Map<Integer, PostRequestModel> posts = csvInterface.postsReader("database/post.csv");
+        Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/post_liked.csv");
+        PostUseCases postManager = new PostUseCases(posts, postsLiked);
+        return postManager.getHottestPosts();
     }
 }
