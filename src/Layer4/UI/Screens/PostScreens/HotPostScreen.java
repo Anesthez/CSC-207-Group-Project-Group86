@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import Layer3.Controller.PostController;
 import Layer4.UI.Components.*;
+import Layer4.UI.Screens.MainScreen;
 import Model.Response.PostResponseModel;
 
 import java.awt.event.ActionEvent;
@@ -77,6 +78,16 @@ public class HotPostScreen extends JFrame implements ActionListener {
             }
         });
 
+        JButton back = new JButton("Back");
+        back.setBounds(0, 0, 50, 20);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PostScreen postScreen = new PostScreen(userId, name);
+                postScreen.setVisible(true);
+                dispose();
+            }
+        });
 
 
 
@@ -85,7 +96,7 @@ public class HotPostScreen extends JFrame implements ActionListener {
         this.add(mostPopular);
         this.add(secondPopular);
         this.add(thirdPopular);
-
+        this.add(back);
     }
 
     @Override
