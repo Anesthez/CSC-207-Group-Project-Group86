@@ -1,10 +1,8 @@
 package Layer4.UI.Screens.PostScreens;
 
-import Layer3.Controller.PostController;
 import Layer3.Presenter.PostPresenter;
 import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
-import Layer4.UI.Screens.MainScreen;
 import Layer4.UI.Screens.PostScreens.CommentScreens.ShowCommentScreen;
 
 import javax.swing.*;
@@ -20,7 +18,6 @@ import java.util.ArrayList;
  */
 public class showPostScreen extends JFrame implements ActionListener {
     public showPostScreen(int postId, int userId, String name) throws Exception {
-        //TODO: change coordinates and sizes
         PostPresenter postPresenter = new PostPresenter();
         ArrayList<Object> labels = new ArrayList<>();
         labels = postPresenter.showPost(postId);
