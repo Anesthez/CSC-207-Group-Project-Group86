@@ -3,6 +3,7 @@ package Layer4.UI.Screens.PostScreens.CommentScreens;
 import Layer4.Interface.csvInterface;
 import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
+import Layer4.UI.Screens.PostScreens.PostScreen;
 import Model.Request.CommentRequestModel;
 import Model.Request.UserRequestModel;
 
@@ -21,7 +22,7 @@ import java.util.Map;
  * </p>
  * @Author: LemengDai
  */
-public class ShowCommentScreen extends JFrame implements ActionListener{
+public class ShowCommentScreen extends JFrame{
     /**
      * <p>
      *     initialize ShowCommentScreen with user id.
@@ -47,7 +48,14 @@ public class ShowCommentScreen extends JFrame implements ActionListener{
             }
         });
 
-        cancel.addActionListener(this);
+        cancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PostScreen postScreen = new PostScreen(userid, username);
+                postScreen.setVisible(true);
+                dispose();
+            }
+        });
 
         this.setLayout(null);
 
@@ -60,17 +68,6 @@ public class ShowCommentScreen extends JFrame implements ActionListener{
         this.add(addComment);
         this.add(cancel);
 
-    }
-
-    /**
-     * Invoked when an action occurs.
-     *
-     * @param e the event to be processed
-     */
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        System.out.println("Click " + e.getActionCommand());
-        this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }
 
     public JScrollPane inner(int postId) {
