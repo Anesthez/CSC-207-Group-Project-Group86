@@ -1,5 +1,6 @@
 package Layer4.UI.Screens.PostScreens;
 
+import Layer3.Controller.LikeController;
 import Layer3.Presenter.PostPresenter;
 import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
@@ -23,12 +24,24 @@ public class showPostScreen extends JFrame implements ActionListener {
         labels = postPresenter.showPost(postId);
         this.add(new PlaceLabel().create(100, 50, 50, 50, "Title: "));
         this.add(new PlaceLabel().create(150, 50, 200, 50, labels.get(0).toString()));
-        this.add(new PlaceLabel().create(700, 25, 100, 50, "PostID: "));
-        this.add(new PlaceLabel().create(750, 25, 200, 50, labels.get(1).toString()));
+        this.add(new PlaceLabel().create(650, 15, 100, 50, "PostID: "));
+        this.add(new PlaceLabel().create(700, 15, 200, 50, labels.get(1).toString()));
         this.add(new PlaceLabel().create(350, 50, 200, 50, labels.get(2).toString()));
         this.add(new PlaceLabel().create(575, 50, 100, 50, "Likes: "));
         this.add(new PlaceLabel().create(615, 50, 200, 50, labels.get(3).toString()));
         this.add(new PlaceLabel().create(100, 125, 600, 600, labels.get(4).toString()));
+
+        JButton likeButton = new PlaceButton().create("Like", null,
+                650, 60, 100, 25);
+        likeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                LikeController likeController = new LikeController();
+//                likeController.likePost(postId, userId);
+            }
+        });
+        this.add(likeButton);
+
         JButton showCommentsButton = new PlaceButton().create("Show Comments", null,
                     600, 675, 130, 25);
         showCommentsButton.addActionListener(new ActionListener() {
