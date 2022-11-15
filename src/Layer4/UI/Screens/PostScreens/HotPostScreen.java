@@ -91,7 +91,7 @@ public class HotPostScreen extends JFrame implements ActionListener {
 
 
         this.add(new PlaceLabel().create(240, 80, 600, 25,
-                "THEY ARE THE HOTTEST POSTS ONLINE @"+ name));
+                "HERE THEY ARE! THE HOTTEST POSTS ONLINE @"+ name));
         this.add(mostPopular);
         this.add(secondPopular);
         this.add(thirdPopular);

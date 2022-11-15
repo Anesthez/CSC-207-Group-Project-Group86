@@ -26,7 +26,8 @@ public class LoginScreen extends JFrame{
         password.setLayout(null);
         password.setBounds(0, 400, 800, 50);
         password.add(new PlaceLabel().create(100, 0, 100, 50, "Password："));
-        JTextField passwordText = placeTextField.createTextField(200, 10, 400, 30);
+        JPasswordField passwordText = new JPasswordField();
+        passwordText.setBounds(200, 10, 400, 30);
         password.add(passwordText);
 
         JButton logIn = new JButton("Log in");
