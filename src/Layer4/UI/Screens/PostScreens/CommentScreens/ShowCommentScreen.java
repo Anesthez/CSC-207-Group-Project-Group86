@@ -1,5 +1,6 @@
 package Layer4.UI.Screens.PostScreens.CommentScreens;
 
+import Layer3.Presenter.CommentPresenter;
 import Layer4.Interface.csvInterface;
 import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
@@ -73,25 +74,9 @@ public class ShowCommentScreen extends JFrame{
     public JScrollPane inner(int postId) {
         JPanel commentSection = new JPanel();
         commentSection.setLayout(new BoxLayout(commentSection, BoxLayout.Y_AXIS));
-
-        csvInterface csvInteract = new csvInterface();
-        try {
-            Map<Integer, CommentRequestModel> comments = csvInteract.commentsReader("database/comments.csv");
-            Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
-            for (CommentRequestModel c:comments.values()) {
-                ArrayList<Object> param = c.get();
-                if ((Integer)param.get(4) == postId) {
-                    JLabel username = new JLabel((String) users.get((Integer) param.get(0)).get().get(2));
-                    System.out.println(username);
-                    JLabel comment = new JLabel((String) param.get(2));
-                    commentSection.add(username);
-                    commentSection.add(comment);
-                }
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-
+        CommentPresenter commentPresenter = new CommentPresenter();
+        JLabel content = new JLabel(String.valueOf(commentPresenter.presentComment(postId)));
+        commentSection.add(content);
         JScrollPane scrollPane = new JScrollPane(commentSection);
         scrollPane.setBounds(50, 150, 700, 400);
 
