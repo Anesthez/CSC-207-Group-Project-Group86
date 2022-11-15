@@ -4,7 +4,6 @@ import javax.swing.*;
 
 import Layer3.Controller.PostController;
 import Layer4.UI.Components.*;
-import Layer4.UI.Screens.MainScreen;
 import Model.Response.PostResponseModel;
 
 import java.awt.event.ActionEvent;
@@ -92,7 +91,7 @@ public class HotPostScreen extends JFrame implements ActionListener {
 
 
         this.add(new PlaceLabel().create(240, 80, 600, 25,
-                "THEY ARE THE HOTTEST POSTS ONLINE DUDE/GIRL!!!"));
+                "THEY ARE THE HOTTEST POSTS ONLINE @"+ name));
         this.add(mostPopular);
         this.add(secondPopular);
         this.add(thirdPopular);
