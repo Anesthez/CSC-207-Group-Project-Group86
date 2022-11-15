@@ -286,6 +286,7 @@ public class csvInterface {
         headers.put("user_id", 1);
         headers.put("time", 2);
         headers.put("content", 3);
+        headers.put("post_id", 4);
 
         BufferedReader reader = new BufferedReader(new FileReader(csvFile));
         reader.readLine(); // skip header
@@ -296,8 +297,9 @@ public class csvInterface {
             int user_id = Integer.parseInt(col[headers.get("user_id")]);
             String content = String.valueOf(col[headers.get("content")]);
             String time = String.valueOf(col[headers.get("time")]);
+            int post_id = Integer.parseInt(col[headers.get("post_id")]);
 
-            CommentRequestModel comment = new CommentRequestModel(user_id, id, content, time);
+            CommentRequestModel comment = new CommentRequestModel(user_id, id, content, time, post_id);
             comments.put(id, comment);
         }
         reader.close();
@@ -690,6 +692,7 @@ public class csvInterface {
         headers.put("user_id", 1);
         headers.put("time", 2);
         headers.put("content", 3);
+        headers.put("post_id", 4);
         BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter(commentPath));
@@ -701,7 +704,8 @@ public class csvInterface {
                         comment.get().get(0)+","+
                         comment.get().get(1)+","+
                         comment.get().get(2)+","+
-                        comment.get().get(3));
+                        comment.get().get(3)+","+
+                        comment.get().get(4));
                 writer.write(line);
                 writer.newLine();
             }

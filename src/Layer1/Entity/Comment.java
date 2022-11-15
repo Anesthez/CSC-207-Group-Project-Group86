@@ -18,6 +18,7 @@ import Model.Response.CommentResponseModel;
  */
 public class Comment extends Context {
     private final int userId;
+    private final int postId;
 
     /**
      * <p>initialize a Comment object userid, the id of the post, content and the time for the post</p>
@@ -26,17 +27,21 @@ public class Comment extends Context {
      * @param content
      * @param timestamp
      */
-    public Comment(int userId, int id, String content, String timestamp) {
+    public Comment(int userId, int id, String content, String timestamp, int postId) {
         super(id, content, timestamp);
         this.userId = userId;
+        this.postId = postId;
     }
 
     public int getUserId() {
         return userId;
     }
+    public int getPostId() {
+        return getPostId();
+    }
 
     @Override
     public CommentResponseModel responseModel() {
-        return new CommentResponseModel(this.getId(), this.getUserId(), this.getContent(), this.getTime());
+        return new CommentResponseModel(this.getId(), this.getUserId(), this.getContent(), this.getTime(), this.getPostId());
     }
 }
