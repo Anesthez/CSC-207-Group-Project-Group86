@@ -2,27 +2,45 @@
 package Layer4.UI.Screens.PostScreens;
 import javax.swing.*;
 
+import Layer3.Controller.PostController;
 import Layer4.UI.Components.*;
+import Layer4.UI.Screens.MainScreen;
+import Model.Response.PostResponseModel;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
-public class HotPostScreen extends JPanel implements ActionListener {
+public class HotPostScreen extends JFrame implements ActionListener {
 
-    Container container;
+    public HotPostScreen(int userId, String name){
+        this.setSize(800, 800);
+        this.setLayout(null);
+        this.setBounds(0, 0, 800, 800);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    public HotPostScreen(JFrame frame){  // TODO will take: HotPostScreen(List<Post> hotPosts) in later implementations.
-        container = frame.getContentPane();
-        container.setLayout(null);
-
+        List<PostResponseModel> hotPosts = null;
+        try {
+            hotPosts = new PostController().getThreeHottestPosts();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
         JButton mostPopular = new JButton("Most Popular");
         mostPopular.setSize(120, 40);
         mostPopular.setLocation(340, 300);
+        List<PostResponseModel> finalHotPosts = hotPosts;
         mostPopular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Todo connect interface with post 1
+
+                showPostScreen post1 = null;
+                try {
+                    post1 = new showPostScreen((Integer) finalHotPosts.get(0).get().get(0));
+                    post1.setVisible(true);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+                dispose();
             }
         });
 
@@ -32,7 +50,14 @@ public class HotPostScreen extends JPanel implements ActionListener {
         secondPopular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Todo connect interface with post 2
+                showPostScreen post2 = null;
+                try {
+                    post2 = new showPostScreen((Integer) finalHotPosts.get(1).get().get(0));
+                    post2.setVisible(true);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+                dispose();
             }
         });
 
@@ -42,39 +67,36 @@ public class HotPostScreen extends JPanel implements ActionListener {
         thirdPopular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Todo connect interface with post 3
+                showPostScreen post3 = null;
+                try {
+                    post3 = new showPostScreen((Integer) finalHotPosts.get(2).get().get(0));
+                    post3.setVisible(true);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+                dispose();
             }
         });
 
-        JButton yellow = new JButton("YELLOW!");
-        yellow.setSize(120, 40);
-        yellow.setLocation(340, 510);
-        yellow.addActionListener(new ActionListener() {
+        JButton back = new JButton("Back");
+        back.setBounds(0, 0, 50, 20);
+        back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.setBackground(Color.yellow);
+                PostScreen postScreen = new PostScreen(userId, name);
+                postScreen.setVisible(true);
+                dispose();
             }
         });
 
-        JButton green = new JButton("GREEN!");
-        green.setSize(120, 40);
-        green.setLocation(340, 580);
-        green.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                container.setBackground(Color.green);
-            }
-        });
 
-        container.setSize(800, 800);
-        container.add(new PlaceLabel().create(240, 80, 600, 25,
+
+        this.add(new PlaceLabel().create(240, 80, 600, 25,
                 "THEY ARE THE HOTTEST POSTS ONLINE DUDE/GIRL!!!"));
-        container.add(mostPopular);
-        container.add(secondPopular);
-        container.add(thirdPopular);
-        container.add(yellow);
-        container.add(green);
-
+        this.add(mostPopular);
+        this.add(secondPopular);
+        this.add(thirdPopular);
+        this.add(back);
     }
 
     @Override
