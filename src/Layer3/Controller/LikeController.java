@@ -16,7 +16,7 @@ public class LikeController {
         Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/posts_liked.csv");
         PostUseCases postManager = new PostUseCases(posts, postsLiked);
         postManager.like_posts(postId, userId);
-//        csvInterface.postsWriter("database/posts.csv", posts);
+        csvInterface.postsWriter("database/posts.csv", postManager.getPostsResponseModel());
         csvInterface.postsLikedWriter("database/posts_liked.csv", postsLiked);
     }
 }

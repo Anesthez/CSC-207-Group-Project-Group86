@@ -17,8 +17,8 @@ import java.util.ArrayList;
  *
  * @author Kevin Wu
  */
-public class showPostScreen extends JFrame implements ActionListener {
-    public showPostScreen(int postId, int userId, String name) throws Exception {
+public class ShowPostScreen extends JFrame implements ActionListener {
+    public ShowPostScreen(int postId, int userId, String name) throws Exception {
         PostPresenter postPresenter = new PostPresenter();
         ArrayList<Object> labels = new ArrayList<>();
         labels = postPresenter.showPost(postId);
@@ -36,8 +36,12 @@ public class showPostScreen extends JFrame implements ActionListener {
         likeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                LikeController likeController = new LikeController();
-//                likeController.likePost(postId, userId);
+                LikeController likeController = new LikeController();
+                try {
+                    likeController.likePost(postId, userId);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
         this.add(likeButton);

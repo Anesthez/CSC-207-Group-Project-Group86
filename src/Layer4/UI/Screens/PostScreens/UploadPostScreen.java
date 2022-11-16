@@ -15,8 +15,8 @@ import java.awt.event.ActionListener;
  *
  * @author Kevin Wu
  */
-public class uploadPostScreen extends JFrame implements ActionListener {
-    public uploadPostScreen(int userId, String name) {
+public class UploadPostScreen extends JFrame implements ActionListener {
+    public UploadPostScreen(int userId, String name) {
         this.add(new PlaceLabel().create(50, 0, 50, 50, "Title"));
 
         this.add(new PlaceLabel().create(50, 100, 50, 50, "Content"));

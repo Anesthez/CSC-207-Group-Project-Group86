@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- * <p>This class contains the methods for showPostScreen and uploadPostScreen</p>
+ * <p>This class contains the methods for ShowPostScreen and UploadPostScreen</p>
  *
  * @author Kevin Wu
  */
