@@ -27,21 +27,24 @@ public class HotPostScreen extends JFrame implements ActionListener {
         try {
             hotPosts = new PostController().getThreeHottestPosts();
         } catch (Exception ex) {
+            System.out.println("input error");
             throw new RuntimeException(ex);
         }
         JButton mostPopular = new JButton("Most Popular");
         mostPopular.setSize(120, 40);
         mostPopular.setLocation(340, 300);
         List<PostResponseModel> finalHotPosts = hotPosts;
+        System.out.println(hotPosts);
         mostPopular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 showPostScreen post1 = null;
                 try {
-                    post1 = new showPostScreen((Integer) finalHotPosts.get(0).get().get(0));
+                    post1 = new showPostScreen((Integer) finalHotPosts.get(0).get().get(1));
                     post1.setVisible(true);
                 } catch (Exception ex) {
+                    System.out.println("post1 error");
                     throw new RuntimeException(ex);
                 }
                 dispose();
@@ -56,9 +59,10 @@ public class HotPostScreen extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 showPostScreen post2 = null;
                 try {
-                    post2 = new showPostScreen((Integer) finalHotPosts.get(1).get().get(0));
+                    post2 = new showPostScreen((Integer) finalHotPosts.get(1).get().get(1));
                     post2.setVisible(true);
                 } catch (Exception ex) {
+                    System.out.println("post2 error");
                     throw new RuntimeException(ex);
                 }
                 dispose();
@@ -73,9 +77,10 @@ public class HotPostScreen extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 showPostScreen post3 = null;
                 try {
-                    post3 = new showPostScreen((Integer) finalHotPosts.get(2).get().get(0));
+                    post3 = new showPostScreen((Integer) finalHotPosts.get(2).get().get(1));
                     post3.setVisible(true);
                 } catch (Exception ex) {
+                    System.out.println("post3 error");
                     throw new RuntimeException(ex);
                 }
                 dispose();
