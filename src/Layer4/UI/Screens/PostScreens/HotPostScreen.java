@@ -10,6 +10,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * <p>This class is the UI for gathering most trending posts.
+ * @author Tianyu Li
+ */
+
 public class HotPostScreen extends JFrame implements ActionListener {
 
     public HotPostScreen(int userId, String name){
