@@ -9,6 +9,7 @@ import Layer4.UI.Screens.TopicScreens.TopicScreen;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class MainScreen extends JFrame {
     public MainScreen(int userId, String username){
@@ -35,7 +36,12 @@ public class MainScreen extends JFrame {
         friend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FriendsScreen friendsScreen = new FriendsScreen(userId, username);
+                FriendsScreen friendsScreen = null;
+                try {
+                    friendsScreen = new FriendsScreen(userId, username);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 friendsScreen.setVisible(true);
                 dispose();
 

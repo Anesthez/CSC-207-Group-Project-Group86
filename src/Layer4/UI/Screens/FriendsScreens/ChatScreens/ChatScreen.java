@@ -2,6 +2,8 @@ package Layer4.UI.Screens.FriendsScreens.ChatScreens;
 
 import Layer3.Presenter.ChatPresenter;
 import Layer3.Controller.ChatController;
+import Layer4.UI.Screens.FriendsScreens.FriendsScreen;
+import Model.Response.ChatResponseModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,11 +23,12 @@ public class ChatScreen extends JFrame implements ActionListener {
      * @param chatController the ChatController
      * @param chatPresenter the ChatPresenter
      */
+    static String name;
 
-    public ChatScreen(int userid, int receiverId) throws IOException {
+    public ChatScreen(int userid, int receiverId, String name) throws IOException {
         ChatPresenter cp = new ChatPresenter();
         Object[] chatlist = cp.presentMessages(userid, receiverId);
-
+        ChatScreen.name = name;
         JFrame chatScreen = new JFrame();
 
         JLabel pastChat = new JLabel("Past Messages:");
@@ -38,7 +41,12 @@ public class ChatScreen extends JFrame implements ActionListener {
             chatScreen.add(message);
         } else {
             for (int i = 0; i < Math.min(10, chatlist.length); i++) {
-                JLabel message = new JLabel(chatlist[i].toString());
+                ChatResponseModel chat = (ChatResponseModel) chatlist[i];
+                JLabel message = new JLabel(chat.get().get(0).toString() + "  "
+                        + chat.get().get(1).toString() + "  to  " +
+                        chat.get().get(2).toString() + ": " +
+                        chat.get().get(3).toString() + "  at  " +
+                        chat.get().get(4).toString());
                 message.setBounds(50, 500 - 50 * i, 700, 50);
                 chatScreen.add(message);
             }
@@ -47,6 +55,23 @@ public class ChatScreen extends JFrame implements ActionListener {
         JButton send = new JButton("Send");
         send.setBounds(575, 725, 100, 40);
         chatScreen.add(send);
+        JButton back = new JButton("Back");
+        back.setBounds(0, 0, 50, 20);
+        chatScreen.add(back);
+
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FriendsScreen friendsScreen = null;
+                try {
+                    friendsScreen = new FriendsScreen(userid, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                friendsScreen.setVisible(true);
+                chatScreen.dispose();
+            }
+        });
 
         JTextArea messageArea = new JTextArea("Enter your message here");
         messageArea.setBounds(50, 600, 700, 100);
@@ -89,7 +114,7 @@ public class ChatScreen extends JFrame implements ActionListener {
     }
 
     public static void new_window(int userid, int receiverId) throws IOException {
-        new ChatScreen(userid, receiverId);
+        new ChatScreen(userid, receiverId, name);
     }
 
     @Override
