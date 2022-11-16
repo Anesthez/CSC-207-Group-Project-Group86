@@ -38,6 +38,7 @@ public class PostUseCases {
         this.posts_liked = posts_liked;
     }
 
+
     /**<p>This method is the add post use case, the method receives userId, content, topic of the post and then
      * construct a post object for it.</p>
      *
@@ -166,6 +167,14 @@ public class PostUseCases {
     public List<PostResponseModel> getHottestPosts() {
         // Method overload for getHottestPost with default post_num = 3
         return getHottestPosts(3);
+    }
+
+    public Map<Integer, PostResponseModel> getPostsResponseModel() {
+        Map<Integer, PostResponseModel> PostResponseModel = new HashMap<Integer, PostResponseModel>();
+        for (Integer i : this.posts.keySet()) {
+            PostResponseModel.put(i, posts.get(i).responseModel());
+        }
+        return PostResponseModel;
     }
 
     /**

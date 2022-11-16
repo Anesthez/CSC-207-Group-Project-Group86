@@ -4,12 +4,16 @@ import javax.swing.*;
 
 import Layer3.Controller.PostController;
 import Layer4.UI.Components.*;
-import Layer4.UI.Screens.MainScreen;
 import Model.Response.PostResponseModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+
+/**
+ * <p>This class is the UI for gathering most trending posts.
+ * @author Tianyu Li
+ */
 
 public class HotPostScreen extends JFrame implements ActionListener {
 
@@ -92,7 +96,7 @@ public class HotPostScreen extends JFrame implements ActionListener {
 
 
         this.add(new PlaceLabel().create(240, 80, 600, 25,
-                "THEY ARE THE HOTTEST POSTS ONLINE DUDE/GIRL!!!"));
+                "HERE THEY ARE! THE HOTTEST POSTS ONLINE @"+ name));
         this.add(mostPopular);
         this.add(secondPopular);
         this.add(thirdPopular);

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+
  * <p>This class contains the methods for showPostScreen, uploadPostScreen, and HotPostScreen</p>
  *
  * @author Kevin Wu, Tianyu Li
