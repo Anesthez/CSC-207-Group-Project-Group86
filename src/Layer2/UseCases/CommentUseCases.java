@@ -43,7 +43,7 @@ public class CommentUseCases {
         Map<Integer, PostRequestModel> posts;
         Map<Integer, ArrayList<Integer>> posts_liked = new HashMap<>();
         try {
-            posts = csvInteract.postsReader("database/posts.csv");
+            posts = csvInteract.postsReader("database/post.csv");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

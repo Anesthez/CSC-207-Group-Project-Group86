@@ -5,6 +5,7 @@ import Model.Request.CommentRequestModel;
 import Model.Request.UserRequestModel;
 
 import javax.swing.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -24,9 +25,9 @@ public class CommentPresenter {
      * @return a string representation of a list of {@link Layer1.Entity.Comment Comment} with username who posts these
      * comments corresponding to a post
      */
-    public StringBuilder presentComment(int postId) {
+    public ArrayList<String> presentComment(int postId) {
         csvInterface csvInteract = new csvInterface();
-        StringBuilder commentList = new StringBuilder();
+        ArrayList<String> commentList = new ArrayList<>();
         try {
             Map<Integer, CommentRequestModel> comments = csvInteract.commentsReader("database/comments.csv");
             Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
@@ -35,7 +36,7 @@ public class CommentPresenter {
                 if ((Integer)param.get(4) == postId) {
                     String username = (String) users.get((Integer) param.get(0)).get().get(2);
                     String comment = (String) param.get(2);
-                    commentList.append(username).append("/n").append(comment).append("/n");
+                    commentList.add(username + ": " + comment);
                 }
             }
         } catch (Exception e) {

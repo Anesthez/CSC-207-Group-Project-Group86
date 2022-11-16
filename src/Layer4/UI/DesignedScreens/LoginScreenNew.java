@@ -3,6 +3,7 @@ package Layer4.UI.DesignedScreens;
 import Layer3.Controller.LogInController;
 import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.Components.PlaceTextField;
+import Model.Response.UserResponseModel;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -92,10 +93,11 @@ public class LoginScreenNew extends JFrame {
                 passwordText.setText("");
                 LogInController logInController = new LogInController(userInputs);
                 try {
-                    int userId = logInController.login();
-                    if (userId == -1){
+                    UserResponseModel userResponseModel = logInController.login();
+                    if (userResponseModel == null){
                         new LoginScreenNew();
                     }else{
+                        int userId = (int) userResponseModel.get().get(0);
                         MainScreenNew mainScreen = new MainScreenNew(userId, name);
                         mainScreen.setVisible(true);
                         dispose();
@@ -115,7 +117,7 @@ public class LoginScreenNew extends JFrame {
                 userInputs.add("default");
                 LogInController logInController = new LogInController(userInputs);
                 try {
-                    if (logInController.login() == -1){
+                    if (logInController.login() == null){
                         new LoginScreenNew();
                     }
                 } catch (IOException | FontFormatException ex) {

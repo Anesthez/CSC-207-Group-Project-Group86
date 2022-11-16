@@ -42,6 +42,6 @@ public class Comment extends Context {
 
     @Override
     public CommentResponseModel responseModel() {
-        return new CommentResponseModel(this.getId(), this.getUserId(), this.getContent(), this.getTime(), this.getPostId());
+        return new CommentResponseModel(this.getUserId(), this.getId(), this.getContent(), this.getTime(), this.getPostId());
     }
 }

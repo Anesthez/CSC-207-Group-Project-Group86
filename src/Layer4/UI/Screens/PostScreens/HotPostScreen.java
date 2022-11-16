@@ -4,16 +4,12 @@ import javax.swing.*;
 
 import Layer3.Controller.PostController;
 import Layer4.UI.Components.*;
+import Layer4.UI.Screens.MainScreen;
 import Model.Response.PostResponseModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-
-/**
- * <p>This class is the UI for gathering most trending posts.
- * @author Tianyu Li
- */
 
 public class HotPostScreen extends JFrame implements ActionListener {
 
@@ -37,9 +33,9 @@ public class HotPostScreen extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                showPostScreen post1 = null;
+                ShowPostScreen post1 = null;
                 try {
-                    post1 = new showPostScreen((Integer) finalHotPosts.get(0).get().get(0));
+                    post1 = new ShowPostScreen((Integer) finalHotPosts.get(0).get().get(2), userId, name);
                     post1.setVisible(true);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
@@ -54,9 +50,9 @@ public class HotPostScreen extends JFrame implements ActionListener {
         secondPopular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showPostScreen post2 = null;
+                ShowPostScreen post2 = null;
                 try {
-                    post2 = new showPostScreen((Integer) finalHotPosts.get(1).get().get(0));
+                    post2 = new ShowPostScreen((Integer) finalHotPosts.get(1).get().get(2), userId, name);
                     post2.setVisible(true);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
@@ -71,9 +67,9 @@ public class HotPostScreen extends JFrame implements ActionListener {
         thirdPopular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showPostScreen post3 = null;
+                ShowPostScreen post3 = null;
                 try {
-                    post3 = new showPostScreen((Integer) finalHotPosts.get(2).get().get(0));
+                    post3 = new ShowPostScreen((Integer) finalHotPosts.get(2).get().get(2), userId, name);
                     post3.setVisible(true);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
@@ -96,7 +92,7 @@ public class HotPostScreen extends JFrame implements ActionListener {
 
 
         this.add(new PlaceLabel().create(240, 80, 600, 25,
-                "HERE THEY ARE! THE HOTTEST POSTS ONLINE @"+ name));
+                "THEY ARE THE HOTTEST POSTS ONLINE DUDE/GIRL!!!"));
         this.add(mostPopular);
         this.add(secondPopular);
         this.add(thirdPopular);

@@ -9,6 +9,7 @@ import Model.Request.CommentRequestModel;
 import Model.Request.UserRequestModel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -35,7 +36,22 @@ public class ShowCommentScreen extends JFrame{
 
         JButton addComment = new PlaceButton().create("Add Comment",null,100, 700, 150, 50);
         JButton cancel = new PlaceButton().create("Cancel",null,300, 700, 150, 50);
+        JScrollPane jScrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+                                                  ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane.setBounds(50, 150, 700, 400);
+        JPanel jPanel = new JPanel();
+        ArrayList<String> strings = new CommentPresenter().presentComment(postId);
+        jPanel.setLayout(new GridLayout(strings.size(), 1));
+        jPanel.setSize(700, 2000);
+        int i = 0;
+        for (String s: new CommentPresenter().presentComment(postId)) {
 
+            JLabel label = new JLabel(s);
+            label.setSize(700, 40);
+            jPanel.add(label);
+            i +=1;
+        }
+        jScrollPane.setViewportView(jPanel);
         //When the user clicks Add Comment button, AddCommentScreen is shown
         addComment.addActionListener(new ActionListener() {
             @Override
@@ -65,21 +81,10 @@ public class ShowCommentScreen extends JFrame{
 
         this.add(new PlaceLabel().create(400, 50, 100, 25, "UofTMeta"));
         this.add(title);
-        this.add(inner(postId));
         this.add(addComment);
         this.add(cancel);
-
+        this.add(jScrollPane);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public JScrollPane inner(int postId) {
-        JPanel commentSection = new JPanel();
-        commentSection.setLayout(new BoxLayout(commentSection, BoxLayout.Y_AXIS));
-        CommentPresenter commentPresenter = new CommentPresenter();
-        JLabel content = new JLabel(String.valueOf(commentPresenter.presentComment(postId)));
-        commentSection.add(content);
-        JScrollPane scrollPane = new JScrollPane(commentSection);
-        scrollPane.setBounds(50, 150, 700, 400);
-
-        return scrollPane;
-    }
 }

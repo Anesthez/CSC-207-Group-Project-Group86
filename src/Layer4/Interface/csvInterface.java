@@ -26,17 +26,17 @@ public class csvInterface {
          * @throws IOException
          */
         File csvFile = new File(postPath);
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         Map<Integer, PostRequestModel> posts = new HashMap<>();
-        headers.put("id", 0);
+        headers.put("id", 2);
         headers.put("userid", 1);
-        headers.put("time", 2);
+        headers.put("time", 4);
         headers.put("content", 3);
-        headers.put("num-liked", 4);
+        headers.put("num-liked", 6);
         headers.put("num-viewed", 5);
-        headers.put("user-liked", 6);
-        headers.put("list_comment_id", 7);
-        headers.put("post_title", 8);
+        headers.put("user-liked", 7);
+        headers.put("list_comment_id", 8);
+        headers.put("post_title", 0);
         headers.put("topic", 9);
         BufferedReader reader = new BufferedReader(new FileReader(csvFile));
         reader.readLine(); // skip header
@@ -100,17 +100,17 @@ public class csvInterface {
          */
         Map<Integer, ArrayList<Integer>> postsLiked = new HashMap<>();
         File csvFile = new File(post_likedPath);
-        Map<String, Integer> headers = new HashMap<>();
-        headers.put("userid", 0);
-        headers.put("list-postId", 1);
+        Map<String, Integer> headers = new LinkedHashMap<>();
+        headers.put("postId", 1);
+        headers.put("list-userId", 0);
         BufferedReader reader = new BufferedReader(new FileReader(csvFile));
         reader.readLine(); // skip header
 
         String row;
         while ((row = reader.readLine()) != null) {
             String[] col = row.split(",");
-            int userid = Integer.parseInt(col[headers.get("userid")]);
-            String list_post_id = String.valueOf(col[headers.get("list-postId")]);
+            int userid = Integer.parseInt(col[headers.get("postId")]);
+            String list_post_id = String.valueOf(col[headers.get("list-userId")]);
             String[] postIds = list_post_id.split(" ");
             ArrayList<Integer> iList_post_id = new ArrayList<>();
             if(!list_post_id.equals("")) {
@@ -135,7 +135,7 @@ public class csvInterface {
          * @throws IOException
          */
         File csvFile = new File(userPath);
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         Map<Integer, UserRequestModel> users = new HashMap<>();
         headers.put("id", 0);
         headers.put("user-type", 1);
@@ -172,7 +172,7 @@ public class csvInterface {
          */
         Map<Integer, ArrayList<Integer>> friends = new HashMap<>();
         File csvFile = new File(friendsPath);
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         headers.put("userid", 0);
         headers.put("list-friendIds", 1);
         BufferedReader reader = new BufferedReader(new FileReader(csvFile));
@@ -207,7 +207,7 @@ public class csvInterface {
          */
         Map<Integer, ArrayList<Integer>> blocks = new HashMap<>();
         File csvFile = new File(blocksPath);
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         headers.put("userid", 0);
         headers.put("list-blockedIds", 1);
         BufferedReader reader = new BufferedReader(new FileReader(csvFile));
@@ -244,7 +244,7 @@ public class csvInterface {
          */
 
         File csvFile = new File(chatPath);
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         headers.put("id", 0);
         headers.put("user_id1", 1);
         headers.put("user_id2", 2);
@@ -281,7 +281,7 @@ public class csvInterface {
          */
 
         File csvFile = new File(commentPath);
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         headers.put("id", 0);
         headers.put("user_id", 1);
         headers.put("time", 2);
@@ -318,7 +318,7 @@ public class csvInterface {
          * @throws IOException
          */
         File csvFile = new File(topicPath);
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         headers.put("id", 0);
         headers.put("name",1);
         headers.put("posts", 2);
@@ -363,17 +363,17 @@ public class csvInterface {
          * @param posts a map of posts
          */
 
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
 
-        headers.put("id", 0);
+        headers.put("id", 2);
         headers.put("userid", 1);
-        headers.put("time", 2);
+        headers.put("time", 4);
         headers.put("content", 3);
-        headers.put("num-liked", 4);
+        headers.put("num-liked", 6);
         headers.put("num-viewed", 5);
-        headers.put("user-liked", 6);
-        headers.put("list_comment_id", 7);
-        headers.put("post_title", 8);
+        headers.put("user-liked", 7);
+        headers.put("list_comment_id", 8);
+        headers.put("post_title", 0);
         headers.put("topic", 9);
 
         BufferedWriter writer;
@@ -428,9 +428,9 @@ public class csvInterface {
          * @param posts_likedPath the path of the posts_liked.csv file
          * @param posts_liked a map of posts_liked
          */
-        Map<String, Integer> headers = new HashMap<>();
-        headers.put("userid", 0);
-        headers.put("list-postId", 1);
+        Map<String, Integer> headers = new LinkedHashMap<>();
+        headers.put("postId", 1);
+        headers.put("list-userId", 0);
         BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter(posts_likedPath));
@@ -446,8 +446,8 @@ public class csvInterface {
                     }
                 }
                 String line = (
-                        String.valueOf(postId)+","+
-                        listId);
+                        listId
+                        +","+ String.valueOf(postId));
                 writer.write(line);
                 writer.newLine();
             }
@@ -468,7 +468,7 @@ public class csvInterface {
          * @param users a map of users
          */
 
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         headers.put("id", 0);
         headers.put("user-type", 1);
         headers.put("password", 2);
@@ -485,8 +485,8 @@ public class csvInterface {
                 String line = (
                         user.get().get(0)+","+
                         user.get().get(1)+","+
-                        user.get().get(2)+","+
                         user.get().get(3)+","+
+                        user.get().get(2)+","+
                         user.get().get(4));
 
                 writer.write(line);
@@ -507,7 +507,7 @@ public class csvInterface {
          * @param friendsPath the path of the friends.csv file
          * @param friends a map of friends
          */
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         headers.put("userid", 0);
         headers.put("list-friendIds", 1);
         BufferedWriter writer;
@@ -545,7 +545,7 @@ public class csvInterface {
          * @param blocksPath the path of the blocks.csv file
          * @param blocks a map of blocks
          */
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         headers.put("userid", 0);
         headers.put("list-blockedIds", 1);
         BufferedWriter writer;
@@ -586,7 +586,7 @@ public class csvInterface {
          * @param topics a map of topics
          */
 
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         headers.put("id", 0);
         headers.put("name",1);
         headers.put("posts",2);
@@ -647,7 +647,7 @@ public class csvInterface {
          * @param chats a map of chats
          */
 
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         headers.put("id", 0);
         headers.put("user_id1", 1);
         headers.put("user_id2", 2);
@@ -687,7 +687,7 @@ public class csvInterface {
          * @param commentPath the path of the comments.csv file
          * @param comments a map of comments
          */
-        Map<String, Integer> headers = new HashMap<>();
+        Map<String, Integer> headers = new LinkedHashMap<>();
         headers.put("id", 0);
         headers.put("user_id", 1);
         headers.put("time", 2);
@@ -701,10 +701,10 @@ public class csvInterface {
 
             for (CommentResponseModel comment : comments.values()) {
                 String line = (
-                        comment.get().get(0)+","+
                         comment.get().get(1)+","+
-                        comment.get().get(2)+","+
+                        comment.get().get(0)+","+
                         comment.get().get(3)+","+
+                        comment.get().get(2)+","+
                         comment.get().get(4));
                 writer.write(line);
                 writer.newLine();

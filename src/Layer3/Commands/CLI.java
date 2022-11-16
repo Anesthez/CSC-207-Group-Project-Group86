@@ -7,6 +7,7 @@ import Layer2.UseCases.UserUsesCases;
 import Layer4.Interface.csvInterface;
 import Layer2.UseCases.*;
 import Model.Request.UserRequestModel;
+import Model.Response.UserResponseModel;
 
 import java.io.*;
 import java.util.*;
@@ -30,8 +31,9 @@ public class CLI {
             switch (userInputs[0]) {
                 case "/login ":
                     if (userInputs.length == 3) {
-                        userid = userManager.verifyUser(userInputs[1], userInputs[2]);
-                        if (userid != -1) {
+                        UserResponseModel user = userManager.verifyUser(userInputs[1], userInputs[2]);
+                        if (user != null) {
+                            userid = (int) user.get().get(0);
                             username = userInputs[1];
                             flag = false;
                         } else {

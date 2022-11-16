@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import Layer3.Controller.LogInController;
 import Layer4.UI.Components.*;
+import Layer4.UI.DesignedScreens.MainScreenNew;
+import Model.Response.UserResponseModel;
 
 public class LoginScreen extends JFrame{
     public LoginScreen(){
@@ -50,16 +52,22 @@ public class LoginScreen extends JFrame{
                 passwordText.setText("");
                 LogInController logInController = new LogInController(userInputs);
                 try {
-                    int userId = logInController.login();
-                    if (userId == -1){
+                    UserResponseModel userResponseModel = logInController.login();
+                    if (userResponseModel == null){
                         new LoginScreen();
-                    }else{
-                        MainScreen mainScreen = new MainScreen(userId, name);
+                    }else if (userResponseModel.get().get(1).equals("premium")){
+                        int userId = (int) userResponseModel.get().get(0);
+                        MainScreenNew mainScreen = new MainScreenNew(userId, name);
                         mainScreen.setVisible(true);
                         dispose();
 
+                    }else{
+                        int userId = (int) userResponseModel.get().get(0);
+                        MainScreen mainScreen = new MainScreen(userId, name);
+                        mainScreen.setVisible(true);
+                        dispose();
                     }
-                } catch (IOException ex) {
+                } catch (IOException | FontFormatException ex) {
                     throw new RuntimeException(ex);
                 }
             }
@@ -73,7 +81,7 @@ public class LoginScreen extends JFrame{
                 userInputs.add("default");
                 LogInController logInController = new LogInController(userInputs);
                 try {
-                    if (logInController.login() == -1){
+                    if (logInController.login() == null){
                         new LoginScreen();
                     }
                 } catch (IOException ex) {

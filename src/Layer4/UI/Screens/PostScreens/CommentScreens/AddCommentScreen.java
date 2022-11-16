@@ -38,9 +38,11 @@ public class AddCommentScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 try {
-                    CommentController commentController = new CommentController(commentContentText.getText(), userid, postId);
+                    CommentController commentController =
+                            new CommentController(commentContentText.getText(), userid, postId);
                     commentController.create();
-                    JOptionPane.showMessageDialog(null, String.format("%s created.", commentContentText.getText()));
+                    JOptionPane.showMessageDialog(null, String.format("%s created.",
+                            commentContentText.getText()));
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }

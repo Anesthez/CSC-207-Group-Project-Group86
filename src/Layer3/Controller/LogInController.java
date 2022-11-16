@@ -3,6 +3,7 @@ package Layer3.Controller;
 import Layer2.UseCases.UserUsesCases;
 import Layer4.Interface.csvInterface;
 import Model.Request.UserRequestModel;
+import Model.Response.UserResponseModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class LogInController {
         this.userInput = userInput;
     }
 
-    public int login() throws IOException {
+    public UserResponseModel login() throws IOException {
         csvInterface csvInteract = new csvInterface();
         Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
         UserUsesCases userManager = new UserUsesCases(users);

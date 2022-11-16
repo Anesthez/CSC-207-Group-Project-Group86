@@ -110,7 +110,7 @@ public class PostUseCases {
 
     public void like_posts(int userid, int post_id){
         posts.get(post_id).addUserLike(userid);
-        posts_liked.get(userid).add(post_id);
+        posts_liked.get(post_id).add(userid);
     }
 
     public void unlike_posts(int post_id, int user_id){

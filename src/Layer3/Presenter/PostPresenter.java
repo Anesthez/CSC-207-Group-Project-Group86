@@ -17,7 +17,7 @@ public class PostPresenter {
     public PostPresenter() throws IOException {
         csvInterface csvInterface = new csvInterface();
         posts = csvInterface.postsReader("database/post.csv");
-        postLiked = csvInterface.postsLikedReader("database/post.csv");
+        postLiked = csvInterface.postsLikedReader("database/post_liked.csv");
         postManager = new PostUseCases(posts, postLiked);
     }
 
