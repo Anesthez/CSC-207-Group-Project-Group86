@@ -25,7 +25,7 @@ public class AddCommentScreen extends JFrame implements ActionListener {
      * </p>
      * @param userid
      */
-    public AddCommentScreen(int userid){
+    public AddCommentScreen(int userid, int postId, String username){
 
         JLabel commentContentLabel = new PlaceLabel().create(50,100, 200,30, "Comment Content");
         JTextArea commentContentText = new PlaceTextArea().create(50,150, 500,200, null);
@@ -38,7 +38,7 @@ public class AddCommentScreen extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 try {
-                    CommentController commentController = new CommentController(commentContentText.getText(), userid);
+                    CommentController commentController = new CommentController(commentContentText.getText(), userid, postId);
                     commentController.create();
                     JOptionPane.showMessageDialog(null, String.format("%s created.", commentContentText.getText()));
                 } catch (Exception e) {

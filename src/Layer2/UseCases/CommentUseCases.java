@@ -3,6 +3,7 @@ package Layer2.UseCases;
 import Layer1.Entity.Comment;
 import Layer1.Entity.factories.CommentFactory;
 import Model.Request.CommentRequestModel;
+import Model.Response.CommentResponseModel;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -33,9 +34,9 @@ public class CommentUseCases {
      * @param userId the id of the user
      * @param content the content of the comment
      */
-    public void addComment(int userId, String content) {
+    public void addComment(int userId, String content, int postId) {
         Comment comment = new Comment(userId, comments.keySet().size() + 1, content,
-                LocalDate.now().toString());
+                LocalDate.now().toString(), postId);
         comments.put(comment.getId(), comment);
     }
 
@@ -55,5 +56,13 @@ public class CommentUseCases {
      */
     public Comment getCommentFromId(int id) {
         return comments.get(id);
+    }
+
+    public Map<Integer, CommentResponseModel> getComments() {
+        Map<Integer, CommentResponseModel> commentResponseModels = new HashMap<Integer, CommentResponseModel>();
+        for (Integer i : this.comments.keySet()) {
+            commentResponseModels.put(i, comments.get(i).responseModel());
+        }
+        return commentResponseModels;
     }
 }

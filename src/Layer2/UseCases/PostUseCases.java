@@ -149,13 +149,13 @@ public class PostUseCases {
     }
 
     // dummy method
-    public List<Post> getHottestPosts(int post_num) {
+    public List<PostResponseModel> getHottestPosts(int post_num) {
         // get post_num amount of the hottest post ranked by popularity.
-        List<Post> hotPosts = new ArrayList<>();
+        List<PostResponseModel> hotPosts = new ArrayList<>();
         int remaining = post_num;
         for (Map.Entry<Integer, Post> postEntry : this.posts.entrySet()) {
             if (remaining > 0) {
-                hotPosts.add(postEntry.getValue());
+                hotPosts.add(postEntry.getValue().responseModel());
                 remaining = remaining - 1;
             } else {
                 return hotPosts;
@@ -164,7 +164,7 @@ public class PostUseCases {
         return hotPosts;
     }
 
-    public List<Post> getHottestPosts() {
+    public List<PostResponseModel> getHottestPosts() {
         // Method overload for getHottestPost with default post_num = 3
         return getHottestPosts(3);
     }

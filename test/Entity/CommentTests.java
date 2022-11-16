@@ -14,7 +14,7 @@ public class CommentTests {
 
     @BeforeClass
     public static void setUp() {
-        actual = new Comment(5, 15, "Nice Picture!", "2022.05.15");
+        actual = new Comment(5, 15, "Nice Picture!", "2022.05.15", 5);
     }
 
     @After

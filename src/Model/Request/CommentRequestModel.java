@@ -8,17 +8,18 @@ public class CommentRequestModel implements Model {
     private final int id;
 
     private final int userId;
-    private int views;
 
     private String content;
     private String timestamp;
 
-    public CommentRequestModel(int userId, int id, String content, String timestamp) {
+    private int postId;
+
+    public CommentRequestModel(int userId, int id, String content, String timestamp, int postId) {
         this.userId = userId;
         this.id = id;
         this.content = content;
         this.timestamp = timestamp;
-        this.views = views;  // initialize comment with 0 views
+        this.postId = postId;
     }
 
     public ArrayList<Object> get(){
@@ -27,7 +28,7 @@ public class CommentRequestModel implements Model {
         contents.add(id);
         contents.add(content);
         contents.add(timestamp);
-        contents.add(views);
+        contents.add(postId);
         return contents;
     }
 }
