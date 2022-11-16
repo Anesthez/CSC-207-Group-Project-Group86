@@ -8,8 +8,22 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * <p>CommentPresenter is responsible for getting a list of {@link Layer1.Entity.Comment Comment} with username
+ * who posts these comments corresponding to a post and then transform them into a single {@link StringBuilder String}
+ * which can be displayed later in {@link Layer4.UI.Screens.PostScreens.CommentScreens.ShowCommentScreen} ShowCommentScreen.</p>
+ */
 public class CommentPresenter {
 
+    /**
+     * <p> responsible for getting a list of {@link Layer1.Entity.Comment Comment} with username who posts these comments
+     *  corresponding to a post and then transform them into a single {@link StringBuilder String} and return it
+     *  which can be displayed later in {@link Layer4.UI.Screens.PostScreens.CommentScreens.ShowCommentScreen}
+     *  ShowCommentScreen.</p>
+     * @param postId
+     * @return a string representation of a list of {@link Layer1.Entity.Comment Comment} with username who posts these
+     * comments corresponding to a post
+     */
     public StringBuilder presentComment(int postId) {
         csvInterface csvInteract = new csvInterface();
         StringBuilder commentList = new StringBuilder();
