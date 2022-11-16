@@ -17,7 +17,7 @@ import java.awt.event.WindowEvent;
  * </p>
  * @Author: LemengDai
  */
-public class AddCommentScreen extends JFrame implements ActionListener {
+public class AddCommentScreen extends JFrame {
 
     /**
      * <p>
@@ -46,7 +46,16 @@ public class AddCommentScreen extends JFrame implements ActionListener {
                 }
             }
         });
-        cancel.addActionListener(this);
+        //When the user clicks Cancel, AddActionScreen is closed
+        cancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Click " + e.getActionCommand());
+                ShowCommentScreen showCommentScreen = new ShowCommentScreen(userid, postId,username);
+                showCommentScreen.setVisible(true);
+                dispose();
+            }
+        });
         this.setLayout(null);
 
 
@@ -58,17 +67,6 @@ public class AddCommentScreen extends JFrame implements ActionListener {
         this.add(addComment);
         this.add(cancel);
     }
-
-    /**
-     *<p>When the user clicks Cancel, AddActionScreen is closed</p>
-     * @param e the event to be processed
-     */
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        System.out.println("Click " + e.getActionCommand());
-        this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-    }
-
 
 }
 

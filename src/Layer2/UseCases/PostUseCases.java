@@ -27,7 +27,7 @@ public class PostUseCases {
     /**<p>This is the constructor for the PostUseCases class, it needs the posts and the posts_liked list </p>
      *
      * @param posts the map of posts
-     * @param posts_liked  the map of posts_liked
+     * @param posts_liked  the map of post_id to the list of the userid who liked the post
      */
     public PostUseCases(Map<Integer, PostRequestModel> posts, Map<Integer, ArrayList<Integer>> posts_liked){
         PostFactory postFactory = new PostFactory();
