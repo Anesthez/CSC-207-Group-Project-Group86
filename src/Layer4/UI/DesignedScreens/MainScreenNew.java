@@ -18,13 +18,23 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * <p> This is the redesign version of the login screen by Tianyu Li </p>
+ * @author Tianyu Li
+ */
+
 public class MainScreenNew extends JFrame {
     public MainScreenNew(int userId, String username) throws IOException, FontFormatException {
 
-        final String fontPath = "assets/fonts/JustAnotherHand-Regular.ttf";
-        InputStream is = new FileInputStream(new File(fontPath));
+        final String fontPathGreeting = "assets/fonts/JustAnotherHand-Regular.ttf";
+        InputStream is = new FileInputStream(new File(fontPathGreeting));
         Font f = Font.createFont(Font.TRUETYPE_FONT, is);
         f = f.deriveFont(18f);
+
+        final String fontPathUI = "assets/fonts/KleeOne-SemiBold.ttf";
+        InputStream is2 = new FileInputStream(new File(fontPathUI));
+        Font f2 = Font.createFont(Font.TRUETYPE_FONT, is2);
+        f2 = f2.deriveFont(12f);
 
         this.getContentPane().setBackground(new Color(255, 255, 255));
         BufferedImage logo = ImageIO.read(new File("assets/images/logo_1_trans.png"));
@@ -42,12 +52,15 @@ public class MainScreenNew extends JFrame {
 
         post.setBounds(500, 200, 100, 50);
         post.setBackground(new Color(1.0f,1.0f,1.0f,0));
+        post.setFont(f2);
 
         friend.setBounds(500, 300, 100, 50);
         friend.setBackground(new Color(1.0f,1.0f,1.0f,0));
+        friend.setFont(f2);
 
         topic.setBounds(500, 400, 100, 50);
         topic.setBackground(new Color(1.0f,1.0f,1.0f,0));
+        topic.setFont(f2);
 
         post.addActionListener(new ActionListener() {
             @Override
