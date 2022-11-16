@@ -1,8 +1,6 @@
 package Layer4.UI.Screens.PostScreens;
 
-import Layer3.Controller.PostController;
 import Layer4.UI.Screens.MainScreen;
-import Model.Response.PostResponseModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
