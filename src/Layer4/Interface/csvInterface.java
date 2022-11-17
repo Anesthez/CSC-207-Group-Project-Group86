@@ -25,6 +25,7 @@ public class csvInterface {
          * @return a map of posts
          * @throws IOException
          */
+
         File csvFile = new File(postPath);
         Map<String, Integer> headers = new LinkedHashMap<>();
         Map<Integer, PostRequestModel> posts = new HashMap<>();
@@ -142,6 +143,7 @@ public class csvInterface {
         headers.put("password", 2);
         headers.put("name", 3);
         headers.put("time", 4);
+
         BufferedReader reader = new BufferedReader(new FileReader(csvFile));
         reader.readLine(); // skip header
         String row;
