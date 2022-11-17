@@ -5,9 +5,13 @@ import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.Components.PlaceTextField;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -17,8 +21,13 @@ import java.io.IOException;
  * @author Kevin Wu
  */
 public class UploadPostScreen extends JFrame implements ActionListener {
-    public UploadPostScreen(int userId, String name) {
+    public UploadPostScreen(int userId, String name) throws IOException {
         this.add(new PlaceLabel().create(50, 0, 50, 50, "Title"));
+        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
+        ImageIcon imageIcon = new ImageIcon(logo);
+        JLabel label = new JLabel(imageIcon);
+        label.setSize(1600, 900);
+        Container container = getContentPane();
 
         this.add(new PlaceLabel().create(50, 100, 50, 50, "Content"));
         JButton back = new JButton("Back");
@@ -65,7 +74,8 @@ public class UploadPostScreen extends JFrame implements ActionListener {
         });
         this.add(postButton);
         this.add(back);
-        this.setSize(800, 800);
+        this.setSize(1600, 900);
+        container.add(label);
         this.setLayout(null);
     }
 

@@ -6,6 +6,7 @@ import Layer4.UI.PremiumScreens.PremiumMainScreen;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class TopicScreen extends JFrame implements ActionListener {
     @Override
@@ -22,7 +23,12 @@ public class TopicScreen extends JFrame implements ActionListener {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PremiumMainScreen premiumMainScreen = new PremiumMainScreen(userId, name);
+                PremiumMainScreen premiumMainScreen = null;
+                try {
+                    premiumMainScreen = new PremiumMainScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 premiumMainScreen.setVisible(true);
                 dispose();
             }

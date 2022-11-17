@@ -5,10 +5,13 @@ import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.Screens.PostScreens.PostScreen;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -27,7 +30,7 @@ public class ShowCommentScreen extends JFrame{
      * </p>
      * @param userid
      */
-    public ShowCommentScreen(int userid, int postId, String username) {
+    public ShowCommentScreen(int userid, int postId, String username) throws IOException {
         JLabel title = new PlaceLabel().create(50,100, 200,30, "Comments Section");
 
         JButton addComment = new PlaceButton().create("Add Comment",null,100, 700, 150, 50);
@@ -78,7 +81,13 @@ public class ShowCommentScreen extends JFrame{
         this.setLayout(null);
 
 
-        this.setSize(800, 800);
+        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
+        ImageIcon imageIcon = new ImageIcon(logo);
+        JLabel label = new JLabel(imageIcon);
+        label.setSize(1600, 900);
+        Container container = getContentPane();
+        container.add(label);
+        this.setSize(1600, 900);
 
         this.add(new PlaceLabel().create(400, 50, 100, 25, "UofTMeta"));
         this.add(title);

@@ -4,12 +4,15 @@ import Layer4.Interface.csvInterface;
 import Layer4.UI.PremiumScreens.FriendsScreens.ChatScreens.ChatScreen;
 import Layer4.UI.PremiumScreens.PremiumMainScreen;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -20,7 +23,12 @@ public class FriendsScreen extends JFrame {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PremiumMainScreen premiumMainScreen = new PremiumMainScreen(userId, name);
+                PremiumMainScreen premiumMainScreen = null;
+                try {
+                    premiumMainScreen = new PremiumMainScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 premiumMainScreen.setVisible(true);
                 dispose();
             }
@@ -76,7 +84,13 @@ public class FriendsScreen extends JFrame {
         this.add(jScrollPane);
         this.add(back);
         this.setLayout(null);
-        this.setBounds(0, 0, 800, 800);
+        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
+        ImageIcon imageIcon = new ImageIcon(logo);
+        JLabel label = new JLabel(imageIcon);
+        label.setSize(1600, 900);
+        Container container = getContentPane();
+        container.add(label);
+        this.setSize(1600, 900);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }

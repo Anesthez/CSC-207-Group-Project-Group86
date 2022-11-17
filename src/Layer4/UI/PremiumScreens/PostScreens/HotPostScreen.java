@@ -5,18 +5,20 @@ import Layer3.Controller.PostController;
 import Layer4.UI.Components.PlaceLabel;
 import Model.Response.PostResponseModel;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 public class HotPostScreen extends JFrame implements ActionListener {
 
-    public HotPostScreen(int userId, String name){
-        this.setSize(800, 800);
+    public HotPostScreen(int userId, String name) throws IOException {
         this.setLayout(null);
-        this.setBounds(0, 0, 800, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         List<PostResponseModel> hotPosts = null;
@@ -102,6 +104,13 @@ public class HotPostScreen extends JFrame implements ActionListener {
         this.add(secondPopular);
         this.add(thirdPopular);
         this.add(back);
+        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
+        ImageIcon imageIcon = new ImageIcon(logo);
+        JLabel label = new JLabel(imageIcon);
+        label.setSize(1600, 900);
+        Container container = getContentPane();
+        container.add(label);
+        this.setSize(1600, 900);
     }
 
     @Override

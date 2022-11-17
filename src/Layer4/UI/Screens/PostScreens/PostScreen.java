@@ -34,7 +34,12 @@ public class PostScreen extends JFrame {
         uploadPost.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Layer4.UI.PremiumScreens.PostScreens.UploadPostScreen uploadPostScreen = new UploadPostScreen(userId, name);
+                UploadPostScreen uploadPostScreen = null;
+                try {
+                    uploadPostScreen = new UploadPostScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 uploadPostScreen.setVisible(true);
                 dispose();
             }
@@ -45,7 +50,12 @@ public class PostScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                Layer4.UI.PremiumScreens.PostScreens.HotPostScreen hotPostScreen = new HotPostScreen(userId, name);
+                HotPostScreen hotPostScreen = null;
+                try {
+                    hotPostScreen = new HotPostScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 hotPostScreen.setVisible(true);
                 dispose();
             }

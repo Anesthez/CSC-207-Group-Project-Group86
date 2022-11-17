@@ -94,7 +94,12 @@ public class MainScreenNew extends JFrame {
         topic.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TopicScreen topicScreen = new TopicScreen(userId, username);
+                TopicScreen topicScreen = null;
+                try {
+                    topicScreen = new TopicScreen(userId, username);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 topicScreen.setVisible(true);
                 dispose();
 

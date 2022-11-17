@@ -53,7 +53,7 @@ public class ShowPostScreen extends JFrame implements ActionListener {
         showCommentsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ShowCommentScreen showCommentScreen = new ShowCommentScreen(userId, (int)finalLabels.get(1), name);
+                ShowCommentScreen showCommentScreen = new ShowCommentScreen(userId, (int) finalLabels.get(1), name);
                 showCommentScreen.setVisible(true);
                 dispose();
             }

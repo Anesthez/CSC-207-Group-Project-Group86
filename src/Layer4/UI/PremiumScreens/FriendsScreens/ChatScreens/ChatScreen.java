@@ -5,9 +5,13 @@ import Layer3.Presenter.ChatPresenter;
 import Layer4.UI.PremiumScreens.FriendsScreens.FriendsScreen;
 import Model.Response.ChatResponseModel;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -77,7 +81,13 @@ public class ChatScreen extends JFrame implements ActionListener {
         messageArea.setBounds(50, 600, 700, 100);
         chatScreen.add(messageArea);
 
-        chatScreen.setSize(800, 800);
+        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
+        ImageIcon imageIcon = new ImageIcon(logo);
+        JLabel label = new JLabel(imageIcon);
+        label.setSize(1600, 900);
+        Container container = getContentPane();
+        container.add(label);
+        this.setSize(1600, 900);
         send.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -5,9 +5,14 @@ import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.Components.PlaceTextArea;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * <p>
@@ -24,7 +29,7 @@ public class AddCommentScreen extends JFrame {
      * </p>
      * @param userid
      */
-    public AddCommentScreen(int userid, int postId, String username){
+    public AddCommentScreen(int userid, int postId, String username) throws IOException {
 
         JLabel commentContentLabel = new PlaceLabel().create(50,100, 200,30, "Comment Content");
         JTextArea commentContentText = new PlaceTextArea().create(50,150, 500,200, null);
@@ -52,7 +57,12 @@ public class AddCommentScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Click " + e.getActionCommand());
-                ShowCommentScreen showCommentScreen = new ShowCommentScreen(userid, postId,username);
+                ShowCommentScreen showCommentScreen = null;
+                try {
+                    showCommentScreen = new ShowCommentScreen(userid, postId,username);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 showCommentScreen.setVisible(true);
                 dispose();
             }
@@ -60,7 +70,13 @@ public class AddCommentScreen extends JFrame {
         this.setLayout(null);
 
 
-        this.setSize(800, 800);
+        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
+        ImageIcon imageIcon = new ImageIcon(logo);
+        JLabel label = new JLabel(imageIcon);
+        label.setSize(1600, 900);
+        Container container = getContentPane();
+        container.add(label);
+        this.setSize(1600, 900);
 
         this.add(new PlaceLabel().create(400, 50, 100, 25, "UofTMeta"));
         this.add(commentContentLabel);

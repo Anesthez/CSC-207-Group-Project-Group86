@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import Layer3.Controller.LogInController;
 import Layer4.UI.Components.*;
 import Layer4.UI.DesignedScreens.MainScreenNew;
+import Layer4.UI.PremiumScreens.PremiumMainScreen;
 import Model.Response.UserResponseModel;
 
 public class LoginScreen extends JFrame{
@@ -57,7 +58,7 @@ public class LoginScreen extends JFrame{
                         new LoginScreen();
                     }else if (userResponseModel.get().get(1).equals("premium")){
                         int userId = (int) userResponseModel.get().get(0);
-                        MainScreenNew mainScreen = new MainScreenNew(userId, name);
+                        PremiumMainScreen mainScreen = new PremiumMainScreen(userId, name);
                         mainScreen.setVisible(true);
                         dispose();
 
@@ -67,7 +68,7 @@ public class LoginScreen extends JFrame{
                         mainScreen.setVisible(true);
                         dispose();
                     }
-                } catch (IOException | FontFormatException ex) {
+                } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
             }

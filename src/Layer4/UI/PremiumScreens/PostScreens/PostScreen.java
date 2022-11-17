@@ -2,16 +2,20 @@ package Layer4.UI.PremiumScreens.PostScreens;
 
 import Layer3.Presenter.PostPresenter;
 import Layer4.Interface.csvInterface;
+import Layer4.UI.PremiumScreens.PremiumMainScreen;
 import Layer4.UI.Screens.FriendsScreens.ChatScreens.ChatScreen;
 import Layer4.UI.Screens.MainScreen;
 import Model.Response.PostResponseModel;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -23,7 +27,12 @@ public class PostScreen extends JFrame {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainScreen mainScreen = new MainScreen(userId, name);
+                PremiumMainScreen mainScreen = null;
+                try {
+                    mainScreen = new PremiumMainScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 mainScreen.setVisible(true);
                 dispose();
             }
@@ -34,7 +43,12 @@ public class PostScreen extends JFrame {
         uploadPost.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UploadPostScreen uploadPostScreen = new UploadPostScreen(userId, name);
+                UploadPostScreen uploadPostScreen = null;
+                try {
+                    uploadPostScreen = new UploadPostScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 uploadPostScreen.setVisible(true);
                 dispose();
             }
@@ -45,7 +59,12 @@ public class PostScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                HotPostScreen hotPostScreen = new HotPostScreen(userId, name);
+                HotPostScreen hotPostScreen = null;
+                try {
+                    hotPostScreen = new HotPostScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 hotPostScreen.setVisible(true);
                 dispose();
             }
@@ -104,7 +123,13 @@ public class PostScreen extends JFrame {
         this.add(back);
         this.add(hotPosts);
         this.setLayout(null);
-        this.setBounds(0, 0, 800, 800);
+        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
+        ImageIcon imageIcon = new ImageIcon(logo);
+        JLabel label = new JLabel(imageIcon);
+        label.setSize(1600, 900);
+        Container container = getContentPane();
+        container.add(label);
+        this.setSize(1600, 900);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(uploadPost);
     }

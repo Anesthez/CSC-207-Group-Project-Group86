@@ -6,9 +6,13 @@ import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.PremiumScreens.PostScreens.CommentScreens.ShowCommentScreen;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -53,7 +57,12 @@ public class ShowPostScreen extends JFrame implements ActionListener {
         showCommentsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ShowCommentScreen showCommentScreen = new ShowCommentScreen(userId,(Integer) finalLabels.get(1), name);
+                ShowCommentScreen showCommentScreen = null;
+                try {
+                    showCommentScreen = new ShowCommentScreen(userId,(Integer) finalLabels.get(1), name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 showCommentScreen.setVisible(true);
                 dispose();
             }
@@ -77,8 +86,13 @@ public class ShowPostScreen extends JFrame implements ActionListener {
             }
         });
         this.add(backButton);
-
-        this.setSize(800, 800);
+        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
+        ImageIcon imageIcon = new ImageIcon(logo);
+        JLabel label = new JLabel(imageIcon);
+        label.setSize(1600, 900);
+        Container container = getContentPane();
+        container.add(label);
+        this.setSize(1600, 900);
         this.setLayout(null);
     }
 

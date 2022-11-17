@@ -7,18 +7,27 @@ import Layer4.UI.PremiumScreens.PostScreens.PostScreen;
 import Layer4.UI.PremiumScreens.TopicScreens.TopicScreen;
 
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class PremiumMainScreen extends JFrame {
-    public PremiumMainScreen(int userId, String username){
+    public PremiumMainScreen(int userId, String username) throws IOException {
         this.setLayout(null);
         this.add(new PlaceLabel().create(100, 100, 100, 50, username));
         JButton post = new JButton("Post");
         JButton friend = new JButton("Friend");
         JButton topic = new JButton("Topic");
+        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
+        ImageIcon imageIcon = new ImageIcon(logo);
+        JLabel label = new JLabel(imageIcon);
+        label.setSize(1600, 900);
+        Container container = getContentPane();
 
         post.setBounds(500, 200, 100, 50);
         friend.setBounds(500, 300, 100, 50);
@@ -67,8 +76,8 @@ public class PremiumMainScreen extends JFrame {
         this.add(post);
         this.add(friend);
         this.add(topic);
-
-        this.setBounds(0, 0, 800, 800);
+        container.add(label);
+        this.setBounds(0, 0, 1600, 900);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
