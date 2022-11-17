@@ -3,8 +3,9 @@ package Layer4.UI.PremiumScreens;
 
 import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.PremiumScreens.FriendsScreens.FriendsScreen;
+import Layer4.UI.PremiumScreens.PostScreens.PostScreen;
 import Layer4.UI.PremiumScreens.TopicScreens.TopicScreen;
-import Layer4.UI.Screens.PostScreens.PostScreen;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
