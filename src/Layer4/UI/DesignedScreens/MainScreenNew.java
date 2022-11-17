@@ -26,6 +26,7 @@ import java.io.InputStream;
 public class MainScreenNew extends JFrame {
     public MainScreenNew(int userId, String username) throws IOException, FontFormatException {
 
+        this.setTitle("Meta207");
         final String fontPathGreeting = "assets/fonts/JustAnotherHand-Regular.ttf";
         InputStream is = new FileInputStream(new File(fontPathGreeting));
         Font f = Font.createFont(Font.TRUETYPE_FONT, is);

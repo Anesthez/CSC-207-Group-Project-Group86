@@ -26,6 +26,7 @@ public class LoginScreenNew extends JFrame {
 
     public LoginScreenNew() throws IOException, FontFormatException {
 
+        this.setTitle("Login-Meta207");
         final String fontPath = "assets/fonts/KleeOne-SemiBold.ttf";
         InputStream is = new FileInputStream(new File(fontPath));
         Font f = Font.createFont(Font.TRUETYPE_FONT, is);

@@ -18,6 +18,8 @@ import java.util.List;
 public class HotPostScreen extends JFrame implements ActionListener {
 
     public HotPostScreen(int userId, String name){
+
+        this.setTitle("Trending Posts-Meta207");
         this.setSize(800, 800);
         this.setLayout(null);
         this.setBounds(0, 0, 800, 800);

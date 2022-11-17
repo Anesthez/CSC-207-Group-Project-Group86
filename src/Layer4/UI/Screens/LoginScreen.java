@@ -12,6 +12,9 @@ import Layer4.UI.Components.*;
 
 public class LoginScreen extends JFrame{
     public LoginScreen(){
+
+        this.setTitle("Login-Meta207");
+
         PlaceTextField placeTextField = new PlaceTextField();
         this.setLayout(null);
         JPanel username = new JPanel();

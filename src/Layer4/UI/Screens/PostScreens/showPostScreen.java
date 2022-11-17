@@ -19,6 +19,8 @@ import java.util.ArrayList;
 public class showPostScreen extends JFrame implements ActionListener {
     public showPostScreen(int postId) throws Exception {
         //TODO: change coordinates and sizes
+
+        this.setTitle("Post" + postId + "-Meta207");
         PostPresenter postPresenter = new PostPresenter();
         ArrayList<Object> labels = new ArrayList<>();
         labels = postPresenter.showPost(postId);

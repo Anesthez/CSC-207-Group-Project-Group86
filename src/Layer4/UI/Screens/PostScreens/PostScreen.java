@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 
 public class PostScreen extends JFrame {
     public PostScreen(int userId, String name){
+
+        this.setTitle("Posts-Meta207");
+
         JButton back = new JButton("Back");
         back.setBounds(0, 0, 50, 20);
         back.addActionListener(new ActionListener() {

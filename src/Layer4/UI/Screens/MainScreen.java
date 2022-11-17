@@ -12,6 +12,9 @@ import java.awt.event.ActionListener;
 
 public class MainScreen extends JFrame {
     public MainScreen(int userId, String username){
+
+        this.setTitle("Meta207");
+
         this.setLayout(null);
         this.add(new PlaceLabel().create(100, 100, 100, 50, username));
         JButton post = new JButton("Post");
