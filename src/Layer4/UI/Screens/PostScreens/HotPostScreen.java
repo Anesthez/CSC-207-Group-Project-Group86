@@ -9,6 +9,7 @@ import Model.Response.PostResponseModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
 
 public class HotPostScreen extends JFrame implements ActionListener {
@@ -83,7 +84,12 @@ public class HotPostScreen extends JFrame implements ActionListener {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PostScreen postScreen = new PostScreen(userId, name);
+                PostScreen postScreen = null;
+                try {
+                    postScreen = new PostScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 postScreen.setVisible(true);
                 dispose();
             }

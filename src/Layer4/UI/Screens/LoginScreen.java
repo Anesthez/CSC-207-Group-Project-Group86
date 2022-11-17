@@ -33,12 +33,12 @@ public class LoginScreen extends JFrame{
         password.add(passwordText);
 
         JButton logIn = new JButton("Log in");
-        JButton cancel = new JButton("Cancel");
+        JButton register = new JButton("Register");
 
         JPanel buttons = new JPanel();
         buttons.setBounds(0, 700, 800, 50);
         buttons.add(logIn);
-        buttons.add(cancel);
+        buttons.add(register);
 
         logIn.addActionListener(new ActionListener() {
             @Override
@@ -73,20 +73,12 @@ public class LoginScreen extends JFrame{
             }
 
         });
-        cancel.addActionListener(new ActionListener() {
+        register.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ArrayList<Object> userInputs = new ArrayList<>();
-                userInputs.add("default");
-                userInputs.add("default");
-                LogInController logInController = new LogInController(userInputs);
-                try {
-                    if (logInController.login() == null){
-                        new LoginScreen();
-                    }
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
+                RegisterScreen registerScreen = new RegisterScreen();
+                registerScreen.setVisible(true);
+                dispose();
             }
         });
 

@@ -28,15 +28,15 @@ public class csvInterface {
         File csvFile = new File(postPath);
         Map<String, Integer> headers = new LinkedHashMap<>();
         Map<Integer, PostRequestModel> posts = new HashMap<>();
-        headers.put("id", 2);
+        headers.put("post_title", 0);
         headers.put("userid", 1);
-        headers.put("time", 4);
+        headers.put("id", 2);
         headers.put("content", 3);
-        headers.put("num-liked", 6);
+        headers.put("time", 4);
         headers.put("num-viewed", 5);
+        headers.put("num-liked", 6);
         headers.put("user-liked", 7);
         headers.put("list_comment_id", 8);
-        headers.put("post_title", 0);
         headers.put("topic", 9);
         BufferedReader reader = new BufferedReader(new FileReader(csvFile));
         reader.readLine(); // skip header
@@ -101,8 +101,8 @@ public class csvInterface {
         Map<Integer, ArrayList<Integer>> postsLiked = new HashMap<>();
         File csvFile = new File(post_likedPath);
         Map<String, Integer> headers = new LinkedHashMap<>();
-        headers.put("postId", 1);
         headers.put("list-userId", 0);
+        headers.put("postId", 1);
         BufferedReader reader = new BufferedReader(new FileReader(csvFile));
         reader.readLine(); // skip header
 
@@ -364,16 +364,15 @@ public class csvInterface {
          */
 
         Map<String, Integer> headers = new LinkedHashMap<>();
-
-        headers.put("id", 2);
+        headers.put("post_title", 0);
         headers.put("userid", 1);
-        headers.put("time", 4);
+        headers.put("id", 2);
         headers.put("content", 3);
-        headers.put("num-liked", 6);
+        headers.put("time", 4);
         headers.put("num-viewed", 5);
+        headers.put("num-liked", 6);
         headers.put("user-liked", 7);
         headers.put("list_comment_id", 8);
-        headers.put("post_title", 0);
         headers.put("topic", 9);
 
         BufferedWriter writer;
@@ -429,8 +428,9 @@ public class csvInterface {
          * @param posts_liked a map of posts_liked
          */
         Map<String, Integer> headers = new LinkedHashMap<>();
-        headers.put("postId", 1);
         headers.put("list-userId", 0);
+        headers.put("postId", 1);
+
         BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter(posts_likedPath));
@@ -484,9 +484,9 @@ public class csvInterface {
             for (UserResponseModel user : users.values()) {
                 String line = (
                         user.get().get(0)+","+
-                        user.get().get(1)+","+
                         user.get().get(3)+","+
                         user.get().get(2)+","+
+                        user.get().get(1)+","+
                         user.get().get(4));
 
                 writer.write(line);
@@ -664,8 +664,8 @@ public class csvInterface {
                         chat.get().get(0)+","+
                         chat.get().get(1)+","+
                         chat.get().get(2)+","+
-                        chat.get().get(3)+","+
-                        chat.get().get(4));
+                        chat.get().get(4)+","+
+                        chat.get().get(3));
 
                 writer.newLine();
                 writer.write(line);

@@ -47,7 +47,7 @@ public class PostUseCases {
      * @param content the content of the post
      * @param topic the topic of the post
      */
-    public void addPost(String postTitle, int userId, String content, String topic){
+    public int addPost(String postTitle, int userId, String content, String topic){
         Post post = new Post(postTitle,
                 userId,
                 posts.keySet().size() + 1,
@@ -59,6 +59,7 @@ public class PostUseCases {
                 new ArrayList<>(),topic);
 
         posts.put(post.getId(), post);
+        return post.getId();
     }
 
     /** <p>This represents the get post use case, the method receives the id the user want to check and returns the

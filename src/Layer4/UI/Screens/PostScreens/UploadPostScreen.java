@@ -1,5 +1,6 @@
 package Layer4.UI.Screens.PostScreens;
 
+import Layer3.Controller.PostController;
 import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.Components.PlaceTextField;
@@ -7,6 +8,7 @@ import Layer4.UI.Components.PlaceTextField;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * <p>This class is the UI for uploading post.
@@ -15,10 +17,25 @@ import java.awt.event.ActionListener;
  * @author Kevin Wu
  */
 public class UploadPostScreen extends JFrame implements ActionListener {
-    public UploadPostScreen() {
+    public UploadPostScreen(int userId, String name) {
         this.add(new PlaceLabel().create(50, 0, 50, 50, "Title"));
 
         this.add(new PlaceLabel().create(50, 100, 50, 50, "Content"));
+        JButton back = new JButton("Back");
+        back.setBounds(0, 0, 50, 20);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PostScreen postScreen = null;
+                try {
+                    postScreen = new PostScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                postScreen.setVisible(true);
+                dispose();
+            }
+        });
 
         JTextField titleText= new PlaceTextField().createTextField(50, 50, 700, 50);
         this.add(titleText);
@@ -34,11 +51,20 @@ public class UploadPostScreen extends JFrame implements ActionListener {
                 String[] postInfo = new String[2];
                 postInfo[0] = titleText.getText();
                 postInfo[1] = contentText.getText();
-                //TODO: call controller -> use case(similar to command) to upload the post
+                try {
+                    new PostController().addPost(postInfo[0], postInfo[1], userId, "topic");
+                    JOptionPane.showMessageDialog(null, String.format("%s created.",
+                            titleText.getText()));
+                    titleText.setText("");
+                    contentText.setText("");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+
             }
         });
         this.add(postButton);
-
+        this.add(back);
         this.setSize(800, 800);
         this.setLayout(null);
     }

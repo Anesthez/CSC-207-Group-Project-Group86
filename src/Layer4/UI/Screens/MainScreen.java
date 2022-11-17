@@ -26,7 +26,12 @@ public class MainScreen extends JFrame {
         post.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PostScreen postScreen = new PostScreen(userId, username);
+                PostScreen postScreen = null;
+                try {
+                    postScreen = new PostScreen(userId, username);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 postScreen.setVisible(true);
                 dispose();
 

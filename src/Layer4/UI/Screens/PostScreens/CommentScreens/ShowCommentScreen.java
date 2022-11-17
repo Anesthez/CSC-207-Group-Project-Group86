@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -68,7 +69,12 @@ public class ShowCommentScreen extends JFrame{
         cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PostScreen postScreen = new PostScreen(userid, username);
+                PostScreen postScreen = null;
+                try {
+                    postScreen = new PostScreen(userid, username);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 postScreen.setVisible(true);
                 dispose();
             }
