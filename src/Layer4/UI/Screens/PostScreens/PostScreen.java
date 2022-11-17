@@ -1,8 +1,9 @@
 package Layer4.UI.Screens.PostScreens;
 
 import Layer3.Presenter.PostPresenter;
-import Layer4.Interface.csvInterface;
-import Layer4.UI.Screens.FriendsScreens.ChatScreens.ChatScreen;
+import Layer4.UI.PremiumScreens.PostScreens.HotPostScreen;
+import Layer4.UI.PremiumScreens.PostScreens.ShowPostScreen;
+import Layer4.UI.PremiumScreens.PostScreens.UploadPostScreen;
 import Layer4.UI.Screens.MainScreen;
 import Model.Response.PostResponseModel;
 
@@ -13,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class PostScreen extends JFrame {
@@ -34,7 +34,7 @@ public class PostScreen extends JFrame {
         uploadPost.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UploadPostScreen uploadPostScreen = new UploadPostScreen(userId, name);
+                Layer4.UI.PremiumScreens.PostScreens.UploadPostScreen uploadPostScreen = new UploadPostScreen(userId, name);
                 uploadPostScreen.setVisible(true);
                 dispose();
             }
@@ -45,7 +45,7 @@ public class PostScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                HotPostScreen hotPostScreen = new HotPostScreen(userId, name);
+                Layer4.UI.PremiumScreens.PostScreens.HotPostScreen hotPostScreen = new HotPostScreen(userId, name);
                 hotPostScreen.setVisible(true);
                 dispose();
             }
@@ -69,7 +69,7 @@ public class PostScreen extends JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     try {
-                        ShowPostScreen showPostScreen = new ShowPostScreen((int) s.get().get(2), userId, name);
+                        Layer4.UI.PremiumScreens.PostScreens.ShowPostScreen showPostScreen = new ShowPostScreen((int) s.get().get(2), userId, name);
                         showPostScreen.setVisible(true);
                         dispose();
                     } catch (Exception ex) {

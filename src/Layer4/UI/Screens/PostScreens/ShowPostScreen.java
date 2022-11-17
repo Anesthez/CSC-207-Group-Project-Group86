@@ -9,7 +9,6 @@ import Layer4.UI.Screens.PostScreens.CommentScreens.ShowCommentScreen;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -49,11 +48,10 @@ public class ShowPostScreen extends JFrame implements ActionListener {
 
         JButton showCommentsButton = new PlaceButton().create("Show Comments", null,
                     600, 675, 130, 25);
-        ArrayList<Object> finalLabels = labels;
         showCommentsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ShowCommentScreen showCommentScreen = new ShowCommentScreen(userId,(Integer) finalLabels.get(1), name);
+                ShowCommentScreen showCommentScreen = new ShowCommentScreen(userId);
                 showCommentScreen.setVisible(true);
                 dispose();
             }
@@ -66,12 +64,7 @@ public class ShowPostScreen extends JFrame implements ActionListener {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PostScreen postScreen = null;
-                try {
-                    postScreen = new PostScreen(userId, name);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
+                PostScreen postScreen = new PostScreen(userId, name);
                 postScreen.setVisible(true);
                 dispose();
             }

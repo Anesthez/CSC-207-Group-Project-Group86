@@ -19,9 +19,9 @@ public class csvInterface {
 
     public Map<Integer, PostRequestModel> postsReader(String postPath) throws IOException {
         /**
-         * This method is for reading posts.csv file.
+         * This method is for reading post.csv file.
          *
-         * @param postPath the path of the posts.csv file
+         * @param postPath the path of the post.csv file
          * @return a map of posts
          * @throws IOException
          */
@@ -93,9 +93,9 @@ public class csvInterface {
 
     public Map<Integer, ArrayList<Integer>> postsLikedReader(String post_likedPath) throws IOException{
         /**
-         * This method is for reading posts_liked.csv file.
+         * This method is for reading post_liked.csv file.
          *
-         * @param post_likedPath the path of the posts_liked.csv file
+         * @param post_likedPath the path of the post_liked.csv file
          * @return a map of liked posts
          * @throws IOException
          */
@@ -359,9 +359,9 @@ public class csvInterface {
 
     public void postsWriter(String postsPath, Map<Integer, PostResponseModel> posts) {
         /**
-         * This method is for writing posts.csv file.
+         * This method is for writing post.csv file.
          *
-         * @param postsPath the path of the posts.csv file
+         * @param postsPath the path of the post.csv file
          * @param posts a map of posts
          */
 
@@ -424,9 +424,9 @@ public class csvInterface {
 
     public void postsLikedWriter(String posts_likedPath, Map<Integer, ArrayList<Integer>> posts_liked) {
         /**
-         * This method is for writing posts_liked.csv file.
+         * This method is for writing post_liked.csv file.
          *
-         * @param posts_likedPath the path of the posts_liked.csv file
+         * @param posts_likedPath the path of the post_liked.csv file
          * @param posts_liked a map of posts_liked
          */
         Map<String, Integer> headers = new LinkedHashMap<>();
