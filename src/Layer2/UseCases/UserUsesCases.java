@@ -3,6 +3,7 @@ package Layer2.UseCases;
 import Layer1.Entity.User;
 import Layer1.Entity.factories.UserFactory;
 import Model.Request.UserRequestModel;
+import Model.Response.UserResponseModel;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -39,15 +40,20 @@ public class UserUsesCases {
      * @return user id, -1 if the user already exists
      */
     public int addUser(String userName, String userPassword) {
-        User user = new User(users.size() + 1,"normal", userPassword, userName, LocalDate.now().toString());
-        users.put(user.getId(), user);
-        return user.getId();
+        if (existsName(userName)) {
+            return -1;
+        }else {
+            User user = new User(users.size() + 1, "normal", userPassword, userName,
+                    LocalDate.now().toString());
+            users.put(user.getId(), user);
+            return user.getId();
+        }
     }
 
     /**
      * <p>Delete a user from the hashmap</p>
      *
-     * @param id the id of the user
+     * @param userId the id of the user
      */
     public void deleteUser(int userId) {
         users.remove(userId);
@@ -79,7 +85,7 @@ public class UserUsesCases {
      * @param userName the username of the user
      * @param userPassword the password of the user
      */
-    public int verifyUser(String userName, String userPassword) {
+    public UserResponseModel verifyUser(String userName, String userPassword) {
         boolean verified = false;
         for (User user:
              users.values()) {
@@ -87,11 +93,29 @@ public class UserUsesCases {
                     Objects.equals(user.getUserPassword(), userPassword));
 
             if (verified){
-                return user.getId();
+                return user.responseModel();
             }
         }
 
-        return -1;
+        return null;
     }
 
+    public boolean existsName(String userName) {
+        for (User user:
+                users.values()) {
+            if (Objects.equals(user.getUserName(), userName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Map<Integer, UserResponseModel> getUsers() {
+        Map<Integer, UserResponseModel> userResponseModels = new HashMap<>();
+        for (User user:
+             users.values()) {
+            userResponseModels.put(user.getId(), user.responseModel());
+        }
+        return userResponseModels;
+    }
 }

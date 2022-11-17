@@ -27,7 +27,7 @@ public class PostUseCases {
     /**<p>This is the constructor for the PostUseCases class, it needs the posts and the posts_liked list </p>
      *
      * @param posts the map of posts
-     * @param posts_liked  the map of posts_liked
+     * @param posts_liked  the map of post_id to the list of the userid who liked the post
      */
     public PostUseCases(Map<Integer, PostRequestModel> posts, Map<Integer, ArrayList<Integer>> posts_liked){
         PostFactory postFactory = new PostFactory();
@@ -47,7 +47,7 @@ public class PostUseCases {
      * @param content the content of the post
      * @param topic the topic of the post
      */
-    public void addPost(String postTitle, int userId, String content, String topic){
+    public int addPost(String postTitle, int userId, String content, String topic){
         Post post = new Post(postTitle,
                 userId,
                 posts.keySet().size() + 1,
@@ -59,6 +59,7 @@ public class PostUseCases {
                 new ArrayList<>(),topic);
 
         posts.put(post.getId(), post);
+        return post.getId();
     }
 
     /** <p>This represents the get post use case, the method receives the id the user want to check and returns the
@@ -110,7 +111,7 @@ public class PostUseCases {
 
     public void like_posts(int userid, int post_id){
         posts.get(post_id).addUserLike(userid);
-        posts_liked.get(userid).add(post_id);
+        posts_liked.get(post_id).add(userid);
     }
 
     public void unlike_posts(int post_id, int user_id){

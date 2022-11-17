@@ -1,8 +1,8 @@
-package Layer4.UI.Screens.FriendsScreens.ChatScreens;
+package Layer4.UI.PremiumScreens.FriendsScreens.ChatScreens;
 
-import Layer3.Presenter.ChatPresenter;
 import Layer3.Controller.ChatController;
-import Layer4.UI.Screens.FriendsScreens.FriendsScreen;
+import Layer3.Presenter.ChatPresenter;
+import Layer4.UI.PremiumScreens.FriendsScreens.FriendsScreen;
 import Model.Response.ChatResponseModel;
 
 import javax.swing.*;

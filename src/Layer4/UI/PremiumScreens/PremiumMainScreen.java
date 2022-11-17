@@ -1,18 +1,18 @@
-package Layer4.UI.Screens;
+package Layer4.UI.PremiumScreens;
 
 
 import Layer4.UI.Components.PlaceLabel;
-import Layer4.UI.Screens.FriendsScreens.FriendsScreen;
+import Layer4.UI.PremiumScreens.FriendsScreens.FriendsScreen;
+import Layer4.UI.PremiumScreens.TopicScreens.TopicScreen;
 import Layer4.UI.Screens.PostScreens.PostScreen;
-import Layer4.UI.Screens.TopicScreens.TopicScreen;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class MainScreen extends JFrame {
-    public MainScreen(int userId, String username){
+public class PremiumMainScreen extends JFrame {
+    public PremiumMainScreen(int userId, String username){
         this.setLayout(null);
         this.add(new PlaceLabel().create(100, 100, 100, 50, username));
         JButton post = new JButton("Post");

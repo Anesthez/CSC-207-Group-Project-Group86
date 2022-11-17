@@ -1,21 +1,16 @@
-package Layer4.UI.Screens.PostScreens.CommentScreens;
+package Layer4.UI.PremiumScreens.PostScreens.CommentScreens;
 
 import Layer3.Presenter.CommentPresenter;
-import Layer4.Interface.csvInterface;
 import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.Screens.PostScreens.PostScreen;
-import Model.Request.CommentRequestModel;
-import Model.Request.UserRequestModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * <p>

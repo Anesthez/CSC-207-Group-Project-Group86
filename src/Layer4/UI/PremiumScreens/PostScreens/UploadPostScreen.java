@@ -1,4 +1,4 @@
-package Layer4.UI.Screens.PostScreens;
+package Layer4.UI.PremiumScreens.PostScreens;
 
 import Layer3.Controller.PostController;
 import Layer4.UI.Components.PlaceButton;

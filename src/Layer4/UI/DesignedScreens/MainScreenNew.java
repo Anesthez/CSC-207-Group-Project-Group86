@@ -65,7 +65,12 @@ public class MainScreenNew extends JFrame {
         post.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PostScreen postScreen = new PostScreen(userId, username);
+                PostScreen postScreen = null;
+                try {
+                    postScreen = new PostScreen(userId, username);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 postScreen.setVisible(true);
                 dispose();
             }
@@ -74,7 +79,12 @@ public class MainScreenNew extends JFrame {
         friend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FriendsScreen FriendsScreen = new FriendsScreen(userId, username);
+                FriendsScreen FriendsScreen = null;
+                try {
+                    FriendsScreen = new FriendsScreen(userId, username);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 FriendsScreen.setVisible(true);
                 dispose();
 

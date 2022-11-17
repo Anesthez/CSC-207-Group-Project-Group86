@@ -28,12 +28,13 @@ public class PostController {
      */
     public void addPost(String title, String content, int userid, String topic) throws Exception {
         csvInterface csvInterface = new csvInterface();
-        Map<Integer, PostRequestModel> posts = csvInterface.postsReader("database/posts.csv");
-        Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/posts_liked.csv");
+        Map<Integer, PostRequestModel> posts = csvInterface.postsReader("database/post.csv");
+        Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/post_liked.csv");
         PostUseCases postManager = new PostUseCases(posts, postsLiked);
-        postManager.addPost(title, userid, content, topic);
-//        csvInterface.postsWriter("database/posts.csv", posts);
-//        csvInterface.postsLikedWriter("database/posts_liked.csv", postsLiked);
+        int postId = postManager.addPost(title, userid, content, topic);
+        postsLiked.put(postId, new ArrayList<>(List.of(userid)));
+        csvInterface.postsWriter("database/post.csv", postManager.getPostsResponseModel());
+        csvInterface.postsLikedWriter("database/post_liked.csv", postsLiked);
     }
 
     /**

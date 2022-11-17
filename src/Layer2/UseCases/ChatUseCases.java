@@ -3,6 +3,7 @@ package Layer2.UseCases;
 import Layer1.Entity.Chat;
 import Layer1.Entity.factories.ChatFactory;
 import Model.Request.ChatRequestModel;
+import Model.Response.ChatResponseModel;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -93,6 +94,13 @@ public class ChatUseCases {
             }
         }
         return 0;
+    }
+    public Map<Integer, ChatResponseModel> getChats() {
+        Map<Integer, ChatResponseModel> chatResponseModelMap = new HashMap<>();
+        for (Chat chat : chats.values()) {
+            chatResponseModelMap.put(chat.getId(), chat.responseModel());
+        }
+        return chatResponseModelMap;
     }
 
 }

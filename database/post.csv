@@ -1,6 +1,5 @@
-id,userid,time,content,num-liked,num-viewed,user-liked,list_comment_id,post_title,topic
-1,1,2022/10/17,post_test,1,1,1,1 2 3,posttest,1
-2,2,2022-10-17,iam testing post,0,0,,,posttest,1
-3,2,2022-10-17,iamtesting post,0,0,,,posttest,1
-4,1,2022-10-17,i am testing post,0,0,,,posttest,1
-5,2,2022-10-31,1,0,0,,,1,1
+post_title,userid,id,content,time,num-viewed,num-liked,user-liked,list_comment_id,topic
+posttest,1,1,posttest,2019-01-01,5,4,1 2 2,1,posttest
+posttest,1,2,posttest,2019-01-01,0,1,1 1,1,posttest
+posttest,1,3,posttest,2019-01-01,0,0,1,1,posttest
+safsda,2,4,askdfal;sjfaoksdjf;lasjflkasdjldfas;ldf,2022-11-16,0,0,,,topic

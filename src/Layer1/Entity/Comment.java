@@ -1,7 +1,6 @@
 package Layer1.Entity;
 
 import Layer1.Entity.inputboundary.Context;
-import Model.Request.CommentRequestModel;
 import Model.Response.CommentResponseModel;
 
 /**
@@ -26,6 +25,7 @@ public class Comment extends Context {
      * @param id
      * @param content
      * @param timestamp
+     * @param postId
      */
     public Comment(int userId, int id, String content, String timestamp, int postId) {
         super(id, content, timestamp);
@@ -37,11 +37,11 @@ public class Comment extends Context {
         return userId;
     }
     public int getPostId() {
-        return getPostId();
+        return postId;
     }
 
     @Override
     public CommentResponseModel responseModel() {
-        return new CommentResponseModel(this.getId(), this.getUserId(), this.getContent(), this.getTime(), this.getPostId());
+        return new CommentResponseModel(this.getUserId(), this.getId(), this.getContent(), this.getTime(), this.getPostId());
     }
 }

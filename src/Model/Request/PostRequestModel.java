@@ -14,7 +14,7 @@ public class PostRequestModel implements Model {
     private int views;
     private int numLikes;
 
-    private String Topic;
+    private String topic;
 
     //private String TopicName;
     private final ArrayList<Integer> userLiked;
@@ -32,7 +32,7 @@ public class PostRequestModel implements Model {
         this.numLikes = numLikes;
         this.userLiked = userLiked;
         this.list_comment_id = list_comment_id;
-        this.Topic = Topic;
+        this.topic = Topic;
     }
     @Override
     public ArrayList<Object> get() {
@@ -46,7 +46,7 @@ public class PostRequestModel implements Model {
         contents.add(numLikes);
         contents.add(userLiked);
         contents.add(list_comment_id);
-        contents.add(Topic);
+        contents.add(topic);
         return contents;
     }
 }

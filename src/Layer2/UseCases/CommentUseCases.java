@@ -2,10 +2,14 @@ package Layer2.UseCases;
 
 import Layer1.Entity.Comment;
 import Layer1.Entity.factories.CommentFactory;
+import Layer4.Interface.csvInterface;
 import Model.Request.CommentRequestModel;
+import Model.Request.PostRequestModel;
 import Model.Response.CommentResponseModel;
 
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,8 +39,23 @@ public class CommentUseCases {
      * @param content the content of the comment
      */
     public void addComment(int userId, String content, int postId) {
+        csvInterface csvInteract = new csvInterface();
+        Map<Integer, PostRequestModel> posts;
+        Map<Integer, ArrayList<Integer>> posts_liked = new HashMap<>();
+        try {
+            posts = csvInteract.postsReader("database/post.csv");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         Comment comment = new Comment(userId, comments.keySet().size() + 1, content,
                 LocalDate.now().toString(), postId);
+
+        for (Integer k:posts.keySet()) {
+            ArrayList<Integer> users = (ArrayList<Integer>) posts.get(k).get().get(7);
+            posts_liked.put(k, users);
+        }
+        PostUseCases postUseCases = new PostUseCases(posts, posts_liked);
+        postUseCases.addComment_id(postId, comment.getId());
         comments.put(comment.getId(), comment);
     }
 

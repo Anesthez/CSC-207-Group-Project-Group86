@@ -1,9 +1,8 @@
-package Layer4.UI.Screens.FriendsScreens;
+package Layer4.UI.PremiumScreens.FriendsScreens;
 
-import Layer3.Presenter.CommentPresenter;
 import Layer4.Interface.csvInterface;
-import Layer4.UI.Screens.FriendsScreens.ChatScreens.ChatScreen;
-import Layer4.UI.Screens.MainScreen;
+import Layer4.UI.PremiumScreens.FriendsScreens.ChatScreens.ChatScreen;
+import Layer4.UI.PremiumScreens.PremiumMainScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,8 +20,8 @@ public class FriendsScreen extends JFrame {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainScreen mainScreen = new MainScreen(userId, name);
-                mainScreen.setVisible(true);
+                PremiumMainScreen premiumMainScreen = new PremiumMainScreen(userId, name);
+                premiumMainScreen.setVisible(true);
                 dispose();
             }
         });

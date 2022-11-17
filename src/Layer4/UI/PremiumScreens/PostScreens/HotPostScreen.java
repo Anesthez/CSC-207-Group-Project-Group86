@@ -1,12 +1,11 @@
 
-package Layer4.UI.Screens.PostScreens;
-import javax.swing.*;
+package Layer4.UI.PremiumScreens.PostScreens;
 
 import Layer3.Controller.PostController;
-import Layer4.UI.Components.*;
-import Layer4.UI.Screens.MainScreen;
+import Layer4.UI.Components.PlaceLabel;
 import Model.Response.PostResponseModel;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;

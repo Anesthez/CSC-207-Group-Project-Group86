@@ -1,14 +1,13 @@
-package Layer4.UI.Screens.PostScreens.CommentScreens;
+package Layer4.UI.PremiumScreens.PostScreens.CommentScreens;
 
+import Layer3.Controller.CommentController;
 import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.Components.PlaceTextArea;
-import Layer3.Controller.CommentController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 /**
  * <p>

@@ -3,22 +3,21 @@ package Layer3.Controller;
 import Layer2.UseCases.UserUsesCases;
 import Layer4.Interface.csvInterface;
 import Model.Request.UserRequestModel;
-import Model.Response.UserResponseModel;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Map;
 
-public class LogInController {
-    ArrayList<Object> userInput;
-    public LogInController(ArrayList<Object> userInput){
-        this.userInput = userInput;
-    }
-
-    public UserResponseModel login() throws IOException {
+public class RegisterController {
+    public int register(String username, String password) throws IOException {
         csvInterface csvInteract = new csvInterface();
         Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
         UserUsesCases userManager = new UserUsesCases(users);
-        return userManager.verifyUser((String)userInput.get(0), (String)userInput.get(1));
+        int userId = userManager.addUser(username, password);
+        if (userId != -1) {
+            csvInteract.usersWriter(userManager.getUsers(), "database/user.csv");
+            return userId;
+        }else{
+            return -1;
+        }
     }
 }

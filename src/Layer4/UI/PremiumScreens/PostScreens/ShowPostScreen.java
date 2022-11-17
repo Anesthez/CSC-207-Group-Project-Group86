@@ -1,10 +1,10 @@
-package Layer4.UI.Screens.PostScreens;
+package Layer4.UI.PremiumScreens.PostScreens;
 
 import Layer3.Controller.LikeController;
 import Layer3.Presenter.PostPresenter;
 import Layer4.UI.Components.PlaceButton;
 import Layer4.UI.Components.PlaceLabel;
-import Layer4.UI.Screens.PostScreens.CommentScreens.ShowCommentScreen;
+import Layer4.UI.PremiumScreens.PostScreens.CommentScreens.ShowCommentScreen;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -11,8 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException, FontFormatException {
 
-        LoginScreenNew login = new LoginScreenNew();
-//        LoginScreen login = new LoginScreen();
+        LoginScreen login = new LoginScreen();
         login.setVisible(true);
 
     }
