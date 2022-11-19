@@ -26,7 +26,7 @@ public class PremiumMainScreen extends JFrame {
         BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
         ImageIcon imageIcon = new ImageIcon(logo);
         JLabel label = new JLabel(imageIcon);
-        label.setSize(1600, 900);
+        label.setSize(960, 540);
         Container container = getContentPane();
 
         post.setBounds(500, 200, 100, 50);
@@ -66,7 +66,12 @@ public class PremiumMainScreen extends JFrame {
         topic.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TopicScreen topicScreen = new TopicScreen(userId, username);
+                TopicScreen topicScreen = null;
+                try {
+                    topicScreen = new TopicScreen(userId, username);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 topicScreen.setVisible(true);
                 dispose();
 
@@ -77,8 +82,9 @@ public class PremiumMainScreen extends JFrame {
         this.add(friend);
         this.add(topic);
         container.add(label);
-        this.setBounds(0, 0, 1600, 900);
+        this.setBounds(0, 0, 960, 540);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
     }
 }
 

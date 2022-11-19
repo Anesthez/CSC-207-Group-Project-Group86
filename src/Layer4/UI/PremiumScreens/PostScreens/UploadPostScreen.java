@@ -26,7 +26,7 @@ public class UploadPostScreen extends JFrame implements ActionListener {
         BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
         ImageIcon imageIcon = new ImageIcon(logo);
         JLabel label = new JLabel(imageIcon);
-        label.setSize(1600, 900);
+        label.setSize(960, 540);
         Container container = getContentPane();
 
         this.add(new PlaceLabel().create(50, 100, 50, 50, "Content"));
@@ -74,7 +74,8 @@ public class UploadPostScreen extends JFrame implements ActionListener {
         });
         this.add(postButton);
         this.add(back);
-        this.setSize(1600, 900);
+        this.setSize(960, 540);
+        this.setResizable(false);
         container.add(label);
         this.setLayout(null);
     }

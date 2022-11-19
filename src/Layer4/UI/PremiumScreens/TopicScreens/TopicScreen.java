@@ -3,9 +3,13 @@ package Layer4.UI.PremiumScreens.TopicScreens;
 
 import Layer4.UI.PremiumScreens.PremiumMainScreen;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class TopicScreen extends JFrame implements ActionListener {
@@ -14,12 +18,17 @@ public class TopicScreen extends JFrame implements ActionListener {
 
     }
 
-    public TopicScreen(int userId, String name)
-    {
+    public TopicScreen(int userId, String name) throws IOException {
         this.setLayout(null);
         JButton back = new JButton("Back");
         back.setBounds(0, 0, 50, 20);
-        this.setSize(800, 800);
+        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
+        ImageIcon imageIcon = new ImageIcon(logo);
+        JLabel label = new JLabel(imageIcon);
+        label.setSize(960, 540);
+        Container container = getContentPane();
+        this.setSize(960, 540);
+        this.setResizable(false);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -45,8 +54,8 @@ public class TopicScreen extends JFrame implements ActionListener {
         this.add(showTopics);
         this.add(showHottestTopics);
         this.add(cancel);
-        this.setSize(500, 500);
-        this.setLayout(null);
+
+        container.add(label);
 
 
     }

@@ -98,8 +98,8 @@ public class HotPostScreen extends JFrame implements ActionListener {
 
 
 
-        this.add(new PlaceLabel().create(240, 80, 600, 25,
-                "THEY ARE THE HOTTEST POSTS ONLINE DUDE/GIRL!!!"));
+        this.add(new PlaceLabel().create(230, 80, 600, 25,
+                "THEY ARE THE HOTTEST POSTS ONLINE " + name + "! Take a Look!"));
         this.add(mostPopular);
         this.add(secondPopular);
         this.add(thirdPopular);
@@ -107,10 +107,11 @@ public class HotPostScreen extends JFrame implements ActionListener {
         BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
         ImageIcon imageIcon = new ImageIcon(logo);
         JLabel label = new JLabel(imageIcon);
-        label.setSize(1600, 900);
+        label.setSize(960, 540);
         Container container = getContentPane();
         container.add(label);
-        this.setSize(1600, 900);
+        this.setSize(960, 540);
+        this.setResizable(false);
     }
 
     @Override
