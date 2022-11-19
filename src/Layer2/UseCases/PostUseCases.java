@@ -1,9 +1,7 @@
 package Layer2.UseCases;
 
 import Layer1.Entity.Post;
-import Layer1.Entity.Topic;
 import Layer1.Entity.factories.PostFactory;
-import Layer1.Entity.inputboundary.Context;
 import Model.Request.PostRequestModel;
 import Model.Response.PostResponseModel;
 
@@ -149,20 +147,31 @@ public class PostUseCases {
         }
     }
 
-    // dummy method
+
     public List<PostResponseModel> getHottestPosts(int post_num) {
         // get post_num amount of the hottest post ranked by popularity.
         List<PostResponseModel> hotPosts = new ArrayList<>();
         int remaining = post_num;
-        for (Map.Entry<Integer, Post> postEntry : this.posts.entrySet()) {
-            if (remaining > 0) {
-                hotPosts.add(postEntry.getValue().responseModel());
-                remaining = remaining - 1;
-            } else {
-                return hotPosts;
-            }
+        Map<Integer, Post> remainingPosts = this.posts;
+        while (remaining > 0){
+            Map.Entry<Integer, Post> popularNow = mostPopular(remainingPosts);
+            remainingPosts.remove(popularNow.getKey());
+            remaining -= 1;
         }
         return hotPosts;
+    }
+
+    public Map.Entry<Integer, Post> mostPopular(Map<Integer, Post> mapping) {
+        // return the most popular post.
+        int popular = 0;
+        Map.Entry<Integer, Post> popularNow = null;
+        for (Map.Entry<Integer, Post> postEntry : mapping.entrySet()){
+            if (postEntry.getValue().getPopularity() > popular) {
+                popularNow = postEntry;
+                popular = postEntry.getValue().getPopularity();
+            }
+        }
+        return popularNow;
     }
 
     public List<PostResponseModel> getHottestPosts() {
