@@ -147,7 +147,7 @@ public class PostUseCases {
         }
     }
 
-
+    // dummy method
     public List<PostResponseModel> getHottestPosts(int post_num) {
         // get post_num amount of the hottest post ranked by popularity.
         List<PostResponseModel> hotPosts = new ArrayList<>();
@@ -156,6 +156,7 @@ public class PostUseCases {
         while (remaining > 0){
             Map.Entry<Integer, Post> popularNow = mostPopular(remainingPosts);
             remainingPosts.remove(popularNow.getKey());
+            hotPosts.add(popularNow.getValue().responseModel());
             remaining -= 1;
         }
         return hotPosts;
@@ -164,9 +165,12 @@ public class PostUseCases {
     public Map.Entry<Integer, Post> mostPopular(Map<Integer, Post> mapping) {
         // return the most popular post.
         int popular = 0;
-        Map.Entry<Integer, Post> popularNow = null;
+        Map.Entry<Integer, Post> popularNow = Map.entry(1, new
+                Post("Dummy", 1, 1,
+                "Dummy Post for method mostPopular under PostUseCases.", "2022-10-17", 0, 0,
+                new ArrayList<Integer>(), new ArrayList<Integer>(), "Test"));
         for (Map.Entry<Integer, Post> postEntry : mapping.entrySet()){
-            if (postEntry.getValue().getPopularity() > popular) {
+            if (postEntry.getValue().getPopularity() >= popular) {
                 popularNow = postEntry;
                 popular = postEntry.getValue().getPopularity();
             }
