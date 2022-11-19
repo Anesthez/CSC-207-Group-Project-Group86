@@ -486,9 +486,9 @@ public class csvInterface {
             for (UserResponseModel user : users.values()) {
                 String line = (
                         user.get().get(0)+","+
+                        user.get().get(1)+","+
                         user.get().get(3)+","+
                         user.get().get(2)+","+
-                        user.get().get(1)+","+
                         user.get().get(4));
 
                 writer.write(line);
