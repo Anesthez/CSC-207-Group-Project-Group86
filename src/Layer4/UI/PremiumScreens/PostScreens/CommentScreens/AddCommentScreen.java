@@ -73,16 +73,17 @@ public class AddCommentScreen extends JFrame {
         BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
         ImageIcon imageIcon = new ImageIcon(logo);
         JLabel label = new JLabel(imageIcon);
-        label.setSize(1600, 900);
+        label.setSize(960, 540);
         Container container = getContentPane();
         container.add(label);
-        this.setSize(1600, 900);
+        this.setSize(960, 540);
 
         this.add(new PlaceLabel().create(400, 50, 100, 25, "UofTMeta"));
         this.add(commentContentLabel);
         this.add(commentContentText);
         this.add(addComment);
         this.add(cancel);
+        this.setResizable(false);
     }
 
 }
