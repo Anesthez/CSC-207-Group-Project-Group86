@@ -35,7 +35,7 @@ public class TopicScreen extends JFrame implements ActionListener {
                 PremiumMainScreen premiumMainScreen = null;
                 try {
                     premiumMainScreen = new PremiumMainScreen(userId, name);
-                } catch (IOException ex) {
+                } catch (IOException | FontFormatException ex) {
                     throw new RuntimeException(ex);
                 }
                 premiumMainScreen.setVisible(true);

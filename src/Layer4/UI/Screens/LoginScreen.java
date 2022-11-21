@@ -67,7 +67,7 @@ public class LoginScreen extends JFrame{
                         mainScreen.setVisible(true);
                         dispose();
                     }
-                } catch (IOException ex) {
+                } catch (IOException | FontFormatException ex) {
                     throw new RuntimeException(ex);
                 }
             }

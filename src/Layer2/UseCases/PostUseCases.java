@@ -150,9 +150,12 @@ public class PostUseCases implements Popularity_rank {
         }
     }
 
-    // dummy method
+
+    /**
+     * @param post_num: the
+     * @return post_num amount of the hottest post ranked by popularity.
+     */
     public List<PostResponseModel> getHottestPosts(int post_num) {
-        // get post_num amount of the hottest post ranked by popularity.
         HashMap<Integer, Populable> pop_posts= new HashMap<>();
         for (Post post : posts.values()) {
             pop_posts.put(post.getId(), post);
@@ -168,6 +171,11 @@ public class PostUseCases implements Popularity_rank {
         return hotPosts;
     }
 
+    /**
+     * <p>This function will get the most popular post in a mapping as a Map.Entry<p>
+     * @param mapping: a map of postId and post
+     * @return the most popular post in the mapping
+     */
     public Map.Entry<Integer, Post> mostPopular(Map<Integer, Post> mapping) {
         // return the most popular post.
         int popular = 0;
