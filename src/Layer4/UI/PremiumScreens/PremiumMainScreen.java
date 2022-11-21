@@ -5,6 +5,7 @@ import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.PremiumScreens.FriendsScreens.FriendsScreen;
 import Layer4.UI.PremiumScreens.PostScreens.PostScreen;
 import Layer4.UI.PremiumScreens.TopicScreens.TopicScreen;
+import Layer4.UI.Screens.LoginScreen;
 
 
 import javax.imageio.ImageIO;
@@ -59,11 +60,13 @@ public class PremiumMainScreen extends JFrame {
         JButton friend = new JButton("Friend");
         // friend.setIcon(friendIcon);
         JButton topic = new JButton("Topic");
+        JButton logout = new JButton("Log Out");
 
         post.setBounds(625, 150, 125, 125);
         topic.setBounds(750, 150, 125, 125);
 
         friend.setBounds(625, 275, 125, 125);
+        logout.setBounds(750, 275, 125, 125);
 
 
         post.addActionListener(new ActionListener() {
@@ -111,9 +114,20 @@ public class PremiumMainScreen extends JFrame {
             }
         });
 
+        logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginScreen loginScreen = new LoginScreen();
+                loginScreen.setVisible(true);
+                dispose();
+
+            }
+        });
+
         this.add(post);
         this.add(friend);
         this.add(topic);
+        this.add(logout);
         container.add(label);
         this.setBounds(0, 0, 960, 540);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
