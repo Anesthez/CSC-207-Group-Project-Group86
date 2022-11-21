@@ -33,9 +33,10 @@ class AddFriendsScreen extends JFrame{
             }
         });
         JLabel label = new JLabel("Enter the username of the user you want to add");
-        JTextField textField = new JTextField("Username");
+        JTextField textField = new JTextField();
         JButton add = new JButton("Add");
         add.setBounds(350, 300, 50, 20);
+        textField.setBounds(350, 250, 100, 20);
         add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

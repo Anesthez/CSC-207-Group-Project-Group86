@@ -84,6 +84,7 @@ public class FriendsScreen extends JFrame {
             }
         });
         jScrollPane.setViewportView(jPanel);
+        this.add(addFriend);
         this.add(jScrollPane);
         this.add(back);
         this.setLayout(null);
