@@ -10,7 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class TopicScreen extends JFrame implements ActionListener {
     @Override
@@ -18,7 +20,7 @@ public class TopicScreen extends JFrame implements ActionListener {
 
     }
 
-    public TopicScreen(int userId, String name) throws IOException {
+    public TopicScreen(int userId, String name) throws IOException, FontFormatException {
         this.setLayout(null);
         JButton back = new JButton("Back");
         back.setBounds(0, 0, 50, 20);
@@ -29,6 +31,10 @@ public class TopicScreen extends JFrame implements ActionListener {
         Container container = getContentPane();
         this.setSize(960, 540);
         this.setResizable(false);
+        final String fontPathUI = "assets/fonts/KleeOne-SemiBold.ttf";
+        InputStream is = new FileInputStream(new File(fontPathUI));
+        Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+        font = font.deriveFont(14f);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,9 +54,12 @@ public class TopicScreen extends JFrame implements ActionListener {
         JButton showHottestTopics = new JButton("View Hottest Topics");
         JButton cancel = new JButton("Cancel");
 
-        showTopics.setBounds(100, 100, 50, 20);
-        showHottestTopics.setBounds(200, 100, 50, 20);
-        cancel.setBounds(300, 100, 50, 20);
+        showTopics.setBounds(200, 230, 200, 50);
+        showTopics.setFont(font);
+        showHottestTopics.setBounds(400, 230, 200, 50);
+        showHottestTopics.setFont(font);
+        cancel.setBounds(600, 230, 200, 50);
+        cancel.setFont(font);
         this.add(showTopics);
         this.add(showHottestTopics);
         this.add(cancel);

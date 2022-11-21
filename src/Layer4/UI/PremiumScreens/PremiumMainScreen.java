@@ -93,7 +93,7 @@ public class PremiumMainScreen extends JFrame {
                 TopicScreen topicScreen = null;
                 try {
                     topicScreen = new TopicScreen(userId, username);
-                } catch (IOException ex) {
+                } catch (IOException | FontFormatException ex) {
                     throw new RuntimeException(ex);
                 }
                 topicScreen.setVisible(true);
