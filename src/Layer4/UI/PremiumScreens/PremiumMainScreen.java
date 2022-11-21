@@ -24,42 +24,47 @@ import java.util.Random;
 
 public class PremiumMainScreen extends JFrame {
 
-    List<String> greetingMessages = Arrays.asList("Hello, ", "Good day, ", "Hiya, ");
-    List<String> chatters = Arrays.asList("I hope you are doing well.", "It is nice to see you!",
-            "Let's check out some posts?");
-    Random rand = new Random();
-    int indexGreeting = rand.nextInt(greetingMessages.size());
-    int indexChatter = rand.nextInt(chatters.size());
-
     public PremiumMainScreen(int userId, String username) throws IOException, FontFormatException {
 
         final String fontPathUI = "assets/fonts/KleeOne-SemiBold.ttf";
         InputStream is = new FileInputStream(new File(fontPathUI));
         Font font = Font.createFont(Font.TRUETYPE_FONT, is);
-        font = font.deriveFont(12f);
+        font = font.deriveFont(16f);
 
-        this.setLayout(null);
-        JLabel greeting = new PlaceLabel().create(100, 100, 200, 50,
-                greetingMessages.get(indexGreeting) + username + "!");
-        greeting.setFont(font);
-        this.add(greeting);
-        JLabel chatting = new PlaceLabel().create(100, 150, 200, 50, chatters.get(indexChatter));
-        chatting.setFont(font);
-        this.add(chatting);
+        List<String> greetingMessages = Arrays.asList("Hello, ", "Good day, ", "Hiya, ");
+        List<String> chatters = Arrays.asList("I hope you are doing well.", "It is nice to see you!",
+                "Let's check out some posts?");
+        Random rand = new Random();
+        int indexGreeting = rand.nextInt(greetingMessages.size());
+        int indexChatter = rand.nextInt(chatters.size());
 
-        JButton post = new JButton("Post");
-        post.setFont(font);
-        JButton friend = new JButton("Friend");
-        JButton topic = new JButton("Topic");
         BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
         ImageIcon imageIcon = new ImageIcon(logo);
         JLabel label = new JLabel(imageIcon);
         label.setSize(960, 540);
         Container container = getContentPane();
 
-        post.setBounds(500, 200, 100, 50);
-        friend.setBounds(500, 300, 100, 50);
-        topic.setBounds(500, 400, 100, 50);
+        this.setLayout(null);
+        JLabel greeting = new PlaceLabel().create(625, 50, 200, 50,
+                greetingMessages.get(indexGreeting) + username + "!");
+        greeting.setFont(font);
+        this.add(greeting);
+        JLabel chatting = new PlaceLabel().create(625, 80, 200, 50, chatters.get(indexChatter));
+        chatting.setFont(font);
+        this.add(chatting);
+
+        // Icon friendIcon = new ImageIcon("assets/images/friends1080.png");
+
+        JButton post = new JButton("Post");
+        JButton friend = new JButton("Friend");
+        // friend.setIcon(friendIcon);
+        JButton topic = new JButton("Topic");
+
+        post.setBounds(625, 150, 125, 125);
+        topic.setBounds(750, 150, 125, 125);
+
+        friend.setBounds(625, 275, 125, 125);
+
 
         post.addActionListener(new ActionListener() {
             @Override
