@@ -2,8 +2,13 @@ package Layer2.UseCases;
 
 import Layer1.Entity.Post;
 import Layer1.Entity.Topic;
+import Layer4.Interface.csvInterface;
+import Model.Request.PostRequestModel;
+import Model.Request.TopicRequestModel;
+import Model.Response.PostResponseModel;
 //import javafx.geometry.Pos;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -158,10 +163,26 @@ public class TopicUseCases {
      * @param topic
      * @return
      */
-    public ArrayList<Topic> getTopTopics(ArrayList<Topic> topic)
-    {
+    public ArrayList<TopicRequestModel> getTopTopics(ArrayList<TopicRequestModel> topic) throws IOException {
         ArrayList<Topic> toptopics = new ArrayList<>();
-        ArrayList<Topic> topicClone = topic;
+        ArrayList<Topic> topicClone = new ArrayList<>();
+        for (TopicRequestModel t : topic) {
+            Map<Integer, Post> posts = new HashMap<>();
+            Map<Integer, PostResponseModel> postR = (Map<Integer, PostResponseModel>) t.get().get(3);
+            for (Integer p : postR.keySet()) {
+                posts.put(p, new Post((String) postR.get(p).get().get(0),
+                        (Integer) postR.get(p).get().get(1),
+                        (Integer) postR.get(p).get().get(2),
+                        (String) postR.get(p).get().get(3),
+                        (String) postR.get(p).get().get(4),
+                        (Integer) postR.get(p).get().get(5),
+                        (Integer) postR.get(p).get().get(6),
+                        (ArrayList<Integer>) postR.get(p).get().get(7),
+                        (ArrayList<Integer>) postR.get(p).get().get(8),
+                        (String) postR.get(p).get().get(9)));
+            }
+            topicClone.add(new Topic(t.get().get(0).toString(), (String) t.get().get(1), posts));
+        }
         Integer maxPop = 0;
 
         while (toptopics.size() < 10)
@@ -176,8 +197,18 @@ public class TopicUseCases {
                 }
             }
         }
-
-        return toptopics;
+        ArrayList<TopicRequestModel> hottestTopics = new ArrayList<>();
+        for (Topic t: toptopics)
+        {
+            Map<Integer, PostRequestModel> posts = new HashMap<>();
+            for (Post p: t.getPosts().values())
+            {
+                posts.put(p.getId(), new PostRequestModel(p.getPostTitle(), p.getUserId(), p.getId(), p.getContent(),
+                        p.getTimes(), p.getViews(), p.getNumLikes(), p.getUserLiked(), p.getListComment(), p.getTopic()));
+            }
+            hottestTopics.add(new TopicRequestModel(t.getName(), t.getID(), posts));
+        }
+        return hottestTopics;
     }
 
     /**
