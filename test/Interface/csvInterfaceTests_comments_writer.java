@@ -4,6 +4,8 @@ package Interface;
 import Layer1.Entity.Comment;
 import Layer4.Interface.csvInterface;
 
+import Model.Request.CommentRequestModel;
+import Model.Response.CommentResponseModel;
 import org.junit.Test;
 import Layer4.Interface.csvInterface;
 
@@ -28,13 +30,13 @@ public class csvInterfaceTests_comments_writer {
 
     @Test(timeout = 500)
     public void test_commentsWriter_3comments() throws IOException {
-        Map<Integer, Comment> comments = new HashMap<>();
+        Map<Integer, CommentResponseModel> comments = new HashMap<>();
         Comment comment1 = new Comment(1, 1, "comment1", "2020-01-01 00:00:00",1);
         Comment comment2 = new Comment(1, 2, "comment2", "2020-01-01 00:00:00", 1);
         Comment comment3 = new Comment(2, 3, "comment3", "2020-01-01 00:00:00", 2);
-        comments.put(1, comment1);
-        comments.put(2, comment2);
-        comments.put(3, comment3);
+        comments.put(1, comment1.responseModel());
+        comments.put(2, comment2.responseModel());
+        comments.put(3, comment3.responseModel());
         csv.commentsWriter(comments, commentsPath);
 
         File csvFile = new File(commentsPath);
@@ -47,7 +49,7 @@ public class csvInterfaceTests_comments_writer {
 
     @Test(timeout = 500)
     public void test_commentsWriter_0comments() throws IOException {
-        Map<Integer, Comment> comments = new HashMap<>();
+        Map<Integer, CommentResponseModel> comments = new HashMap<>();
         csv.commentsWriter(comments, commentsPath);
 
         File csvFile = new File(commentsPath);
@@ -57,9 +59,9 @@ public class csvInterfaceTests_comments_writer {
 
     @Test(timeout = 500)
     public void test_commentsWriter_1comment() throws IOException {
-        Map<Integer, Comment> comments = new HashMap<>();
+        Map<Integer, CommentResponseModel> comments = new HashMap<>();
         Comment comment1 = new Comment(1, 1, "comment1", "2020-01-01 00:00:00",1);
-        comments.put(1, comment1);
+        comments.put(1, comment1.responseModel());
         csv.commentsWriter(comments, commentsPath);
 
         File csvFile = new File(commentsPath);

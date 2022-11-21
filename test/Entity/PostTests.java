@@ -14,7 +14,7 @@ public class PostTests {
     @BeforeClass
     public static void setUp() {
         actual = new Post("title", 1, 1, "content", "2020-01-01 00:00:00",
-                0, 0, new ArrayList<Integer>(), new ArrayList<Integer>());
+                0, 0, new ArrayList<Integer>(), new ArrayList<Integer>(), "default");
     }
 
     @After

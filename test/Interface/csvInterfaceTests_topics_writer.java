@@ -4,6 +4,9 @@ import Layer1.Entity.Post;
 import Layer1.Entity.Topic;
 import Layer1.Entity.User;
 import Layer4.Interface.csvInterface;
+import Model.Response.PostResponseModel;
+import Model.Response.TopicResponseModel;
+import Model.Response.UserResponseModel;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -28,16 +31,16 @@ public class csvInterfaceTests_topics_writer {
 
     @Test(timeout = 500)
     public void test_topicsWriter_1topic() throws IOException {
-        Map<Integer, Topic> topics = new HashMap<>();
-        Map<Integer, User> users = new HashMap<>();
-        Map<Integer, Post> posts = new HashMap<>();
-        users.put(1, new User(1, "normal", "User1", "password1", "2019-01-01"));
-        users.put(2, new User(2, "admin", "User2", "password2", "2019-01-01"));
-        users.put(3, new User(3, "normal", "User3", "password3", "2019-01-01"));
-        posts.put(1, new Post("Post 1", 1, 1, "Post 1 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1"));
-        posts.put(2, new Post("Post 2", 2, 1, "Post 2 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1"));
-        posts.put(3, new Post("Post 3", 3, 1, "Post 3 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1"));
-        Topic topic = new Topic("topic1", "1", users, posts);
+        Map<Integer, TopicResponseModel> topics = new HashMap<>();
+        Map<Integer, UserResponseModel> users = new HashMap<>();
+        Map<Integer, PostResponseModel> posts = new HashMap<>();
+        users.put(1, new User(1, "normal", "User1", "password1", "2019-01-01").responseModel());
+        users.put(2, new User(2, "admin", "User2", "password2", "2019-01-01").responseModel());
+        users.put(3, new User(3, "normal", "User3", "password3", "2019-01-01").responseModel());
+        posts.put(1, new Post("Post 1", 1, 1, "Post 1 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1").responseModel());
+        posts.put(2, new Post("Post 2", 2, 1, "Post 2 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1").responseModel());
+        posts.put(3, new Post("Post 3", 3, 1, "Post 3 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1").responseModel());
+        TopicResponseModel topic = new TopicResponseModel("topic1", "1", users, posts);
         topics.put(1, topic);
         csv.topicWriter(topics, topicsPath);
 
@@ -49,18 +52,18 @@ public class csvInterfaceTests_topics_writer {
 
     @Test(timeout = 500)
     public void test_topicsWriter_2topics() throws IOException {
-        Map<Integer, Topic> topics = new HashMap<>();
-        Map<Integer, User> users = new HashMap<>();
-        Map<Integer, Post> posts = new HashMap<>();
-        users.put(1, new User(1, "normal", "User1", "password1", "2019-01-01"));
-        users.put(2, new User(2, "admin", "User2", "password2", "2019-01-01"));
-        users.put(3, new User(3, "normal", "User3", "password3", "2019-01-01"));
-        posts.put(1, new Post("Post 1", 1, 1, "Post 1 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1"));
-        posts.put(2, new Post("Post 2", 2, 1, "Post 2 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1"));
-        posts.put(3, new Post("Post 3", 3, 1, "Post 3 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1"));
-        Topic topic = new Topic("topic1", "1", users, posts);
+        Map<Integer, TopicResponseModel> topics = new HashMap<>();
+        Map<Integer, UserResponseModel> users = new HashMap<>();
+        Map<Integer, PostResponseModel> posts = new HashMap<>();
+        users.put(1, new User(1, "normal", "User1", "password1", "2019-01-01").responseModel());
+        users.put(2, new User(2, "admin", "User2", "password2", "2019-01-01").responseModel());
+        users.put(3, new User(3, "normal", "User3", "password3", "2019-01-01").responseModel());
+        posts.put(1, new Post("Post 1", 1, 1, "Post 1 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1").responseModel());
+        posts.put(2, new Post("Post 2", 2, 1, "Post 2 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1").responseModel());
+        posts.put(3, new Post("Post 3", 3, 1, "Post 3 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1").responseModel());
+        TopicResponseModel topic = new TopicResponseModel("topic1", "1", users, posts);
         topics.put(1, topic);
-        Topic topic2 = new Topic("topic2", "2", users, posts);
+        TopicResponseModel topic2 = new TopicResponseModel("topic2", "2", users, posts);
         topics.put(2, topic2);
         csv.topicWriter(topics, topicsPath);
 

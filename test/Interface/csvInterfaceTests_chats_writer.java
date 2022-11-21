@@ -1,7 +1,9 @@
 package Interface;
 
 import Layer1.Entity.Chat;
+import Layer2.UseCases.ChatUseCases;
 import Layer4.Interface.csvInterface;
+import Model.Response.ChatResponseModel;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -25,11 +27,11 @@ public class csvInterfaceTests_chats_writer {
 
     @Test(timeout = 500)
     public void test_chatsWriter_2chats() throws IOException {
-        Map<Integer, Chat> chats = new HashMap<>();
+        Map<Integer, ChatResponseModel> chats = new HashMap<>();
         Chat chat1 = new Chat(1, 1, 2, "How are you?", "2020-11-11 11:11:11");
         Chat chat2 = new Chat(2, 2, 3, "Hello!", "2020-11-11 11:11:11");
-        chats.put(1, chat1);
-        chats.put(2, chat2);
+        chats.put(1, chat1.responseModel());
+        chats.put(2, chat2.responseModel());
         csv.chatsWriter(chats, chatsPath);
 
         File csvFile = new File(chatsPath);
@@ -41,9 +43,9 @@ public class csvInterfaceTests_chats_writer {
 
     @Test(timeout = 500)
     public void test_chatsWriter_1chats() throws IOException {
-        Map<Integer, Chat> chats = new HashMap<>();
+        Map<Integer, ChatResponseModel> chats = new HashMap<>();
         Chat chat1 = new Chat(1, 1, 2, "How are you?", "2020-11-11 11:11:11");
-        chats.put(1, chat1);
+        chats.put(1, chat1.responseModel());
         csv.chatsWriter(chats, chatsPath);
 
         File csvFile = new File(chatsPath);
@@ -54,7 +56,7 @@ public class csvInterfaceTests_chats_writer {
 
     @Test(timeout = 500)
     public void test_chatsWriter_0chats() throws IOException {
-        Map<Integer, Chat> chats = new HashMap<>();
+        Map<Integer, ChatResponseModel> chats = new HashMap<>();
         csv.chatsWriter(chats, chatsPath);
 
         File csvFile = new File(chatsPath);
@@ -64,13 +66,13 @@ public class csvInterfaceTests_chats_writer {
 
     @Test(timeout = 500)
     public void test_chatsWriter_3chats() throws IOException {
-        Map<Integer, Chat> chats = new HashMap<>();
+        Map<Integer, ChatResponseModel> chats = new HashMap<>();
         Chat chat1 = new Chat(1, 1, 2, "How are you?", "2020-11-11 11:11:11");
         Chat chat2 = new Chat(2, 2, 3, "Hello!", "2020-11-11 11:11:11");
         Chat chat3 = new Chat(3, 1, 3, "Good.", "2020-11-11 11:11:12");
-        chats.put(1, chat1);
-        chats.put(2, chat2);
-        chats.put(3, chat3);
+        chats.put(1, chat1.responseModel());
+        chats.put(2, chat2.responseModel());
+        chats.put(3, chat3.responseModel());
         csv.chatsWriter(chats, chatsPath);
 
         File csvFile = new File(chatsPath);
@@ -83,15 +85,15 @@ public class csvInterfaceTests_chats_writer {
 
     @Test(timeout = 500)
     public void test_chatsWriter_4chats() throws IOException {
-        Map<Integer, Chat> chats = new HashMap<>();
+        Map<Integer, ChatResponseModel> chats = new HashMap<>();
         Chat chat1 = new Chat(1, 1, 2, "How are you?", "2020-11-11 11:11:11");
         Chat chat2 = new Chat(2, 2, 3, "Hello!", "2020-11-11 11:11:11");
         Chat chat3 = new Chat(3, 1, 3, "Good.", "2020-11-11 11:11:12");
         Chat chat4 = new Chat(4, 2, 1, "Fine.", "2020-11-11 11:11:13");
-        chats.put(1, chat1);
-        chats.put(2, chat2);
-        chats.put(3, chat3);
-        chats.put(4, chat4);
+        chats.put(1, chat1.responseModel());
+        chats.put(2, chat2.responseModel());
+        chats.put(3, chat3.responseModel());
+        chats.put(4, chat4.responseModel());
         csv.chatsWriter(chats, chatsPath);
 
         File csvFile = new File(chatsPath);
