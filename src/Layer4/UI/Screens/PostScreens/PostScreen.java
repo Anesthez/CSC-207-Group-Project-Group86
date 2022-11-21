@@ -68,7 +68,7 @@ public class PostScreen extends JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     try {
-                        ShowPostScreen showPostScreen = new ShowPostScreen((Integer) s.get().get(0), userId, name);
+                        ShowPostScreen showPostScreen = new ShowPostScreen((Integer) s.get().get(2), userId, name);
                         showPostScreen.setVisible(true);
                         dispose();
                     } catch (Exception ex) {

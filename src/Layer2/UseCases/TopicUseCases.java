@@ -190,10 +190,10 @@ public class TopicUseCases {
             maxPop = getMaxTopic(topicClone);
             for (Topic t: topicClone)
             {
-                if (t.getTotalPopularity() == maxPop)
+                if (t.getPopularity() == maxPop)
                 {
                     toptopics.add(t);
-//                    topicClone.remove(t);
+                    topicClone.remove(t);
                 }
             }
         }
@@ -223,9 +223,9 @@ public class TopicUseCases {
         Integer maxPop = 0;
         for (Topic t: topic)
         {
-            if (t.getTotalPopularity() > maxPop)
+            if (t.getPopularity() > maxPop)
             {
-                maxPop = t.getTotalPopularity();
+                maxPop = t.getPopularity();
             }
         }
 

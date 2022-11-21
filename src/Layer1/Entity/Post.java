@@ -1,7 +1,7 @@
 package Layer1.Entity;
 
 import Layer1.Entity.inputboundary.Context;
-import Model.Request.PostRequestModel;
+import Layer1.Entity.inputboundary.Populable;
 import Model.Response.PostResponseModel;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import java.util.Map;
  * @Author: eric-qli
  * @Modifiedby: Yufei Chen, LemengDai, Chen Jiang
  */
-public class Post extends Context{
+public class Post extends Context implements Populable {
 
 
     private String postTitle;
@@ -38,7 +38,7 @@ public class Post extends Context{
     //private String TopicName;
     private final ArrayList<Integer> userLiked;
 
-    private final Integer popularity = views + numLikes * 10;
+    private final Integer popularity = getPop();
 
     /**<p>This method returns the popularity for the post object</p>
      *
@@ -47,6 +47,10 @@ public class Post extends Context{
      */
     public Integer getPopularity() {
         return popularity;
+    }
+
+    private int getPop(){
+        return views + numLikes * 10;
     }
 
     /**<p>This is the constructor for the class Post, it calls the constructor of its super class

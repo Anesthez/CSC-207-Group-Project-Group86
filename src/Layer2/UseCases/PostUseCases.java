@@ -2,6 +2,9 @@ package Layer2.UseCases;
 
 import Layer1.Entity.Post;
 import Layer1.Entity.factories.PostFactory;
+import Layer1.Entity.inputboundary.Modelizable;
+import Layer1.Entity.inputboundary.Populable;
+import Layer3.Gateways.Popularity_rank;
 import Model.Request.PostRequestModel;
 import Model.Response.PostResponseModel;
 
@@ -18,8 +21,8 @@ import java.util.Map;
  * @Author: eric-qli
  * @Modified by: Yufei Chen, Tianyu Li, Chen Jiang
  */
-public class PostUseCases {
-    private final Map<Integer, Post> posts = new HashMap<>();
+public class PostUseCases implements Popularity_rank {
+    private final HashMap<Integer, Post> posts = new HashMap<>();
     private final Map<Integer, ArrayList<Integer>> posts_liked;
 
     /**<p>This is the constructor for the PostUseCases class, it needs the posts and the posts_liked list </p>
@@ -150,13 +153,16 @@ public class PostUseCases {
     // dummy method
     public List<PostResponseModel> getHottestPosts(int post_num) {
         // get post_num amount of the hottest post ranked by popularity.
+        HashMap<Integer, Populable> pop_posts= new HashMap<>();
+        for (Post post : posts.values()) {
+            pop_posts.put(post.getId(), post);
+        }
+        ArrayList<Modelizable> ranked_post = rank_by_popularity(pop_posts);
         List<PostResponseModel> hotPosts = new ArrayList<>();
         int remaining = post_num;
-        Map<Integer, Post> remainingPosts = this.posts;
-        while (remaining > 0){
-            Map.Entry<Integer, Post> popularNow = mostPopular(remainingPosts);
-            remainingPosts.remove(popularNow.getKey());
-            hotPosts.add(popularNow.getValue().responseModel());
+        int i = 0;
+        while (remaining > 0 && i < ranked_post.size()) {
+            hotPosts.add((PostResponseModel) ranked_post.get(i).responseModel());
             remaining -= 1;
         }
         return hotPosts;

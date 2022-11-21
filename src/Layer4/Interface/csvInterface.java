@@ -60,15 +60,15 @@ public class csvInterface {
             ArrayList<Integer> iList_comment_id = new ArrayList<>();
             ArrayList<Integer> iList_user_id = new ArrayList<>();
             if (!list_user_id.equals("")) {
-                for (String commentId :
-                        commentIds) {
-                    iList_comment_id.add(Integer.parseInt(commentId));
+                for (String userId :
+                        userIds) {
+                    iList_comment_id.add(Integer.parseInt(userId));
                 }
             }
             if (!list_comment_id.equals("")) {
-                for (String userId :
-                        userIds) {
-                    iList_user_id.add(Integer.parseInt(userId));
+                for (String commentId :
+                        commentIds) {
+                    iList_user_id.add(Integer.parseInt(commentId));
                 }
             }
 

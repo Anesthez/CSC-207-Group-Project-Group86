@@ -1,5 +1,6 @@
 package Layer1.Entity;
 import Layer1.Entity.inputboundary.Modelizable;
+import Layer1.Entity.inputboundary.Populable;
 import Model.Response.PostResponseModel;
 import Model.Response.TopicResponseModel;
 import Model.Response.UserResponseModel;
@@ -26,7 +27,7 @@ import java.util.Map;
  * @Modifiedby: Chen Jiang
  */
 
-public class Topic implements Modelizable {
+public class Topic implements Modelizable, Populable {
 
     private String name;
     private String ID;
@@ -44,10 +45,10 @@ public class Topic implements Modelizable {
     /*
     Calculate the total popularity of posts inside this topic.
      */
-    private final Integer totalPopularity = getSumofTopicPopularity();
+    private final Integer popularity = getSumofTopicPopularity();
 
-    public Integer getTotalPopularity() {
-        return totalPopularity;
+    public Integer getPopularity() {
+        return popularity;
     }
 
     /**
