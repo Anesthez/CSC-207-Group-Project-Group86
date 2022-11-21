@@ -54,11 +54,10 @@ public class PremiumMainScreen extends JFrame {
         chatting.setFont(font);
         this.add(chatting);
 
-        // Icon friendIcon = new ImageIcon("assets/images/friends1080.png");
+        Icon friendIcon = new ImageIcon("assets/images/friends.png");
 
         JButton post = new JButton("Post");
         JButton friend = new JButton("Friend");
-        // friend.setIcon(friendIcon);
         JButton topic = new JButton("Topic");
         JButton logout = new JButton("Log Out");
 
@@ -66,6 +65,8 @@ public class PremiumMainScreen extends JFrame {
         topic.setBounds(750, 150, 125, 125);
 
         friend.setBounds(625, 275, 125, 125);
+        friend.setIcon(friendIcon);
+
         logout.setBounds(750, 275, 125, 125);
 
 
