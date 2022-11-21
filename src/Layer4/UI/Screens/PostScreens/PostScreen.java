@@ -1,9 +1,6 @@
 package Layer4.UI.Screens.PostScreens;
 
 import Layer3.Presenter.PostPresenter;
-import Layer4.UI.PremiumScreens.PostScreens.HotPostScreen;
-import Layer4.UI.PremiumScreens.PostScreens.ShowPostScreen;
-import Layer4.UI.PremiumScreens.PostScreens.UploadPostScreen;
 import Layer4.UI.Screens.MainScreen;
 import Model.Response.PostResponseModel;
 
@@ -35,11 +32,7 @@ public class PostScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 UploadPostScreen uploadPostScreen = null;
-                try {
-                    uploadPostScreen = new UploadPostScreen(userId, name);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
+                uploadPostScreen = new UploadPostScreen(userId, name);
                 uploadPostScreen.setVisible(true);
                 dispose();
             }
@@ -51,11 +44,7 @@ public class PostScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 HotPostScreen hotPostScreen = null;
-                try {
-                    hotPostScreen = new HotPostScreen(userId, name);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
+                hotPostScreen = new HotPostScreen(userId, name);
                 hotPostScreen.setVisible(true);
                 dispose();
             }
@@ -79,7 +68,7 @@ public class PostScreen extends JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     try {
-                        Layer4.UI.PremiumScreens.PostScreens.ShowPostScreen showPostScreen = new ShowPostScreen((int) s.get().get(2), userId, name);
+                        ShowPostScreen showPostScreen = new ShowPostScreen((Integer) s.get().get(0), userId, name);
                         showPostScreen.setVisible(true);
                         dispose();
                     } catch (Exception ex) {
@@ -98,7 +87,7 @@ public class PostScreen extends JFrame {
 
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    label.setForeground(Color.cyan);
+                    label.setForeground(Color.blue);
                 }
 
                 @Override

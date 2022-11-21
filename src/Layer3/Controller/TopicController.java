@@ -11,7 +11,7 @@ import java.util.Map;
 public class TopicController {
     public ArrayList<TopicRequestModel> getHottestTopics() throws IOException {
         csvInterface csvInterface = new csvInterface();
-        Map<Integer, TopicRequestModel> topics = csvInterface.topicsReader("database/topics.csv");
+        Map<Integer, TopicRequestModel> topics = csvInterface.topicsReader("database/topic.csv");
         TopicUseCases topicManager = new TopicUseCases();
         ArrayList<TopicRequestModel> topicRequestModels = new ArrayList<TopicRequestModel>();
         for (TopicRequestModel topic : topics.values()) {

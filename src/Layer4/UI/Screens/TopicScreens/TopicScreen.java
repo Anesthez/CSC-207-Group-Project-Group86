@@ -50,20 +50,20 @@ public class TopicScreen extends JFrame implements ActionListener {
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane.setBounds(50, 150, 700, 400);
         JPanel jPanel = new JPanel();
-        Map<Integer, TopicRequestModel> topics = new csvInterface().topicsReader("database/topics.csv");
+        Map<Integer, TopicRequestModel> topics = new csvInterface().topicsReader("database/topic.csv");
         jPanel.setLayout(new GridLayout(topics.size(), 1));
         jPanel.setSize(700, 2000);
         int i=0;
         for (TopicRequestModel t : topics.values()){
-        JLabel label = new JLabel(String.valueOf(t));
+        JLabel label = new JLabel(String.valueOf(t.get()));
         label.setSize(700, 100);
         label.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try{
-//                    HottestTopicScreen htScreen = new HottestTopicScreen();
-//                    htScreen.setVisible(true);
-//                    dispose();
+                    HottestTopicScreen htScreen = new HottestTopicScreen(userID, name);
+                    htScreen.setVisible(true);
+                    dispose();
                 }
                 catch (Exception ex){
                     throw new RuntimeException(ex);

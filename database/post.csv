@@ -1,6 +1,4 @@
-id,userid,time,content,num-liked,num-viewed,user-liked,list_comment_id,post_title
-1,1,2022/10/17,post_test,1,1,1,1 2 3,posttest
-2,2,2022-10-17,iam testing post,0,0,,,posttest
-3,2,2022-10-17,iamtesting post,0,0,,,posttest 
-4,1,2022-10-17,i am testing post,0,0,,,posttest
-5,2,2022-10-31,1,0,0,,,1
+post_title,userid,id,content,time,num-viewed,num-liked,user-liked,list_comment_id,topic
+This is the test for adding post,3,1,I am listening to some music that is very nice,2022-11-17,0,0,,,topic
+post test,3,2,I am testing post,2022-11-21,0,0,,,topic
+pesdijfoajdfk,2,3,sadjhfiuasdhfda,2022-11-21,0,0,,,topic

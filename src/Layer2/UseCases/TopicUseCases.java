@@ -193,7 +193,7 @@ public class TopicUseCases {
                 if (t.getTotalPopularity() == maxPop)
                 {
                     toptopics.add(t);
-                    topicClone.remove(t);
+//                    topicClone.remove(t);
                 }
             }
         }

@@ -62,7 +62,7 @@ public class FriendsScreen extends JFrame {
 
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    label.setForeground(Color.cyan);
+                    label.setForeground(Color.blue);
                 }
 
                 @Override
