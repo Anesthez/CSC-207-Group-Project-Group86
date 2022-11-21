@@ -39,11 +39,16 @@ public class PremiumMainScreen extends JFrame {
         font = font.deriveFont(12f);
 
         this.setLayout(null);
-        this.add(new PlaceLabel().create(100, 100, 200, 50,
-                greetingMessages.get(indexGreeting) + username + "!"));
-        this.add(new PlaceLabel().create(100, 150, 200, 50, chatters.get(indexChatter)));
+        JLabel greeting = new PlaceLabel().create(100, 100, 200, 50,
+                greetingMessages.get(indexGreeting) + username + "!");
+        greeting.setFont(font);
+        this.add(greeting);
+        JLabel chatting = new PlaceLabel().create(100, 150, 200, 50, chatters.get(indexChatter));
+        chatting.setFont(font);
+        this.add(chatting);
 
         JButton post = new JButton("Post");
+        post.setFont(font);
         JButton friend = new JButton("Friend");
         JButton topic = new JButton("Topic");
         BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
@@ -51,7 +56,6 @@ public class PremiumMainScreen extends JFrame {
         JLabel label = new JLabel(imageIcon);
         label.setSize(960, 540);
         Container container = getContentPane();
-        container.setFont(font);
 
         post.setBounds(500, 200, 100, 50);
         friend.setBounds(500, 300, 100, 50);
