@@ -12,7 +12,10 @@ import Model.Response.UserResponseModel;
 import java.io.*;
 import java.util.*;
 
-
+/**
+ * The CLI is the ggregate of all the commands that can be used in the program, used for testing purposes
+ * In Phase 1 we test the functionality of the program by using the CLI
+ */
 public class CLI {
     private String username;
     private int userid;

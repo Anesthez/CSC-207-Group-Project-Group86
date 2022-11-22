@@ -6,6 +6,7 @@ import Model.Request.UserRequestModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 public class RegisterController {
@@ -17,7 +18,9 @@ public class RegisterController {
         int userId = userManager.addUser(username, password);
         if (userId != -1) {
             csvInteract.usersWriter(userManager.getUsers(), "database/user.csv");
-            friends.put(userId, new ArrayList<>(userId));
+            ArrayList<Integer> defaultL = new ArrayList<>();
+            defaultL.add(userId);
+            friends.put(userId, defaultL);
             csvInteract.friendsWriter("database/friends.csv", friends);
             return userId;
         }else{

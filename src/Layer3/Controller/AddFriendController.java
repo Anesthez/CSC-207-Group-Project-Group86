@@ -16,6 +16,7 @@ public class AddFriendController {
         }
         if (!friendList.contains(friendId)){
             friendList.add(friendId);
+            new csvInterface().friendsWriter("database/friends.csv", friends);
             return true;
         }else{
             return false;
