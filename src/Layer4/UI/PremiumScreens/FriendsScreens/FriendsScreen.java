@@ -26,7 +26,7 @@ public class FriendsScreen extends JFrame {
                 PremiumMainScreen premiumMainScreen = null;
                 try {
                     premiumMainScreen = new PremiumMainScreen(userId, name);
-                } catch (IOException ex) {
+                } catch (IOException | FontFormatException ex) {
                     throw new RuntimeException(ex);
                 }
                 premiumMainScreen.setVisible(true);

@@ -30,7 +30,7 @@ public class PostScreen extends JFrame {
                 PremiumMainScreen mainScreen = null;
                 try {
                     mainScreen = new PremiumMainScreen(userId, name);
-                } catch (IOException ex) {
+                } catch (IOException | FontFormatException ex) {
                     throw new RuntimeException(ex);
                 }
                 mainScreen.setVisible(true);
