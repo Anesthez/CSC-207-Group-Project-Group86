@@ -2,6 +2,7 @@ package Interface;
 
 import Layer1.Entity.User;
 import Layer4.Interface.csvInterface;
+import Model.Response.UserResponseModel;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -25,9 +26,9 @@ public class csvInterfaceTests_users_writer {
 
     @Test(timeout = 500)
     public void test_usersWriter_1user() throws IOException {
-        Map<Integer, User> users = new HashMap<>();
+        Map<Integer, UserResponseModel> users = new HashMap<>();
         User user = new User(1, "normal", "User1", "123456", "2020-11-11 11:11:11");
-        users.put(1, user);
+        users.put(1, user.responseModel());
         csv.usersWriter(users, usersPath);
 
         File csvFile = new File(usersPath);
@@ -38,11 +39,11 @@ public class csvInterfaceTests_users_writer {
 
     @Test(timeout = 500)
     public void test_usersWriter_2users() throws IOException {
-        Map<Integer, User> users = new HashMap<>();
+        Map<Integer, UserResponseModel> users = new HashMap<>();
         User user = new User(1, "normal", "User1", "123456", "2020-11-11 11:11:11");
-        users.put(1, user);
+        users.put(1, user.responseModel());
         User user2 = new User(2, "admin", "User2", "123456", "2020-11-11 11:11:11");
-        users.put(2, user2);
+        users.put(2, user2.responseModel());
         csv.usersWriter(users, usersPath);
 
         File csvFile = new File(usersPath);
@@ -54,13 +55,13 @@ public class csvInterfaceTests_users_writer {
 
     @Test(timeout = 500)
     public void test_usersWriter_3users() throws IOException {
-        Map<Integer, User> users = new HashMap<>();
+        Map<Integer, UserResponseModel> users = new HashMap<>();
         User user = new User(1, "normal", "User1", "123456", "2020-11-11 11:11:11");
-        users.put(1, user);
+        users.put(1, user.responseModel());
         User user2 = new User(2, "admin", "User2", "123456", "2020-11-11 11:11:11");
-        users.put(2, user2);
+        users.put(2, user2.responseModel());
         User user3 = new User(3, "normal", "User3", "123456", "2020-11-11 11:11:11");
-        users.put(3, user3);
+        users.put(3, user3.responseModel());
         csv.usersWriter(users, usersPath);
 
         File csvFile = new File(usersPath);

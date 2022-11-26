@@ -47,28 +47,28 @@ public class ChatCommand {
         switch (inputLines[1]) {
             case "add": {
                 int receiver_id = Integer.parseInt(inputLines[2]);
-//                if (users.containsKey(receiver_id)) {
-//                    chatManager.addChat(userid, receiver_id, inputLines[3]);
-//                    csvInteract.chatsWriter(chats, "database/chat.csv");
-//                    System.out.println("message sent");
-//                } else {
-//                    System.out.println("user does not exist");
-//                }
-//                break;
+                if (users.containsKey(receiver_id)) {
+                    chatManager.addChat(userid, receiver_id, inputLines[3]);
+                    csvInteract.chatsWriter(chatManager.getChats(), "database/chat.csv");
+                    System.out.println("message sent");
+                } else {
+                    System.out.println("user does not exist");
+                }
+                break;
             }
 
 
             // use "/chat-delete-chatid" to delete a message
             case "delete": {
                 int chatid = Integer.parseInt(inputLines[2]);
-//                if (chats.containsKey(chatid)) {
-//                    chatManager.deleteChat(chatid);
-//                    csvInteract.chatsWriter(chats, "database/chat.csv");
-//                    System.out.println("message deleted");
-//                } else {
-//                    System.out.println("chat does not exist");
-//                }
-//                break;
+                if (chats.containsKey(chatid)) {
+                    chatManager.deleteChat(chatid);
+                    csvInteract.chatsWriter(chatManager.getChats(), "database/chat.csv");
+                    System.out.println("message deleted");
+                } else {
+                    System.out.println("chat does not exist");
+                }
+                break;
             }
 
 
@@ -84,8 +84,7 @@ public class ChatCommand {
             }
 
 
-            // the class below violates the rule that the all commands in Layer 3 use the usecases, thus are commented
-//            case "show": {
+            case "show": {
 //                int receiver_id = Integer.parseInt(inputLines[2]);
 //                if (users.containsKey(receiver_id)) {
 //                    List<Chat> chatlist = new ArrayList<>();
@@ -106,7 +105,7 @@ public class ChatCommand {
 //                    System.out.println("user does not exist");
 //                }
 //                break;
-//            }
+            }
             default: System.out.println("unknown command");
         }
     }

@@ -54,9 +54,9 @@ public class RegisterScreen extends JFrame {
             String s_password2 = passwordText2.getText();
             if (s_password.equals(s_password2)){
                 try {
-                    int a = new RegisterController().register(name, s_password);
+                    int a = new RegisterController().register(s_password, name);
                     if (a != -1){
-                        new MainScreen(a, name);
+                        new MainScreen(a, name).setVisible(true);
                         this.dispose();}
                     else {
                         JOptionPane.showMessageDialog(null, "Username already exists");

@@ -2,6 +2,7 @@ package Interface;
 
 import Layer1.Entity.Post;
 import Layer4.Interface.csvInterface;
+import Model.Response.PostResponseModel;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -29,10 +30,10 @@ public class csvInterfaceTests_posts_writer {
         Post post1 = new Post("Test 1", 1, 1, "Test 1 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1");
         Post post2 = new Post("Test 2", 1, 2, "Test 2 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1");
         Post post3 = new Post("Test 3", 1, 3, "Test 3 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic1");
-        Map<Integer, Post> posts = new HashMap<>();
-        posts.put(1, post1);
-        posts.put(2, post2);
-        posts.put(3, post3);
+        Map<Integer, PostResponseModel> posts = new HashMap<>();
+        posts.put(1, post1.responseModel());
+        posts.put(2, post2.responseModel());
+        posts.put(3, post3.responseModel());
         csv.postsWriter(postsPath, posts);
 
         File csvFile = new File(postsPath);
@@ -53,15 +54,15 @@ public class csvInterfaceTests_posts_writer {
         Post post6 = new Post("Test 6", 2, 6, "Test 6 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic2");
         Post post7 = new Post("Test 7", 2, 7, "Test 7 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic2");
         Post post8 = new Post("Test 8", 2, 8, "Test 8 Content", "2020-01-01 00:00:00", 0, 0, new ArrayList<>(), new ArrayList<>(), "topic2");
-        Map<Integer, Post> posts = new HashMap<>();
-        posts.put(1, post1);
-        posts.put(2, post2);
-        posts.put(3, post3);
-        posts.put(4, post4);
-        posts.put(5, post5);
-        posts.put(6, post6);
-        posts.put(7, post7);
-        posts.put(8, post8);
+        Map<Integer, PostResponseModel> posts = new HashMap<>();
+        posts.put(1, post1.responseModel());
+        posts.put(2, post2.responseModel());
+        posts.put(3, post3.responseModel());
+        posts.put(4, post4.responseModel());
+        posts.put(5, post5.responseModel());
+        posts.put(6, post6.responseModel());
+        posts.put(7, post7.responseModel());
+        posts.put(8, post8.responseModel());
         csv.postsWriter(postsPath, posts);
 
         File csvFile = new File(postsPath);

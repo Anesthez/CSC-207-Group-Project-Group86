@@ -33,7 +33,7 @@ public class TopicTests {
 
     @Test(timeout = 500)
     public void testGetTotalofTopicPopularity(){
-        assertSame(0, actual.getTotalPopularity());
+        assertSame(0, actual.getPopularity());
     }
 
     @Test(timeout = 500)
@@ -89,7 +89,7 @@ public class TopicTests {
 
     @Test(timeout = 500)
     public void testGetTotalPopularity(){
-        assertSame(0, actual.getTotalPopularity());
+        assertSame(0, actual.getPopularity());
     }
 
 }

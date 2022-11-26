@@ -1,4 +1,4 @@
-user_id,id,time,content
-1,1,2022/10/13,commet_test
-2,2,2022-11-08,Hello World
-3,123,2022-11-09,Love your fashion choice!
+user_id,id,time,content,post_id
+1,1,2022/10/13,commet_test,1
+2,2,2022-11-08,Hello World,1
+3,123,2022-11-09,Love your fashion choice!,1
