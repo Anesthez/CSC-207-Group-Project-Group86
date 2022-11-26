@@ -57,7 +57,7 @@ public class PremiumMainScreen extends JFrame {
         Icon friendIcon = new ImageIcon("assets/images/friends.png");
 
         JButton post = new JButton("Post");
-        JButton friend = new JButton("Friend");
+        JButton friend = new JButton();
         JButton topic = new JButton("Topic");
         JButton logout = new JButton("Log Out");
 
