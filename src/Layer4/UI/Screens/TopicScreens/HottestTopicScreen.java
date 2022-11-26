@@ -25,18 +25,56 @@ public class HottestTopicScreen extends JFrame {
                 dispose();
             }
         });
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        TopicController topicController = new TopicController();
-        ArrayList<TopicRequestModel> ht = topicController.getHottestTopics();
-        for (TopicRequestModel t : ht){
-            JLabel label = new JLabel(String.valueOf(t.get()));
-            label.setSize(700, 100);
-            panel.add(label);
-        }
+        JButton hottestTopic = new JButton("Hottest Topic");
+        JButton secondHottestTopic = new JButton("Second Hottest Topic");
+        JButton thirdHottestTopic = new JButton("Third Hottest Topic");
+
+        hottestTopic.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                HottestTopicScreen htScreen = null;
+                try {
+                    htScreen = new FirstHotScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                htScreen.setVisible(true);
+                dispose();
+            }
+        });
+
+        secondHottestTopic.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                HottestTopicScreen htScreen = null;
+                try {
+                    htScreen = new SecondHotScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                htScreen.setVisible(true);
+                dispose();
+            }
+        });
+
+        thirdHottestTopic.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                HottestTopicScreen htScreen = null;
+                try {
+                    htScreen = new ThirdHotScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                htScreen.setVisible(true);
+                dispose();
+            }
+        });
+        this.setBounds(0, 0, 960, 540);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(null);
+        this.setResizable(false);
 
     }
     public void setVisible(boolean b) {
     }
+
 
 }
