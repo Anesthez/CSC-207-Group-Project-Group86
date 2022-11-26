@@ -53,6 +53,29 @@ public class TopicScreen extends JFrame implements ActionListener {
         JButton showTopics = new JButton("View Topics");
         JButton showHottestTopics = new JButton("View Hottest Topics");
         JButton cancel = new JButton("Cancel");
+        showTopics.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ShowTopicsScreen showTopicsScreen = null;
+                showTopicsScreen = new ShowTopicsScreen();
+                showTopicsScreen.setVisible(true);
+                dispose();
+            }
+        });
+
+        showHottestTopics.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                HottestTopicScreen hottestTopicScreen = null;
+                try {
+                    hottestTopicScreen = new HottestTopicScreen(userId, name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                hottestTopicScreen.setVisible(true);
+                dispose();
+            }
+        });
 
         showTopics.setBounds(200, 230, 200, 50);
         showTopics.setFont(font);

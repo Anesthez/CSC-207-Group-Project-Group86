@@ -33,7 +33,7 @@ public class TopicScreen extends JFrame implements ActionListener {
             }
         });
         JButton hottestTopic = new JButton("Hottest Topic");
-        hottestTopic.setBounds(0, 50, 50, 20);
+        hottestTopic.setBounds(0, 50, 150, 20);
         hottestTopic.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 HottestTopicScreen htScreen = null;
@@ -48,15 +48,15 @@ public class TopicScreen extends JFrame implements ActionListener {
         });
         JScrollPane jScrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane.setBounds(50, 150, 700, 400);
+        jScrollPane.setBounds(50, 150, 800, 800);
         JPanel jPanel = new JPanel();
         Map<Integer, TopicRequestModel> topics = new csvInterface().topicsReader("database/topic.csv");
         jPanel.setLayout(new GridLayout(topics.size(), 1));
-        jPanel.setSize(700, 2000);
+        jPanel.setSize(800, 2000);
         int i=0;
         for (TopicRequestModel t : topics.values()){
         JLabel label = new JLabel(String.valueOf(t.get()));
-        label.setSize(700, 100);
+        label.setSize(800, 100);
         label.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
