@@ -73,7 +73,18 @@ public class FriendsScreen extends JFrame {
             jPanel.add(label);
             i +=1;
         }
+        JButton addFriend = new JButton("Add Friend");
+        addFriend.setBounds(50, 50, 100, 50);
+        addFriend.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddFriendsScreen addFriendsScreen = new AddFriendsScreen(userId, name);
+                addFriendsScreen.setVisible(true);
+                dispose();
+            }
+        });
         jScrollPane.setViewportView(jPanel);
+        this.add(addFriend);
         this.add(jScrollPane);
         this.add(back);
         this.setLayout(null);
