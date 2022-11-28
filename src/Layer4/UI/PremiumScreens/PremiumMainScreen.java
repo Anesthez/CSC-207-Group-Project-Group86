@@ -32,6 +32,10 @@ public class PremiumMainScreen extends JFrame {
         Font font = Font.createFont(Font.TRUETYPE_FONT, is);
         font = font.deriveFont(16f);
 
+        InputStream is24 = new FileInputStream(new File(fontPathUI));
+        Font font24 = Font.createFont(Font.TRUETYPE_FONT, is);
+        font24 = font24.deriveFont(24f);
+
         List<String> greetingMessages = Arrays.asList("Hello, ", "Good day, ", "Hiya, ");
         List<String> chatters = Arrays.asList("I hope you are doing well.", "It is nice to see you!",
                 "Let's check out some posts?");
@@ -54,20 +58,28 @@ public class PremiumMainScreen extends JFrame {
         chatting.setFont(font);
         this.add(chatting);
 
+        Icon postIcon = new ImageIcon("assets/images/post.png");
+        Icon topicIcon = new ImageIcon("assets/images/topic.png");
         Icon friendIcon = new ImageIcon("assets/images/friends.png");
+        Icon logoutIcon = new ImageIcon("assets/images/logout.png");
 
-        JButton post = new JButton("Post");
-        JButton friend = new JButton("Friend");
-        JButton topic = new JButton("Topic");
-        JButton logout = new JButton("Log Out");
+        JButton post = new JButton();
+        JButton friend = new JButton();
+        JButton topic = new JButton();
+        JButton logout = new JButton();
 
         post.setBounds(625, 150, 125, 125);
-        topic.setBounds(750, 150, 125, 125);
+        post.setIcon(postIcon);
 
-        friend.setBounds(625, 275, 125, 125);
+        topic.setBounds(755, 150, 125, 125);
+        topic.setIcon(topicIcon);
+
+        friend.setBounds(625, 280, 125, 125);
         friend.setIcon(friendIcon);
 
-        logout.setBounds(750, 275, 125, 125);
+
+        logout.setBounds(755, 280, 125, 125);
+        logout.setIcon(logoutIcon);
 
 
         post.addActionListener(new ActionListener() {
@@ -106,7 +118,7 @@ public class PremiumMainScreen extends JFrame {
                 TopicScreen topicScreen = null;
                 try {
                     topicScreen = new TopicScreen(userId, username);
-                } catch (IOException ex) {
+                } catch (IOException | FontFormatException ex) {
                     throw new RuntimeException(ex);
                 }
                 topicScreen.setVisible(true);
