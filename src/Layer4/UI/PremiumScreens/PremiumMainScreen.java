@@ -32,10 +32,6 @@ public class PremiumMainScreen extends JFrame {
         Font font = Font.createFont(Font.TRUETYPE_FONT, is);
         font = font.deriveFont(16f);
 
-        InputStream is24 = new FileInputStream(new File(fontPathUI));
-        Font font24 = Font.createFont(Font.TRUETYPE_FONT, is);
-        font24 = font24.deriveFont(24f);
-
         List<String> greetingMessages = Arrays.asList("Hello, ", "Good day, ", "Hiya, ");
         List<String> chatters = Arrays.asList("I hope you are doing well.", "It is nice to see you!",
                 "Let's check out some posts?");
