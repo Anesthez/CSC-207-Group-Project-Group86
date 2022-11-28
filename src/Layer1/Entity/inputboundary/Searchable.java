@@ -4,7 +4,7 @@ package Layer1.Entity.inputboundary;
  * Modified by: Yufei Chen
  */
 public interface Searchable {
-    final int id = 0;
-    public int getId();
+    int id = 0;
+    int getId();
 
 }

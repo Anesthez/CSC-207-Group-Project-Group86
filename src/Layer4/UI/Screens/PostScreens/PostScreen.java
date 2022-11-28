@@ -6,8 +6,6 @@ import Model.Response.PostResponseModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -17,37 +15,28 @@ public class PostScreen extends JFrame {
     public PostScreen(int userId, String name) throws IOException {
         JButton back = new JButton("Back");
         back.setBounds(0, 0, 50, 20);
-        back.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainScreen mainScreen = new MainScreen(userId, name);
-                mainScreen.setVisible(true);
-                dispose();
-            }
+        back.addActionListener(e -> {
+            MainScreen mainScreen = new MainScreen(userId, name);
+            mainScreen.setVisible(true);
+            dispose();
         });
 
         JButton uploadPost = new JButton("Upload Post");
         uploadPost.setBounds(0, 50, 100, 20);
-        uploadPost.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UploadPostScreen uploadPostScreen = null;
-                uploadPostScreen = new UploadPostScreen(userId, name);
-                uploadPostScreen.setVisible(true);
-                dispose();
-            }
+        uploadPost.addActionListener(e -> {
+            UploadPostScreen uploadPostScreen;
+            uploadPostScreen = new UploadPostScreen(userId, name);
+            uploadPostScreen.setVisible(true);
+            dispose();
         });
         JButton hotPosts = new JButton("Trending Hot Posts");
         hotPosts.setBounds(0, 25, 180, 20);
-        hotPosts.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        hotPosts.addActionListener(e -> {
 
-                HotPostScreen hotPostScreen = null;
-                hotPostScreen = new HotPostScreen(userId, name);
-                hotPostScreen.setVisible(true);
-                dispose();
-            }
+            HotPostScreen hotPostScreen;
+            hotPostScreen = new HotPostScreen(userId, name);
+            hotPostScreen.setVisible(true);
+            dispose();
         });
         JLabel label1 = new JLabel("Browse Posts");
         label1.setBounds(400, 300, 100, 20);
@@ -59,7 +48,6 @@ public class PostScreen extends JFrame {
 
         jPanel.setLayout(new GridLayout(posts.size(), 1));
         jPanel.setSize(700, 2000);
-        int i = 0;
         for (PostResponseModel s: posts.values()) {
 
             JLabel label = new JLabel(s.get().get(3) + " User:"+s.get().get(1) + " "+ s.get().get(2));
@@ -96,7 +84,6 @@ public class PostScreen extends JFrame {
                 }
             });
             jPanel.add(label);
-            i +=1;
         }
         jScrollPane.setViewportView(jPanel);
         this.add(jScrollPane);

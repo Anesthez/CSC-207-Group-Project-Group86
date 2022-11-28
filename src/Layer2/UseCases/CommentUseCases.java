@@ -78,7 +78,7 @@ public class CommentUseCases {
     }
 
     public Map<Integer, CommentResponseModel> getComments() {
-        Map<Integer, CommentResponseModel> commentResponseModels = new HashMap<Integer, CommentResponseModel>();
+        Map<Integer, CommentResponseModel> commentResponseModels = new HashMap<>();
         for (Integer i : this.comments.keySet()) {
             commentResponseModels.put(i, comments.get(i).responseModel());
         }

@@ -21,7 +21,6 @@ public class CommentCommand {
 
     /**
      * <p>parses user input and can be used to add or delete {@link Layer1.Entity.Comment Comment}</p>
-     * @throws IOException
      */
     public void exact() throws IOException {
         csvInterface csvInteract = new csvInterface();

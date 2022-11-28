@@ -20,8 +20,8 @@ public class CommentController {
 
     /**
      * <p>initialize CommentController with user input and user id</p>
-     * @param inputLines
-     * @param userid
+     * @param inputLines inputLines
+     * @param userid userid
      */
     public CommentController(String inputLines, int userid, int postId){
         this.inputLines = inputLines;
@@ -31,7 +31,6 @@ public class CommentController {
 
     /**
      * adds {@link Layer1.Entity.Comment Comment} object with user input as content and user id.
-     * @throws IOException
      */
     public void create() throws IOException {
         csvInterface csvInteract = new csvInterface();

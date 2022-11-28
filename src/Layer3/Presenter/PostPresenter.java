@@ -1,5 +1,4 @@
 package Layer3.Presenter;
-import Layer1.Entity.Post;
 import Layer2.UseCases.PostUseCases;
 import Layer4.Interface.csvInterface;
 import Model.Request.PostRequestModel;

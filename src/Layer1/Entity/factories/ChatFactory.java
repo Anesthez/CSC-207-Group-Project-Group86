@@ -1,7 +1,6 @@
 package Layer1.Entity.factories;
 
 import Layer1.Entity.Chat;
-import Layer1.Entity.inputboundary.Context;
 import Model.Request.ChatRequestModel;
 
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ public class ChatFactory {
      * @param chatModel the chat model
      * @return chat object with id, user1_id, user2_id, content and timestamp
      */
-    public Chat create(ChatRequestModel chatModel){
+    public Chat create(ChatRequestModel chatModel) {
         ArrayList<Object> chatContents = chatModel.get();
         return new Chat((int)chatContents.get(0)
                 , (int)chatContents.get(1)

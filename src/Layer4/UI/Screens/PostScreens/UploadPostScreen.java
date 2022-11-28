@@ -23,18 +23,15 @@ public class UploadPostScreen extends JFrame implements ActionListener {
         this.add(new PlaceLabel().create(50, 100, 50, 50, "Content"));
         JButton back = new JButton("Back");
         back.setBounds(0, 0, 50, 20);
-        back.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PostScreen postScreen = null;
-                try {
-                    postScreen = new PostScreen(userId, name);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                postScreen.setVisible(true);
-                dispose();
+        back.addActionListener(e -> {
+            PostScreen postScreen;
+            try {
+                postScreen = new PostScreen(userId, name);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
+            postScreen.setVisible(true);
+            dispose();
         });
 
         JTextField titleText= new PlaceTextField().createTextField(50, 50, 700, 50);
@@ -45,23 +42,20 @@ public class UploadPostScreen extends JFrame implements ActionListener {
 
         JButton postButton = new PlaceButton().create("Post", null,
                 650, 675, 100, 50);
-        postButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String[] postInfo = new String[2];
-                postInfo[0] = titleText.getText();
-                postInfo[1] = contentText.getText();
-                try {
-                    new PostController().addPost(postInfo[0], postInfo[1], userId, "topic");
-                    JOptionPane.showMessageDialog(null, String.format("%s created.",
-                            titleText.getText()));
-                    titleText.setText("");
-                    contentText.setText("");
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                }
-
+        postButton.addActionListener(e -> {
+            String[] postInfo = new String[2];
+            postInfo[0] = titleText.getText();
+            postInfo[1] = contentText.getText();
+            try {
+                new PostController().addPost(postInfo[0], postInfo[1], userId, "topic");
+                JOptionPane.showMessageDialog(null, String.format("%s created.",
+                        titleText.getText()));
+                titleText.setText("");
+                contentText.setText("");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
+
         });
         this.add(postButton);
         this.add(back);

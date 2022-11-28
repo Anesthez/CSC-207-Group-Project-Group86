@@ -1,10 +1,8 @@
 package Layer3.Commands;
 
 import Layer4.Interface.csvInterface;
-import Model.Request.TopicRequestModel;
 
 import java.io.IOException;
-import java.util.Map;
 /**
  * <p>
  *     A class for TopicCommand.
@@ -46,19 +44,10 @@ public class TopicCommand {
      * <p>
      *     This method takes in String[] inputlines and int userid and set them to the class.
      * </p>
-     * @throws IOException
      */
-    public void exact() throws IOException {
-        csvInterface csvInterface = new csvInterface();
-        Map<Integer, TopicRequestModel> topicMap = csvInterface.topicsReader("database/topic.csv");
+    public void exact(){
         if (inputlines[1].equals("show"))
         {
-//            for (Integer i : topicMap.keySet())
-//            {
-//                System.out.println(topicMap.get(i).getID()+". "+topicMap.get(i).getName());
-//            }
-        }
-        else {
             System.out.println("unknown command");
         }
     }

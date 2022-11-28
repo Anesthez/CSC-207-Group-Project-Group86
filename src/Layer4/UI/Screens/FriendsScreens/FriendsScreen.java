@@ -1,14 +1,11 @@
 package Layer4.UI.Screens.FriendsScreens;
 
-import Layer3.Presenter.CommentPresenter;
 import Layer4.Interface.csvInterface;
 import Layer4.UI.Screens.FriendsScreens.ChatScreens.ChatScreen;
 import Layer4.UI.Screens.MainScreen;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -18,13 +15,10 @@ public class FriendsScreen extends JFrame {
     public FriendsScreen(int userId, String name) throws IOException {
         JButton back = new JButton("Back");
         back.setBounds(0, 0, 50, 20);
-        back.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainScreen mainScreen = new MainScreen(userId, name);
-                mainScreen.setVisible(true);
-                dispose();
-            }
+        back.addActionListener(e -> {
+            MainScreen mainScreen = new MainScreen(userId, name);
+            mainScreen.setVisible(true);
+            dispose();
         });
         JScrollPane jScrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -34,7 +28,6 @@ public class FriendsScreen extends JFrame {
 
         jPanel.setLayout(new GridLayout(ints.size(), 1));
         jPanel.setSize(700, 2000);
-        int i = 0;
         for (int s: ints) {
 
             JLabel label = new JLabel(String.valueOf(s));
@@ -71,17 +64,13 @@ public class FriendsScreen extends JFrame {
                 }
             });
             jPanel.add(label);
-            i +=1;
         }
         JButton addFriend = new JButton("Add Friend");
         addFriend.setBounds(50, 50, 100, 50);
-        addFriend.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AddFriendsScreen addFriendsScreen = new AddFriendsScreen(userId, name);
-                addFriendsScreen.setVisible(true);
-                dispose();
-            }
+        addFriend.addActionListener(e -> {
+            AddFriendsScreen addFriendsScreen = new AddFriendsScreen(userId, name);
+            addFriendsScreen.setVisible(true);
+            dispose();
         });
         jScrollPane.setViewportView(jPanel);
         this.add(addFriend);

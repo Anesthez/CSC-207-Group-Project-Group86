@@ -51,42 +51,13 @@ public class UserUsesCases {
     }
 
     /**
-     * <p>Delete a user from the hashmap</p>
-     *
-     * @param userId the id of the user
-     */
-    public void deleteUser(int userId) {
-        users.remove(userId);
-    }
-
-    /**
-     * <p>Change the password for the user</p>
-     *
-     * @param userId the id of the user
-     * @param password the password of the user
-     */
-    public void changePassword(int userId, String password) {
-        users.get(userId).setUserPassword(password);
-    }
-
-    /**
-     * <p>Change the username for the user</p>
-     *
-     * @param userId the id of the user
-     * @param name the username of the user
-     */
-    public void changeUsername(int userId, String name) {
-        users.get(userId).setUserName(name);
-    }
-
-    /**
      * <p>Verify whether if the user's password is correct</p>
      *
      * @param userName the username of the user
      * @param userPassword the password of the user
      */
     public UserResponseModel verifyUser(String userName, String userPassword) {
-        boolean verified = false;
+        boolean verified;
         for (User user:
              users.values()) {
             verified = (Objects.equals(user.getUserName(), userName) &&

@@ -31,8 +31,8 @@ public class TopicUseCases {
      * <p>
      *     The addPostsToTopic method is a method that is used to add posts to a topic.
      * </p>
-     * @param topic
-     * @param post
+     * @param topic the topic that the posts are added to
+     * @param post the post to be added to the topic
      */
     public void addPostsToTopic(Topic topic, Post post)
     {

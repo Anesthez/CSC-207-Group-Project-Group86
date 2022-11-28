@@ -13,10 +13,7 @@ public class TopicController {
         csvInterface csvInterface = new csvInterface();
         Map<Integer, TopicRequestModel> topics = csvInterface.topicsReader("database/topic.csv");
         TopicUseCases topicManager = new TopicUseCases();
-        ArrayList<TopicRequestModel> topicRequestModels = new ArrayList<TopicRequestModel>();
-        for (TopicRequestModel topic : topics.values()) {
-            topicRequestModels.add(topic);
-        }
+        ArrayList<TopicRequestModel> topicRequestModels = new ArrayList<>(topics.values());
         return topicManager.getTopTopics(topicRequestModels);
     }
 }

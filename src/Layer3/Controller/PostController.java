@@ -1,7 +1,6 @@
 package Layer3.Controller;
 
 
-import Layer2.UseCases.CommentUseCases;
 import Layer2.UseCases.PostUseCases;
 import Layer4.Interface.csvInterface;
 import Model.Request.PostRequestModel;
@@ -35,20 +34,6 @@ public class PostController {
         postsLiked.put(postId, new ArrayList<>(List.of(userid)));
         csvInterface.postsWriter("database/post.csv", postManager.getPostsResponseModel());
         csvInterface.postsLikedWriter("database/post_liked.csv", postsLiked);
-    }
-
-    /**
-     * <p>Get the post object from csv file and pass it to GUI to present the post</p>
-     *
-     * @param postid the id of the post
-     * @return the post object
-     */
-    public String showPost(int postid) throws Exception {
-        csvInterface csvInterface = new csvInterface();
-        Map<Integer, PostRequestModel> posts = csvInterface.postsReader("database/post.csv");
-        Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/post_liked.csv");
-        PostUseCases postManager = new PostUseCases(posts, postsLiked);
-        return postManager.showPost(postid);
     }
 
     public List<PostResponseModel> getThreeHottestPosts() throws Exception {

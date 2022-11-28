@@ -106,7 +106,7 @@ public class PostTests {
     @Test(timeout = 500)
     public void TestRemoveUserLiked(){
         actual.addUserLike(1);
-        actual.removeUserLike(1);
+        actual.removeUserLike();
         assertEquals(0, actual.getUserLiked().size());
     }
 }

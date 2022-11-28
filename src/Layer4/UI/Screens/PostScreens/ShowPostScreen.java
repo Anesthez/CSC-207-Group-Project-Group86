@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class ShowPostScreen extends JFrame implements ActionListener {
     public ShowPostScreen(int postId, int userId, String name) throws Exception {
         PostPresenter postPresenter = new PostPresenter();
-        ArrayList<Object> labels = new ArrayList<>();
+        ArrayList<Object> labels;
         labels = postPresenter.showPost(postId);
         this.add(new PlaceLabel().create(100, 50, 50, 50, "Title: "));
         this.add(new PlaceLabel().create(150, 50, 200, 50, labels.get(0).toString()));
@@ -34,15 +34,12 @@ public class ShowPostScreen extends JFrame implements ActionListener {
 
         JButton likeButton = new PlaceButton().create("Like", null,
                 650, 60, 100, 25);
-        likeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LikeController likeController = new LikeController();
-                try {
-                    likeController.likePost(postId, userId);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
+        likeButton.addActionListener(e -> {
+            LikeController likeController = new LikeController();
+            try {
+                likeController.likePost(postId, userId);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
             }
         });
         this.add(likeButton);
@@ -50,31 +47,25 @@ public class ShowPostScreen extends JFrame implements ActionListener {
         JButton showCommentsButton = new PlaceButton().create("Show Comments", null,
                     600, 675, 130, 25);
         ArrayList<Object> finalLabels = labels;
-        showCommentsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ShowCommentScreen showCommentScreen = new ShowCommentScreen(userId, (int) finalLabels.get(1), name);
-                showCommentScreen.setVisible(true);
-                dispose();
-            }
+        showCommentsButton.addActionListener(e -> {
+            ShowCommentScreen showCommentScreen = new ShowCommentScreen(userId, (int) finalLabels.get(1), name);
+            showCommentScreen.setVisible(true);
+            dispose();
         });
         this.add(showCommentsButton);
 
 
         JButton backButton = new PlaceButton().create("Back", null,
                     100, 675, 100, 25);
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PostScreen postScreen = null;
-                try {
-                    postScreen = new PostScreen(userId, name);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                postScreen.setVisible(true);
-                dispose();
+        backButton.addActionListener(e -> {
+            PostScreen postScreen;
+            try {
+                postScreen = new PostScreen(userId, name);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
+            postScreen.setVisible(true);
+            dispose();
         });
         this.add(backButton);
 

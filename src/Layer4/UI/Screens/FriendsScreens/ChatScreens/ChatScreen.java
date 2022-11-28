@@ -19,9 +19,6 @@ import java.io.IOException;
 public class ChatScreen extends JFrame implements ActionListener {
     /**
      * <p>Constructor for the ChatScreen. It takes in the {@link ChatController ChatController} and the {@link ChatPresenter ChatPresenter}.</p>
-     *
-     * @param chatController the ChatController
-     * @param chatPresenter the ChatPresenter
      */
     static String name;
 
@@ -59,18 +56,15 @@ public class ChatScreen extends JFrame implements ActionListener {
         back.setBounds(0, 0, 50, 20);
         chatScreen.add(back);
 
-        back.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                FriendsScreen friendsScreen = null;
-                try {
-                    friendsScreen = new FriendsScreen(userid, name);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                friendsScreen.setVisible(true);
-                chatScreen.dispose();
+        back.addActionListener(e -> {
+            FriendsScreen friendsScreen;
+            try {
+                friendsScreen = new FriendsScreen(userid, name);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
+            friendsScreen.setVisible(true);
+            chatScreen.dispose();
         });
 
         JTextArea messageArea = new JTextArea("Enter your message here");
@@ -78,32 +72,26 @@ public class ChatScreen extends JFrame implements ActionListener {
         chatScreen.add(messageArea);
 
         chatScreen.setSize(800, 800);
-        send.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String text = messageArea.getText();
-                ChatController cc = new ChatController();
-                try {
-                    cc.addChat(userid, receiverId, text);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                messageArea.setText("Message Sent");
+        send.addActionListener(e -> {
+            String text = messageArea.getText();
+            ChatController cc = new ChatController();
+            try {
+                cc.addChat(userid, receiverId, text);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
+            messageArea.setText("Message Sent");
         });
         JButton refresh = new JButton("Refresh");
         refresh.setBounds(675, 725, 100, 40);
         chatScreen.add(refresh);
-        refresh.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    ChatScreen.new_window(userid, receiverId);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                chatScreen.dispose();
+        refresh.addActionListener(e -> {
+            try {
+                ChatScreen.new_window(userid, receiverId);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
+            chatScreen.dispose();
         });
         chatScreen.setLayout(null);
         chatScreen.setVisible(true);
