@@ -68,33 +68,12 @@ public class ChatUseCases {
 
     }
 
-    /**
-     * <p>returns the id of the chat with inputted sender's id, receiver's id and time sent</p>
-     *
-     * @param sender the id of the user that sent the chat
-     * @param receiver the id of the user that received the chat
-     * @param timestamp the time that the chat is sent
-     * @return the id of the chat
-     */
-    public int getIdByUserAndTime(int sender, int receiver, String timestamp){
-        for (int id: chats.keySet()){
-            if (chats.get(id).getSender_id() == sender && chats.get(id).getReceiver_id() == receiver &&
-                    chats.get(id).getTime().equals(timestamp)){
-                return id;
-            }
-        }
-        return 0;
-    }
     public Map<Integer, ChatResponseModel> getChats() {
         Map<Integer, ChatResponseModel> chatResponseModelMap = new HashMap<>();
         for (Chat chat : chats.values()) {
             chatResponseModelMap.put(chat.getId(), chat.responseModel());
         }
         return chatResponseModelMap;
-    }
-
-    public Map<Integer, Chat> getChatList(){
-        return chats;
     }
 
 }
