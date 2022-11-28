@@ -70,9 +70,6 @@ public class PostUseCases implements Popularity_rank {
      * @return Post
      */
     public Post getPostFromId(int postId){
-        /**
-         * pull from the csv file
-         */
         return posts.get(postId);
     }
 
@@ -88,21 +85,7 @@ public class PostUseCases implements Popularity_rank {
         posts.get(postId).addListComment(comment_id);
     }
 
-    /**<p>The method will delete the comment id from the post object that is represented by the postId</p>
-     *
-     * @param postId the id of the post
-     * @param comment_id the id of the comment
-     */
-    public void deleteComment(int postId, int comment_id){
-        /**
-         * same as addComment
-         */
-        posts.get(postId).removeListComment(comment_id);
-    }
 
-    public Post searchPost(){
-        return null;
-    }
 
     /**<p>This is the like post method, which will leaves a like </p>
      *
@@ -115,10 +98,6 @@ public class PostUseCases implements Popularity_rank {
         posts_liked.get(post_id).add(userid);
     }
 
-    public void unlike_posts(int post_id, int user_id){
-        posts.get(post_id).removeUserLike(user_id);
-        posts_liked.get(user_id).remove(post_id);
-    }
 
     public String showPost(int post_id){
         getPostFromId(post_id).addViews();
@@ -141,14 +120,6 @@ public class PostUseCases implements Popularity_rank {
         return details;
     }
 
-    public boolean changeTitle(int user_id, String title, int post_id){
-        if (posts.get(post_id).getUserId() == user_id) {
-            posts.get(post_id).setPostTitle(title);
-            return true;
-        }else{
-            return false;
-        }
-    }
 
 
     /**
@@ -171,26 +142,6 @@ public class PostUseCases implements Popularity_rank {
         return hotPosts;
     }
 
-    /**
-     * <p>This function will get the most popular post in a mapping as a Map.Entry<p>
-     * @param mapping: a map of postId and post
-     * @return the most popular post in the mapping
-     */
-    public Map.Entry<Integer, Post> mostPopular(Map<Integer, Post> mapping) {
-        // return the most popular post.
-        int popular = 0;
-        Map.Entry<Integer, Post> popularNow = Map.entry(1, new
-                Post("Dummy", 1, 1,
-                "Dummy Post for method mostPopular under PostUseCases.", "2022-10-17", 0, 0,
-                new ArrayList<Integer>(), new ArrayList<Integer>(), "Test"));
-        for (Map.Entry<Integer, Post> postEntry : mapping.entrySet()){
-            if (postEntry.getValue().getPopularity() >= popular) {
-                popularNow = postEntry;
-                popular = postEntry.getValue().getPopularity();
-            }
-        }
-        return popularNow;
-    }
 
     public List<PostResponseModel> getHottestPosts() {
         // Method overload for getHottestPost with default post_num = 3
@@ -198,20 +149,11 @@ public class PostUseCases implements Popularity_rank {
     }
 
     public Map<Integer, PostResponseModel> getPostsResponseModel() {
-        Map<Integer, PostResponseModel> PostResponseModel = new HashMap<Integer, PostResponseModel>();
+        Map<Integer, PostResponseModel> PostResponseModel = new HashMap<>();
         for (Integer i : this.posts.keySet()) {
             PostResponseModel.put(i, posts.get(i).responseModel());
         }
         return PostResponseModel;
     }
 
-    /**
-     * questions:
-     * 1. how to storage comment
-     * 2. delete by comment or commentid
-     * 3. delete from the file or hide from the post
-     * 4. if this blog is text based then there should be a title for each post
-     * 5. search method: search engine? search by post id? should id be private?
-     *
-     */
 }

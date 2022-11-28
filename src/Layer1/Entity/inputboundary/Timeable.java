@@ -7,7 +7,7 @@ import java.util.Timer;
  */
 public interface Timeable {
 
-    final Timer time = new Timer();
+    Timer time = new Timer();
 
-    public String getTime();
+    String getTime();
 }

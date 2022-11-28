@@ -11,8 +11,7 @@ import java.util.HashMap;
 public interface Popularity_rank {
     /**
      * <p>get the the ranking list of the populable and modelizable object</p>
-     * @param list
-     * @return
+     * @param list list
      */
     default ArrayList<Modelizable> rank_by_popularity(HashMap<Integer, Populable> list) {
         ArrayList<Modelizable> result = new ArrayList<>();

@@ -21,11 +21,11 @@ public class Comment extends Context {
 
     /**
      * <p>initialize a Comment object userid, the id of the post, content and the time for the post</p>
-     * @param userId
-     * @param id
-     * @param content
-     * @param timestamp
-     * @param postId
+     * @param userId the id of the user
+     * @param id the id of the comment
+     * @param content the content of the comment
+     * @param timestamp the timestamp of the comment
+     * @param postId the id of the post
      */
     public Comment(int userId, int id, String content, String timestamp, int postId) {
         super(id, content, timestamp);

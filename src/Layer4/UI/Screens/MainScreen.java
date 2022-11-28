@@ -7,8 +7,6 @@ import Layer4.UI.Screens.PostScreens.PostScreen;
 import Layer4.UI.Screens.TopicScreens.TopicScreen;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class MainScreen extends JFrame {
@@ -23,49 +21,40 @@ public class MainScreen extends JFrame {
         friend.setBounds(500, 300, 100, 50);
         topic.setBounds(500, 400, 100, 50);
 
-        post.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PostScreen postScreen = null;
-                try {
-                    postScreen = new PostScreen(userId, username);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                postScreen.setVisible(true);
-                dispose();
-
+        post.addActionListener(e -> {
+            PostScreen postScreen;
+            try {
+                postScreen = new PostScreen(userId, username);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
+            postScreen.setVisible(true);
+            dispose();
+
         });
 
-        friend.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                FriendsScreen friendsScreen = null;
-                try {
-                    friendsScreen = new FriendsScreen(userId, username);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                friendsScreen.setVisible(true);
-                dispose();
-
+        friend.addActionListener(e -> {
+            FriendsScreen friendsScreen;
+            try {
+                friendsScreen = new FriendsScreen(userId, username);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
+            friendsScreen.setVisible(true);
+            dispose();
+
         });
 
-        topic.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                TopicScreen topicScreen = null;
-                try {
-                    topicScreen = new TopicScreen(userId, username);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                topicScreen.setVisible(true);
-                dispose();
-
+        topic.addActionListener(e -> {
+            TopicScreen topicScreen;
+            try {
+                topicScreen = new TopicScreen(userId, username);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
+            topicScreen.setVisible(true);
+            dispose();
+
         });
 
         this.add(post);

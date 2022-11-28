@@ -83,29 +83,6 @@ public class ChatCommand {
                 break;
             }
 
-
-            case "show": {
-//                int receiver_id = Integer.parseInt(inputLines[2]);
-//                if (users.containsKey(receiver_id)) {
-//                    List<Chat> chatlist = new ArrayList<>();
-//                    for (int id : chats.keySet()) {
-//                        if (chats.get(id).getSender_id() == userid && chats.get(id).getReceiver_id() == receiver_id ||
-//                                chats.get(id).getSender_id() == receiver_id && chats.get(id).getReceiver_id() == userid) {
-//                            chatlist.add(chats.get(id));
-//                        }
-//                    }
-//                    if (chatlist.isEmpty()) {
-//                        System.out.println("No message found");
-//                    }
-//                    chatlist.sort(null);
-//                    for (Chat c : chatlist) {
-//                        c.printChat();
-//                    }
-//                } else {
-//                    System.out.println("user does not exist");
-//                }
-//                break;
-            }
             default: System.out.println("unknown command");
         }
     }

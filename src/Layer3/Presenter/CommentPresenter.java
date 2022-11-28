@@ -5,7 +5,6 @@ import Model.Request.CommentRequestModel;
 import Model.Request.UserRequestModel;
 
 import javax.swing.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -21,7 +20,7 @@ public class CommentPresenter {
      *  corresponding to a post and then transform them into a single {@link StringBuilder String} and return it
      *  which can be displayed later in {@link Layer4.UI.Screens.PostScreens.CommentScreens.ShowCommentScreen}
      *  ShowCommentScreen.</p>
-     * @param postId
+     * @param postId postId
      * @return a string representation of a list of {@link Layer1.Entity.Comment Comment} with username who posts these
      * comments corresponding to a post
      */
