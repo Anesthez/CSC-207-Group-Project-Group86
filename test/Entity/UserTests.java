@@ -1,6 +1,6 @@
 package Entity;
 
-import Layer1.Entity.User;
+import entity.User;
 import org.junit.*;
 import static org.junit.Assert.*;
 

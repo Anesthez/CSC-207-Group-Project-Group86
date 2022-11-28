@@ -1,8 +1,8 @@
 package Interface;
 
-import Layer1.Entity.User;
-import Layer4.Interface.csvInterface;
-import Model.Response.UserResponseModel;
+import entity.User;
+import databaseInterface.csvInterface;
+import model.response.UserResponseModel;
 import org.junit.Test;
 
 import java.io.BufferedReader;

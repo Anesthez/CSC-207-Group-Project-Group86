@@ -1,7 +1,7 @@
 package UseCases;
 
-import Layer1.Entity.Comment;
-import Layer2.UseCases.CommentUseCases;
+import entity.Comment;
+import useCases.CommentUseCases;
 import junit.framework.TestCase;
 
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package Interface;
 
-import Layer4.Interface.csvInterface;
+import databaseInterface.csvInterface;
 import org.junit.Test;
 
 import java.io.BufferedReader;

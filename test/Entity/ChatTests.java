@@ -1,6 +1,6 @@
 package Entity;
 
-import Layer1.Entity.Chat;
+import entity.Chat;
 import org.junit.*;
 import static org.junit.Assert.*;
 
