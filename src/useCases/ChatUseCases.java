@@ -93,4 +93,8 @@ public class ChatUseCases {
         return chatResponseModelMap;
     }
 
+    public Map<Integer, Chat> getChatList(){
+        return chats;
+    }
+
 }
