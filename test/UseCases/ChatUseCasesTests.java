@@ -1,5 +1,15 @@
 package UseCases;
 
-public class ChatUseCasesTests {
+import junit.framework.TestCase;
+
+public class ChatUseCasesTests extends TestCase {
+    public void setUp() throws Exception {
+        super.setUp();
+    }
+
+    public void tearDown() throws Exception {
+    }
+
+
 
 }
