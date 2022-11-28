@@ -10,7 +10,8 @@ import java.util.Map;
 
 /**
  * <p>ChatUseCasesTest is a test class for ChatUseCases.</p>
- * @Author: LemengDai
+ * @Author: Jiahao Gu
+ * @Modifiedby: LemengDai
  */
 public class ChatUseCasesTests extends TestCase {
 
