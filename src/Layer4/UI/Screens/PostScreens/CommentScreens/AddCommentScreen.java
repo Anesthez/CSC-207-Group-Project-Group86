@@ -8,7 +8,6 @@ import Layer3.Controller.CommentController;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 /**
  * <p>
@@ -23,7 +22,7 @@ public class AddCommentScreen extends JFrame {
      * <p>
      *     initialize AddCommentScreen with user id.
      * </p>
-     * @param userid
+     * @param userid userid
      */
     public AddCommentScreen(int userid, int postId, String username){
 
@@ -34,29 +33,23 @@ public class AddCommentScreen extends JFrame {
         JButton cancel = new PlaceButton().create("Cancel",null,300, 700, 150, 50);
 
         //When the user clicks Add Comment button, a Comment object with user input as content and user id is created
-        addComment.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                try {
-                    CommentController commentController =
-                            new CommentController(commentContentText.getText(), userid, postId);
-                    commentController.create();
-                    JOptionPane.showMessageDialog(null, String.format("%s created.",
-                            commentContentText.getText()));
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
-                }
+        addComment.addActionListener(evt -> {
+            try {
+                CommentController commentController =
+                        new CommentController(commentContentText.getText(), userid, postId);
+                commentController.create();
+                JOptionPane.showMessageDialog(null, String.format("%s created.",
+                        commentContentText.getText()));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
             }
         });
         //When the user clicks Cancel, AddActionScreen is closed
-        cancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Click " + e.getActionCommand());
-                ShowCommentScreen showCommentScreen = new ShowCommentScreen(userid, postId,username);
-                showCommentScreen.setVisible(true);
-                dispose();
-            }
+        cancel.addActionListener(e -> {
+            System.out.println("Click " + e.getActionCommand());
+            ShowCommentScreen showCommentScreen = new ShowCommentScreen(userid, postId,username);
+            showCommentScreen.setVisible(true);
+            dispose();
         });
         this.setLayout(null);
 

@@ -5,6 +5,6 @@ package Layer1.Entity.inputboundary;
  * Modified by: Yufei Chen
  */
 public interface Postable {
-    String content = new String();
-    public String getContent();
+    String content = "";
+    String getContent();
 }

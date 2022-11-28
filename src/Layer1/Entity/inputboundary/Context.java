@@ -13,9 +13,9 @@ public abstract class Context implements Timeable, Searchable, Postable, Modeliz
 
     /**
      *<p>initialize Context object with id, content and timestamp</p>
-     * @param id
-     * @param content
-     * @param timestamp
+     * @param id the id of the context
+     * @param content the content of the context
+     * @param timestamp the timestamp of the context
      */
     public Context(int id, String content, String timestamp) {
         this.id = id;

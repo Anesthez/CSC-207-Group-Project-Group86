@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class PostFactory {
     /**The method that will create a post object from the post model.
      *
-     * @param postModel
+     * @param postModel the post model
      * @return post object with postTitle, userId, id, content, timestamp, views, numLikes, list_user_id, list_comment_id, topic
      */
     public Post create(PostRequestModel postModel){

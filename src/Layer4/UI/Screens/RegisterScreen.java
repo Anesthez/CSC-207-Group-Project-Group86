@@ -5,8 +5,8 @@ import Layer4.UI.Components.PlaceLabel;
 import Layer4.UI.Components.PlaceTextField;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class RegisterScreen extends JFrame {
     public RegisterScreen(){
@@ -50,8 +50,8 @@ public class RegisterScreen extends JFrame {
 
         register.addActionListener(e -> {
             String name = usernameText.getText();
-            String s_password = passwordText.getText();
-            String s_password2 = passwordText2.getText();
+            String s_password = Arrays.toString(passwordText.getPassword());
+            String s_password2 = Arrays.toString(passwordText2.getPassword());
             if (s_password.equals(s_password2)){
                 try {
                     int a = new RegisterController().register(s_password, name);

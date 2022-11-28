@@ -42,7 +42,6 @@ public class Post extends Context implements Populable {
 
     /**<p>This method returns the popularity for the post object</p>
      *
-     * @param
      * @return Integer
      */
     public Integer getPopularity() {
@@ -56,16 +55,16 @@ public class Post extends Context implements Populable {
     /**<p>This is the constructor for the class Post, it calls the constructor of its super class
      * {@link Context Context}</p>
      *
-     * @param postTitle
-     * @param userId
-     * @param id
-     * @param content
-     * @param timestamp
-     * @param views
-     * @param numLikes
-     * @param userLiked
-     * @param list_comment_id
-     * @param topic
+     * @param postTitle the title of the post
+     * @param userId the id of the user
+     * @param id the id of the post
+     * @param content the content of the post
+     * @param timestamp the timestamp of the post
+     * @param views the number of views for the post
+     * @param numLikes the number of likes for the post
+     * @param userLiked the list of userIds of who liked the post
+     * @param list_comment_id the list of comments for the post
+     * @param topic the topic of the post
      */
     public Post(String postTitle, int userId, int id, String content, String timestamp,
                 int views, int numLikes, ArrayList<Integer> userLiked, ArrayList<Integer> list_comment_id, String topic) {
@@ -90,7 +89,6 @@ public class Post extends Context implements Populable {
 
     /**<p>This method will change the topic of the object post to the input parameter</p>
      *
-     * @param topic
      */
     public void setTopic(String topic) {
         this.topic = topic;
@@ -106,7 +104,6 @@ public class Post extends Context implements Populable {
 
     /**<p>This method will set the posttitle for the object to the input parameter</p>
      *
-     * @param postTitle
      */
 
     public void setPostTitle(String postTitle){
@@ -140,7 +137,7 @@ public class Post extends Context implements Populable {
 
     /** <p>This method will add a comment id to the list of comment id that the class contains</p>
      *
-     * @param commentId
+     * @param commentId the id of the comment that will be added to the list
      */
     public void addListComment(int commentId){
         list_comment_id.add(commentId);
@@ -148,7 +145,7 @@ public class Post extends Context implements Populable {
 
     /**<p>this method will remove the comment id from the list, which represents the deletion of the comment</p>
      *
-     * @param commentId
+     * @param commentId the id of the comment that will be removed from the list
      */
 
     public void removeListComment(int commentId){list_comment_id.remove(commentId);}
@@ -174,13 +171,11 @@ public class Post extends Context implements Populable {
         return timestamp;
     }
 
-    public boolean removeUserLike(int UserId){
+    public void removeUserLike(){
         try {
             userLiked.remove(userId);
             numLikes -= 1;
-            return true;
-        }catch(IndexOutOfBoundsException O){
-            return false;
+        }catch(IndexOutOfBoundsException ignored){
         }
     }
 

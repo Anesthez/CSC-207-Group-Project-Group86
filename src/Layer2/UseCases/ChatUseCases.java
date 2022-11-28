@@ -5,7 +5,7 @@ import Layer1.Entity.factories.ChatFactory;
 import Model.Request.ChatRequestModel;
 import Model.Response.ChatResponseModel;
 
-import java.io.IOException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ public class ChatUseCases {
      *
      * @param chats the hash map
      */
-    public ChatUseCases(Map<Integer, ChatRequestModel> chats) throws IOException {
+    public ChatUseCases(Map<Integer, ChatRequestModel> chats){
         ChatFactory chatFactory = new ChatFactory();
         for (ChatRequestModel chatRequestModel : chats.values()) {
              Chat chat = chatFactory.create(chatRequestModel);
@@ -66,16 +66,6 @@ public class ChatUseCases {
     {
         chats.remove(id);
 
-    }
-    /**
-     * <p>returns a chat that has the inputted id.</p>
-     *
-     * @param id the id of the chat
-     * @return the chat with the inputted id
-     */
-    public Chat getChatById(int id)
-    {
-        return chats.get(id);
     }
 
     /**

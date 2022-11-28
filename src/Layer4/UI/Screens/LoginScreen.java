@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import Layer3.Controller.LogInController;
 import Layer4.UI.Components.*;
@@ -40,46 +41,39 @@ public class LoginScreen extends JFrame{
         buttons.add(logIn);
         buttons.add(register);
 
-        logIn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ArrayList<Object> userInputs = new ArrayList<>();
-                String name = usernameText.getText();
-                String password = passwordText.getText();
-                userInputs.add(name);
-                userInputs.add(password);
-                usernameText.setText("");
-                passwordText.setText("");
-                LogInController logInController = new LogInController(userInputs);
-                try {
-                    UserResponseModel userResponseModel = logInController.login();
-                    if (userResponseModel == null){
-                        new LoginScreen();
-                    }else if (userResponseModel.get().get(1).equals("premium")){
-                        int userId = (int) userResponseModel.get().get(0);
-                        PremiumMainScreen mainScreen = new PremiumMainScreen(userId, name);
-                        mainScreen.setVisible(true);
-                        dispose();
+        logIn.addActionListener(e -> {
+            ArrayList<Object> userInputs = new ArrayList<>();
+            String name = usernameText.getText();
+            String password1 = Arrays.toString(passwordText.getPassword());
+            userInputs.add(name);
+            userInputs.add(password1);
+            usernameText.setText("");
+            passwordText.setText("");
+            LogInController logInController = new LogInController(userInputs);
+            try {
+                UserResponseModel userResponseModel = logInController.login();
+                if (userResponseModel == null){
+                    new LoginScreen();
+                }else if (userResponseModel.get().get(1).equals("premium")){
+                    int userId = (int) userResponseModel.get().get(0);
+                    PremiumMainScreen mainScreen = new PremiumMainScreen(userId, name);
+                    mainScreen.setVisible(true);
+                    dispose();
 
-                    }else{
-                        int userId = (int) userResponseModel.get().get(0);
-                        MainScreen mainScreen = new MainScreen(userId, name);
-                        mainScreen.setVisible(true);
-                        dispose();
-                    }
-                } catch (IOException | FontFormatException ex) {
-                    throw new RuntimeException(ex);
+                }else{
+                    int userId = (int) userResponseModel.get().get(0);
+                    MainScreen mainScreen = new MainScreen(userId, name);
+                    mainScreen.setVisible(true);
+                    dispose();
                 }
+            } catch (IOException | FontFormatException ex) {
+                throw new RuntimeException(ex);
             }
-
         });
-        register.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RegisterScreen registerScreen = new RegisterScreen();
-                registerScreen.setVisible(true);
-                dispose();
-            }
+        register.addActionListener(e -> {
+            RegisterScreen registerScreen = new RegisterScreen();
+            registerScreen.setVisible(true);
+            dispose();
         });
 
 

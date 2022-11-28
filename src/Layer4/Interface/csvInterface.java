@@ -163,15 +163,15 @@ public class csvInterface {
         reader.close();
         return users;
     }
-
+    /**
+     * This method is for reading friends.csv file.
+     *
+     * @param friendsPath the path of the friends.csv file
+     * @return a map of friends
+     * @throws IOException
+     */
     public Map<Integer, ArrayList<Integer>> friendsReader(String friendsPath) throws IOException {
-        /**
-         * This method is for reading friends.csv file.
-         *
-         * @param friendsPath the path of the friends.csv file
-         * @return a map of friends
-         * @throws IOException
-         */
+
         Map<Integer, ArrayList<Integer>> friends = new HashMap<>();
         File csvFile = new File(friendsPath);
         Map<String, Integer> headers = new LinkedHashMap<>();

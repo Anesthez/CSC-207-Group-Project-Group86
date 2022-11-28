@@ -5,7 +5,6 @@ import Model.Response.PostResponseModel;
 import Model.Response.TopicResponseModel;
 import Model.Response.UserResponseModel;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 /**
@@ -55,7 +54,6 @@ public class Topic implements Modelizable, Populable {
      * <p>
      *     This method is used to get the sum of the popularity of all the posts in the topic.
      * </p>
-     * @return the sum of the popularity of all the posts in the topic
      */
     public Topic()
     {

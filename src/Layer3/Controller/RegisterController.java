@@ -6,7 +6,6 @@ import Model.Request.UserRequestModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Map;
 
 public class RegisterController {
