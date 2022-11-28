@@ -1,9 +1,8 @@
 package Interface;
 
-import Layer1.Entity.Chat;
-import Layer2.UseCases.ChatUseCases;
-import Layer4.Interface.csvInterface;
-import Model.Response.ChatResponseModel;
+import entity.Chat;
+import databaseInterface.csvInterface;
+import model.response.ChatResponseModel;
 import org.junit.Test;
 
 import java.io.BufferedReader;

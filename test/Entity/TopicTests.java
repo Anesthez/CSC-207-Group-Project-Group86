@@ -1,8 +1,8 @@
 package Entity;
 
-import Layer1.Entity.Post;
-import Layer1.Entity.Topic;
-import Layer1.Entity.User;
+import entity.Post;
+import entity.Topic;
+import entity.User;
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.ArrayList;

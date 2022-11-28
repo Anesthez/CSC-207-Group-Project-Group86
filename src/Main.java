@@ -1,8 +1,6 @@
 
-import Layer4.UI.Screens.LoginScreen;
-import Layer4.UI.DesignedScreens.LoginScreenNew;
+import ui.screens.LoginScreen;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 

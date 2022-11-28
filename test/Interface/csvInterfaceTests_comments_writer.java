@@ -1,13 +1,11 @@
 package Interface;
 
 
-import Layer1.Entity.Comment;
-import Layer4.Interface.csvInterface;
+import entity.Comment;
+import databaseInterface.csvInterface;
 
-import Model.Request.CommentRequestModel;
-import Model.Response.CommentResponseModel;
+import model.response.CommentResponseModel;
 import org.junit.Test;
-import Layer4.Interface.csvInterface;
 
 import java.io.BufferedReader;
 import java.io.File;

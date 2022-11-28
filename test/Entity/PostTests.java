@@ -1,6 +1,6 @@
 package Entity;
 
-import Layer1.Entity.Post;
+import entity.Post;
 import org.junit.*;
 import static org.junit.Assert.*;
 

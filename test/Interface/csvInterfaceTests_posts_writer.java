@@ -1,8 +1,8 @@
 package Interface;
 
-import Layer1.Entity.Post;
-import Layer4.Interface.csvInterface;
-import Model.Response.PostResponseModel;
+import entity.Post;
+import databaseInterface.csvInterface;
+import model.response.PostResponseModel;
 import org.junit.Test;
 
 import java.io.BufferedReader;

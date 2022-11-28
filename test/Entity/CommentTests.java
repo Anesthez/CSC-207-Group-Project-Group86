@@ -1,6 +1,6 @@
 package Entity;
 
-import Layer1.Entity.Comment;
+import entity.Comment;
 import org.junit.*;
 import static org.junit.Assert.*;
 
