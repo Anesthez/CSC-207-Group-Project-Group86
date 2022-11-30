@@ -35,3 +35,7 @@ LemengDai: Lemeng Dai
 eric-qli: Eric Li
 
 loveillusion: Yijun(Kevin) Zhao
+
+ChenJiang03: Chen Jiang
+
+Excelsior31: Jiahao Gu
