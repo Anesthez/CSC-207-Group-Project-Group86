@@ -98,7 +98,7 @@ public class Topic implements Modelizable, Populable {
      * @param ID the ID of the topic
      * @param posts the posts of the topic
      */
-    public Topic(String name, String ID, Map<Integer, Post> posts)
+    public Topic(String ID, String name, Map<Integer, Post> posts)
     {
         this.name = name;
         this.ID = ID;
@@ -267,7 +267,7 @@ public class Topic implements Modelizable, Populable {
             postModels.put(post.getId(), post.responseModel());
 
         }
-        return new TopicResponseModel(name, ID, userModels, postModels);
+        return new TopicResponseModel(ID, name, userModels, postModels);
 
     }
 }
