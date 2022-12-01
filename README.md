@@ -1,5 +1,7 @@
 # 207-Group-Project: [UofT Meta](https://uoftmeta.ca)
 
+Work in progress...
+
 ## Discription:
 
 The program allows users to post blogs and leave likes and comment under others’ posts. The users are also able to add friends and chat with each other. The user can also draw pictures for their post.
