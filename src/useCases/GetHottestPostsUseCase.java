@@ -1,22 +1,17 @@
 package useCases;
 
 import entity.Post;
-import useCases.GetPostFromIdUseCase;
-import entity.factories.PostFactory;
 import entity.inputboundary.Modelizable;
 import entity.inputboundary.Populable;
 import gateways.Popularity_rank;
-import model.request.PostRequestModel;
 import model.response.PostResponseModel;
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class GetHottestPostsUseCase {
-    private final RankByPopularity rankByPopularity;
+public class GetHottestPostsUseCase implements Popularity_rank {
 
 
     public List<PostResponseModel> getHottestPosts(int post_num, HashMap<Integer, Post> posts) {
@@ -24,7 +19,7 @@ public class GetHottestPostsUseCase {
         for (Post post : posts.values()) {
             pop_posts.put(post.getId(), post);
         }
-        ArrayList<Modelizable> ranked_post = Popularity_rank.rank_by_popularity(pop_posts);
+        ArrayList<Modelizable> ranked_post = rank_by_popularity(pop_posts);
         List<PostResponseModel> hotPosts = new ArrayList<>();
         int remaining = post_num;
         int i = 0;
@@ -35,8 +30,8 @@ public class GetHottestPostsUseCase {
         return hotPosts;
     }
 
-    public List<PostResponseModel> getHottestPosts() {
+    public List<PostResponseModel> getHottestPosts(HashMap<Integer, Post> posts) {
         // Method overload for getHottestPost with default post_num = 3
-        return getHottestPosts(3);
+        return getHottestPosts(3, posts);
     }
 }
