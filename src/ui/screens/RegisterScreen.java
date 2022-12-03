@@ -29,7 +29,7 @@ public class RegisterScreen extends JFrame {
         JPanel password2 = new JPanel();
         password2.setLayout(null);
         password2.setBounds(0, 450, 800, 50);
-        password2.add(new PlaceLabel().create(20, 0, 100, 50, "Password again："));
+        password2.add(new PlaceLabel().create(100, 0, 100, 50, "Repeat："));
         JPasswordField passwordText2 = new JPasswordField();
         passwordText2.setBounds(200, 10, 400, 30);
         password2.add(passwordText2);

@@ -1,38 +1,32 @@
 package ui.premiumScreens.friendsScreens.chatScreens;
 
 import controller.ChatController;
+import model.response.ChatResponseModel;
 import presenter.ChatPresenter;
 import ui.premiumScreens.friendsScreens.FriendsScreen;
-import model.response.ChatResponseModel;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 /**
  * <p>The ChatScreen is the UI of chat. It shows 10 latest messages between two users and it allow user to send a
  * message to the othe user.@</p>
- * @Author: Jiahao Gu
+ * @Author: Jiahao Gu, Tianyu Li
  */
 
 public class ChatScreen extends JFrame implements ActionListener {
     /**
      * <p>Constructor for the ChatScreen. It takes in the {@link ChatController ChatController} and the {@link ChatPresenter ChatPresenter}.</p>
-     *
-     * @param chatController the ChatController
-     * @param chatPresenter the ChatPresenter
      */
     static String name;
 
     public ChatScreen(int userid, int receiverId, String name) throws IOException {
         ChatPresenter cp = new ChatPresenter();
         Object[] chatlist = cp.presentMessages(userid, receiverId);
-        ChatScreen.name = name;
+        ui.premiumScreens.friendsScreens.chatScreens.ChatScreen.name = name;
         JFrame chatScreen = new JFrame();
 
         JLabel pastChat = new JLabel("Past Messages:");
@@ -63,68 +57,49 @@ public class ChatScreen extends JFrame implements ActionListener {
         back.setBounds(0, 0, 50, 20);
         chatScreen.add(back);
 
-        back.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                FriendsScreen friendsScreen = null;
-                try {
-                    friendsScreen = new FriendsScreen(userid, name);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                friendsScreen.setVisible(true);
-                chatScreen.dispose();
+        back.addActionListener(e -> {
+            ui.premiumScreens.friendsScreens.FriendsScreen friendsScreen;
+            try {
+                friendsScreen = new FriendsScreen(userid, name);
+            } catch (IOException | FontFormatException ex) {
+                throw new RuntimeException(ex);
             }
+            friendsScreen.setVisible(true);
+            chatScreen.dispose();
         });
 
         JTextArea messageArea = new JTextArea("Enter your message here");
         messageArea.setBounds(50, 600, 700, 100);
         chatScreen.add(messageArea);
 
-        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
-        ImageIcon imageIcon = new ImageIcon(logo);
-        JLabel label = new JLabel(imageIcon);
-        label.setSize(1600, 900);
-        Container container = getContentPane();
-        container.add(label);
-        this.setSize(1600, 900);
-        send.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String text = messageArea.getText();
-                ChatController cc = new ChatController();
-                try {
-                    cc.addChat(userid, receiverId, text);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                messageArea.setText("Message Sent");
+        chatScreen.setSize(800, 800);
+        send.addActionListener(e -> {
+            String text = messageArea.getText();
+            ChatController cc = new ChatController();
+            try {
+                cc.addChat(userid, receiverId, text);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
+            messageArea.setText("Message Sent");
         });
         JButton refresh = new JButton("Refresh");
         refresh.setBounds(675, 725, 100, 40);
         chatScreen.add(refresh);
-        refresh.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    ChatScreen.new_window(userid, receiverId);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                chatScreen.dispose();
+        refresh.addActionListener(e -> {
+            try {
+                ui.screens.friendsScreens.chatScreens.ChatScreen.new_window(userid, receiverId);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
+            chatScreen.dispose();
         });
         chatScreen.setLayout(null);
         chatScreen.setVisible(true);
     }
 
     public static void main(String[] args) throws IOException {
-        ChatScreen.new_window(2, 3);
-    }
-
-    public static void new_window(int userid, int receiverId) throws IOException {
-        new ChatScreen(userid, receiverId, name);
+        ui.screens.friendsScreens.chatScreens.ChatScreen.new_window(2, 3);
     }
 
     @Override

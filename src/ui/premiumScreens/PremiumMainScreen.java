@@ -11,8 +11,6 @@ import ui.screens.LoginScreen;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,7 +25,7 @@ public class PremiumMainScreen extends JFrame {
     public PremiumMainScreen(int userId, String username) throws IOException, FontFormatException {
 
         final String fontPathUI = "assets/fonts/KleeOne-SemiBold.ttf";
-        InputStream is = new FileInputStream(new File(fontPathUI));
+        InputStream is = new FileInputStream(fontPathUI);
         Font font = Font.createFont(Font.TRUETYPE_FONT, is);
         font = font.deriveFont(16f);
 
@@ -49,7 +47,7 @@ public class PremiumMainScreen extends JFrame {
                 greetingMessages.get(indexGreeting) + username + "!");
         greeting.setFont(font);
         this.add(greeting);
-        JLabel chatting = new PlaceLabel().create(625, 80, 200, 50, chatters.get(indexChatter));
+        JLabel chatting = new PlaceLabel().create(625, 80, 250, 50, chatters.get(indexChatter));
         chatting.setFont(font);
         this.add(chatting);
 
@@ -77,59 +75,48 @@ public class PremiumMainScreen extends JFrame {
         logout.setIcon(logoutIcon);
 
 
-        post.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PostScreen postScreen = null;
-                try {
-                    postScreen = new PostScreen(userId, username);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                postScreen.setVisible(true);
-                dispose();
-
+        post.addActionListener(e -> {
+            PostScreen postScreen;
+            try {
+                postScreen = new PostScreen(userId, username);
+            } catch (IOException | FontFormatException ex) {
+                throw new RuntimeException(ex);
             }
+            postScreen.setVisible(true);
+            dispose();
+
         });
 
-        friend.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                FriendsScreen friendsScreen = null;
-                try {
-                    friendsScreen = new FriendsScreen(userId, username);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                friendsScreen.setVisible(true);
-                dispose();
-
+        friend.addActionListener(e -> {
+            FriendsScreen friendsScreen;
+            try {
+                friendsScreen = new FriendsScreen(userId, username);
+            } catch (IOException | FontFormatException ex) {
+                throw new RuntimeException(ex);
             }
+            friendsScreen.setVisible(true);
+            dispose();
+
         });
 
-        topic.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                TopicScreen topicScreen = null;
-                try {
-                    topicScreen = new TopicScreen(userId, username);
-                } catch (IOException | FontFormatException ex) {
-                    throw new RuntimeException(ex);
-                }
-                topicScreen.setVisible(true);
-                dispose();
-
+        topic.addActionListener(e -> {
+            TopicScreen topicScreen;
+            try {
+                topicScreen = new TopicScreen(userId, username);
+            } catch (IOException | FontFormatException ex) {
+                throw new RuntimeException(ex);
             }
+            topicScreen.setVisible(true);
+            dispose();
+
         });
 
-        logout.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LoginScreen loginScreen = new LoginScreen();
-                loginScreen.setVisible(true);
-                dispose();
+        logout.addActionListener(e -> {
+            LoginScreen loginScreen = null;
+            loginScreen = new LoginScreen();
+            loginScreen.setVisible(true);
+            dispose();
 
-            }
         });
 
         this.add(post);
