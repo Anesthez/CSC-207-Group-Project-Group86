@@ -8,6 +8,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * <p>This class is responsible for getting the hottest topics.</p>
+ *
+ * @author: yufeichen, Chen Jiang
+ */
+
 public class TopicController {
     public ArrayList<TopicRequestModel> getHottestTopics() throws IOException {
         CsvInterface csvInterface = new CsvInterface();

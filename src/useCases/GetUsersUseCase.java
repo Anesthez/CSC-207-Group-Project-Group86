@@ -6,6 +6,12 @@ import model.response.UserResponseModel;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * <p>This class is responsible for getting a user from the user list.</p>
+ *
+ * @author: DominicGu
+ */
+
 public class GetUsersUseCase {
     public Map<Integer, UserResponseModel> getUsers(Map<Integer, User> users) {
         Map<Integer, UserResponseModel> userResponseModels = new HashMap<>();

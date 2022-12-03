@@ -8,6 +8,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * <p>The PostPresenter has one method presentPosts that show the latest 10 {@link Post Post}
+ * posted by a user with id inputted.</p>
+ *
+ * @Author: Yufeichen, DominicGu, StarryDust-02
+ */
+
 public class PostPresenter {
 
     Map<Integer, PostRequestModel> posts;

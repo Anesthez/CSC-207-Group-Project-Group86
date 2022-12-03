@@ -4,6 +4,12 @@ import model.ResponseModel;
 
 import java.util.ArrayList;
 
+/**
+ * <p>This class is responsible for creating a response model for a post.</p>
+ *
+ * @author: yufeichen
+ */
+
 public class PostResponseModel implements ResponseModel {
     private final int id;
     private final String content;

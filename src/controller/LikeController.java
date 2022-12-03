@@ -7,6 +7,14 @@ import model.request.PostRequestModel;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * <p>
+ *     PostController contains user input and user id.
+ * </p>
+ *
+ * @Author: kevinwu, yufeichen
+ */
+
 public class LikeController {
 
     public void likePost(int postId, int userId) throws Exception {

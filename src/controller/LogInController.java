@@ -9,6 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * <p>This class is responsible for adding a new user to the user list.</p>
+ *
+ * @author: yufeichen, LemengDai
+ */
 public class LogInController {
     ArrayList<Object> userInput;
     public LogInController(ArrayList<Object> userInput){

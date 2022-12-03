@@ -5,6 +5,12 @@ import model.ResponseModel;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * <p>This class is responsible for creating a response model for a topic.</p>
+ *
+ * @author: yufeichen
+ */
+
 public class TopicResponseModel implements ResponseModel {
     private String name;
     private String ID;

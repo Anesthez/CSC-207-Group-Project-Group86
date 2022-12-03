@@ -6,6 +6,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
+/**
+ * <p>This class is responsible for adding a new chat to the chat list.</p>
+ *
+ * @author: DominicGu
+ */
+
 public class AddChatUseCase {
     public void addChat(int user_id1, int user_id2, String content, Map<Integer, Chat> chats){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd hh:mm:ss");

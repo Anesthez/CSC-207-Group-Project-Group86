@@ -8,6 +8,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * <p>This class is responsible for adding a new user to the registered user list.</p>
+ *
+ * @author: yufeichen
+ */
+
 public class RegisterController {
     public int register(String username, String password) throws IOException {
         CsvInterface csvInteract = new CsvInterface();

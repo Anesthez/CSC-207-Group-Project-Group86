@@ -11,6 +11,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * <p>This class is responsible for adding a new comment to the comment list.</p>
+ *
+ * @author: DominicGu
+ */
+
 public class AddCommentUseCase {
     public void addComment(int userId, String content, int postId, Map<Integer, Comment> comments) {
         CsvInterface csvInteract = new CsvInterface();
