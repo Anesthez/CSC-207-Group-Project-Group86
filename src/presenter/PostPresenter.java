@@ -1,5 +1,5 @@
 package presenter;
-import useCases.PostUseCases;
+import useCases.UseCaseFacade.PostUseCasesFacade;
 import databaseInterface.CsvInterface;
 import model.request.PostRequestModel;
 import model.response.PostResponseModel;
@@ -12,13 +12,13 @@ public class PostPresenter {
 
     Map<Integer, PostRequestModel> posts;
     Map<Integer, ArrayList<Integer>> postLiked;
-    PostUseCases postManager;
+    PostUseCasesFacade postManager;
 
     public PostPresenter() throws IOException {
         CsvInterface csvInterface = new CsvInterface();
         posts = csvInterface.postsReader("database/post.csv");
         postLiked = csvInterface.postsLikedReader("database/post_liked.csv");
-        postManager = new PostUseCases(posts, postLiked);
+        postManager = new PostUseCasesFacade(posts, postLiked);
     }
 
     public ArrayList<Object> showPost(int postId) {

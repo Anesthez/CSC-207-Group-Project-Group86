@@ -1,6 +1,6 @@
 package controller;
 
-import useCases.TopicUseCases;
+import useCases.UseCaseFacade.TopicUseCasesFacade;
 import databaseInterface.CsvInterface;
 import model.request.TopicRequestModel;
 
@@ -12,7 +12,7 @@ public class TopicController {
     public ArrayList<TopicRequestModel> getHottestTopics() throws IOException {
         CsvInterface csvInterface = new CsvInterface();
         Map<Integer, TopicRequestModel> topics = csvInterface.topicsReader("database/topic.csv");
-        TopicUseCases topicManager = new TopicUseCases();
+        TopicUseCasesFacade topicManager = new TopicUseCasesFacade();
         ArrayList<TopicRequestModel> topicRequestModels = new ArrayList<>(topics.values());
         return topicManager.getTopTopics(topicRequestModels);
     }

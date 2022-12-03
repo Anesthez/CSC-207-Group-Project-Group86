@@ -5,7 +5,7 @@ import model.request.TopicRequestModel;
 import model.request.UserRequestModel;
 import model.response.PostResponseModel;
 import model.response.TopicResponseModel;
-import useCases.TopicUseCases;
+import useCases.UseCaseFacade.TopicUseCasesFacade;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -22,7 +22,7 @@ public class test {
                 System.out.println(String.valueOf(topics.get(topicKey).get().get(3)));
             }
 
-            TopicUseCases tuc = new TopicUseCases();
+            TopicUseCasesFacade tuc = new TopicUseCasesFacade();
             ArrayList<TopicRequestModel> topicRequestModels = new ArrayList<>(topics.values());
             ArrayList<TopicRequestModel> ts = tuc.getTopTopics(topicRequestModels);
             for (TopicRequestModel t : ts) {

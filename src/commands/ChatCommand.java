@@ -1,10 +1,13 @@
 package commands;
 
 import databaseInterface.CsvInterface;
-import useCases.ChatUseCases;
+import useCases.AddChatUseCase;
+import useCases.UseCaseFacade.ChatUseCasesFacade;
 import model.request.ChatRequestModel;
 import model.request.UserRequestModel;
 import entity.Chat;
+import useCases.DeleteChatUseCase;
+import useCases.GetChatUseCase;
 
 import java.io.IOException;
 import java.util.Map;
@@ -42,7 +45,10 @@ public class ChatCommand {
         CsvInterface csvInteract = new CsvInterface();
         Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
         Map<Integer, ChatRequestModel> chats = csvInteract.chatsReader("database/chat.csv");
-        ChatUseCases chatManager = new ChatUseCases(chats);
+        AddChatUseCase acu = new AddChatUseCase();
+        DeleteChatUseCase dcu = new DeleteChatUseCase();
+        GetChatUseCase gcu = new GetChatUseCase();
+        ChatUseCasesFacade chatManager = new ChatUseCasesFacade(chats,acu,dcu,gcu);
 
         // use "/chat-add-receiver's id-content" to send a message
         switch (inputLines[1]) {

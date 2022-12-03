@@ -1,13 +1,14 @@
-package useCases;
+package useCases.UseCaseFacade;
 
 import entity.Chat;
 import entity.factories.ChatFactory;
 import model.request.ChatRequestModel;
 import model.response.ChatResponseModel;
+import useCases.AddChatUseCase;
+import useCases.DeleteChatUseCase;
+import useCases.GetChatUseCase;
 
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,22 +25,29 @@ import java.util.Map;
  * @Modifiedby: Yufei Chen
  */
 
-public class ChatUseCases {
+public class ChatUseCasesFacade {
 
     private final Map<Integer, Chat> chats = new HashMap<>();
+    private final AddChatUseCase acu;
+    private final DeleteChatUseCase dcu;
+    private final GetChatUseCase gcu;
 
     /**
      * <p>Constructor for the ChatUseCases. It takes in the hash map.</p>
      *
      * @param chats the hash map
      */
-    public ChatUseCases(Map<Integer, ChatRequestModel> chats){
+
+    public ChatUseCasesFacade(Map<Integer, ChatRequestModel> chats, AddChatUseCase acu,
+                              DeleteChatUseCase dcu, GetChatUseCase gcu){
         ChatFactory chatFactory = new ChatFactory();
         for (ChatRequestModel chatRequestModel : chats.values()) {
              Chat chat = chatFactory.create(chatRequestModel);
              this.chats.put(chat.getId(), chat);
-
         }
+        this.acu = acu;
+        this.dcu = dcu;
+        this.gcu = gcu;
     }
 
     /**
@@ -51,10 +59,7 @@ public class ChatUseCases {
      */
     public void addChat(int user_id1, int user_id2, String content)
     {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd hh:mm:ss");
-        Chat chat = new Chat(chats.keySet().size() + 1, user_id1, user_id2,
-                content, LocalDateTime.now().format(formatter));
-        chats.put(chat.getId(), chat);
+        acu.addChat(user_id1, user_id2, content, chats);
     }
 
     /**
@@ -64,16 +69,10 @@ public class ChatUseCases {
      */
     public void deleteChat(int id)
     {
-        chats.remove(id);
-
+        dcu.deleteChat(id, chats);
     }
 
     public Map<Integer, ChatResponseModel> getChats() {
-        Map<Integer, ChatResponseModel> chatResponseModelMap = new HashMap<>();
-        for (Chat chat : chats.values()) {
-            chatResponseModelMap.put(chat.getId(), chat.responseModel());
-        }
-        return chatResponseModelMap;
+        return gcu.getChats(chats);
     }
-
 }

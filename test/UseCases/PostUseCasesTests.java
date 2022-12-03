@@ -2,7 +2,7 @@ package UseCases;
 
 import entity.Post;
 import junit.framework.TestCase;
-import useCases.PostUseCases;
+import useCases.UseCaseFacade.PostUseCasesFacade;
 
 import java.util.HashMap;
 
@@ -16,7 +16,7 @@ public class PostUseCasesTests extends TestCase {
     }
 
     public void testAddPost() {
-        PostUseCases manager = new PostUseCases(new HashMap<>(), new HashMap<>());
+        PostUseCasesFacade manager = new PostUseCasesFacade(new HashMap<>(), new HashMap<>());
         manager.addPost("Helloworld!",1, "Hello World!", "test");
         String actual = manager.getPostFromId(1).getContent();
         String expected = "Hello World!";
@@ -24,7 +24,7 @@ public class PostUseCasesTests extends TestCase {
     }
 
     public void testGetPostFromId() {
-        PostUseCases manager = new PostUseCases(new HashMap<>(), new HashMap<>());
+        PostUseCasesFacade manager = new PostUseCasesFacade(new HashMap<>(), new HashMap<>());
         manager.addPost("Helloworld!",1, "Hello World!", "test");
         manager.addPost("Helloworld!",1, "Hello World!", "test");
         String actual = manager.getPostFromId(2).getContent();
@@ -33,7 +33,7 @@ public class PostUseCasesTests extends TestCase {
     }
 
     public void testShowPost() {
-        PostUseCases manager = new PostUseCases(new HashMap<>(), new HashMap<>());
+        PostUseCasesFacade manager = new PostUseCasesFacade(new HashMap<>(), new HashMap<>());
         manager.addPost("Helloworld!",1, "Hello World!", "test");
         manager.addPost("Helloworld!",1, "Hello World!", "test");
         Post post = manager.getPostFromId(2);
