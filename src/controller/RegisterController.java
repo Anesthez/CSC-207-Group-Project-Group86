@@ -1,7 +1,7 @@
 package controller;
 
 import useCases.UserUsesCases;
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import model.request.UserRequestModel;
 
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class RegisterController {
     public int register(String username, String password) throws IOException {
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
         Map<Integer, ArrayList<Integer>> friends = csvInteract.friendsReader("database/friends.csv");
         UserUsesCases userManager = new UserUsesCases(users);

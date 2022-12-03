@@ -2,7 +2,7 @@ package useCases;
 
 import entity.Comment;
 import entity.factories.CommentFactory;
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import model.request.CommentRequestModel;
 import model.request.PostRequestModel;
 import model.response.CommentResponseModel;
@@ -39,7 +39,7 @@ public class CommentUseCases {
      * @param content the content of the comment
      */
     public void addComment(int userId, String content, int postId) {
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         Map<Integer, PostRequestModel> posts;
         Map<Integer, ArrayList<Integer>> posts_liked = new HashMap<>();
         try {

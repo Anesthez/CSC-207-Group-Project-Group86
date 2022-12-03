@@ -2,7 +2,7 @@ package Interface;
 
 
 import entity.Comment;
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 
 import model.response.CommentResponseModel;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class csvInterfaceTests_comments_writer {
-    csvInterface csv = new csvInterface();
+    CsvInterface csv = new CsvInterface();
     String commentsPath = "test/Interface/test_comments.csv";
 
     @Test(timeout = 500)

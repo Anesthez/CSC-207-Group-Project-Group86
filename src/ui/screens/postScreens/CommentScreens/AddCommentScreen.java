@@ -8,6 +8,7 @@ import entity.Comment;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * <p>
@@ -51,7 +52,12 @@ public class AddCommentScreen extends JFrame {
         //When the user clicks Cancel, AddActionScreen is closed
         cancel.addActionListener(e -> {
             System.out.println("Click " + e.getActionCommand());
-            ShowCommentScreen showCommentScreen = new ShowCommentScreen(userid, postId,username);
+            ShowCommentScreen showCommentScreen = null;
+            try {
+                showCommentScreen = new ShowCommentScreen(userid, postId,username);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             showCommentScreen.setVisible(true);
             dispose();
         });

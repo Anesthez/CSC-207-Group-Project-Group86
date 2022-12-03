@@ -2,7 +2,7 @@ package controller;
 
 
 import useCases.PostUseCases;
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import model.request.PostRequestModel;
 import model.response.PostResponseModel;
 
@@ -26,7 +26,7 @@ public class PostController {
      * @param topic the topic of the post
      */
     public void addPost(String title, String content, int userid, String topic) throws Exception {
-        csvInterface csvInterface = new csvInterface();
+        CsvInterface csvInterface = new CsvInterface();
         Map<Integer, PostRequestModel> posts = csvInterface.postsReader("database/post.csv");
         Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/post_liked.csv");
         PostUseCases postManager = new PostUseCases(posts, postsLiked);
@@ -37,7 +37,7 @@ public class PostController {
     }
 
     public List<PostResponseModel> getThreeHottestPosts() throws Exception {
-        csvInterface csvInterface = new csvInterface();
+        CsvInterface csvInterface = new CsvInterface();
         Map<Integer, PostRequestModel> posts = csvInterface.postsReader("database/post.csv");
         Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/post_liked.csv");
         PostUseCases postManager = new PostUseCases(posts, postsLiked);

@@ -1,8 +1,7 @@
 package ui.screens.topicScreens;
 
 
-import databaseInterface.csvInterface;
-import ui.screens.topicScreens.HottestTopicScreen;
+import databaseInterface.CsvInterface;
 import ui.screens.MainScreen;
 import model.request.TopicRequestModel;
 
@@ -44,7 +43,7 @@ public class TopicScreen extends JFrame implements ActionListener {
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane.setBounds(50, 150, 800, 800);
         JPanel jPanel = new JPanel();
-        Map<Integer, TopicRequestModel> topics = new csvInterface().topicsReader("database/topic.csv");
+        Map<Integer, TopicRequestModel> topics = new CsvInterface().topicsReader("database/topic.csv");
         jPanel.setLayout(new GridLayout(topics.size(), 1));
         jPanel.setSize(800, 2000);
         for (TopicRequestModel t : topics.values()){

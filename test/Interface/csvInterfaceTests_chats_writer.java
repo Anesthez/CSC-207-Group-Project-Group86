@@ -1,7 +1,7 @@
 package Interface;
 
 import entity.Chat;
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import model.response.ChatResponseModel;
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class csvInterfaceTests_chats_writer {
-    csvInterface csv = new csvInterface();
+    CsvInterface csv = new CsvInterface();
     String chatsPath = "test/Interface/test_chats.csv";
 
     @Test(timeout = 500)

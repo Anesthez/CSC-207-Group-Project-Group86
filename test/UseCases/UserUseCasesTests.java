@@ -23,8 +23,8 @@ public class UserUseCasesTests extends TestCase {
         UserUsesCases manager = new UserUsesCases(new HashMap<>());
         manager.addUser("test", "test");
         UserResponseModel user = manager.getUsers().get(1);
-        assertEquals(user, new UserResponseModel(1, "normal", "test", "test",
-                LocalDate.now().toString()));
+        assertTrue(user.equals(new UserResponseModel(1, "normal", "test", "test",
+                LocalDate.now().toString())));
 
     }
 
@@ -47,9 +47,9 @@ public class UserUseCasesTests extends TestCase {
         UserUsesCases manager = new UserUsesCases(new HashMap<>());
         manager.addUser("test", "test");
         Map<Integer, UserResponseModel> users = manager.getUsers();
-        assertEquals(users, new HashMap<Integer, UserResponseModel>() {{
+        assertTrue(users.equals(new HashMap<Integer, UserResponseModel>() {{
             put(1, new UserResponseModel(1, "normal", "test", "test",
                     LocalDate.now().toString()));
-        }});
+        }}));
     }
 }

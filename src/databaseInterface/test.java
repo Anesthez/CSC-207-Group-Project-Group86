@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class test {
     public static void main(String[] args) {
-        csvInterface c = new csvInterface();
+        CsvInterface c = new CsvInterface();
         try {
             Map<Integer, TopicRequestModel> topics = c.topicsReader("database/topic.csv");
             Set<Integer> topicKeys = topics.keySet();
