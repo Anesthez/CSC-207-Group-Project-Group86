@@ -2,7 +2,7 @@ package commands;
 
 
 import databaseInterface.CsvInterface;
-import useCases.PostUseCases;
+import useCases.UseCaseFacade.PostUseCasesFacade;
 import model.request.PostRequestModel;
 
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class PostCommand {
         Map<Integer, PostRequestModel> posts = csvInteract.postsReader("database/post.csv");
         Map<Integer, ArrayList<Integer>> postLiked =
                 csvInteract.postsLikedReader("database/post_liked.csv");
-        PostUseCases postUseCases = new PostUseCases(posts, postLiked);
+        PostUseCasesFacade postUseCases = new PostUseCasesFacade(posts, postLiked);
         if (inputLines.length == 3) {
             postUseCases.addPost(inputLines[1], userid, inputLines[2], topic);
             csvInteract.postsWriter("database/post.csv", postUseCases.getPostsResponseModel());

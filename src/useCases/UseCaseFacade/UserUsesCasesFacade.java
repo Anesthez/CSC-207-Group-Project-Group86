@@ -1,4 +1,4 @@
-package useCases;
+package useCases.UseCaseFacade;
 
 import entity.User;
 import entity.factories.UserFactory;
@@ -17,7 +17,7 @@ import java.util.Objects;
  * @Author: Kevin Wu
  * @Modifiedby: Yufei Chen
  */
-public class UserUsesCases {
+public class UserUsesCasesFacade {
 
     private final Map<Integer, User> users = new HashMap<>();
 
@@ -26,7 +26,7 @@ public class UserUsesCases {
      *
      * @param users the hash map the id of the user with the corresponding {@link User User} object
      */
-    public UserUsesCases(Map<Integer, UserRequestModel> users){
+    public UserUsesCasesFacade(Map<Integer, UserRequestModel> users){
         UserFactory userFactory = new UserFactory();
         for (UserRequestModel userRequestModel : users.values()) {
             User user = userFactory.create(userRequestModel);

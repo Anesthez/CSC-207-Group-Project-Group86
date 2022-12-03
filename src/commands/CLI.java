@@ -1,6 +1,6 @@
 package commands;
 
-import useCases.UserUsesCases;
+import useCases.UseCaseFacade.UserUsesCasesFacade;
 import databaseInterface.CsvInterface;
 import model.request.UserRequestModel;
 import model.response.UserResponseModel;
@@ -21,7 +21,7 @@ public class CLI {
     public void login() throws IOException {
         Scanner input = new Scanner(System.in);
         Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
-        UserUsesCases userManager = new UserUsesCases(users);
+        UserUsesCasesFacade userManager = new UserUsesCasesFacade(users);
         boolean flag = true;
         boolean exit = false;
         while (flag) {

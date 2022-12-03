@@ -1,10 +1,9 @@
-package useCases;
+package useCases.UseCaseFacade;
 
 import entity.Post;
 import entity.Topic;
 import model.request.PostRequestModel;
 import model.request.TopicRequestModel;
-import model.response.PostResponseModel;
 //import javafx.geometry.Pos;
 
 import java.io.IOException;
@@ -24,7 +23,7 @@ import java.util.Map;
  * @Author: Chen Jiang
  * @Modifiedby: Chen Jiang
  */
-public class TopicUseCases {
+public class TopicUseCasesFacade {
 
     /**
      * <p>

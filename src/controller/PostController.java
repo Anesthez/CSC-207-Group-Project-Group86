@@ -1,7 +1,7 @@
 package controller;
 
 
-import useCases.PostUseCases;
+import useCases.UseCaseFacade.PostUseCasesFacade;
 import databaseInterface.CsvInterface;
 import model.request.PostRequestModel;
 import model.response.PostResponseModel;
@@ -29,7 +29,7 @@ public class PostController {
         CsvInterface csvInterface = new CsvInterface();
         Map<Integer, PostRequestModel> posts = csvInterface.postsReader("database/post.csv");
         Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/post_liked.csv");
-        PostUseCases postManager = new PostUseCases(posts, postsLiked);
+        PostUseCasesFacade postManager = new PostUseCasesFacade(posts, postsLiked);
         int postId = postManager.addPost(title, userid, content, topic);
         postsLiked.put(postId, new ArrayList<>(List.of(userid)));
         csvInterface.postsWriter("database/post.csv", postManager.getPostsResponseModel());
@@ -40,7 +40,7 @@ public class PostController {
         CsvInterface csvInterface = new CsvInterface();
         Map<Integer, PostRequestModel> posts = csvInterface.postsReader("database/post.csv");
         Map<Integer, ArrayList<Integer>> postsLiked = csvInterface.postsLikedReader("database/post_liked.csv");
-        PostUseCases postManager = new PostUseCases(posts, postsLiked);
+        PostUseCasesFacade postManager = new PostUseCasesFacade(posts, postsLiked);
         return postManager.getHottestPosts();
     }
 }
