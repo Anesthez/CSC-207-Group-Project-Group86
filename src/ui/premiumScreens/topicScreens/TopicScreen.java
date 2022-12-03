@@ -57,8 +57,12 @@ public class TopicScreen extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ShowTopicsScreen showTopicsScreen = null;
-                showTopicsScreen = new ShowTopicsScreen();
-                showTopicsScreen.setVisible(true);
+                try {
+                    showTopicsScreen = new ShowTopicsScreen(userId, name);
+                    showTopicsScreen.setVisible(true);
+                } catch (IOException | FontFormatException ex) {
+                    throw new RuntimeException(ex);
+                }
                 dispose();
             }
         });
@@ -68,11 +72,16 @@ public class TopicScreen extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 HottestTopicScreen hottestTopicScreen = null;
                 try {
-                    hottestTopicScreen = new HottestTopicScreen(userId, name);
+                    try {
+                        hottestTopicScreen = new HottestTopicScreen(userId, name);
+                        hottestTopicScreen.setVisible(true);
+                    } catch (FontFormatException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                hottestTopicScreen.setVisible(true);
+
                 dispose();
             }
         });

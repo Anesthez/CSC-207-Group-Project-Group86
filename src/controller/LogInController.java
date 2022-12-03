@@ -1,7 +1,7 @@
 package controller;
 
-import useCases.UserUsesCases;
-import databaseInterface.csvInterface;
+import useCases.UseCaseFacade.UserUsesCasesFacade;
+import databaseInterface.CsvInterface;
 import model.request.UserRequestModel;
 import model.response.UserResponseModel;
 
@@ -16,9 +16,9 @@ public class LogInController {
     }
 
     public UserResponseModel login() throws IOException {
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
-        UserUsesCases userManager = new UserUsesCases(users);
+        UserUsesCasesFacade userManager = new UserUsesCasesFacade(users);
         return userManager.verifyUser((String)userInput.get(0), (String)userInput.get(1));
     }
 }

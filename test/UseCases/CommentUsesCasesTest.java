@@ -1,7 +1,7 @@
 package UseCases;
 
 import entity.Comment;
-import useCases.CommentUseCases;
+import useCases.UseCaseFacade.CommentUseCasesFacade;
 import junit.framework.TestCase;
 
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public class CommentUsesCasesTest extends TestCase {
     }
 
     public void testAddComment() {
-        CommentUseCases manager = new CommentUseCases(new HashMap<>());
+        CommentUseCasesFacade manager = new CommentUseCasesFacade(new HashMap<>());
         manager.addComment(5, "Nice Picture!", 1);
         Comment comment = manager.getCommentFromId(1);
         String actual = "Nice Picture!";
@@ -25,7 +25,7 @@ public class CommentUsesCasesTest extends TestCase {
     }
 
     public void testDeleteComment() {
-        CommentUseCases manager = new CommentUseCases(new HashMap<>());
+        CommentUseCasesFacade manager = new CommentUseCasesFacade(new HashMap<>());
         manager.addComment(5, "Nice Picture!",1);
         manager.addComment(0, "Hello World!", 2);
         manager.deleteComment(1);
@@ -34,7 +34,7 @@ public class CommentUsesCasesTest extends TestCase {
     }
 
     public void testGetCommentFromId() {
-        CommentUseCases manager = new CommentUseCases(new HashMap<>());
+        CommentUseCasesFacade manager = new CommentUseCasesFacade(new HashMap<>());
         manager.addComment(5, "Nice Picture!",1);
         manager.addComment(0, "Hello World!",2);
         Comment comment = manager.getCommentFromId(2);

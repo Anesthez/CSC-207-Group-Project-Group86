@@ -3,7 +3,10 @@ package UseCases;
 import junit.framework.TestCase;
 import model.response.ChatResponseModel;
 import org.junit.Test;
-import useCases.ChatUseCases;
+import useCases.AddChatUseCase;
+import useCases.UseCaseFacade.ChatUseCasesFacade;
+import useCases.DeleteChatUseCase;
+import useCases.GetChatUseCase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +27,10 @@ public class ChatUseCasesTests extends TestCase {
 
     @Test(timeout = 500)
     public void testAddChat() {
-        ChatUseCases manager = new ChatUseCases(new HashMap<>());
+        AddChatUseCase acu = new AddChatUseCase();
+        DeleteChatUseCase dcu = new DeleteChatUseCase();
+        GetChatUseCase gcu = new GetChatUseCase();
+        ChatUseCasesFacade manager = new ChatUseCasesFacade(new HashMap<>(),acu,dcu,gcu);
         manager.addChat(1, 2, "Hello" );
         ChatResponseModel chat = manager.getChats().get(1);
         String actual = "Hello";
@@ -34,7 +40,10 @@ public class ChatUseCasesTests extends TestCase {
     }
     @Test(timeout = 500)
     public void testDeleteChat() {
-        ChatUseCases manager = new ChatUseCases(new HashMap<>());
+        AddChatUseCase acu = new AddChatUseCase();
+        DeleteChatUseCase dcu = new DeleteChatUseCase();
+        GetChatUseCase gcu = new GetChatUseCase();
+        ChatUseCasesFacade manager = new ChatUseCasesFacade(new HashMap<>(),acu,dcu,gcu);
         manager.addChat(1, 2, "Hello" );
         manager.addChat(1, 2, "I'm Alice" );
         manager.deleteChat(1);
@@ -43,7 +52,10 @@ public class ChatUseCasesTests extends TestCase {
     }
     @Test(timeout = 500)
     public void testGetChats() {
-        ChatUseCases manager = new ChatUseCases(new HashMap<>());
+        AddChatUseCase acu = new AddChatUseCase();
+        DeleteChatUseCase dcu = new DeleteChatUseCase();
+        GetChatUseCase gcu = new GetChatUseCase();
+        ChatUseCasesFacade manager = new ChatUseCasesFacade(new HashMap<>(),acu,dcu,gcu);
         manager.addChat(1, 2, "Hello");
         manager.addChat(1, 2, "I'm Alice");
         Map<Integer, ChatResponseModel> chatResponseModelMap = manager.getChats();

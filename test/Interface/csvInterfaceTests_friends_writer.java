@@ -1,6 +1,6 @@
 package Interface;
 
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import org.junit.*;
 
 import java.io.*;
@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
  */
 
 public class csvInterfaceTests_friends_writer {
-    csvInterface csv = new csvInterface();
+    CsvInterface csv = new CsvInterface();
     String friendsPath = "test/Interface/test_friends.csv";
 
     @Test(timeout = 500)

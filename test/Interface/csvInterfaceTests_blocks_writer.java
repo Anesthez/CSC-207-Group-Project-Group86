@@ -1,6 +1,6 @@
 package Interface;
 
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class csvInterfaceTests_blocks_writer {
-    csvInterface csv = new csvInterface();
+    CsvInterface csv = new CsvInterface();
     String blocksPath = "test/Interface/test_blocks.csv";
 
     @Test(timeout = 500)

@@ -1,6 +1,7 @@
 package model.request;
 
 import entity.User;
+import model.RequestModel;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  *
  * @Author: Yufei Chen
  */
-public class UserRequestModel {
+public class UserRequestModel implements RequestModel {
     private final int id;
 
     private final String userType;

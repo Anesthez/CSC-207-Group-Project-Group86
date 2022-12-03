@@ -1,10 +1,13 @@
 package presenter;
 
-import useCases.ChatUseCases;
-import databaseInterface.csvInterface;
+import useCases.AddChatUseCase;
+import useCases.UseCaseFacade.ChatUseCasesFacade;
+import databaseInterface.CsvInterface;
 import model.request.ChatRequestModel;
 import model.response.ChatResponseModel;
 import entity.Chat;
+import useCases.DeleteChatUseCase;
+import useCases.GetChatUseCase;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,9 +26,12 @@ public class ChatPresenter {
      * Show the latest 10 chat between two user with id inputted.
      */
     public Object[] presentMessages(int userid, int receiverId) throws IOException {
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         Map<Integer, ChatRequestModel> chats = csvInteract.chatsReader("database/chat.csv");
-        ChatUseCases chatManager = new ChatUseCases(chats);
+        AddChatUseCase acu = new AddChatUseCase();
+        DeleteChatUseCase dcu = new DeleteChatUseCase();
+        GetChatUseCase gcu = new GetChatUseCase();
+        ChatUseCasesFacade chatManager = new ChatUseCasesFacade(chats,acu,dcu,gcu);
         Map<Integer, ChatResponseModel> chatResponseModels = chatManager.getChats();
         List<ChatResponseModel> chatlist = new ArrayList<>();
         for (int id : chats.keySet()) {

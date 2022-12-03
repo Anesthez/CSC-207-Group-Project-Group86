@@ -1,6 +1,6 @@
 package ui.premiumScreens.friendsScreens;
 
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import ui.premiumScreens.friendsScreens.chatScreens.ChatScreen;
 import ui.premiumScreens.PremiumMainScreen;
 
@@ -46,7 +46,7 @@ public class FriendsScreen extends JFrame {
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane.setBounds(130, 150, 700, 300);
         JPanel jPanel = new JPanel();
-        ArrayList<Integer> ints = new csvInterface().friendsReader("database/friends.csv").get(userId);
+        ArrayList<Integer> ints = new CsvInterface().friendsReader("database/friends.csv").get(userId);
 
         jPanel.setLayout(new GridLayout(ints.size(), 1));
         jPanel.setSize(700, 2000);

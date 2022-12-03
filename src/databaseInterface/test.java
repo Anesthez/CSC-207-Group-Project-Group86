@@ -5,7 +5,7 @@ import model.request.TopicRequestModel;
 import model.request.UserRequestModel;
 import model.response.PostResponseModel;
 import model.response.TopicResponseModel;
-import useCases.TopicUseCases;
+import useCases.UseCaseFacade.TopicUseCasesFacade;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class test {
     public static void main(String[] args) {
-        csvInterface c = new csvInterface();
+        CsvInterface c = new CsvInterface();
         try {
             Map<Integer, TopicRequestModel> topics = c.topicsReader("database/topic.csv");
             Set<Integer> topicKeys = topics.keySet();
@@ -22,7 +22,7 @@ public class test {
                 System.out.println(String.valueOf(topics.get(topicKey).get().get(3)));
             }
 
-            TopicUseCases tuc = new TopicUseCases();
+            TopicUseCasesFacade tuc = new TopicUseCasesFacade();
             ArrayList<TopicRequestModel> topicRequestModels = new ArrayList<>(topics.values());
             ArrayList<TopicRequestModel> ts = tuc.getTopTopics(topicRequestModels);
             for (TopicRequestModel t : ts) {

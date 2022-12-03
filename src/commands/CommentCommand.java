@@ -1,7 +1,7 @@
 package commands;
 
-import databaseInterface.csvInterface;
-import useCases.CommentUseCases;
+import databaseInterface.CsvInterface;
+import useCases.UseCaseFacade.CommentUseCasesFacade;
 import model.request.CommentRequestModel;
 import entity.Comment;
 
@@ -24,12 +24,12 @@ public class CommentCommand {
      * <p>parses user input and can be used to add or delete {@link Comment Comment}</p>
      */
     public void exact() throws IOException {
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         Map<Integer, CommentRequestModel> comments = csvInteract.commentsReader("database/comments.csv");
         if (inputLines[1].equals("add")) {
             int commentid = Integer.parseInt(inputLines[2]);
             if (comments.containsKey(commentid)) {
-                CommentUseCases commentUseCases = new CommentUseCases(comments);
+                CommentUseCasesFacade commentUseCases = new CommentUseCasesFacade(comments);
                 commentUseCases.addComment(userid, inputLines[3], Integer.parseInt(inputLines[3]));
                 csvInteract.commentsWriter(commentUseCases.getComments(), "database/comments.csv");
             } else {
@@ -38,7 +38,7 @@ public class CommentCommand {
         } else if (inputLines[1].equals("delete")) {
             int commentid = Integer.parseInt(inputLines[2]);
             if (comments.containsKey(commentid)) {
-                CommentUseCases commentUseCases = new CommentUseCases(comments);
+                CommentUseCasesFacade commentUseCases = new CommentUseCasesFacade(comments);
                 commentUseCases.deleteComment(commentid);
                 csvInteract.commentsWriter(commentUseCases.getComments(), "database/comments.csv");
             } else {

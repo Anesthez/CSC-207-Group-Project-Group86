@@ -1,11 +1,14 @@
-package useCases;
+package useCases.UseCaseFacade;
 
 import entity.Comment;
 import entity.factories.CommentFactory;
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import model.request.CommentRequestModel;
 import model.request.PostRequestModel;
 import model.response.CommentResponseModel;
+import useCases.AddChatUseCase;
+import useCases.AddCommentUseCase;
+import useCases.DeleteCommentUseCase;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -20,10 +23,14 @@ import java.util.Map;
  * @Author: LemengDai
  * @Modifiedby: Yufei Chen
  */
-public class CommentUseCases {
+public class CommentUseCasesFacade {
     private final Map<Integer, Comment> comments = new HashMap<>();
+    private AddCommentUseCase acu;
+    private DeleteCommentUseCase dcu;
 
-    public CommentUseCases(Map<Integer, CommentRequestModel> comments) {
+
+
+    public CommentUseCasesFacade(Map<Integer, CommentRequestModel> comments) {
         CommentFactory commentFactory = new CommentFactory();
         for (CommentRequestModel commentModel : comments.values()) {
             Comment comment = commentFactory.create(commentModel);
@@ -39,7 +46,7 @@ public class CommentUseCases {
      * @param content the content of the comment
      */
     public void addComment(int userId, String content, int postId) {
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         Map<Integer, PostRequestModel> posts;
         Map<Integer, ArrayList<Integer>> posts_liked = new HashMap<>();
         try {
@@ -55,7 +62,7 @@ public class CommentUseCases {
             ArrayList<Integer> users = (ArrayList<Integer>) posts.get(k).get().get(7);
             posts_liked.put(k, users);
         }
-        PostUseCases postUseCases = new PostUseCases(posts, posts_liked);
+        PostUseCasesFacade postUseCases = new PostUseCasesFacade(posts, posts_liked);
         postUseCases.addComment_id(postId, comment.getId());
         comments.put(comment.getId(), comment);
     }

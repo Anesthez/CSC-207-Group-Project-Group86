@@ -29,7 +29,7 @@ public class ShowCommentScreen extends JFrame{
      * </p>
      * @param userid the user id of the user who is currently logged in
      */
-    public ShowCommentScreen(int userid, int postId, String username) {
+    public ShowCommentScreen(int userid, int postId, String username) throws IOException {
         JLabel title = new PlaceLabel().create(50,100, 200,30, "Comments Section");
 
         JButton addComment = new PlaceButton().create("Add Comment",null,100, 700, 150, 50);
@@ -41,7 +41,7 @@ public class ShowCommentScreen extends JFrame{
         ArrayList<String> strings = new CommentPresenter().presentComment(postId);
         jPanel.setLayout(new GridLayout(strings.size(), 1));
         jPanel.setSize(700, 2000);
-        for (String s: new CommentPresenter().presentComment(postId)) {
+        for (String s: strings) {
 
             JLabel label = new JLabel(s);
             label.setSize(700, 40);
@@ -53,6 +53,7 @@ public class ShowCommentScreen extends JFrame{
             try {
                 AddCommentScreen addCommentScreen = new AddCommentScreen(userid, postId, username);
                 addCommentScreen.setVisible(true);
+                dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }

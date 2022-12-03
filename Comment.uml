@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>controller.CommentController</OriginalElement>
+  <nodes>
+    <node x="244.5" y="143.0">entity.Comment</node>
+    <node x="-11.0" y="576.0">ui.screens.postScreens.CommentScreens.ShowCommentScreen</node>
+    <node x="439.0" y="-15.0">entity.inputboundary.Modelizable</node>
+    <node x="220.5" y="237.5">entity.factories.CommentFactory</node>
+    <node x="363.0" y="459.0">controller.CommentController</node>
+    <node x="383.0" y="576.0">ui.screens.postScreens.CommentScreens.AddCommentScreen</node>
+    <node x="313.0" y="-15.0">entity.inputboundary.Postable</node>
+    <node x="-120.0" y="352.0">databaseInterface.csvInterface</node>
+    <node x="-148.0" y="211.0">model.response.CommentResponseModel</node>
+    <node x="183.0" y="-15.0">entity.inputboundary.Timeable</node>
+    <node x="190.0" y="332.0">useCases.CommentUseCases</node>
+    <node x="251.0" y="64.0">entity.inputboundary.Context</node>
+    <node x="43.0" y="479.0">presenter.CommentPresenter</node>
+    <node x="41.0" y="-15.0">entity.inputboundary.Searchable</node>
+    <node x="-161.0" y="286.0">model.request.CommentRequestModel</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="entity.inputboundary.Context" target="entity.inputboundary.Searchable" relationship="REALIZATION">
+      <point x="-0.0" y="-14.5" />
+      <point x="302.0" y="39.0" />
+      <point x="102.0" y="39.0" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="entity.inputboundary.Context" target="entity.inputboundary.Modelizable" relationship="REALIZATION">
+      <point x="-0.0" y="-14.5" />
+      <point x="302.0" y="39.0" />
+      <point x="504.0" y="39.0" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="entity.Comment" target="entity.inputboundary.Context" relationship="GENERALIZATION">
+      <point x="-0.0" y="-14.5" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="controller.CommentController" target="databaseInterface.csvInterface" relationship="CREATE">
+      <point x="15.0" y="-14.5" />
+      <point x="374.0" y="459.0" />
+      <point x="374.0" y="410.0" />
+      <point x="-56.0" y="410.0" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="ui.screens.postScreens.CommentScreens.AddCommentScreen" target="controller.CommentController" relationship="CREATE">
+      <point x="-23.0" y="-14.5" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="controller.CommentController" target="useCases.CommentUseCases" relationship="CREATE">
+      <point x="-0.0" y="-14.5" />
+      <point x="453.0" y="346.5" />
+      <point x="88.5" y="-0.0" />
+    </edge>
+    <edge source="entity.inputboundary.Context" target="entity.inputboundary.Postable" relationship="REALIZATION">
+      <point x="-0.0" y="-14.5" />
+      <point x="302.0" y="39.0" />
+      <point x="366.0" y="39.0" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="entity.inputboundary.Context" target="entity.inputboundary.Timeable" relationship="REALIZATION">
+      <point x="-0.0" y="-14.5" />
+      <point x="302.0" y="39.0" />
+      <point x="238.0" y="39.0" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="useCases.CommentUseCases" target="entity.Comment" relationship="CREATE">
+      <point x="-75.5" y="-14.5" />
+      <point x="203.0" y="197.0" />
+      <point x="302.0" y="197.0" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="useCases.CommentUseCases" target="databaseInterface.csvInterface" relationship="CREATE">
+      <point x="-0.0" y="14.5" />
+      <point x="278.5" y="410.0" />
+      <point x="-56.0" y="410.0" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="useCases.CommentUseCases" target="entity.Comment" relationship="TO_MANY">
+      <point x="-88.5" y="-0.0" />
+      <point x="155.5" y="346.5" />
+      <point x="155.5" y="157.5" />
+      <point x="-57.5" y="-0.0" />
+    </edge>
+    <edge source="presenter.CommentPresenter" target="databaseInterface.csvInterface" relationship="CREATE">
+      <point x="-0.0" y="-14.5" />
+      <point x="132.0" y="440.0" />
+      <point x="-56.0" y="440.0" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="useCases.CommentUseCases" target="entity.factories.CommentFactory" relationship="CREATE">
+      <point x="23.5" y="-14.5" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="ui.screens.postScreens.CommentScreens.AddCommentScreen" target="ui.screens.postScreens.CommentScreens.ShowCommentScreen" relationship="CREATE">
+      <point x="-93.0" y="-0.0" />
+      <point x="98.0" y="-0.0" />
+    </edge>
+    <edge source="ui.screens.postScreens.CommentScreens.ShowCommentScreen" target="ui.screens.postScreens.CommentScreens.AddCommentScreen" relationship="CREATE">
+      <point x="-0.0" y="14.5" />
+      <point x="87.0" y="649.5" />
+      <point x="476.0" y="649.5" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="entity.factories.CommentFactory" target="entity.Comment" relationship="CREATE">
+      <point x="-0.0" y="-14.5" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="ui.screens.postScreens.CommentScreens.ShowCommentScreen" target="presenter.CommentPresenter" relationship="CREATE">
+      <point x="45.0" y="-14.5" />
+      <point x="-0.0" y="14.5" />
+    </edge>
+    <edge source="databaseInterface.csvInterface" target="model.request.CommentRequestModel" relationship="CREATE">
+      <point x="64.0" y="2.5" />
+      <point x="-57.5" y="369.0" />
+      <point x="-1.5" y="14.5" />
+    </edge>
+    <edge source="entity.Comment" target="model.response.CommentResponseModel" relationship="CREATE">
+      <point x="-15.0" y="-14.5" />
+      <point x="287.0" y="125.5" />
+      <point x="-38.0" y="125.5" />
+      <point x="-0.0" y="-14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="true" x="204.0" y="317.5" />
+  <SelectedNodes>
+    <node>model.request.CommentRequestModel</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

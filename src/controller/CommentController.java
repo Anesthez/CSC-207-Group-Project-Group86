@@ -1,7 +1,7 @@
 package controller;
 
-import useCases.CommentUseCases;
-import databaseInterface.csvInterface;
+import useCases.UseCaseFacade.CommentUseCasesFacade;
+import databaseInterface.CsvInterface;
 import model.request.CommentRequestModel;
 import entity.Comment;
 
@@ -34,9 +34,9 @@ public class CommentController {
      * adds {@link Comment Comment} object with user input as content and user id.
      */
     public void create() throws IOException {
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         Map<Integer, CommentRequestModel> comments = csvInteract.commentsReader("database/comments.csv");
-        CommentUseCases commentUseCases = new CommentUseCases(comments);
+        CommentUseCasesFacade commentUseCases = new CommentUseCasesFacade(comments);
         commentUseCases.addComment(userid, inputLines, postId); //TODO: no postid in args?
 
         csvInteract.commentsWriter(commentUseCases.getComments(), "database/comments.csv");

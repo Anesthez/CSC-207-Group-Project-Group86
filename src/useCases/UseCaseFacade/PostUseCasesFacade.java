@@ -1,4 +1,4 @@
-package useCases;
+package useCases.UseCaseFacade;
 
 import entity.Post;
 import entity.factories.PostFactory;
@@ -21,7 +21,7 @@ import java.util.Map;
  * @Author: eric-qli
  * @Modified by: Yufei Chen, Tianyu Li, Chen Jiang
  */
-public class PostUseCases implements Popularity_rank {
+public class PostUseCasesFacade implements Popularity_rank {
     private final HashMap<Integer, Post> posts = new HashMap<>();
     private final Map<Integer, ArrayList<Integer>> posts_liked;
 
@@ -30,7 +30,7 @@ public class PostUseCases implements Popularity_rank {
      * @param posts the map of posts
      * @param posts_liked  the map of post_id to the list of the userid who liked the post
      */
-    public PostUseCases(Map<Integer, PostRequestModel> posts, Map<Integer, ArrayList<Integer>> posts_liked){
+    public PostUseCasesFacade(Map<Integer, PostRequestModel> posts, Map<Integer, ArrayList<Integer>> posts_liked){
         PostFactory postFactory = new PostFactory();
         for (PostRequestModel requestModel : posts.values()) {
             Post post = postFactory.create(requestModel);

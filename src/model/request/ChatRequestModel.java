@@ -1,6 +1,7 @@
 package model.request;
 
-import model.Model;
+import model.RequestModel;
+import model.ResponseModel;
 
 import entity.Chat;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * Modified by: Yufei Chen
  */
 
-public class ChatRequestModel implements Model {
+public class ChatRequestModel implements RequestModel {
     private final int id;
     private final int user1_id;
 

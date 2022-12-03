@@ -1,11 +1,12 @@
 package model.request;
 
-import model.Model;
+import model.RequestModel;
+import model.ResponseModel;
 
 import java.util.ArrayList;
 import java.util.Map;
 
-public class TopicRequestModel implements Model {
+public class TopicRequestModel implements RequestModel {
     private String name;
     private String ID;
 

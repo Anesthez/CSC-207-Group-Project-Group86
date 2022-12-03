@@ -46,40 +46,32 @@ public class ShowCommentScreen extends JFrame{
         ArrayList<String> strings = new CommentPresenter().presentComment(postId);
         jPanel.setLayout(new GridLayout(strings.size(), 1));
         jPanel.setSize(700, 2000);
-        int i = 0;
         for (String s: new CommentPresenter().presentComment(postId)) {
 
             JLabel label = new JLabel(s);
             label.setSize(700, 40);
             jPanel.add(label);
-            i +=1;
         }
         jScrollPane.setViewportView(jPanel);
         //When the user clicks Add Comment button, AddCommentScreen is shown
-        addComment.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                try {
-                    AddCommentScreen addCommentScreen = new AddCommentScreen(userid, postId, username);
-                    addCommentScreen.setVisible(true);
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
-                }
+        addComment.addActionListener(evt -> {
+            try {
+                AddCommentScreen addCommentScreen = new AddCommentScreen(userid, postId, username);
+                addCommentScreen.setVisible(true);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
             }
         });
 
-        cancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PostScreen postScreen = null;
-                try {
-                    postScreen = new PostScreen(userid, username);
-                } catch (IOException | FontFormatException ex) {
-                    throw new RuntimeException(ex);
-                }
-                postScreen.setVisible(true);
-                dispose();
+        cancel.addActionListener(e -> {
+            PostScreen postScreen = null;
+            try {
+                postScreen = new PostScreen(userid, username);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
+            postScreen.setVisible(true);
+            dispose();
         });
 
         this.setLayout(null);

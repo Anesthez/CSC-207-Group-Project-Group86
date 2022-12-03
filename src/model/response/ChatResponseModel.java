@@ -1,10 +1,10 @@
 package model.response;
 
-import model.Model;
+import model.ResponseModel;
 
 import java.util.ArrayList;
 
-public class ChatResponseModel implements Model {
+public class ChatResponseModel implements ResponseModel {
     /**
      * Author: LemengDai
      * Modified by: Yufei Chen, LemengDai
