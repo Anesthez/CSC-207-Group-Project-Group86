@@ -29,7 +29,7 @@ public class ShowCommentScreen extends JFrame{
      * </p>
      * @param userid the user id of the user who is currently logged in
      */
-    public ShowCommentScreen(int userid, int postId, String username) {
+    public ShowCommentScreen(int userid, int postId, String username) throws IOException {
         JLabel title = new PlaceLabel().create(50,100, 200,30, "Comments Section");
 
         JButton addComment = new PlaceButton().create("Add Comment",null,100, 700, 150, 50);

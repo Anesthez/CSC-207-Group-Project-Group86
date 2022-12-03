@@ -1,6 +1,6 @@
 package commands;
 
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import useCases.CommentUseCases;
 import model.request.CommentRequestModel;
 import entity.Comment;
@@ -24,7 +24,7 @@ public class CommentCommand {
      * <p>parses user input and can be used to add or delete {@link Comment Comment}</p>
      */
     public void exact() throws IOException {
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         Map<Integer, CommentRequestModel> comments = csvInteract.commentsReader("database/comments.csv");
         if (inputLines[1].equals("add")) {
             int commentid = Integer.parseInt(inputLines[2]);

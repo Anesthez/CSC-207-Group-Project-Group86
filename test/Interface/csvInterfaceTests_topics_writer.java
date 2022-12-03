@@ -2,7 +2,7 @@ package Interface;
 
 import entity.Post;
 import entity.User;
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import model.response.PostResponseModel;
 import model.response.TopicResponseModel;
 import model.response.UserResponseModel;
@@ -25,7 +25,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class csvInterfaceTests_topics_writer {
-    csvInterface csv = new csvInterface();
+    CsvInterface csv = new CsvInterface();
     String topicsPath = "test/Interface/test_topics.csv";
 
     @Test(timeout = 500)

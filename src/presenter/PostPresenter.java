@@ -1,6 +1,6 @@
 package presenter;
 import useCases.PostUseCases;
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import model.request.PostRequestModel;
 import model.response.PostResponseModel;
 
@@ -15,7 +15,7 @@ public class PostPresenter {
     PostUseCases postManager;
 
     public PostPresenter() throws IOException {
-        csvInterface csvInterface = new csvInterface();
+        CsvInterface csvInterface = new CsvInterface();
         posts = csvInterface.postsReader("database/post.csv");
         postLiked = csvInterface.postsLikedReader("database/post_liked.csv");
         postManager = new PostUseCases(posts, postLiked);

@@ -3,7 +3,7 @@ package ui.screens.topicScreens;
 
 
 import controller.TopicController;
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import model.request.TopicRequestModel;
 import ui.components.PlaceLabel;
 import ui.screens.MainScreen;
@@ -39,7 +39,7 @@ public class HottestTopicScreen extends JFrame implements ActionListener {
         this.add(back);
         back.setBounds(10, 530, 50, 20);
 
-        csvInterface c = new csvInterface();
+        CsvInterface c = new CsvInterface();
         Map<Integer, TopicRequestModel> t = c.topicsReader("database/topic.csv");
         ArrayList<TopicRequestModel> ht = new ArrayList<>();
         for (Integer i : t.keySet()){

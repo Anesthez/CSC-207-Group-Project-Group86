@@ -1,6 +1,6 @@
 package commands;
 
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import model.request.UserRequestModel;
 
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class FriendsCommand{
     }
 
     public void exact() throws IOException {
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
         Map<Integer, ArrayList<Integer>> friends =
                 csvInteract.friendsReader("database/friends.csv");
