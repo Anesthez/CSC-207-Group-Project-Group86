@@ -1,6 +1,6 @@
 package ui.premiumScreens.topicScreens;
 
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import model.request.TopicRequestModel;
 import ui.premiumScreens.PremiumMainScreen;
 
@@ -67,7 +67,7 @@ public class ShowTopicsScreen extends JFrame implements ActionListener {
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane.setBounds(50, 150, 800, 300);
         JPanel jPanel = new JPanel();
-        Map<Integer, TopicRequestModel> topics = new csvInterface().topicsReader("database/topic.csv");
+        Map<Integer, TopicRequestModel> topics = new CsvInterface().topicsReader("database/topic.csv");
         jPanel.setLayout(new GridLayout(topics.size(), 1));
         for (TopicRequestModel t : topics.values()){
             JLabel label = new JLabel(t.get().get(0) + ". " + t.get().get(1));

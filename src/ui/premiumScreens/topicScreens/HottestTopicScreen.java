@@ -1,7 +1,7 @@
 package ui.premiumScreens.topicScreens;
 
 import controller.TopicController;
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import ui.components.PlaceLabel;
 import ui.premiumScreens.PremiumMainScreen;
 import ui.screens.MainScreen;
@@ -54,7 +54,7 @@ public class HottestTopicScreen extends JFrame implements ActionListener {
         });
         this.add(back);
 
-        csvInterface c = new csvInterface();
+        CsvInterface c = new CsvInterface();
         Map<Integer, TopicRequestModel> t = c.topicsReader("database/topic.csv");
         ArrayList<TopicRequestModel> ht = new ArrayList<>();
         for (Integer i : t.keySet()){
