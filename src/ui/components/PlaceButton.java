@@ -2,6 +2,12 @@ package ui.components;
 
 import javax.swing.*;
 
+/**
+ * <p>This class is responsible for creating a button for the place.</p>
+ *
+ * @author: yufeichen
+ */
+
 public class PlaceButton {
     JButton button;
 

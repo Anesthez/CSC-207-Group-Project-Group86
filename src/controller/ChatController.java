@@ -10,6 +10,12 @@ import useCases.GetChatUseCase;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * <p>This class is responsible for adding a new chat to the chat list.</p>
+ *
+ * @author: DominicGu
+ */
+
 public class ChatController {
     public void addChat(int userid, int receiver_id, String text) throws IOException {
         CsvInterface csvInteract = new CsvInterface();

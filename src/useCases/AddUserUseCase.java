@@ -6,6 +6,12 @@ import java.time.LocalDate;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * <p>This class is responsible for adding a new user to the user list.</p>
+ *
+ * @author: DominicGu
+ */
+
 public class AddUserUseCase {
     public int addUser(String userName, String userPassword, Map<Integer, User> users) {
         if (existsName(userName, users)) {

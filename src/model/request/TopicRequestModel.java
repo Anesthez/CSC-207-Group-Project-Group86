@@ -6,6 +6,12 @@ import model.ResponseModel;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * <p>This class is responsible for storing the request information for adding a new topic.</p>
+ *
+ * @author: Yufeichen, Jiang
+ */
+
 public class TopicRequestModel implements RequestModel {
     private String name;
     private String ID;

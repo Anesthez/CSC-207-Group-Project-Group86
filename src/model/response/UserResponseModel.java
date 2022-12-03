@@ -2,6 +2,12 @@ package model.response;
 
 import java.util.ArrayList;
 
+/**
+ * <p>This class is responsible for creating a response model for a user.</p>
+ *
+ * @author: yufeichen
+ */
+
 public class UserResponseModel {
     private final int id;
 

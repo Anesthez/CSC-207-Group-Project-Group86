@@ -4,6 +4,12 @@ import model.ResponseModel;
 
 import java.util.ArrayList;
 
+/**
+ * <p>This class is responsible for creating a response model for a comment.</p>
+ *
+ * @author: yufeichen
+ */
+
 public class CommentResponseModel implements ResponseModel {
     private final int id;
 

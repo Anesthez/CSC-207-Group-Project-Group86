@@ -6,6 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * <p>This class is responsible for adding a new friend to the friend list.</p>
+ *
+ * @author: yufeichen
+ */
+
 public class AddFriendController {
     public Boolean add(int userId, int friendId) throws IOException {
         Map<Integer, ArrayList<Integer>> friends =

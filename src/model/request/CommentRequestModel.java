@@ -5,6 +5,12 @@ import model.ResponseModel;
 
 import java.util.ArrayList;
 
+/**
+ * <p>This class is responsible for storing the request information for adding a new comment.</p>
+ *
+ * @author: Yufeichen, LemengDai
+ */
+
 public class CommentRequestModel implements RequestModel {
     private final int id;
 
