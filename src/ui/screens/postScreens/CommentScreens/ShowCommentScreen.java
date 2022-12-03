@@ -41,7 +41,7 @@ public class ShowCommentScreen extends JFrame{
         ArrayList<String> strings = new CommentPresenter().presentComment(postId);
         jPanel.setLayout(new GridLayout(strings.size(), 1));
         jPanel.setSize(700, 2000);
-        for (String s: new CommentPresenter().presentComment(postId)) {
+        for (String s: strings) {
 
             JLabel label = new JLabel(s);
             label.setSize(700, 40);
@@ -53,6 +53,7 @@ public class ShowCommentScreen extends JFrame{
             try {
                 AddCommentScreen addCommentScreen = new AddCommentScreen(userid, postId, username);
                 addCommentScreen.setVisible(true);
+                dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
