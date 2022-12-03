@@ -13,13 +13,22 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class FriendsScreen extends JFrame {
-    public FriendsScreen(int userId, String name) throws IOException {
-        JButton back = new JButton("Back");
-        back.setBounds(0, 0, 50, 20);
+    public FriendsScreen(int userId, String name) throws IOException, FontFormatException {
+        final String fontPathUI = "assets/fonts/KleeOne-SemiBold.ttf";
+        InputStream is = new FileInputStream(fontPathUI);
+        Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+        font = font.deriveFont(16f);
+
+        Icon backIcon = new ImageIcon("assets/images/back.png");
+        JButton back = new JButton();
+        back.setIcon(backIcon);
+        back.setBounds(0, 0, 45, 45);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -35,7 +44,7 @@ public class FriendsScreen extends JFrame {
         });
         JScrollPane jScrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane.setBounds(50, 150, 700, 400);
+        jScrollPane.setBounds(130, 150, 700, 300);
         JPanel jPanel = new JPanel();
         ArrayList<Integer> ints = new csvInterface().friendsReader("database/friends.csv").get(userId);
 
@@ -46,6 +55,7 @@ public class FriendsScreen extends JFrame {
 
             JLabel label = new JLabel(String.valueOf(s));
             label.setSize(700, 100);
+            label.setFont(font);
             label.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {

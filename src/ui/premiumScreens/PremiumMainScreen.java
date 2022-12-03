@@ -79,7 +79,7 @@ public class PremiumMainScreen extends JFrame {
             PostScreen postScreen;
             try {
                 postScreen = new PostScreen(userId, username);
-            } catch (IOException ex) {
+            } catch (IOException | FontFormatException ex) {
                 throw new RuntimeException(ex);
             }
             postScreen.setVisible(true);
@@ -91,7 +91,7 @@ public class PremiumMainScreen extends JFrame {
             FriendsScreen friendsScreen;
             try {
                 friendsScreen = new FriendsScreen(userId, username);
-            } catch (IOException ex) {
+            } catch (IOException | FontFormatException ex) {
                 throw new RuntimeException(ex);
             }
             friendsScreen.setVisible(true);
@@ -112,7 +112,8 @@ public class PremiumMainScreen extends JFrame {
         });
 
         logout.addActionListener(e -> {
-            LoginScreen loginScreen = new LoginScreen();
+            LoginScreen loginScreen = null;
+            loginScreen = new LoginScreen();
             loginScreen.setVisible(true);
             dispose();
 

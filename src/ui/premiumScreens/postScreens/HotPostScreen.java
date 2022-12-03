@@ -29,7 +29,7 @@ public class HotPostScreen extends JFrame implements ActionListener {
         }
         JButton mostPopular = new JButton("Most Popular");
         mostPopular.setSize(120, 40);
-        mostPopular.setLocation(340, 300);
+        mostPopular.setLocation(340, 200);
         List<PostResponseModel> finalHotPosts = hotPosts;
         mostPopular.addActionListener(new ActionListener() {
             @Override
@@ -48,7 +48,7 @@ public class HotPostScreen extends JFrame implements ActionListener {
 
         JButton secondPopular = new JButton("Second Popular");
         secondPopular.setSize(120, 40);
-        secondPopular.setLocation(340, 370);
+        secondPopular.setLocation(340, 270);
         secondPopular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,7 +65,7 @@ public class HotPostScreen extends JFrame implements ActionListener {
 
         JButton thirdPopular = new JButton("Second Popular");
         thirdPopular.setSize(120, 40);
-        thirdPopular.setLocation(340, 440);
+        thirdPopular.setLocation(340, 340);
         thirdPopular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -80,20 +80,19 @@ public class HotPostScreen extends JFrame implements ActionListener {
             }
         });
 
-        JButton back = new JButton("Back");
-        back.setBounds(0, 0, 50, 20);
-        back.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PostScreen postScreen = null;
-                try {
-                    postScreen = new PostScreen(userId, name);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                postScreen.setVisible(true);
-                dispose();
+        Icon backIcon = new ImageIcon("assets/images/back.png");
+        JButton back = new JButton();
+        back.setIcon(backIcon);
+        back.setBounds(0, 0, 45, 45);
+        back.addActionListener(e -> {
+            PostScreen postScreen = null;
+            try {
+                postScreen = new PostScreen(userId, name);
+            } catch (IOException | FontFormatException ex) {
+                throw new RuntimeException(ex);
             }
+            postScreen.setVisible(true);
+            dispose();
         });
 
 
