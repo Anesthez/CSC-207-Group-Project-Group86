@@ -77,7 +77,7 @@ public class LoginScreen extends JFrame{
 
         this.setSize(800, 800);
 
-        this.add(new PlaceLabel().create(400, 50, 100, 25, "UofTMeta"));
+        this.add(new PlaceLabel().create(350, 50, 100, 25, "UofT MET"));
         this.add(username);
         this.add(password);
         this.add(buttons);

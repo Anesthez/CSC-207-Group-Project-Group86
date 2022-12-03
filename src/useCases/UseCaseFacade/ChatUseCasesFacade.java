@@ -38,16 +38,15 @@ public class ChatUseCasesFacade {
      * @param chats the hash map
      */
 
-    public ChatUseCasesFacade(Map<Integer, ChatRequestModel> chats, AddChatUseCase acu,
-                              DeleteChatUseCase dcu, GetChatUseCase gcu){
+    public ChatUseCasesFacade(Map<Integer, ChatRequestModel> chats){
         ChatFactory chatFactory = new ChatFactory();
         for (ChatRequestModel chatRequestModel : chats.values()) {
              Chat chat = chatFactory.create(chatRequestModel);
              this.chats.put(chat.getId(), chat);
         }
-        this.acu = acu;
-        this.dcu = dcu;
-        this.gcu = gcu;
+        this.acu = new AddChatUseCase();
+        this.dcu = new DeleteChatUseCase();
+        this.gcu = new GetChatUseCase();
     }
 
     /**

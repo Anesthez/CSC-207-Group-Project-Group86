@@ -34,13 +34,6 @@ public class UserUseCasesTests extends TestCase {
         assertTrue((int) manager.verifyUser("test", "test").get().get(0) != -1);
     }
 
-    public void testExistsName() {
-        Map<Integer, UserRequestModel> HashMap;
-        UserUsesCasesFacade manager = new UserUsesCasesFacade(new HashMap<>());
-        manager.addUser("test", "test");
-        assertTrue(manager.existsName("test"));
-    }
-
     public void testGetUsers(){
         Map<Integer, UserRequestModel> HashMap;
         UserUsesCasesFacade manager = new UserUsesCasesFacade(new HashMap<>());

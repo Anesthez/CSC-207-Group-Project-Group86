@@ -28,10 +28,7 @@ public class ChatPresenter {
     public Object[] presentMessages(int userid, int receiverId) throws IOException {
         CsvInterface csvInteract = new CsvInterface();
         Map<Integer, ChatRequestModel> chats = csvInteract.chatsReader("database/chat.csv");
-        AddChatUseCase acu = new AddChatUseCase();
-        DeleteChatUseCase dcu = new DeleteChatUseCase();
-        GetChatUseCase gcu = new GetChatUseCase();
-        ChatUseCasesFacade chatManager = new ChatUseCasesFacade(chats,acu,dcu,gcu);
+        ChatUseCasesFacade chatManager = new ChatUseCasesFacade(chats);
         Map<Integer, ChatResponseModel> chatResponseModels = chatManager.getChats();
         List<ChatResponseModel> chatlist = new ArrayList<>();
         for (int id : chats.keySet()) {

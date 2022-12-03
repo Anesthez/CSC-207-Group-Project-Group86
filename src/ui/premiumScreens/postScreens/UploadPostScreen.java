@@ -22,23 +22,25 @@ import java.io.IOException;
  */
 public class UploadPostScreen extends JFrame implements ActionListener {
     public UploadPostScreen(int userId, String name) throws IOException {
-        this.add(new PlaceLabel().create(50, 0, 50, 50, "Title"));
-        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
+        this.add(new PlaceLabel().create(120, 0, 50, 50, "Title"));
+        BufferedImage logo = ImageIO.read(new File("assets/images/backgroundtrans.png"));
         ImageIcon imageIcon = new ImageIcon(logo);
         JLabel label = new JLabel(imageIcon);
         label.setSize(960, 540);
         Container container = getContentPane();
+        this.add(new PlaceLabel().create(120, 100, 50, 50, "Content"));
 
-        this.add(new PlaceLabel().create(50, 100, 50, 50, "Content"));
-        JButton back = new JButton("Back");
-        back.setBounds(0, 0, 50, 20);
+        Icon backIcon = new ImageIcon("assets/images/back.png");
+        JButton back = new JButton();
+        back.setBounds(0, 0, 45, 45);
+        back.setIcon(backIcon);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PostScreen postScreen = null;
                 try {
                     postScreen = new PostScreen(userId, name);
-                } catch (IOException ex) {
+                } catch (IOException | FontFormatException ex) {
                     throw new RuntimeException(ex);
                 }
                 postScreen.setVisible(true);
@@ -46,14 +48,14 @@ public class UploadPostScreen extends JFrame implements ActionListener {
             }
         });
 
-        JTextField titleText= new PlaceTextField().createTextField(50, 50, 700, 50);
+        JTextField titleText= new PlaceTextField().createTextField(120, 50, 700, 50);
         this.add(titleText);
 
-        JTextField contentText = new PlaceTextField().createTextField(50, 150, 700, 500);
+        JTextField contentText = new PlaceTextField().createTextField(120, 150, 700, 250);
         this.add(contentText);
 
         JButton postButton = new PlaceButton().create("Post", null,
-                650, 675, 100, 50);
+                720, 400, 100, 50);
         postButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

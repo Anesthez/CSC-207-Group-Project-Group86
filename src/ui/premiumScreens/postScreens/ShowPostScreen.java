@@ -37,24 +37,28 @@ public class ShowPostScreen extends JFrame implements ActionListener {
         this.add(new PlaceLabel().create(615, 50, 200, 50, labels.get(3).toString()));
         this.add(new PlaceLabel().create(100, 125, 600, 600, labels.get(4).toString()));
 
-        JButton likeButton = new PlaceButton().create("Like", null,
-                650, 60, 100, 25);
-        likeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LikeController likeController = new LikeController();
-                try {
-                    likeController.likePost(postId, userId);
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
+
+        Icon likeIcon = new ImageIcon("assets/images/liked.png");
+        Icon unlikeIcon = new ImageIcon("assets/images/unlike.png");
+        JButton likeButton = new PlaceButton().create(null, null,
+                650, 60, 45, 45);
+        likeButton.setIcon(unlikeIcon);
+        likeButton.addActionListener(e -> {
+            LikeController likeController = new LikeController();
+            try {
+                likeController.likePost(postId, userId);
+                likeButton.setIcon(likeIcon);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
             }
         });
         this.add(likeButton);
 
-        JButton showCommentsButton = new PlaceButton().create("Show Comments", null,
-                    600, 675, 130, 25);
+        Icon commentIcon = new ImageIcon("assets/images/comment.png");
+        JButton showCommentsButton = new PlaceButton().create(null, null,
+                    695, 60, 45, 45);
         ArrayList<Object> finalLabels = labels;
+        showCommentsButton.setIcon(commentIcon);
         showCommentsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,24 +74,22 @@ public class ShowPostScreen extends JFrame implements ActionListener {
         });
         this.add(showCommentsButton);
 
-
-        JButton backButton = new PlaceButton().create("Back", null,
-                    100, 675, 100, 25);
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PostScreen postScreen = null;
-                try {
-                    postScreen = new PostScreen(userId, name);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                postScreen.setVisible(true);
-                dispose();
+        Icon backIcon = new ImageIcon("assets/images/back.png");
+        JButton backButton = new JButton();
+        backButton.setBounds(0, 0, 45, 45);
+        backButton.setIcon(backIcon);
+        backButton.addActionListener(e -> {
+            PostScreen postScreen = null;
+            try {
+                postScreen = new PostScreen(userId, name);
+            } catch (IOException | FontFormatException ex) {
+                throw new RuntimeException(ex);
             }
+            postScreen.setVisible(true);
+            dispose();
         });
         this.add(backButton);
-        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
+        BufferedImage logo = ImageIO.read(new File("assets/images/backgroundtrans.png"));
         ImageIcon imageIcon = new ImageIcon(logo);
         JLabel label = new JLabel(imageIcon);
         label.setSize(960, 540);
