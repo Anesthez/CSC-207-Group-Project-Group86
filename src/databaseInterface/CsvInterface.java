@@ -1,5 +1,6 @@
 package databaseInterface;
 
+
 /**
  * <p>The csvInterface class is a class that will be used to read and write csv files.</p>
  * <p>The class will be used to read and write csv files for the user, post, comment, and chat objects.</p>
