@@ -67,7 +67,7 @@ public class ShowCommentScreen extends JFrame{
             PostScreen postScreen = null;
             try {
                 postScreen = new PostScreen(userid, username);
-            } catch (IOException ex) {
+            } catch (IOException | FontFormatException ex) {
                 throw new RuntimeException(ex);
             }
             postScreen.setVisible(true);
