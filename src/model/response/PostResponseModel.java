@@ -1,10 +1,10 @@
 package model.response;
 
-import model.Model;
+import model.ResponseModel;
 
 import java.util.ArrayList;
 
-public class PostResponseModel implements Model {
+public class PostResponseModel implements ResponseModel {
     private final int id;
     private final String content;
     private final String timestamp;

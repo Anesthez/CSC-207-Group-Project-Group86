@@ -1,10 +1,11 @@
 package model.request;
 
-import model.Model;
+import model.RequestModel;
+import model.ResponseModel;
 
 import java.util.ArrayList;
 
-public class PostRequestModel implements Model {
+public class PostRequestModel implements RequestModel {
     private final int id;
     private final String content;
     private final String timestamp;

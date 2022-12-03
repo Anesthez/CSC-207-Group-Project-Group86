@@ -1,10 +1,11 @@
 package model.request;
 
-import model.Model;
+import model.RequestModel;
+import model.ResponseModel;
 
 import java.util.ArrayList;
 
-public class CommentRequestModel implements Model {
+public class CommentRequestModel implements RequestModel {
     private final int id;
 
     private final int userId;

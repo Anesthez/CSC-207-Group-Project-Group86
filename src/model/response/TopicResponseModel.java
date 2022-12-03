@@ -1,11 +1,11 @@
 package model.response;
 
-import model.Model;
+import model.ResponseModel;
 
 import java.util.ArrayList;
 import java.util.Map;
 
-public class TopicResponseModel implements Model {
+public class TopicResponseModel implements ResponseModel {
     private String name;
     private String ID;
 
