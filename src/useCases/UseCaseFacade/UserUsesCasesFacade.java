@@ -8,10 +8,8 @@ import useCases.AddUserUseCase;
 import useCases.GetUsersUseCase;
 import useCases.VerifyUserUseCase;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * <p>The UserUseCases contains a hash map mapping the id of the user with the corresponding {@link User User} object.

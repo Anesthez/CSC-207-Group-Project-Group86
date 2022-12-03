@@ -2,15 +2,9 @@ package useCases.UseCaseFacade;
 
 import entity.Comment;
 import entity.factories.CommentFactory;
-import databaseInterface.CsvInterface;
 import model.request.CommentRequestModel;
-import model.request.PostRequestModel;
 import model.response.CommentResponseModel;
 import useCases.*;
-
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
