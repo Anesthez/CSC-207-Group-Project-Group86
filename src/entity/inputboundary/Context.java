@@ -7,7 +7,7 @@ import entity.Post;
 /**
  * <p>Context is an abstract class that is inherited by {@link Chat Chat}, {@link Comment Comment}
  * and {@link Post Post}. Context also implements {@link Timeable Timeable}, {@link Searchable Searchable},
- * {@link Postable Postable}</p>}
+ * {@link Postable Postable}, {@link Modelizable Modelizable}</p>}
  * @Author: LemengDai
  */
 public abstract class Context implements Timeable, Searchable, Postable, Modelizable{

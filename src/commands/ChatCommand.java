@@ -72,18 +72,6 @@ public class ChatCommand {
                 break;
             }
 
-
-            // use "/chat-showid-receiver's id-sent time(yyyy.MM.dd hh:mm:ss)" to find the id of a message
-            case "showid": {
-                int chatid = chatManager.getIdByUserAndTime(userid, Integer.parseInt(inputLines[2]), inputLines[3]);
-                if (chatid != 0) {
-                    System.out.println("chat id is " + chatid);
-                } else {
-                    System.out.println("chat does not exist");
-                }
-                break;
-            }
-
             default: System.out.println("unknown command");
         }
     }

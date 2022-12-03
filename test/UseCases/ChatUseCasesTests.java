@@ -1,62 +1,54 @@
 package UseCases;
 
-
-import model.request.ChatRequestModel;
-import org.junit.After;
-import org.junit.BeforeClass;
+import junit.framework.TestCase;
+import model.response.ChatResponseModel;
 import org.junit.Test;
 import useCases.ChatUseCases;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-
-/*
- * Author: Jiahao Gu
+/**
+ * <p>ChatUseCasesTest is a test class for ChatUseCases.</p>
+ * @Author: Jiahao Gu
+ * @Modifiedby: LemengDai
  */
+public class ChatUseCasesTests extends TestCase {
 
-public class ChatUseCasesTests {
-    static ChatUseCases actual;
-
-    @BeforeClass
-
-    public static void setUp() {
-        ChatRequestModel chat1 = new ChatRequestModel(1, 1, 2, "Hello!", "2021");
-        ChatRequestModel chat2 = new ChatRequestModel(2, 2, 1, "How are u?", "2022");
-        ChatRequestModel chat3 = new ChatRequestModel(3, 1, 2, "Good!", "2022");
-        Map<Integer, ChatRequestModel> cuc = new HashMap<>();
-        cuc.put(1, chat1);
-        cuc.put(2, chat2);
-        cuc.put(3, chat3);
-        actual = new ChatUseCases(cuc);
+    public void setUp() throws Exception {
+        super.setUp();
     }
 
-    @After
-    public void tearDown() {
+    public void tearDown() throws Exception {
     }
 
     @Test(timeout = 500)
-    public void testAddChat(){
-        actual.addChat(2, 1,  "me2!");
-        int senderid = actual.getChatList().get(4).getSender_id();
-        int receiverid = actual.getChatList().get(4).getReceiver_id();
-        String content = actual.getChatList().get(4).getContent();
+    public void testAddChat() {
+        ChatUseCases manager = new ChatUseCases(new HashMap<>());
+        manager.addChat(1, 2, "Hello" );
+        ChatResponseModel chat = manager.getChats().get(1);
+        String actual = "Hello";
+        String expected = (String) chat.get().get(3);
+        assertEquals("There is error in ChatManager.addChat!", actual, expected);
 
-        assertEquals("There is error in addChat!", 2, senderid);
-        assertEquals("There is error in addChat!", 1, receiverid);
-        assertEquals("There is error in addChat!", "me2!", content);
     }
-
     @Test(timeout = 500)
-    public void testDeleteChat(){
-        actual.deleteChat(4);
-        assertEquals("There is error in deleteChat!",3, actual.getChatList().size());
+    public void testDeleteChat() {
+        ChatUseCases manager = new ChatUseCases(new HashMap<>());
+        manager.addChat(1, 2, "Hello" );
+        manager.addChat(1, 2, "I'm Alice" );
+        manager.deleteChat(1);
+        ChatResponseModel actual = manager.getChats().get(1);
+        assertNull("There is error in ChatManager.deleteChat!", actual);
     }
-
     @Test(timeout = 500)
-    public void testGetIdByUserAndTime(){
-        assertEquals("There is error in getIdByUserAndTime!",1,
-                actual.getIdByUserAndTime(1,2, "2021"));
+    public void testGetChats() {
+        ChatUseCases manager = new ChatUseCases(new HashMap<>());
+        manager.addChat(1, 2, "Hello");
+        manager.addChat(1, 2, "I'm Alice");
+        Map<Integer, ChatResponseModel> chatResponseModelMap = manager.getChats();
+        String actual = (String) chatResponseModelMap.get(2).get().get(3);
+        String expected = "I'm Alice";
+        assertEquals("There is error in ChatManager.getChats!", actual, expected);
     }
 }
