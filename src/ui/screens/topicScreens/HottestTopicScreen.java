@@ -37,7 +37,6 @@ public class HottestTopicScreen extends JFrame implements ActionListener {
             }
         });
         this.add(back);
-        back.setBounds(10, 530, 50, 20);
 
         CsvInterface c = new CsvInterface();
         Map<Integer, TopicRequestModel> t = c.topicsReader("database/topic.csv");
