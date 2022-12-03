@@ -14,6 +14,7 @@ import java.util.Map;
  * <p>CommentPresenter is responsible for getting a list of {@link Comment Comment} with username
  * who posts these comments corresponding to a post and then transform them into a single {@link StringBuilder String}
  * which can be displayed later in {@link ShowCommentScreen} ShowCommentScreen.</p>
+ * @Author: LemengDai
  */
 public class CommentPresenter {
 
