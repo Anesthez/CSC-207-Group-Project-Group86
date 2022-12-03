@@ -3,16 +3,37 @@ package databaseInterface;
 import model.request.PostRequestModel;
 import model.request.TopicRequestModel;
 import model.request.UserRequestModel;
-
+import model.response.PostResponseModel;
+import model.response.TopicResponseModel;
+import useCases.TopicUseCases;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class test {
     public static void main(String[] args) {
-        csvInterface c = new csvInterface();
+        CsvInterface c = new CsvInterface();
         try {
-            c.topicsReader("database/topic.csv");
+            Map<Integer, TopicRequestModel> topics = c.topicsReader("database/topic.csv");
+            Set<Integer> topicKeys = topics.keySet();
+            for (Integer topicKey : topicKeys) {
+                System.out.println(String.valueOf(topics.get(topicKey).get().get(3)));
+            }
+
+            TopicUseCases tuc = new TopicUseCases();
+            ArrayList<TopicRequestModel> topicRequestModels = new ArrayList<>(topics.values());
+            ArrayList<TopicRequestModel> ts = tuc.getTopTopics(topicRequestModels);
+            for (TopicRequestModel t : ts) {
+                System.out.println(t.get());
+            }
+            Map<Integer, TopicResponseModel> rtopics = new LinkedHashMap<>();
+            Map<Integer, PostResponseModel> post = new LinkedHashMap<>();
+            //PostResponseModel p = new PostResponseModel();
+//            post.put(2, );
+//            c.topicWriter(topics,"database/topic.csv");
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -14,7 +14,7 @@ public class TopicRequestModel implements Model {
     private Map<Integer, PostRequestModel> posts;
 
 
-    public TopicRequestModel(String name, String ID, Map<Integer, UserRequestModel> users,
+    public TopicRequestModel(String ID, String name, Map<Integer, UserRequestModel> users,
                              Map<Integer, PostRequestModel> posts)
     {
         this.name = name;
@@ -23,7 +23,7 @@ public class TopicRequestModel implements Model {
         this.posts = posts;
     }
 
-    public TopicRequestModel(String name, String ID, Map<Integer, PostRequestModel> posts)
+    public TopicRequestModel(String ID, String name, Map<Integer, PostRequestModel> posts)
     {
         this.name = name;
         this.ID = ID;
@@ -32,8 +32,8 @@ public class TopicRequestModel implements Model {
 
     public ArrayList<Object> get(){
         ArrayList<Object> contents = new ArrayList<>();
-        contents.add(name);
         contents.add(ID);
+        contents.add(name);
         contents.add(users);
         contents.add(posts);
         return contents;

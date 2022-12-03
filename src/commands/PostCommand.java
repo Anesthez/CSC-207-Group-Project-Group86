@@ -1,7 +1,7 @@
 package commands;
 
 
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import useCases.PostUseCases;
 import model.request.PostRequestModel;
 
@@ -22,7 +22,7 @@ public class PostCommand {
     }
 
     public void exact() throws IOException {
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         Map<Integer, PostRequestModel> posts = csvInteract.postsReader("database/post.csv");
         Map<Integer, ArrayList<Integer>> postLiked =
                 csvInteract.postsLikedReader("database/post_liked.csv");

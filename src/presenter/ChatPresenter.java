@@ -1,7 +1,7 @@
 package presenter;
 
 import useCases.ChatUseCases;
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import model.request.ChatRequestModel;
 import model.response.ChatResponseModel;
 import entity.Chat;
@@ -23,7 +23,7 @@ public class ChatPresenter {
      * Show the latest 10 chat between two user with id inputted.
      */
     public Object[] presentMessages(int userid, int receiverId) throws IOException {
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         Map<Integer, ChatRequestModel> chats = csvInteract.chatsReader("database/chat.csv");
         ChatUseCases chatManager = new ChatUseCases(chats);
         Map<Integer, ChatResponseModel> chatResponseModels = chatManager.getChats();

@@ -14,7 +14,7 @@ public class TopicResponseModel implements Model {
     private Map<Integer, PostResponseModel> posts;
 
 
-    public TopicResponseModel(String name, String ID, Map<Integer, UserResponseModel> users,
+    public TopicResponseModel(String ID, String name, Map<Integer, UserResponseModel> users,
                               Map<Integer, PostResponseModel> posts)
     {
         this.name = name;
@@ -23,7 +23,7 @@ public class TopicResponseModel implements Model {
         this.posts = posts;
     }
 
-    public TopicResponseModel(String name, String ID, Map<Integer, PostResponseModel> posts)
+    public TopicResponseModel(String ID, String name, Map<Integer, PostResponseModel> posts)
     {
         this.name = name;
         this.ID = ID;
@@ -32,8 +32,8 @@ public class TopicResponseModel implements Model {
 
     public ArrayList<Object> get(){
         ArrayList<Object> contents = new ArrayList<>();
-        contents.add(name);
         contents.add(ID);
+        contents.add(name);
         contents.add(users);
         contents.add(posts);
         return contents;

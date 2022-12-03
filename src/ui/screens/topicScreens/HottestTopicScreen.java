@@ -1,60 +1,44 @@
-package ui.premiumScreens.topicScreens;
+package ui.screens.topicScreens;
+
+
 
 import controller.TopicController;
-import databaseInterface.csvInterface;
-import ui.components.PlaceLabel;
-import ui.premiumScreens.PremiumMainScreen;
-import ui.screens.MainScreen;
+import databaseInterface.CsvInterface;
 import model.request.TopicRequestModel;
+import ui.components.PlaceLabel;
+import ui.screens.MainScreen;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class HottestTopicScreen extends JFrame implements ActionListener {
+
+    @Override
     public void actionPerformed(ActionEvent e) {
 
     }
     public HottestTopicScreen(int userId, String name) throws IOException, FontFormatException {
         this.setLayout(null);
         JButton back = new JButton("Back");
-        BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
-        ImageIcon imageIcon = new ImageIcon(logo);
-        JLabel label = new JLabel(imageIcon);
-        label.setSize(960, 540);
-        Container container = getContentPane();
-        this.setSize(960, 540);
-        this.setResizable(false);
-        final String fontPathUI = "assets/fonts/KleeOne-SemiBold.ttf";
-        InputStream is = new FileInputStream(new File(fontPathUI));
-        Font font = Font.createFont(Font.TRUETYPE_FONT, is);
-        font = font.deriveFont(14f);
         back.setBounds(0, 0, 50, 20);
+        this.setBounds(0, 0, 960, 540);
+        this.setResizable(false);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PremiumMainScreen premiumMainScreen = null;
-                try {
-                    premiumMainScreen = new PremiumMainScreen(userId, name);
-                } catch (IOException | FontFormatException ex) {
-                    throw new RuntimeException(ex);
-                }
-                premiumMainScreen.setVisible(true);
+                MainScreen mainScreen = new MainScreen(userId, name);
+                mainScreen.setVisible(true);
                 dispose();
             }
         });
         this.add(back);
 
-        csvInterface c = new csvInterface();
+        CsvInterface c = new CsvInterface();
         Map<Integer, TopicRequestModel> t = c.topicsReader("database/topic.csv");
         ArrayList<TopicRequestModel> ht = new ArrayList<>();
         for (Integer i : t.keySet()){
@@ -73,7 +57,5 @@ public class HottestTopicScreen extends JFrame implements ActionListener {
 
         this.setBounds(0, 0, 960, 540);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        container.add(label);
     }
 }

@@ -1,8 +1,7 @@
 package ui.screens.topicScreens;
 
 
-import databaseInterface.csvInterface;
-import ui.premiumScreens.topicScreens.HottestTopicScreen;
+import databaseInterface.CsvInterface;
 import ui.screens.MainScreen;
 import model.request.TopicRequestModel;
 
@@ -28,27 +27,27 @@ public class TopicScreen extends JFrame implements ActionListener {
             mainScreen.setVisible(true);
             dispose();
         });
+
         JButton hottestTopic = new JButton("Hottest Topic");
         hottestTopic.setBounds(0, 50, 150, 20);
         hottestTopic.addActionListener(e -> {
-            HottestTopicScreen htScreen;
             try {
-                htScreen = new HottestTopicScreen(userID, name);
-            } catch (IOException ex) {
+                HottestTopicScreen htScreen = new HottestTopicScreen(userID, name);
+                htScreen.setVisible(true);
+            } catch (IOException | FontFormatException ex) {
                 throw new RuntimeException(ex);
             }
-            htScreen.setVisible(true);
             dispose();
         });
         JScrollPane jScrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane.setBounds(50, 150, 800, 800);
         JPanel jPanel = new JPanel();
-        Map<Integer, TopicRequestModel> topics = new csvInterface().topicsReader("database/topic.csv");
+        Map<Integer, TopicRequestModel> topics = new CsvInterface().topicsReader("database/topic.csv");
         jPanel.setLayout(new GridLayout(topics.size(), 1));
         jPanel.setSize(800, 2000);
         for (TopicRequestModel t : topics.values()){
-        JLabel label = new JLabel(String.valueOf(t.get()));
+        JLabel label = new JLabel(t.get().get(0) + ". " + t.get().get(1));
         label.setSize(800, 100);
         label.addMouseListener(new MouseListener() {
             @Override
@@ -89,6 +88,7 @@ public class TopicScreen extends JFrame implements ActionListener {
         jScrollPane.setViewportView(jPanel);
         this.add(jScrollPane);
         this.add(back);
+        this.add(hottestTopic);
         this.setLayout(null);
         this.setBounds(0, 0, 800, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -49,7 +49,12 @@ public class ShowPostScreen extends JFrame implements ActionListener {
                     600, 675, 130, 25);
         ArrayList<Object> finalLabels = labels;
         showCommentsButton.addActionListener(e -> {
-            ShowCommentScreen showCommentScreen = new ShowCommentScreen(userId, (int) finalLabels.get(1), name);
+            ShowCommentScreen showCommentScreen = null;
+            try {
+                showCommentScreen = new ShowCommentScreen(userId, (int) finalLabels.get(1), name);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             showCommentScreen.setVisible(true);
             dispose();
         });

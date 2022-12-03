@@ -1,6 +1,6 @@
 package commands;
 
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import useCases.ChatUseCases;
 import model.request.ChatRequestModel;
 import model.request.UserRequestModel;
@@ -39,7 +39,7 @@ public class ChatCommand {
      * <p>Execute the command.</p>
      */
     public void exact() throws IOException {
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
         Map<Integer, ChatRequestModel> chats = csvInteract.chatsReader("database/chat.csv");
         ChatUseCases chatManager = new ChatUseCases(chats);

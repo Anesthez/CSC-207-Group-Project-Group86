@@ -1,7 +1,7 @@
 package commands;
 
 import useCases.UserUsesCases;
-import databaseInterface.csvInterface;
+import databaseInterface.CsvInterface;
 import model.request.UserRequestModel;
 import model.response.UserResponseModel;
 
@@ -16,7 +16,7 @@ public class CLI {
     private String username;
     private int userid;
 
-    private final csvInterface csvInteract = new csvInterface();
+    private final CsvInterface csvInteract = new CsvInterface();
 
     public void login() throws IOException {
         Scanner input = new Scanner(System.in);
@@ -67,7 +67,7 @@ public class CLI {
 
     public void generalInterface() throws IOException {
         Scanner input = new Scanner(System.in);
-        csvInterface csvInteract = new csvInterface();
+        CsvInterface csvInteract = new CsvInterface();
         boolean flag = true;
         while (flag) {
             System.out.print(username + " ");
