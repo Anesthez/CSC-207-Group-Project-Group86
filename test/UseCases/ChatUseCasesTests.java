@@ -27,10 +27,7 @@ public class ChatUseCasesTests extends TestCase {
 
     @Test(timeout = 500)
     public void testAddChat() {
-        AddChatUseCase acu = new AddChatUseCase();
-        DeleteChatUseCase dcu = new DeleteChatUseCase();
-        GetChatUseCase gcu = new GetChatUseCase();
-        ChatUseCasesFacade manager = new ChatUseCasesFacade(new HashMap<>(),acu,dcu,gcu);
+        ChatUseCasesFacade manager = new ChatUseCasesFacade(new HashMap<>());
         manager.addChat(1, 2, "Hello" );
         ChatResponseModel chat = manager.getChats().get(1);
         String actual = "Hello";
@@ -40,10 +37,7 @@ public class ChatUseCasesTests extends TestCase {
     }
     @Test(timeout = 500)
     public void testDeleteChat() {
-        AddChatUseCase acu = new AddChatUseCase();
-        DeleteChatUseCase dcu = new DeleteChatUseCase();
-        GetChatUseCase gcu = new GetChatUseCase();
-        ChatUseCasesFacade manager = new ChatUseCasesFacade(new HashMap<>(),acu,dcu,gcu);
+        ChatUseCasesFacade manager = new ChatUseCasesFacade(new HashMap<>());
         manager.addChat(1, 2, "Hello" );
         manager.addChat(1, 2, "I'm Alice" );
         manager.deleteChat(1);
@@ -52,10 +46,7 @@ public class ChatUseCasesTests extends TestCase {
     }
     @Test(timeout = 500)
     public void testGetChats() {
-        AddChatUseCase acu = new AddChatUseCase();
-        DeleteChatUseCase dcu = new DeleteChatUseCase();
-        GetChatUseCase gcu = new GetChatUseCase();
-        ChatUseCasesFacade manager = new ChatUseCasesFacade(new HashMap<>(),acu,dcu,gcu);
+        ChatUseCasesFacade manager = new ChatUseCasesFacade(new HashMap<>());
         manager.addChat(1, 2, "Hello");
         manager.addChat(1, 2, "I'm Alice");
         Map<Integer, ChatResponseModel> chatResponseModelMap = manager.getChats();

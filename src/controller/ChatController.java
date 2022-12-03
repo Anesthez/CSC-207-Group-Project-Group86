@@ -14,10 +14,7 @@ public class ChatController {
     public void addChat(int userid, int receiver_id, String text) throws IOException {
         CsvInterface csvInteract = new CsvInterface();
         Map<Integer, ChatRequestModel> chats = csvInteract.chatsReader("database/chat.csv");
-        AddChatUseCase acu = new AddChatUseCase();
-        DeleteChatUseCase dcu = new DeleteChatUseCase();
-        GetChatUseCase gcu = new GetChatUseCase();
-        ChatUseCasesFacade chatManager = new ChatUseCasesFacade(chats,acu,dcu,gcu);
+        ChatUseCasesFacade chatManager = new ChatUseCasesFacade(chats);
         chatManager.addChat(userid, receiver_id, text);
         csvInteract.chatsWriter(chatManager.getChats(), "database/chat.csv");
     }

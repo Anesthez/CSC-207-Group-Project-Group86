@@ -2,17 +2,9 @@ package useCases.UseCaseFacade;
 
 import entity.Comment;
 import entity.factories.CommentFactory;
-import databaseInterface.CsvInterface;
 import model.request.CommentRequestModel;
-import model.request.PostRequestModel;
 import model.response.CommentResponseModel;
-import useCases.AddChatUseCase;
-import useCases.AddCommentUseCase;
-import useCases.DeleteCommentUseCase;
-
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
+import useCases.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,9 +17,10 @@ import java.util.Map;
  */
 public class CommentUseCasesFacade {
     private final Map<Integer, Comment> comments = new HashMap<>();
-    private AddCommentUseCase acu;
-    private DeleteCommentUseCase dcu;
-
+    private final AddCommentUseCase acu;
+    private final DeleteCommentUseCase dcu;
+    private final GetCommentFromIdUseCase gcfu;
+    private final GetCommentsUseCase gcu;
 
 
     public CommentUseCasesFacade(Map<Integer, CommentRequestModel> comments) {
@@ -36,6 +29,10 @@ public class CommentUseCasesFacade {
             Comment comment = commentFactory.create(commentModel);
             this.comments.put(comment.getId(), comment);
         }
+        this.acu = new AddCommentUseCase();
+        this.dcu = new DeleteCommentUseCase();
+        this.gcfu = new GetCommentFromIdUseCase();
+        this.gcu = new GetCommentsUseCase();
     }
 
     /**
@@ -46,25 +43,7 @@ public class CommentUseCasesFacade {
      * @param content the content of the comment
      */
     public void addComment(int userId, String content, int postId) {
-        CsvInterface csvInteract = new CsvInterface();
-        Map<Integer, PostRequestModel> posts;
-        Map<Integer, ArrayList<Integer>> posts_liked = new HashMap<>();
-        try {
-            posts = csvInteract.postsReader("database/post.csv");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Comment comment = new Comment(userId, comments.keySet().size() + 1, content,
-                LocalDate.now().toString(), postId);
-
-        for (Integer k:posts.keySet()) {
-
-            ArrayList<Integer> users = (ArrayList<Integer>) posts.get(k).get().get(7);
-            posts_liked.put(k, users);
-        }
-        PostUseCasesFacade postUseCases = new PostUseCasesFacade(posts, posts_liked);
-        postUseCases.addComment_id(postId, comment.getId());
-        comments.put(comment.getId(), comment);
+        acu.addComment(userId, content, postId, comments);
     }
 
     /**
@@ -72,7 +51,7 @@ public class CommentUseCasesFacade {
      * @param id the comment id
      */
     public void deleteComment(int id) {
-        comments.remove(id);
+        dcu.deleteComment(id, comments);
     }
 
     /**
@@ -82,14 +61,10 @@ public class CommentUseCasesFacade {
      * @return {@link Comment Comment} object with id
      */
     public Comment getCommentFromId(int id) {
-        return comments.get(id);
+        return gcfu.getCommentFromId(id, comments);
     }
 
     public Map<Integer, CommentResponseModel> getComments() {
-        Map<Integer, CommentResponseModel> commentResponseModels = new HashMap<>();
-        for (Integer i : this.comments.keySet()) {
-            commentResponseModels.put(i, comments.get(i).responseModel());
-        }
-        return commentResponseModels;
+        return gcu.getComments(comments);
     }
 }
