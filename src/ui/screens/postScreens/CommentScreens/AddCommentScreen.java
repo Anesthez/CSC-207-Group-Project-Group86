@@ -41,6 +41,10 @@ public class AddCommentScreen extends JFrame {
                 commentController.create();
                 JOptionPane.showMessageDialog(null, String.format("%s created.",
                         commentContentText.getText()));
+                ShowCommentScreen showCommentScreen = new ShowCommentScreen(userid, postId,username);
+                showCommentScreen.setVisible(true);
+                dispose();
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
