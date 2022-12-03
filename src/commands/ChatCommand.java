@@ -45,10 +45,7 @@ public class ChatCommand {
         CsvInterface csvInteract = new CsvInterface();
         Map<Integer, UserRequestModel> users = csvInteract.usersReader("database/user.csv");
         Map<Integer, ChatRequestModel> chats = csvInteract.chatsReader("database/chat.csv");
-        AddChatUseCase acu = new AddChatUseCase();
-        DeleteChatUseCase dcu = new DeleteChatUseCase();
-        GetChatUseCase gcu = new GetChatUseCase();
-        ChatUseCasesFacade chatManager = new ChatUseCasesFacade(chats,acu,dcu,gcu);
+        ChatUseCasesFacade chatManager = new ChatUseCasesFacade(chats);
 
         // use "/chat-add-receiver's id-content" to send a message
         switch (inputLines[1]) {
