@@ -26,9 +26,20 @@ public class FriendsScreen extends JFrame {
         font = font.deriveFont(16f);
 
         Icon backIcon = new ImageIcon("assets/images/back.png");
+        Icon addFriends = new ImageIcon("assets/images/addfriend.png");
+        JButton addFriendsButton = new JButton(addFriends);
+        addFriendsButton.setBounds(0, 45, 45, 45);
         JButton back = new JButton();
         back.setIcon(backIcon);
         back.setBounds(0, 0, 45, 45);
+        addFriendsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddFriendsScreen addFriendsScreen = new AddFriendsScreen(userId, name);
+                addFriendsScreen.setVisible(true);
+                dispose();
+            }
+        });
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -93,6 +104,7 @@ public class FriendsScreen extends JFrame {
         jScrollPane.setViewportView(jPanel);
         this.add(jScrollPane);
         this.add(back);
+        this.add(addFriendsButton);
         this.setLayout(null);
         BufferedImage logo = ImageIO.read(new File("assets/images/background.png"));
         ImageIcon imageIcon = new ImageIcon(logo);

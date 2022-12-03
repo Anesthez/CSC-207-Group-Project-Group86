@@ -6,7 +6,7 @@ import model.request.CommentRequestModel;
 import java.util.ArrayList;
 
 
-public class CommentFactory {
+public class CommentFactory{
     /**
      *<p>CommentFactory is a factory used to create {@link Comment Comment} object.</p>
      * @param commentModel the model for the comment
