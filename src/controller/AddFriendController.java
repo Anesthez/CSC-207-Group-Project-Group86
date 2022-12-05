@@ -20,7 +20,7 @@ public class AddFriendController {
         if (friendList == null){
             return false;
         }
-        if (!friendList.contains(friendId) && !friends.containsKey(friendId)){
+        if (!friendList.contains(friendId)){
             friendList.add(friendId);
             new CsvInterface().friendsWriter("database/friends.csv", friends);
             return true;
