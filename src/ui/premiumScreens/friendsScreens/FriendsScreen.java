@@ -3,6 +3,7 @@ package ui.premiumScreens.friendsScreens;
 import databaseInterface.CsvInterface;
 import ui.premiumScreens.friendsScreens.chatScreens.ChatScreen;
 import ui.premiumScreens.PremiumMainScreen;
+import ui.premiumScreens.friendsScreens.AddFriendsScreen;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -90,7 +91,15 @@ public class FriendsScreen extends JFrame {
             jPanel.add(label);
             i +=1;
         }
+        JButton addFriend = new JButton("Add Friend");
+        addFriend.setBounds(50, 50, 100, 50);
+        addFriend.addActionListener(e -> {
+            ui.premiumScreens.friendsScreens.AddFriendsScreen addFriendsScreen = new ui.premiumScreens.friendsScreens.AddFriendsScreen(userId, name);
+            addFriendsScreen.setVisible(true);
+            dispose();
+        });
         jScrollPane.setViewportView(jPanel);
+        this.add(addFriend);
         this.add(jScrollPane);
         this.add(back);
         this.setLayout(null);

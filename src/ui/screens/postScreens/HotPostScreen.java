@@ -55,7 +55,7 @@ public class HotPostScreen extends JFrame implements ActionListener {
             dispose();
         });
 
-        JButton thirdPopular = new JButton("Second Popular");
+        JButton thirdPopular = new JButton("Third Popular");
         thirdPopular.setSize(120, 40);
         thirdPopular.setLocation(340, 440);
         thirdPopular.addActionListener(e -> {
