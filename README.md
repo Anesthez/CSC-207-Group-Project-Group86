@@ -7,11 +7,17 @@ The program allows users to post blogs and leave likes and comment under othersâ
 ## Clean Architecture
 
 Our programs adhere to Clean Architecture. 
+
 The program is divided into 4 layers: Frameworks & Drivers, Interface Adapters, Application Business Rules, Enterprise Business Rule
+
 Frameworks & Drivers layer contains database and UI.
+
 The Interface Adapters layer contains the controllers, the presenter and the gateways.
+
 The Application Business Rules layer contains the use cases.
+
 The Enterprise Business Rule layer contains the entities and factories.
+
 The user input is passed to the controller from the view, the controller then calls the use case through the request model and passes the input to the use case. The use case then calls the gateway to access the database and returns the result to the presenter. The use case then passes the result to the presenter and gateway through the response model, and the presenter returns the result to the view and gateway writes the result into the database.
 
 ## Design Pattern
