@@ -1,15 +1,12 @@
 package ui.premiumScreens.friendsScreens;
 
 import databaseInterface.CsvInterface;
-import ui.premiumScreens.friendsScreens.chatScreens.ChatScreen;
 import ui.premiumScreens.PremiumMainScreen;
-import ui.premiumScreens.friendsScreens.AddFriendsScreen;
+import ui.premiumScreens.friendsScreens.chatScreens.ChatScreen;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -30,18 +27,15 @@ public class FriendsScreen extends JFrame {
         JButton back = new JButton();
         back.setIcon(backIcon);
         back.setBounds(0, 0, 45, 45);
-        back.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PremiumMainScreen premiumMainScreen = null;
-                try {
-                    premiumMainScreen = new PremiumMainScreen(userId, name);
-                } catch (IOException | FontFormatException ex) {
-                    throw new RuntimeException(ex);
-                }
-                premiumMainScreen.setVisible(true);
-                dispose();
+        back.addActionListener(e -> {
+            PremiumMainScreen premiumMainScreen;
+            try {
+                premiumMainScreen = new PremiumMainScreen(userId, name);
+            } catch (IOException | FontFormatException ex) {
+                throw new RuntimeException(ex);
             }
+            premiumMainScreen.setVisible(true);
+            dispose();
         });
         JScrollPane jScrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -91,8 +85,11 @@ public class FriendsScreen extends JFrame {
             jPanel.add(label);
             i +=1;
         }
-        JButton addFriend = new JButton("Add Friend");
-        addFriend.setBounds(50, 50, 100, 50);
+
+        Icon friendIcon = new ImageIcon("assets/images/addfriend.png");
+        JButton addFriend = new JButton();
+        addFriend.setIcon(friendIcon);
+        addFriend.setBounds(915, 0, 45, 45);
         addFriend.addActionListener(e -> {
             ui.premiumScreens.friendsScreens.AddFriendsScreen addFriendsScreen = new ui.premiumScreens.friendsScreens.AddFriendsScreen(userId, name);
             addFriendsScreen.setVisible(true);

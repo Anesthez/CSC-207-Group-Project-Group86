@@ -47,7 +47,7 @@ class AddFriendsScreen extends JFrame{
         this.add(label);
         this.add(textField);
         this.add(add);
-        this.setSize(800, 800);
+        this.setSize(960, 540);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
