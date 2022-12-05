@@ -5,3 +5,6 @@ id,user_id,time,content,post_id
 4,5,2022-12-03,very good one,1
 5,5,2022-12-03,dfajfdlsajkf,1
 6,5,2022-12-03,kdsafkj,1
+7,2,2022-12-05,test,1
+8,7,2022-12-05,I like it,2
+9,7,2022-12-05,I love it,7
