@@ -26,12 +26,8 @@ public class GetHottestPostsUseCase implements Popularity_rank {
         while (remaining > 0 && i < ranked_post.size()) {
             hotPosts.add((PostResponseModel) ranked_post.get(i).responseModel());
             remaining -= 1;
+            i += 1;
         }
         return hotPosts;
-    }
-
-    public List<PostResponseModel> getHottestPosts(HashMap<Integer, Post> posts) {
-        // Method overload for getHottestPost with default post_num = 3
-        return getHottestPosts(3, posts);
     }
 }

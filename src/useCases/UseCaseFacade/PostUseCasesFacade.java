@@ -138,6 +138,7 @@ public class PostUseCasesFacade implements Popularity_rank {
         while (remaining > 0 && i < ranked_post.size()) {
             hotPosts.add((PostResponseModel) ranked_post.get(i).responseModel());
             remaining -= 1;
+            i += 1;
         }
         return hotPosts;
     }

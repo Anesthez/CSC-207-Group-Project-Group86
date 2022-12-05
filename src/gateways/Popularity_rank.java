@@ -15,16 +15,22 @@ public interface Popularity_rank {
      */
     default ArrayList<Modelizable> rank_by_popularity(HashMap<Integer, Populable> list) {
         ArrayList<Modelizable> result = new ArrayList<>();
-        HashMap<Integer, Populable> list_copy = (HashMap<Integer, Populable>) list.clone();
+        ArrayList<Integer> checked = new ArrayList<>();
         for (Integer key :list.keySet()) {
+            if (checked.contains(key)) {
+                continue;
+            }
             Integer temp = key;
             for (Integer key2 : list.keySet()) {
-                if (list.get(key).getPopularity() > list.get(key2).getPopularity()) {
+                if (checked.contains(key2)) {
+                    continue;
+                }
+                if (list.get(key).getPopularity() < list.get(key2).getPopularity()) {
                     temp = key2;
                 }
 
             }
-            list_copy.remove(temp);
+            checked.add(temp);
             result.add((Modelizable) list.get(temp));
 
         }
